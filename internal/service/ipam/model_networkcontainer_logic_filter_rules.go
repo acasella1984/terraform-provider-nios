@@ -14,6 +14,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkcontainerLogicFilterRulesModel struct {
@@ -31,6 +33,9 @@ var NetworkcontainerLogicFilterRulesResourceSchemaAttributes = map[string]schema
 		Optional:            true,
 		MarkdownDescription: "The filter name.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"type": schema.StringAttribute{
 		Optional:            true,

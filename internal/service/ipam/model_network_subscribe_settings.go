@@ -15,6 +15,8 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
 
 type NetworkSubscribeSettingsModel struct {
@@ -44,6 +46,9 @@ var NetworkSubscribeSettingsResourceSchemaAttributes = map[string]schema.Attribu
 				"VLAN",
 			}),
 			listvalidator.SizeAtLeast(1),
+		},
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"mapped_ea_attributes": schema.ListNestedAttribute{

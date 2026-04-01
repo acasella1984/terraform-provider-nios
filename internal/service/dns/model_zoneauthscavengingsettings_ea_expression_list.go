@@ -13,6 +13,8 @@ import (
 
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZoneauthscavengingsettingsEaExpressionListModel struct {
@@ -45,6 +47,9 @@ var ZoneauthscavengingsettingsEaExpressionListResourceSchemaAttributes = map[str
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The name of the Extensible Attribute Definition object which is used as the first operand value.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op1_type": schema.StringAttribute{
 		Optional: true,
@@ -53,11 +58,17 @@ var ZoneauthscavengingsettingsEaExpressionListResourceSchemaAttributes = map[str
 			stringvalidator.OneOf("FIELD", "LIST", "STRING"),
 		},
 		MarkdownDescription: "The first operand type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op2": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The second operand value.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op2_type": schema.StringAttribute{
 		Optional: true,
@@ -66,6 +77,9 @@ var ZoneauthscavengingsettingsEaExpressionListResourceSchemaAttributes = map[str
 			stringvalidator.OneOf("FIELD", "LIST", "STRING"),
 		},
 		MarkdownDescription: "The second operand type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -15,6 +15,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -81,14 +83,23 @@ var NotificationRestEndpointResourceSchemaAttributes = map[string]schema.Attribu
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"client_certificate_subject": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The client certificate subject of a notification REST endpoint.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"client_certificate_token": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The token returned by the uploadinit function call in object fileop for a notification REST endpoit client certificate.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"client_certificate_file": schema.StringAttribute{
 		Optional:            true,
@@ -97,6 +108,9 @@ var NotificationRestEndpointResourceSchemaAttributes = map[string]schema.Attribu
 	"client_certificate_valid_from": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when client certificate for a notification REST endpoint was created.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"client_certificate_valid_to": schema.Int64Attribute{
 		Computed:            true,
@@ -211,6 +225,9 @@ var NotificationRestEndpointResourceSchemaAttributes = map[string]schema.Attribu
 			stringvalidator.AlsoRequires(path.MatchRoot("password")),
 		},
 		MarkdownDescription: "The username of the user that can log into a notification REST endpoint.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vendor_identifier": schema.StringAttribute{
 		Optional:            true,
@@ -225,6 +242,9 @@ var NotificationRestEndpointResourceSchemaAttributes = map[string]schema.Attribu
 			stringvalidator.AlsoRequires(path.MatchRoot("wapi_user_password")),
 		},
 		MarkdownDescription: "The user name for WAPI integration.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"wapi_user_password": schema.StringAttribute{
 		Optional:  true,

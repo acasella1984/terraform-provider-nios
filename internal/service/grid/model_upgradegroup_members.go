@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type UpgradegroupMembersModel struct {
@@ -32,6 +34,9 @@ var UpgradegroupMembersResourceSchemaAttributes = map[string]schema.Attribute{
 	"time_zone": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The upgrade group member time zone.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

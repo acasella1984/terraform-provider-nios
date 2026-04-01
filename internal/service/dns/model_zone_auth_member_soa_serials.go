@@ -11,6 +11,9 @@ import (
 
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZoneAuthMemberSoaSerialsModel struct {
@@ -29,14 +32,23 @@ var ZoneAuthMemberSoaSerialsResourceSchemaAttributes = map[string]schema.Attribu
 	"grid_primary": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The grid primary server for the zone. Only one of \"grid_primary\" or \"ms_server_primary\" will be set when the object is retrieved from the server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_server_primary": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The primary MS server for the zone. Only one of \"grid_primary\" or \"ms_server_primary\" will be set when the object is retrieved from the server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"serial": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The SOA serial number.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkcontainerZoneAssociationsModel struct {
@@ -31,6 +33,9 @@ var NetworkcontainerZoneAssociationsResourceSchemaAttributes = map[string]schema
 		Optional:            true,
 		MarkdownDescription: "The FQDN of the authoritative forward zone.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"is_default": schema.BoolAttribute{
 		Optional:            true,
@@ -40,6 +45,9 @@ var NetworkcontainerZoneAssociationsResourceSchemaAttributes = map[string]schema
 		Optional:            true,
 		MarkdownDescription: "The view to which the zone belongs. If a view is not specified, the default view is used.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

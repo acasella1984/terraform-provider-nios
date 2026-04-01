@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ExtensibleattributedefListValuesModel struct {
@@ -27,6 +29,9 @@ var ExtensibleattributedefListValuesResourceSchemaAttributes = map[string]schema
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Enum value",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

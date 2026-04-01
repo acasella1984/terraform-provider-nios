@@ -9,6 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -58,16 +60,25 @@ var NetworkviewRemoteReverseZonesResourceSchemaAttributes = map[string]schema.At
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The principal name in which GSS-TSIG for dynamic updates is enabled.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"gss_tsig_domain": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The domain in which GSS-TSIG for dynamic updates is enabled.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The TSIG key value.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_alg": schema.StringAttribute{
 		Optional: true,
@@ -76,11 +87,17 @@ var NetworkviewRemoteReverseZonesResourceSchemaAttributes = map[string]schema.At
 			stringvalidator.OneOf("HMAC-MD5", "HMAC-SHA256"),
 		},
 		MarkdownDescription: "The TSIG key alorithm name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_name": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The name of the TSIG key. The key name entered here must match the TSIG key name on the external name server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"key_type": schema.StringAttribute{
 		Optional: true,

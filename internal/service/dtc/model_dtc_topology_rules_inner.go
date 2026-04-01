@@ -15,6 +15,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dtc"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type DtcTopologyRulesInnerModel struct {
@@ -47,6 +50,9 @@ var DtcTopologyRulesInnerResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The reference to the destination object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"return_type": schema.StringAttribute{
 		Optional: true,
@@ -55,14 +61,23 @@ var DtcTopologyRulesInnerResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("NOERR", "NXDOMAIN", "REGULAR"),
 		},
 		MarkdownDescription: "The type of the return value for this source.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"topology": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The topology for this rule.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"valid": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Indicates whether the rule is valid.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"sources": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{

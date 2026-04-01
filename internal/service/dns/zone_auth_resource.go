@@ -177,6 +177,34 @@ func (r *ZoneAuthResource) Create(ctx context.Context, req resource.CreateReques
 		ReturnAsObject(1).
 		Execute()
 	if err != nil {
+		// On conflict (duplicate), try to find the existing object and suggest import
+		if strings.Contains(err.Error(), "Duplicate object") || strings.Contains(err.Error(), "Data.Conflict") {
+			filters := map[string]interface{}{
+				"fqdn": data.Fqdn.ValueString(),
+			}
+			if !data.View.IsNull() && !data.View.IsUnknown() {
+				filters["view"] = data.View.ValueString()
+			}
+			listRes, _, listErr := r.client.DNSAPI.
+				ZoneAuthAPI.
+				List(ctx).
+				Filters(filters).
+				ReturnAsObject(1).
+				MaxResults(1).
+				Execute()
+			if listErr == nil && listRes != nil && listRes.ListZoneAuthResponseObject != nil {
+				results := listRes.ListZoneAuthResponseObject.GetResult()
+				if len(results) > 0 && results[0].Ref != nil {
+					resp.Diagnostics.AddError("Object Already Exists",
+						fmt.Sprintf("A ZoneAuth with fqdn=%q already exists on the server.\n\n"+
+							"To manage it with Terraform, import it into state:\n\n"+
+							"  terraform import <your_resource_address> %s",
+						data.Fqdn.ValueString(),
+							*results[0].Ref))
+					return
+				}
+			}
+		}
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to create ZoneAuth, got error: %s", err))
 		return
 	}

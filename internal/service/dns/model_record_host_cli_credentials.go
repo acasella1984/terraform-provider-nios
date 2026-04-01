@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
 
 type RecordHostCliCredentialsModel struct {
@@ -52,6 +54,9 @@ var RecordHostCliCredentialsResourceSchemaAttributes = map[string]schema.Attribu
 	"id": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The Credentials ID.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"credential_group": schema.StringAttribute{
 		Optional:            true,

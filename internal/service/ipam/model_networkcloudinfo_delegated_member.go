@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkcloudinfoDelegatedMemberModel struct {
@@ -31,16 +33,25 @@ var NetworkcloudinfoDelegatedMemberResourceSchemaAttributes = map[string]schema.
 		MarkdownDescription: "The IPv4 Address of the Grid Member.",
 		Computed:            true,
 		Optional:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6addr": schema.StringAttribute{
 		MarkdownDescription: "The IPv6 Address of the Grid Member.",
 		Computed:            true,
 		Optional:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		MarkdownDescription: "The Grid member name",
 		Computed:            true,
 		Optional:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -19,6 +19,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -138,6 +141,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"address_type": schema.StringAttribute{
 		Optional: true,
@@ -232,11 +238,17 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"discover_now_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The discovery status of this IPv6 fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_data": schema.SingleNestedAttribute{
 		Attributes:          Ipv6fixedaddressDiscoveredDataResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The discovered data for this IPv6 fixed address.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"domain_name": schema.StringAttribute{
 		CustomType: internaltypes.CaseInsensitiveString{},
@@ -247,6 +259,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_domain_name")),
 		},
 		MarkdownDescription: "The domain name for this IPv6 fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"domain_name_servers": schema.ListAttribute{
 		ElementType: types.StringType,
@@ -267,6 +282,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidDUID(),
 		},
 		MarkdownDescription: "The DUID value for this IPv6 fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"enable_immediate_discovery": schema.BoolAttribute{
 		Optional:            true,
@@ -288,22 +306,34 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The IPv6 Address of the DHCP IPv6 fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"func_call": schema.SingleNestedAttribute{
 		Attributes:          FuncCallResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Specifies the function call to execute. The `next_available_ip` function is supported for IPV6 Fixed Address.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6prefix": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The IPv6 Address prefix of the DHCP IPv6 fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6prefix_bits": schema.Int64Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Prefix bits of the DHCP IPv6 fixed address.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"logic_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -327,6 +357,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The MAC address for this IPv6 fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"match_client": schema.StringAttribute{
 		Optional: true,
@@ -359,6 +392,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPCIDR(),
 		},
 		MarkdownDescription: "The network to which this IPv6 fixed address belongs, in IPv6 Address/CIDR format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_view": schema.StringAttribute{
 		Optional:            true,
@@ -412,6 +448,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_cli_credentials")),
 		},
 		MarkdownDescription: "The SNMPv3 credential for this IPv6 fixed address.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"snmp_credential": schema.SingleNestedAttribute{
 		Attributes: Ipv6fixedaddressSnmpCredentialResourceSchemaAttributes,
@@ -421,6 +460,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_snmp_credential")),
 		},
 		MarkdownDescription: "The SNMPv1 or SNMPv2 credential for this IPv6 fixed address.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"template": schema.StringAttribute{
 		Optional: true,
@@ -491,6 +533,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_valid_lifetime")),
 		},
 		MarkdownDescription: "The valid lifetime value for this DHCP IPv6 Fixed Address object.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"extattrs_all": schema.MapAttribute{
 		Computed:            true,

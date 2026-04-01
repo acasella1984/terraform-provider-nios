@@ -18,6 +18,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -220,6 +223,9 @@ var Ipv6networktemplateResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "Reference the Cloud Platform Appliance to which authority of the object should be delegated when the object is created using the template.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"domain_name": schema.StringAttribute{
 		Computed: true,
@@ -229,6 +235,9 @@ var Ipv6networktemplateResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidDomainName(),
 		},
 		MarkdownDescription: "Use this method to set or retrieve the domain_name value of a DHCP IPv6 Network object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"domain_name_servers": schema.ListAttribute{
 		ElementType: types.StringType,
@@ -281,6 +290,9 @@ var Ipv6networktemplateResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "The IPv6 Address prefix of the DHCP IPv6 network.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"logic_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -337,6 +349,9 @@ var Ipv6networktemplateResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_preferred_lifetime")),
 		},
 		MarkdownDescription: "Use this method to set or retrieve the preferred lifetime value of a DHCP IPv6 Network object.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"range_templates": schema.ListAttribute{
 		ElementType: types.StringType,
@@ -358,6 +373,9 @@ var Ipv6networktemplateResourceSchemaAttributes = map[string]schema.Attribute{
 	"rir": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The registry (RIR) that allocated the IPv6 network address space.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"rir_organization": schema.StringAttribute{
 		Computed: true,
@@ -366,6 +384,9 @@ var Ipv6networktemplateResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The RIR organization associated with the IPv6 network. RIR Organization can only be set with Cloud Incompatible IPv6 Network Templates.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"rir_registration_action": schema.StringAttribute{
 		Computed: true,
@@ -485,6 +506,9 @@ var Ipv6networktemplateResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_valid_lifetime")),
 		},
 		MarkdownDescription: "Use this method to set or retrieve the valid lifetime value of a DHCP IPv6 Network object.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

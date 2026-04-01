@@ -12,6 +12,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type GridServicerestartStatusModel struct {
@@ -50,54 +53,93 @@ var GridServicerestartStatusResourceSchemaAttributes = map[string]schema.Attribu
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"failures": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of failed requests.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"finished": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of finished requests.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"grouped": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The type of grouping.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"needed_restart": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of created yet unprocessed requests for restart.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"no_restart": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of requests that did not require a restart.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"parent": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "A reference to the grid or grid:servicerestart:group object associated with the request.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"pending": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of requests that are pending a restart.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"pending_restart": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of forced or needed requests pending for restart.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"processing": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of not forced and not needed requests pending for restart.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"restarting": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of service restarts for corresponding members.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"success": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of requests associated with successful restarts.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"timeouts": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of timeout requests.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

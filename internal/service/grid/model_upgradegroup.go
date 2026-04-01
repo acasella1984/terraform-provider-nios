@@ -9,6 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -78,6 +80,9 @@ var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTimeFormat(),
 		},
 		MarkdownDescription: "The time of the next scheduled distribution.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"members": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -100,6 +105,9 @@ var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"time_zone": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The time zone for scheduling operations.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"upgrade_dependent_group": schema.StringAttribute{
 		Optional:            true,
@@ -122,6 +130,9 @@ var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTimeFormat(),
 		},
 		MarkdownDescription: "The time of the next scheduled upgrade.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

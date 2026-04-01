@@ -10,6 +10,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -71,6 +74,9 @@ var Awsrte53taskgroupTaskListResourceSchemaAttributes = map[string]schema.Attrib
 	"state": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Indicate the sync status of this task.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"state_msg": schema.StringAttribute{
 		Computed:            true,
@@ -101,10 +107,16 @@ var Awsrte53taskgroupTaskListResourceSchemaAttributes = map[string]schema.Attrib
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Reference to associated AWS user whose credentials are to be used for this task.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"status_timestamp": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when the last state was logged.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_run": schema.Int64Attribute{
 		Computed:            true,

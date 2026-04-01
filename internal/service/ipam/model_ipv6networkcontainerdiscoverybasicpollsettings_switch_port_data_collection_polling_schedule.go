@@ -11,6 +11,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -74,6 +76,9 @@ var Ipv6networkcontainerdiscoverybasicpollsettingsSwitchPortDataCollectionPollin
 		Optional:            true,
 		MarkdownDescription: "The time zone for the schedule.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"recurring_time": schema.Int64Attribute{
 		Optional:            true,
@@ -90,6 +95,9 @@ var Ipv6networkcontainerdiscoverybasicpollsettingsSwitchPortDataCollectionPollin
 				"WEEKLY",
 				"MONTHLY",
 			),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"every": schema.Int64Attribute{

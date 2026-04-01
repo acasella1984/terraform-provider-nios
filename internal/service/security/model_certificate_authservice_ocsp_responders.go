@@ -8,6 +8,9 @@ import (
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -65,14 +68,23 @@ var CertificateAuthserviceOcspRespondersResourceSchemaAttributes = map[string]sc
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Determines if this OCSP authentication responder is disabled.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"certificate": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the OCSP responder certificate.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"certificate_token": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The token returned by the uploadinit function call in object fileop.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"certificate_file_path": schema.StringAttribute{
 		Required:            true,

@@ -14,6 +14,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkcontainerdiscoverybasicpollsettingsSwitchPortDataCollectionPollingScheduleModel struct {
@@ -55,11 +58,17 @@ var NetworkcontainerdiscoverybasicpollsettingsSwitchPortDataCollectionPollingSch
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"time_zone": schema.StringAttribute{
 		Optional:            true,
 		MarkdownDescription: "The time zone for the schedule.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"recurring_time": schema.Int64Attribute{
 		Optional:            true,
@@ -69,6 +78,9 @@ var NetworkcontainerdiscoverybasicpollsettingsSwitchPortDataCollectionPollingSch
 		Optional:            true,
 		MarkdownDescription: "The frequency for the scheduled task.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"every": schema.Int64Attribute{
 		Optional:            true,
@@ -98,6 +110,9 @@ var NetworkcontainerdiscoverybasicpollsettingsSwitchPortDataCollectionPollingSch
 		Optional:            true,
 		MarkdownDescription: "Indicates if the scheduled task will be repeated or run only once.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"disable": schema.BoolAttribute{
 		Optional:            true,

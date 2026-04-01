@@ -16,6 +16,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -104,6 +106,9 @@ var DhcpfailoverResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"association_type": schema.StringAttribute{
 		Computed:            true,
@@ -222,6 +227,9 @@ var DhcpfailoverResourceSchemaAttributes = map[string]schema.Attribute{
 	"ms_failover_partner": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Failover partner defined in the association with the Microsoft Server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_hotstandby_partner_role": schema.StringAttribute{
 		Computed: true,
@@ -230,24 +238,39 @@ var DhcpfailoverResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("ACTIVE", "PASSIVE"),
 		},
 		MarkdownDescription: "The partner role in the case of HotStandby.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_is_conflict": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Determines if the matching Microsoft failover association (if any) is in synchronization (False) or not (True). If there is no matching failover association the returned values is False. This is a read-only attribute.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_previous_state": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The previous failover association state. This is a read-only attribute.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_server": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The primary Microsoft Server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_shared_secret": schema.StringAttribute{
 		Computed:            true,
 		Optional:            true,
 		Sensitive:           true,
 		MarkdownDescription: "The failover association authentication. This is a write-only attribute.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_state": schema.StringAttribute{
 		Computed:            true,

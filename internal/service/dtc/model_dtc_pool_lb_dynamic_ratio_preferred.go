@@ -9,6 +9,8 @@ import (
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -48,6 +50,9 @@ var DtcPoolLbDynamicRatioPreferredResourceSchemaAttributes = map[string]schema.A
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The DTC monitor output of which will be used for dynamic ratio load balancing.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"monitor_metric": schema.StringAttribute{
 		Optional:            true,

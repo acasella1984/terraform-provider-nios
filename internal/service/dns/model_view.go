@@ -18,6 +18,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -524,6 +526,9 @@ var ViewResourceSchemaAttributes = map[string]schema.Attribute{
 	"is_default": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "The NIOS appliance provides one default DNS view. You can rename the default view and change its settings, but you cannot delete it. There must always be at least one DNS view in the appliance.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_queried_acl": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -673,6 +678,9 @@ var ViewResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_response_rate_limiting")),
 		},
 		MarkdownDescription: "The response rate limiting settings for the DNS view. This feature is used to limit the number of responses sent to a client in a given time period.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"root_name_server_type": schema.StringAttribute{
 		Optional: true,
@@ -728,6 +736,9 @@ var ViewResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_scavenging_settings")),
 		},
 		MarkdownDescription: "Scavenging settings for the DNS view",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"sortlist": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{

@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkcontainerFederatedRealmsModel struct {
@@ -29,11 +31,17 @@ var NetworkcontainerFederatedRealmsResourceSchemaAttributes = map[string]schema.
 		Optional:            true,
 		MarkdownDescription: "The federated realm name",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"id": schema.StringAttribute{
 		Optional:            true,
 		MarkdownDescription: "The federated realm id",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

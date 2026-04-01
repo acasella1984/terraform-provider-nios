@@ -13,6 +13,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -97,6 +99,9 @@ var DtcServerResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          DtcServerHealthResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The health status of DTC Server",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"host": schema.StringAttribute{
 		Required: true,
@@ -130,6 +135,9 @@ var DtcServerResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidDomainName(),
 		},
 		MarkdownDescription: "The hostname for Server Name Indication (SNI) in FQDN format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_sni_hostname": schema.BoolAttribute{
 		Optional:            true,

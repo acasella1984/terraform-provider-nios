@@ -15,6 +15,8 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkviewDdnsZonePrimariesModel struct {
@@ -50,6 +52,9 @@ var NetworkviewDdnsZonePrimariesResourceSchemaAttributes = map[string]schema.Att
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The name of a Grid member.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dns_ext_zone": schema.StringAttribute{
 		Optional: true,
@@ -58,11 +63,17 @@ var NetworkviewDdnsZonePrimariesResourceSchemaAttributes = map[string]schema.Att
 			customvalidator.IsValidDomainName(),
 		},
 		MarkdownDescription: "The name of external zone in FQDN format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dns_ext_primary": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The IP address of the External server. Valid when zone_match is \"EXTERNAL\" or \"ANY_EXTERNAL\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

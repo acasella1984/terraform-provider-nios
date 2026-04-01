@@ -15,6 +15,9 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type FixedaddressCliCredentialsModel struct {
@@ -43,6 +46,9 @@ var FixedaddressCliCredentialsResourceSchemaAttributes = map[string]schema.Attri
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The CLI user name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"password": schema.StringAttribute{
 		Optional:  true,
@@ -52,6 +58,9 @@ var FixedaddressCliCredentialsResourceSchemaAttributes = map[string]schema.Attri
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The CLI password.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"credential_type": schema.StringAttribute{
 		Required: true,
@@ -67,15 +76,24 @@ var FixedaddressCliCredentialsResourceSchemaAttributes = map[string]schema.Attri
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The comment for the credential.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"id": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The Credentials ID.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"credential_group": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Group for the CLI credential.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

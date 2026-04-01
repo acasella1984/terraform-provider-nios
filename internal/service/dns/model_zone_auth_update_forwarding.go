@@ -16,6 +16,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZoneAuthUpdateForwardingModel struct {
@@ -58,6 +61,9 @@ var ZoneAuthUpdateForwardingResourceSchemaAttributes = map[string]schema.Attribu
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The address this rule applies to or \"Any\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"permission": schema.StringAttribute{
 		Optional: true,
@@ -70,6 +76,9 @@ var ZoneAuthUpdateForwardingResourceSchemaAttributes = map[string]schema.Attribu
 			),
 		},
 		MarkdownDescription: "The permission to use for this address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key": schema.StringAttribute{
 		Optional: true,
@@ -82,6 +91,9 @@ var ZoneAuthUpdateForwardingResourceSchemaAttributes = map[string]schema.Attribu
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_alg": schema.StringAttribute{
 		Optional: true,
@@ -93,6 +105,9 @@ var ZoneAuthUpdateForwardingResourceSchemaAttributes = map[string]schema.Attribu
 			),
 		},
 		MarkdownDescription: "The TSIG key algorithm.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_name": schema.StringAttribute{
 		Optional: true,
@@ -105,6 +120,9 @@ var ZoneAuthUpdateForwardingResourceSchemaAttributes = map[string]schema.Attribu
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The name of the TSIG key. If 2.x TSIG compatibility is used, this is set to 'tsig_xfer' on retrieval, and ignored on insert or update.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_tsig_key_name": schema.BoolAttribute{
 		Optional: true,
@@ -116,6 +134,9 @@ var ZoneAuthUpdateForwardingResourceSchemaAttributes = map[string]schema.Attribu
 			),
 		},
 		MarkdownDescription: "Use flag for: tsig_key_name",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

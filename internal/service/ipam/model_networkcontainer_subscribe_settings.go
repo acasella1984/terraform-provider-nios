@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
 
 type NetworkcontainerSubscribeSettingsModel struct {
@@ -30,6 +32,9 @@ var NetworkcontainerSubscribeSettingsResourceSchemaAttributes = map[string]schem
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The list of Cisco ISE attributes allowed for subscription.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"mapped_ea_attributes": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{

@@ -9,6 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -53,6 +55,9 @@ var GridServicerestartGroupRecurringScheduleResourceSchemaAttributes = map[strin
 			stringvalidator.OneOf("GROUPED", "SEQUENTIAL", "SIMULTANEOUS"),
 		},
 		MarkdownDescription: "The restart method for a Grid restart.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"schedule": schema.SingleNestedAttribute{
 		Attributes: GridservicerestartgrouprecurringscheduleScheduleResourceSchemaAttributes,

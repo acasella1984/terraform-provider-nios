@@ -15,6 +15,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZoneRpFireeyeRuleMappingModel struct {
@@ -37,6 +39,9 @@ var ZoneRpFireeyeRuleMappingResourceSchemaAttributes = map[string]schema.Attribu
 			stringvalidator.OneOf("NODATA", "NOOVERRIDE", "NXDOMAIN", "PASSTHRU", "SUBSTITUTE"),
 		},
 		MarkdownDescription: "The override setting for APT alerts.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"fireeye_alert_mapping": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -53,6 +58,9 @@ var ZoneRpFireeyeRuleMappingResourceSchemaAttributes = map[string]schema.Attribu
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The domain name to be substituted, this is applicable only when apt_override is set to \"SUBSTITUTE\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

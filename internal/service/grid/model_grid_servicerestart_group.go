@@ -12,6 +12,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -60,6 +65,9 @@ var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribut
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"comment": schema.StringAttribute{
 		Optional: true,
@@ -92,10 +100,16 @@ var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribut
 	"is_default": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Determines if this Restart Group is the default group.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_updated_time": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when the status of the latest request has changed.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"members": schema.ListAttribute{
 		ElementType: types.StringType,
@@ -125,16 +139,25 @@ var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribut
 	"position": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The order to restart.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"recurring_schedule": schema.SingleNestedAttribute{
 		Attributes: GridServicerestartGroupRecurringScheduleResourceSchemaAttributes,
 		Optional:   true,
 		Computed:   true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"requests": schema.ListAttribute{
 		ElementType:         types.StringType,
 		Computed:            true,
 		MarkdownDescription: "The list of requests associated with a restart group.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"service": schema.StringAttribute{
 		Required: true,
@@ -147,6 +170,9 @@ var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribut
 		Attributes:          GridServicerestartStatusResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The restart status for a restart group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

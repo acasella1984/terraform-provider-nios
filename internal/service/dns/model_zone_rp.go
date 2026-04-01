@@ -18,6 +18,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -144,6 +148,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"address": schema.StringAttribute{
 		CustomType:          iptypes.IPAddressType{},
@@ -169,6 +176,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	"display_domain": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The displayed name of the DNS zone.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dns_soa_email": schema.StringAttribute{
 		Computed:            true,
@@ -223,6 +233,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Rules to map fireeye alerts",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"fqdn": schema.StringAttribute{
 		Required: true,
@@ -285,6 +298,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	"mask_prefix": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "IPv4 Netmask or IPv6 prefix for this zone.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"member_soa_mnames": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -307,6 +323,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	"network_view": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the network view in which this zone resides.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ns_group": schema.StringAttribute{
 		Optional: true,
@@ -320,6 +339,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	"parent": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The parent zone of this zone. Note that when searching for reverse zones, the \"in-addr.arpa\" notation should be used.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"prefix": schema.StringAttribute{
 		CustomType: internaltypes.CaseInsensitiveString{},
@@ -329,10 +351,16 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The RFC2317 prefix value of this DNS zone. Use this field only when the netmask is greater than 24 bits; that is, for a mask between 25 and 31 bits. Enter a prefix, such as the name of the allocated address block. The prefix can be alphanumeric characters, such as 128/26 , 128-189 , or sub-B.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"primary_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The type of the primary server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"record_name_policy": schema.StringAttribute{
 		Optional: true,
@@ -341,6 +369,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_record_name_policy")),
 		},
 		MarkdownDescription: "The hostname policy for records under this zone.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"rpz_drop_ip_rule_enabled": schema.BoolAttribute{
 		Optional: true,
@@ -373,6 +404,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	"rpz_last_updated_time": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp of the last update for zone data.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"rpz_policy": schema.StringAttribute{
 		Optional: true,
@@ -386,10 +420,16 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	"rpz_priority": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The priority of this response policy zone.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"rpz_priority_end": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "This number is for UI to identify the end of qualified zone list.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"rpz_severity": schema.StringAttribute{
 		Optional: true,
@@ -431,6 +471,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 		},
 		MarkdownDescription: "The Time to Live (TTL) value of the SOA record of this zone. This value is the number of seconds that data is cached.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"soa_email": schema.StringAttribute{
 		Optional: true,
@@ -440,6 +483,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The SOA email value for this zone. This value can be in unicode format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"soa_expire": schema.Int64Attribute{
 		Optional: true,
@@ -455,6 +501,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 		},
 		MarkdownDescription: "This setting defines the amount of time, in seconds, after which the secondary server stops giving out answers about the zone because the zone data is too old to be useful. The default is one week.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"soa_negative_ttl": schema.Int64Attribute{
 		Optional: true,
@@ -470,6 +519,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 		},
 		MarkdownDescription: "The negative Time to Live (TTL) value of the SOA of the zone indicates how long a secondary server can cache data for \"Does Not Respond\" responses.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"soa_refresh": schema.Int64Attribute{
 		Optional: true,
@@ -485,6 +537,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 		},
 		MarkdownDescription: "This indicates the interval at which a secondary server sends a message to the primary server for a zone to check that its data is current, and retrieve fresh data if it is not.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"soa_retry": schema.Int64Attribute{
 		Optional: true,
@@ -500,6 +555,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 		},
 		MarkdownDescription: "This indicates how long a secondary server must wait before attempting to recontact the primary server after a connection failure between the two servers occurs.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"soa_serial_number": schema.Int64Attribute{
 		Optional: true,
@@ -508,6 +566,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("set_soa_serial_number")),
 		},
 		MarkdownDescription: "The serial number in the SOA record incrementally changes every time the record is modified. The Infoblox appliance allows you to change the serial number (in the SOA record) for the primary server so it is higher than the secondary server, thereby ensuring zone transfers come from the primary server (as they should). To change the serial number you need to set a new value at \"soa_serial_number\" and pass \"set_soa_serial_number\" as True.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"substitute_name": schema.StringAttribute{
 		Optional: true,
@@ -516,6 +577,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The canonical name of redirect target in substitute policy of response policy zone.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_external_primary": schema.BoolAttribute{
 		Optional:            true,
@@ -532,6 +596,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 		},
 		MarkdownDescription: "Use flag for: soa_default_ttl , soa_expire, soa_negative_ttl, soa_refresh, soa_retry",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_log_rpz": schema.BoolAttribute{
 		Optional:            true,
@@ -555,6 +622,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Use flag for: soa_email",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"view": schema.StringAttribute{
 		Optional: true,

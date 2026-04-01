@@ -11,6 +11,10 @@ import (
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -64,6 +68,9 @@ var RangeportcontrolblackoutsettingBlackoutScheduleResourceSchemaAttributes = ma
 			listvalidator.SizeAtLeast(1),
 		},
 		MarkdownDescription: "Days of the week when scheduling is triggered.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"time_zone": schema.StringAttribute{
 		Computed:            true,
@@ -75,6 +82,9 @@ var RangeportcontrolblackoutsettingBlackoutScheduleResourceSchemaAttributes = ma
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "The recurring time for the schedule in Epoch seconds format. This field is obsolete and is preserved only for backward compatibility purposes. Please use other applicable fields to define the recurring schedule. DO NOT use recurring_time together with these fields. If you use recurring_time with other fields to define the recurring schedule, recurring_time has priority over year, hour_of_day, and minutes_past_hour and will override the values of these fields, although it does not override month and day_of_month. In this case, the recurring time value might be different than the intended value that you define.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"frequency": schema.StringAttribute{
 		Computed: true,
@@ -83,11 +93,17 @@ var RangeportcontrolblackoutsettingBlackoutScheduleResourceSchemaAttributes = ma
 			stringvalidator.OneOf("DAILY", "HOURLY", "MONTHLY", "WEEKLY"),
 		},
 		MarkdownDescription: "The frequency for the scheduled task.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"every": schema.Int64Attribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "The number of frequency to wait before repeating the scheduled task.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"minutes_past_hour": schema.Int64Attribute{
 		Computed: true,
@@ -96,6 +112,9 @@ var RangeportcontrolblackoutsettingBlackoutScheduleResourceSchemaAttributes = ma
 			int64validator.Between(0, 59),
 		},
 		MarkdownDescription: "The minutes past the hour for the scheduled task.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"hour_of_day": schema.Int64Attribute{
 		Computed: true,
@@ -104,11 +123,17 @@ var RangeportcontrolblackoutsettingBlackoutScheduleResourceSchemaAttributes = ma
 			int64validator.Between(0, 23),
 		},
 		MarkdownDescription: "The hour of day for the scheduled task.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"year": schema.Int64Attribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "The year for the scheduled task.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"month": schema.Int64Attribute{
 		Computed: true,
@@ -117,6 +142,9 @@ var RangeportcontrolblackoutsettingBlackoutScheduleResourceSchemaAttributes = ma
 			int64validator.Between(1, 12),
 		},
 		MarkdownDescription: "The month for the scheduled task.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"day_of_month": schema.Int64Attribute{
 		Computed: true,
@@ -125,6 +153,9 @@ var RangeportcontrolblackoutsettingBlackoutScheduleResourceSchemaAttributes = ma
 			int64validator.Between(1, 31),
 		},
 		MarkdownDescription: "The day of the month for the scheduled task.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"repeat": schema.StringAttribute{
 		Computed: true,

@@ -14,6 +14,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/security"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type AdminuserSshKeysModel struct {
@@ -40,6 +42,9 @@ var AdminuserSshKeysResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("ECDSA", "ED25519", "RSA"),
 		},
 		MarkdownDescription: "ssh_key_types",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"key_value": schema.StringAttribute{
 		Optional:            true,

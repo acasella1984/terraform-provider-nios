@@ -11,6 +11,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -128,6 +134,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"accounts_list": schema.ListAttribute{
 		ElementType:         types.StringType,
@@ -156,11 +165,17 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Template string used to generate host name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"auto_create_dns_record": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Control whether to create or update DNS record using discovered data.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"auto_create_dns_record_type": schema.StringAttribute{
 		Optional: true,
@@ -169,6 +184,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("A_PTR_RECORD", "HOST_RECORD"),
 		},
 		MarkdownDescription: "Indicates the type of record to create if the auto create DNS record is enabled.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cdiscovery_file": schema.StringAttribute{
 		Optional:            true,
@@ -177,6 +195,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 	"cdiscovery_file_token": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The AWS account IDs or GCP Project IDs file's token.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"comment": schema.StringAttribute{
 		Optional: true,
@@ -194,6 +215,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("DIRECT", "INDIRECT"),
 		},
 		MarkdownDescription: "Credentials type used for connecting to the cloud management platform.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dns_view_private_ip": schema.StringAttribute{
 		Optional: true,
@@ -202,6 +226,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The DNS view name for private IPs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dns_view_public_ip": schema.StringAttribute{
 		Optional: true,
@@ -210,11 +237,17 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The DNS view name for public IPs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"domain_name": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The name of the domain to use with keystone v3.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"driver_type": schema.StringAttribute{
 		Required: true,
@@ -253,10 +286,16 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("KEYSTONE_V2", "KEYSTONE_V3"),
 		},
 		MarkdownDescription: "Identity service version.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_run": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "Timestamp of last run.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"member": schema.StringAttribute{
 		Required:            true,
@@ -299,6 +338,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			listvalidator.SizeAtLeast(1),
 		},
 		MarkdownDescription: "List of networks to filter in cdiscovery task.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"password": schema.StringAttribute{
 		Optional:            true,
@@ -318,6 +360,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "Network view for private IPs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"private_network_view_mapping_policy": schema.StringAttribute{
 		Required: true,
@@ -342,6 +387,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "Network view for public IPs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"public_network_view_mapping_policy": schema.StringAttribute{
 		Required: true,
@@ -366,6 +414,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Schedule setting for cloud discovery task.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"selected_regions": schema.StringAttribute{
 		Optional: true,
@@ -374,20 +425,32 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "String containing selected regions for discovery in comma separated format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"service_account_file": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The service_account_file for GCP.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"service_account_file_token": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Service account file's token.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"state": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Current state of this task.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"state_msg": schema.StringAttribute{
 		Computed:            true,
@@ -403,11 +466,17 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "If set to true, the appliance uses a specific DNS view for private IPs.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"update_dns_view_public_ip": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "If set to true, the appliance uses a specific DNS view for public IPs.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"update_metadata": schema.BoolAttribute{
 		Required:            true,
@@ -423,6 +492,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Username used for connecting to the cloud management platform.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
 
 type Ipv6networkcontainerSubscribeSettingsModel struct {
@@ -28,6 +30,21 @@ var Ipv6networkcontainerSubscribeSettingsResourceSchemaAttributes = map[string]s
 	"enabled_attributes": schema.ListAttribute{
 		ElementType: types.StringType,
 		Computed:    true,
+		Validators: []validator.List{
+			listvalidator.ValueStringsAre(stringvalidator.OneOf(
+				"DOMAINNAME",
+				"ENDPOINT_PROFILE",
+				"SECURITY_GROUP",
+				"SESSION_STATE",
+				"SSID",
+				"USERNAME",
+				"VLAN",
+			)),
+			listvalidator.SizeAtLeast(1),
+		},
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"mapped_ea_attributes": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{

@@ -11,6 +11,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -93,23 +98,38 @@ var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"address_type": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Type of the DHCP IPv6 Host Address object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"configure_for_dhcp": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Set this to True to enable the DHCP configuration for this IPv6 host address.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discover_now_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The discovery status of this IPv6 Host Address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_data": schema.SingleNestedAttribute{
 		Attributes: RecordHostIpv6addrDiscoveredDataResourceSchemaAttributes,
 		Computed:   true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"domain_name": schema.StringAttribute{
 		Optional:            true,
@@ -132,16 +152,25 @@ var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"duid": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "DHCPv6 Unique Identifier (DUID) of the address object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"host": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The host to which the IPv6 host address belongs, in FQDN format. It is only present when the host address object is not returned as part of a host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6addr": schema.StringAttribute{
 		CustomType:          iptypes.IPv6AddressType{},
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The IPv6 Address of the record.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"func_call": schema.SingleNestedAttribute{
 		Attributes: FuncCallResourceSchemaAttributes,
@@ -155,6 +184,9 @@ var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The IPv6 Address prefix of the DHCP IPv6 Host Address object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6prefix_bits": schema.Int64Attribute{
 		Optional:            true,
@@ -163,6 +195,9 @@ var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"last_queried": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The time of the last DNS query in Epoch seconds format.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"logic_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -174,10 +209,16 @@ var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"mac": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The MAC address for this host address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"match_client": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The match_client value for this fixed address. Valid values are: \"DUID\": The host IP address is leased to the matching DUID. \"MAC_ADDRESS\": The host IP address is leased to the matching MAC address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_ad_user_data": schema.SingleNestedAttribute{
 		Attributes: RecordHostIpv6addrMsAdUserDataResourceSchemaAttributes,
@@ -186,10 +227,16 @@ var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"network": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The network of the host address, in FQDN/CIDR format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_view": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the network view in which the host address resides.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"options": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -206,6 +253,9 @@ var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The reference to the reserved interface to which the device belongs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_domain_name": schema.BoolAttribute{
 		Optional:            true,

@@ -11,6 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -69,18 +70,30 @@ var Awsrte53taskgroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The reference to the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"account_id": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The AWS Account ID associated with this task group.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"accounts_list": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The AWS Account IDs list associated with this task group.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"aws_account_ids_file_token": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The AWS account IDs file's token.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"aws_account_ids_file_path": schema.StringAttribute{
 		Optional:            true,
@@ -184,6 +197,9 @@ var Awsrte53taskgroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"sync_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Indicate the overall sync status of this task group.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"task_list": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{

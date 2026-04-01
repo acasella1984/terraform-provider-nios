@@ -8,6 +8,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -81,6 +83,9 @@ var ZoneAuthScavengingSettingsResourceSchemaAttributes = map[string]schema.Attri
 		Attributes:          ZoneauthscavengingsettingsScavengingScheduleResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The schedule setting for cloud discovery task.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"expression_list": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{

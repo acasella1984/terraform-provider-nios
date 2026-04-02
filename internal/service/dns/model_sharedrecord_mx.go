@@ -25,6 +25,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	derivedmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/derived"
 )
 
 type SharedrecordMxModel struct {
@@ -62,10 +63,8 @@ var SharedrecordMxAttrTypes = map[string]attr.Type{
 var SharedrecordMxResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"comment": schema.StringAttribute{
 		Optional: true,
@@ -93,6 +92,9 @@ var SharedrecordMxResourceSchemaAttributes = map[string]schema.Attribute{
 	"dns_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name for this shared record in punycode format.",
+		PlanModifiers: []planmodifier.String{
+			derivedmod.PunycodeDerivedFrom("name"),
+		},
 	},
 	"extattrs": schema.MapAttribute{
 		ElementType: types.StringType,

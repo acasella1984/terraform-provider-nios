@@ -18,7 +18,6 @@ import (
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type BulkhostnametemplateModel struct {
@@ -40,10 +39,8 @@ var BulkhostnametemplateAttrTypes = map[string]attr.Type{
 var BulkhostnametemplateResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"is_grid_default": schema.BoolAttribute{
 		Computed:            true,

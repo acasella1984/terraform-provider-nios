@@ -27,6 +27,7 @@ import (
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	derivedmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/derived"
 )
 
 type RecordTxtModel struct {
@@ -82,10 +83,8 @@ var RecordTxtAttrTypes = map[string]attr.Type{
 var RecordTxtResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"aws_rte53_record_info": schema.SingleNestedAttribute{
 		Attributes:          RecordTxtAwsRte53RecordInfoResourceSchemaAttributes,
@@ -146,7 +145,7 @@ var RecordTxtResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		MarkdownDescription: "The name for a TXT record in punycode format.",
 		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
+			derivedmod.PunycodeDerivedFrom("name"),
 		},
 	},
 	"extattrs": schema.MapAttribute{

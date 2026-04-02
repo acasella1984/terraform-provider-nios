@@ -27,6 +27,7 @@ import (
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	derivedmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/derived"
 )
 
 type RecordAaaaModel struct {
@@ -88,10 +89,8 @@ var RecordAaaaAttrTypes = map[string]attr.Type{
 var RecordAaaaResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"aws_rte53_record_info": schema.SingleNestedAttribute{
 		Attributes:          RecordAaaaAwsRte53RecordInfoResourceSchemaAttributes,
@@ -160,6 +159,9 @@ var RecordAaaaResourceSchemaAttributes = map[string]schema.Attribute{
 	"dns_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name for an AAAA record in punycode format.",
+		PlanModifiers: []planmodifier.String{
+			derivedmod.PunycodeDerivedFrom("name"),
+		},
 	},
 	"extattrs": schema.MapAttribute{
 		Optional:    true,

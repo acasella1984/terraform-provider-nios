@@ -100,10 +100,8 @@ var FixedaddresstemplateAttrTypes = map[string]attr.Type{
 var FixedaddresstemplateResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"bootfile": schema.StringAttribute{
 		Optional: true,

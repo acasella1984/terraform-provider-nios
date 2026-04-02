@@ -26,6 +26,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	derivedmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/derived"
 )
 
 type RecordCaaModel struct {
@@ -81,10 +82,8 @@ var RecordCaaAttrTypes = map[string]attr.Type{
 var RecordCaaResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"ca_flag": schema.Int64Attribute{
 		Required:            true,
@@ -158,7 +157,7 @@ var RecordCaaResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the CAA record in punycode format.",
 		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
+			derivedmod.PunycodeDerivedFrom("name"),
 		},
 	},
 	"extattrs": schema.MapAttribute{

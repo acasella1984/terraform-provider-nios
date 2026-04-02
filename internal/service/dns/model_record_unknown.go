@@ -26,6 +26,7 @@ import (
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	derivedmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/derived"
 )
 
 type RecordUnknownModel struct {
@@ -75,10 +76,8 @@ var RecordUnknownAttrTypes = map[string]attr.Type{
 var RecordUnknownResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"cloud_info": schema.SingleNestedAttribute{
 		Attributes:          RecordUnknownCloudInfoResourceSchemaAttributes,
@@ -120,6 +119,9 @@ var RecordUnknownResourceSchemaAttributes = map[string]schema.Attribute{
 	"dns_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the unknown record in punycode format.",
+		PlanModifiers: []planmodifier.String{
+			derivedmod.PunycodeDerivedFrom("name"),
+		},
 	},
 	"enable_host_name_policy": schema.BoolAttribute{
 		Optional:            true,

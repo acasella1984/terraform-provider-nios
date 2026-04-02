@@ -140,10 +140,8 @@ var Ipv6fixedaddressAttrTypes = map[string]attr.Type{
 var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"address_type": schema.StringAttribute{
 		Optional: true,

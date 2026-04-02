@@ -47,10 +47,8 @@ var AwsuserAttrTypes = map[string]attr.Type{
 var AwsuserResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"access_key_id": schema.StringAttribute{
 		Required: true,

@@ -52,10 +52,8 @@ var GridServicerestartStatusAttrTypes = map[string]attr.Type{
 var GridServicerestartStatusResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
-		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
-		},
 	},
 	"failures": schema.Int64Attribute{
 		Computed:            true,

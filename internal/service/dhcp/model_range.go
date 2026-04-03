@@ -1080,7 +1080,8 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		LowWaterMarkReset:                flex.ExpandInt64Pointer(m.LowWaterMarkReset),
 		MacFilterRules:                   flex.ExpandFrameworkListNestedBlock(ctx, m.MacFilterRules, diags, ExpandRangeMacFilterRules),
 		Member:                           ExpandRangeMember(ctx, m.Member, diags),
-		MsAdUserData:                     ExpandRangeMsAdUserData(ctx, m.MsAdUserData, diags),
+		// TODO(SDK): MsAdUserData read-only — excluded from writes
+		// MsAdUserData: ExpandRangeMsAdUserData(ctx, m.MsAdUserData, diags),
 		MsOptions:                        flex.ExpandFrameworkListNestedBlock(ctx, m.MsOptions, diags, ExpandRangeMsOptions),
 		MsServer:                         ExpandRangeMsServer(ctx, m.MsServer, diags),
 		NacFilterRules:                   flex.ExpandFrameworkListNestedBlock(ctx, m.NacFilterRules, diags, ExpandRangeNacFilterRules),

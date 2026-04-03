@@ -662,8 +662,12 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		Default:             booldefault.StaticBool(true),
 	},
 	"ms_ad_user_data": schema.SingleNestedAttribute{
-		Attributes: NetworkcontainerMsAdUserDataResourceSchemaAttributes,
-		Optional:   true,
+		Attributes:          NetworkcontainerMsAdUserDataResourceSchemaAttributes,
+		Computed:            true,
+		MarkdownDescription: "The Microsoft Active Directory user related information.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network": schema.StringAttribute{
 		CustomType:          cidrtypes.IPv4PrefixType{},

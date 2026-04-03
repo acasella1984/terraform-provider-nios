@@ -1086,7 +1086,11 @@ func (m *NetworkcontainerModel) Expand(ctx context.Context, diags *diag.Diagnost
 		LowWaterMark:                     flex.ExpandInt64Pointer(m.LowWaterMark),
 		LowWaterMarkReset:                flex.ExpandInt64Pointer(m.LowWaterMarkReset),
 		MgmPrivate:                       flex.ExpandBoolPointer(m.MgmPrivate),
-		MsAdUserData:                     ExpandNetworkcontainerMsAdUserData(ctx, m.MsAdUserData, diags),
+		// TODO(SDK): MsAdUserData is read-only (WAPI supports=r) but the Go SDK
+		// includes it in the update struct. The proper fix is for the SDK to
+		// exclude read-only fields from write payloads based on schema metadata.
+		// Temporarily commented out to prevent "Field is not writable" errors.
+		// MsAdUserData: ExpandXxxMsAdUserData(ctx, m.MsAdUserData, diags),
 		Network:                          ExpandNetworkcontainerNetwork(m.Network),
 		FuncCall:                         ExpandFuncCall(ctx, m.FuncCall, diags),
 		Nextserver:                       flex.ExpandStringPointer(m.Nextserver),

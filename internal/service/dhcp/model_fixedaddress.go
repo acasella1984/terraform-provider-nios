@@ -749,7 +749,11 @@ func (m *FixedaddressModel) Expand(ctx context.Context, diags *diag.Diagnostics,
 		LogicFilterRules:               flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandFixedaddressLogicFilterRules),
 		Mac:                            flex.ExpandMACAddress(m.Mac),
 		MatchClient:                    flex.ExpandStringPointer(m.MatchClient),
-		MsAdUserData:                   ExpandFixedaddressMsAdUserData(ctx, m.MsAdUserData, diags),
+		// TODO(SDK): MsAdUserData is read-only (WAPI supports=r) but the Go SDK
+		// includes it in the update struct. The proper fix is for the SDK to
+		// exclude read-only fields from write payloads based on schema metadata.
+		// Temporarily commented out to prevent "Field is not writable" errors.
+		// MsAdUserData: ExpandXxxMsAdUserData(ctx, m.MsAdUserData, diags),
 		MsOptions:                      flex.ExpandFrameworkListNestedBlock(ctx, m.MsOptions, diags, ExpandFixedaddressMsOptions),
 		MsServer:                       ExpandFixedaddressMsServer(ctx, m.MsServer, diags),
 		Name:                           flex.ExpandStringPointer(m.Name),

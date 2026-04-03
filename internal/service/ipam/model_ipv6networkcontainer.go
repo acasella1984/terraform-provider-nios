@@ -734,7 +734,11 @@ func (m *Ipv6networkcontainerModel) Expand(ctx context.Context, diags *diag.Diag
 		FederatedRealms:                  flex.ExpandFrameworkListNestedBlock(ctx, m.FederatedRealms, diags, ExpandIpv6networkcontainerFederatedRealms),
 		LogicFilterRules:                 flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandIpv6networkcontainerLogicFilterRules),
 		MgmPrivate:                       flex.ExpandBoolPointer(m.MgmPrivate),
-		MsAdUserData:                     ExpandIpv6networkcontainerMsAdUserData(ctx, m.MsAdUserData, diags),
+		// TODO(SDK): MsAdUserData is read-only (WAPI supports=r) but the Go SDK
+		// includes it in the update struct. The proper fix is for the SDK to
+		// exclude read-only fields from write payloads based on schema metadata.
+		// Temporarily commented out to prevent "Field is not writable" errors.
+		// MsAdUserData: ExpandXxxMsAdUserData(ctx, m.MsAdUserData, diags),
 		Network:                          ExpandIpv6NetworkcontainerNetwork(m.Network),
 		FuncCall:                         ExpandFuncCall(ctx, m.FuncCall, diags),
 		NetworkView:                      flex.ExpandStringPointer(m.NetworkView),

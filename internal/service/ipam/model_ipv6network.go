@@ -570,6 +570,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Specifies the function call to execute. The `next_available_network` function is supported for IPv6 Network.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_container": schema.StringAttribute{
 		Computed:            true,

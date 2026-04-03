@@ -164,6 +164,9 @@ var RecordUnknownResourceSchemaAttributes = map[string]schema.Attribute{
 	"policy": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The host name policy for the record.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"record_type": schema.StringAttribute{
 		Required:            true,

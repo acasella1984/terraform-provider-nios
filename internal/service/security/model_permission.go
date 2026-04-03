@@ -46,6 +46,9 @@ var PermissionResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The name of the admin group this permission applies to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"object": schema.StringAttribute{
 		Optional: true,

@@ -14,6 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -84,6 +85,9 @@ var DtcRecordCnameResourceSchemaAttributes = map[string]schema.Attribute{
 	"dns_canonical": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The canonical name as server by DNS protocol.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dtc_server": schema.StringAttribute{
 		Required: true,

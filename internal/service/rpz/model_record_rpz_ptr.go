@@ -178,6 +178,9 @@ var RecordRpzPtrResourceSchemaAttributes = map[string]schema.Attribute{
 	"zone": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"extattrs_all": schema.MapAttribute{
 		Computed:            true,

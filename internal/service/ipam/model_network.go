@@ -849,6 +849,9 @@ var NetworkResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		MarkdownDescription: "The netmask of the network in CIDR format.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"network": schema.StringAttribute{
 		CustomType:          cidrtypes.IPv4PrefixType{},
@@ -870,6 +873,9 @@ var NetworkResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Specifies the function call to execute. The `next_available_network` function is supported for Network.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_container": schema.StringAttribute{
 		Computed:            true,

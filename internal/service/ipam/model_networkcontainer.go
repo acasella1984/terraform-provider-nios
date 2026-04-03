@@ -1100,9 +1100,21 @@ func (m *NetworkcontainerModel) Expand(ctx context.Context, diags *diag.Diagnost
 		RecycleLeases:                    flex.ExpandBoolPointer(m.RecycleLeases),
 		RemoveSubnets:                    flex.ExpandBoolPointer(m.RemoveSubnets),
 		RestartIfNeeded:                  flex.ExpandBoolPointer(m.RestartIfNeeded),
-		RirOrganization:                  flex.ExpandStringPointer(m.RirOrganization),
-		RirRegistrationAction:            flex.ExpandStringPointer(m.RirRegistrationAction),
-		RirRegistrationStatus:            flex.ExpandStringPointer(m.RirRegistrationStatus),
+		// TODO(SDK): Read-only field (WAPI supports='r') included in write struct.
+		// The Go SDK should exclude read-only fields from PUT/POST payloads
+		// by generating separate Read/Write model structs from WAPI schema.
+		// See: wapi-terraform-schema-generation-walkthrough.md "SDK-Level Fix"
+		// 		// RirOrganization:                  flex.ExpandStringPointer(m.RirOrganization),
+		// TODO(SDK): Read-only field (WAPI supports='r') included in write struct.
+		// The Go SDK should exclude read-only fields from PUT/POST payloads
+		// by generating separate Read/Write model structs from WAPI schema.
+		// See: wapi-terraform-schema-generation-walkthrough.md "SDK-Level Fix"
+		// 		// RirRegistrationAction:            flex.ExpandStringPointer(m.RirRegistrationAction),
+		// TODO(SDK): Read-only field (WAPI supports='r') included in write struct.
+		// The Go SDK should exclude read-only fields from PUT/POST payloads
+		// by generating separate Read/Write model structs from WAPI schema.
+		// See: wapi-terraform-schema-generation-walkthrough.md "SDK-Level Fix"
+		// 		// RirRegistrationStatus:            flex.ExpandStringPointer(m.RirRegistrationStatus),
 		SamePortControlDiscoveryBlackout: flex.ExpandBoolPointer(m.SamePortControlDiscoveryBlackout),
 		SendRirRequest:                   flex.ExpandBoolPointer(m.SendRirRequest),
 		SubscribeSettings:                ExpandNetworkcontainerSubscribeSettings(ctx, m.SubscribeSettings, diags),

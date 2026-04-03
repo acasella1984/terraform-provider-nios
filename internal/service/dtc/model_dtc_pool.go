@@ -273,8 +273,9 @@ func (m *DtcPoolModel) Expand(ctx context.Context, diags *diag.Diagnostics) *dtc
 		Ttl:                      flex.ExpandInt64Pointer(m.Ttl),
 		UseTtl:                   flex.ExpandBoolPointer(m.UseTtl),
 	}
-	// TODO(SDK): Servers sends empty refs on update even when populated by Read.
-	// Excluded entirely until SDK handles omitempty on nested list elements.
+	// Servers is user-specified — must always be included in Expand
+	// so the plan result matches what the user declared in .tf config.
+	to.Servers = flex.ExpandFrameworkListNestedBlock(ctx, m.Servers, diags, ExpandDtcPoolServers)
 	return to
 }
 

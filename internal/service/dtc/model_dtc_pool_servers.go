@@ -31,6 +31,7 @@ var DtcPoolServersResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"ratio": schema.Int64Attribute{
 		Optional:            true,
+		Computed:            true,
 		MarkdownDescription: "The weight of server.",
 	},
 }

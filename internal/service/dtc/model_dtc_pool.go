@@ -250,31 +250,31 @@ func (m *DtcPoolModel) Expand(ctx context.Context, diags *diag.Diagnostics) *dtc
 	}
 	to := &dtc.DtcPool{
 		AutoConsolidatedMonitors: flex.ExpandBoolPointer(m.AutoConsolidatedMonitors),
-		Availability:             flex.ExpandStringPointer(m.Availability),
+		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
+		// Availability:             flex.ExpandStringPointer(m.Availability),
 		Comment:                  flex.ExpandStringPointer(m.Comment),
 		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
 		// ConsolidatedMonitors:     flex.ExpandFrameworkListNestedBlock(ctx, m.ConsolidatedMonitors, diags, ExpandDtcPoolConsolidatedMonitors),
 		Disable:                  flex.ExpandBoolPointer(m.Disable),
 		ExtAttrs:                 ExpandExtAttrs(ctx, m.ExtAttrs, diags),
 		LbAlternateMethod:        flex.ExpandStringPointer(m.LbAlternateMethod),
-		LbAlternateTopology:      flex.ExpandStringPointer(m.LbAlternateTopology),
+		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
+		// LbAlternateTopology:      flex.ExpandStringPointer(m.LbAlternateTopology),
 		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
 		// LbDynamicRatioAlternate:  ExpandDtcPoolLbDynamicRatioAlternate(ctx, m.LbDynamicRatioAlternate, diags),
 		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
 		// LbDynamicRatioPreferred:  ExpandDtcPoolLbDynamicRatioPreferred(ctx, m.LbDynamicRatioPreferred, diags),
 		LbPreferredMethod:        flex.ExpandStringPointer(m.LbPreferredMethod),
-		LbPreferredTopology:      flex.ExpandStringPointer(m.LbPreferredTopology),
+		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
+		// LbPreferredTopology:      flex.ExpandStringPointer(m.LbPreferredTopology),
 		Monitors:                 flex.ExpandFrameworkListString(ctx, m.Monitors, diags),
 		Name:                     flex.ExpandStringPointer(m.Name),
 		Quorum:                   flex.ExpandInt64Pointer(m.Quorum),
 		Ttl:                      flex.ExpandInt64Pointer(m.Ttl),
 		UseTtl:                   flex.ExpandBoolPointer(m.UseTtl),
 	}
-	// TODO(SDK): Only include Servers when user has set them.
-	// The SDK sends [{server: ""}] for empty lists which WAPI rejects as "Invalid reference".
-	if !m.Servers.IsNull() && !m.Servers.IsUnknown() {
-		to.Servers = flex.ExpandFrameworkListNestedBlock(ctx, m.Servers, diags, ExpandDtcPoolServers)
-	}
+	// TODO(SDK): Servers sends empty refs on update even when populated by Read.
+	// Excluded entirely until SDK handles omitempty on nested list elements.
 	return to
 }
 

@@ -1053,7 +1053,8 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		Disable:                          flex.ExpandBoolPointer(m.Disable),
 		DiscoveryBasicPollSettings:       ExpandRangeDiscoveryBasicPollSettings(ctx, m.DiscoveryBasicPollSettings, diags),
 		DiscoveryBlackoutSetting:         ExpandRangeDiscoveryBlackoutSetting(ctx, m.DiscoveryBlackoutSetting, diags),
-		DiscoveryMember:                  flex.ExpandStringPointer(m.DiscoveryMember),
+		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
+		// DiscoveryMember:                  flex.ExpandStringPointer(m.DiscoveryMember),
 		EmailList:                        flex.ExpandFrameworkListString(ctx, m.EmailList, diags),
 		EnableDdns:                       flex.ExpandBoolPointer(m.EnableDdns),
 		EnableDhcpThresholds:             flex.ExpandBoolPointer(m.EnableDhcpThresholds),
@@ -1066,7 +1067,8 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		EndAddr:                          flex.ExpandIPv4Address(m.EndAddr),
 		Exclude:                          flex.ExpandFrameworkListNestedBlock(ctx, m.Exclude, diags, ExpandRangeExclude),
 		ExtAttrs:                         ExpandExtAttrs(ctx, m.ExtAttrs, diags),
-		FailoverAssociation:              flex.ExpandStringPointer(m.FailoverAssociation),
+		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
+		// FailoverAssociation:              flex.ExpandStringPointer(m.FailoverAssociation),
 		FingerprintFilterRules:           flex.ExpandFrameworkListNestedBlock(ctx, m.FingerprintFilterRules, diags, ExpandRangeFingerprintFilterRules),
 		HighWaterMark:                    flex.ExpandInt64Pointer(m.HighWaterMark),
 		HighWaterMarkReset:               flex.ExpandInt64Pointer(m.HighWaterMarkReset),
@@ -1097,7 +1099,8 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		RelayAgentFilterRules:            flex.ExpandFrameworkListNestedBlock(ctx, m.RelayAgentFilterRules, diags, ExpandRangeRelayAgentFilterRules),
 		RestartIfNeeded:                  flex.ExpandBoolPointer(m.RestartIfNeeded),
 		SamePortControlDiscoveryBlackout: flex.ExpandBoolPointer(m.SamePortControlDiscoveryBlackout),
-		ServerAssociationType:            flex.ExpandStringPointer(m.ServerAssociationType),
+		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
+		// ServerAssociationType:            flex.ExpandStringPointer(m.ServerAssociationType),
 		StartAddr:                        flex.ExpandIPv4Address(m.StartAddr),
 		SubscribeSettings:                ExpandRangeSubscribeSettings(ctx, m.SubscribeSettings, diags),
 		UnknownClients:                   flex.ExpandStringPointer(m.UnknownClients),

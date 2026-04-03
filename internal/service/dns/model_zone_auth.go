@@ -1344,7 +1344,8 @@ func (m *ZoneAuthModel) Expand(ctx context.Context, diags *diag.Diagnostics, isC
 		NotifyDelay:                         flex.ExpandInt64Pointer(m.NotifyDelay),
 		NsGroup:                             flex.ExpandStringPointer(m.NsGroup),
 		Prefix:                              flex.ExpandStringPointer(m.Prefix.StringValue),
-		RecordNamePolicy:                    flex.ExpandStringPointer(m.RecordNamePolicy),
+		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
+		// RecordNamePolicy:                    flex.ExpandStringPointer(m.RecordNamePolicy),
 		RemoveSubzones:                      flex.ExpandBoolPointer(m.RemoveSubzones),
 		RestartIfNeeded:                     flex.ExpandBoolPointer(m.RestartIfNeeded),
 		ScavengingSettings:                  ExpandZoneAuthScavengingSettings(ctx, m.ScavengingSettings, diags),

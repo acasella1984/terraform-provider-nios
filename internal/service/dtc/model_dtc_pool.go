@@ -252,13 +252,16 @@ func (m *DtcPoolModel) Expand(ctx context.Context, diags *diag.Diagnostics) *dtc
 		AutoConsolidatedMonitors: flex.ExpandBoolPointer(m.AutoConsolidatedMonitors),
 		Availability:             flex.ExpandStringPointer(m.Availability),
 		Comment:                  flex.ExpandStringPointer(m.Comment),
-		ConsolidatedMonitors:     flex.ExpandFrameworkListNestedBlock(ctx, m.ConsolidatedMonitors, diags, ExpandDtcPoolConsolidatedMonitors),
+		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
+		// ConsolidatedMonitors:     flex.ExpandFrameworkListNestedBlock(ctx, m.ConsolidatedMonitors, diags, ExpandDtcPoolConsolidatedMonitors),
 		Disable:                  flex.ExpandBoolPointer(m.Disable),
 		ExtAttrs:                 ExpandExtAttrs(ctx, m.ExtAttrs, diags),
 		LbAlternateMethod:        flex.ExpandStringPointer(m.LbAlternateMethod),
 		LbAlternateTopology:      flex.ExpandStringPointer(m.LbAlternateTopology),
-		LbDynamicRatioAlternate:  ExpandDtcPoolLbDynamicRatioAlternate(ctx, m.LbDynamicRatioAlternate, diags),
-		LbDynamicRatioPreferred:  ExpandDtcPoolLbDynamicRatioPreferred(ctx, m.LbDynamicRatioPreferred, diags),
+		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
+		// LbDynamicRatioAlternate:  ExpandDtcPoolLbDynamicRatioAlternate(ctx, m.LbDynamicRatioAlternate, diags),
+		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
+		// LbDynamicRatioPreferred:  ExpandDtcPoolLbDynamicRatioPreferred(ctx, m.LbDynamicRatioPreferred, diags),
 		LbPreferredMethod:        flex.ExpandStringPointer(m.LbPreferredMethod),
 		LbPreferredTopology:      flex.ExpandStringPointer(m.LbPreferredTopology),
 		Monitors:                 flex.ExpandFrameworkListString(ctx, m.Monitors, diags),

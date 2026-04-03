@@ -286,9 +286,12 @@ func (m *DtcMonitorHttpModel) Expand(ctx context.Context, diags *diag.Diagnostic
 		ClientCert:          flex.ExpandStringPointer(m.ClientCert),
 		Comment:             flex.ExpandStringPointer(m.Comment),
 		ContentCheck:        flex.ExpandStringPointer(m.ContentCheck),
-		ContentCheckInput:   flex.ExpandStringPointer(m.ContentCheckInput),
-		ContentCheckOp:      flex.ExpandStringPointer(m.ContentCheckOp),
-		ContentCheckRegex:   flex.ExpandStringPointer(m.ContentCheckRegex),
+		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
+		// ContentCheckInput:   flex.ExpandStringPointer(m.ContentCheckInput),
+		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
+		// ContentCheckOp:      flex.ExpandStringPointer(m.ContentCheckOp),
+		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
+		// ContentCheckRegex:   flex.ExpandStringPointer(m.ContentCheckRegex),
 		ContentExtractGroup: flex.ExpandInt64Pointer(m.ContentExtractGroup),
 		ContentExtractType:  flex.ExpandStringPointer(m.ContentExtractType),
 		ContentExtractValue: flex.ExpandStringPointer(m.ContentExtractValue),

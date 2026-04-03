@@ -1128,14 +1128,11 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		UseUnknownClients:                flex.ExpandBoolPointer(m.UseUnknownClients),
 		UseUpdateDnsOnLeaseRenewal:       flex.ExpandBoolPointer(m.UseUpdateDnsOnLeaseRenewal),
 	}
-	// TODO(SDK): Only include Member/MsServer when user has set them.
-	// The SDK sends empty structs ({}) which WAPI rejects as "not found".
-	if !m.Member.IsNull() && !m.Member.IsUnknown() {
-		to.Member = ExpandRangeMember(ctx, m.Member, diags)
-	}
-	if !m.MsServer.IsNull() && !m.MsServer.IsUnknown() {
-		to.MsServer = ExpandRangeMsServer(ctx, m.MsServer, diags)
-	}
+	// TODO(SDK): Member and MsServer contain nested refs that the SDK
+	// serializes as empty strings when the sub-fields are unset, causing
+	// "Grid Member not found". The Read function populates these from the
+	// server, so IsNull() is false even when the user never set them.
+	// Excluded entirely until SDK handles omitempty on nested structs.
 	if isCreate {
 		to.SplitMember = ExpandRangeSplitMember(ctx, m.SplitMember, diags)
 		to.SplitScopeExclusionPercent = flex.ExpandInt64Pointer(m.SplitScopeExclusionPercent)

@@ -160,7 +160,7 @@ var RecordSrvResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		MarkdownDescription: "The name for a SRV record in punycode format.",
 		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
+			derivedmod.PunycodeDerivedFrom("target"),
 		},
 	},
 	"extattrs": schema.MapAttribute{

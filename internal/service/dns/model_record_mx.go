@@ -152,7 +152,7 @@ var RecordMxResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		MarkdownDescription: "The Mail exchanger name in punycode format.",
 		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
+			derivedmod.PunycodeDerivedFrom("mail_exchanger"),
 		},
 	},
 	"dns_name": schema.StringAttribute{

@@ -149,7 +149,7 @@ var RecordDnameResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		MarkdownDescription: "The target domain name of the DNS DNAME record in punycode format.",
 		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
+			derivedmod.PunycodeDerivedFrom("target"),
 		},
 	},
 	"extattrs": schema.MapAttribute{

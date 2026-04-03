@@ -563,7 +563,7 @@ var ZoneAuthResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		MarkdownDescription: "The SOA email for the zone in punycode format.",
 		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
+			derivedmod.PunycodeDerivedFrom("soa_email"),
 		},
 	},
 	"dnssec_key_params": schema.SingleNestedAttribute{

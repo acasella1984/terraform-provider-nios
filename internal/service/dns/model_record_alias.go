@@ -125,7 +125,7 @@ var RecordAliasResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		MarkdownDescription: "Target name in punycode format.",
 		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
+			derivedmod.PunycodeDerivedFrom("target_name"),
 		},
 	},
 	"extattrs": schema.MapAttribute{

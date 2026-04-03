@@ -154,7 +154,7 @@ var RecordNaptrResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		MarkdownDescription: "The replacement field of the NAPTR record in punycode format.",
 		PlanModifiers: []planmodifier.String{
-			stringplanmodifier.UseStateForUnknown(),
+			derivedmod.PunycodeDerivedFrom("replacement"),
 		},
 	},
 	"extattrs": schema.MapAttribute{

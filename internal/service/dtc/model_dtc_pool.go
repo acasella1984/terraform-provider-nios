@@ -264,9 +264,13 @@ func (m *DtcPoolModel) Expand(ctx context.Context, diags *diag.Diagnostics) *dtc
 		Monitors:                 flex.ExpandFrameworkListString(ctx, m.Monitors, diags),
 		Name:                     flex.ExpandStringPointer(m.Name),
 		Quorum:                   flex.ExpandInt64Pointer(m.Quorum),
-		Servers:                  flex.ExpandFrameworkListNestedBlock(ctx, m.Servers, diags, ExpandDtcPoolServers),
 		Ttl:                      flex.ExpandInt64Pointer(m.Ttl),
 		UseTtl:                   flex.ExpandBoolPointer(m.UseTtl),
+	}
+	// TODO(SDK): Only include Servers when user has set them.
+	// The SDK sends [{server: ""}] for empty lists which WAPI rejects as "Invalid reference".
+	if !m.Servers.IsNull() && !m.Servers.IsUnknown() {
+		to.Servers = flex.ExpandFrameworkListNestedBlock(ctx, m.Servers, diags, ExpandDtcPoolServers)
 	}
 	return to
 }

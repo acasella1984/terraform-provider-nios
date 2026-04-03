@@ -1079,11 +1079,11 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		LowWaterMark:                     flex.ExpandInt64Pointer(m.LowWaterMark),
 		LowWaterMarkReset:                flex.ExpandInt64Pointer(m.LowWaterMarkReset),
 		MacFilterRules:                   flex.ExpandFrameworkListNestedBlock(ctx, m.MacFilterRules, diags, ExpandRangeMacFilterRules),
-		Member:                           ExpandRangeMember(ctx, m.Member, diags),
-		// TODO(SDK): MsAdUserData read-only — excluded from writes
-		// MsAdUserData: ExpandRangeMsAdUserData(ctx, m.MsAdUserData, diags),
+		// TODO(SDK): Member and MsServer are writable but the SDK serializes
+		// empty structs as {} instead of omitting them, causing "Grid Member
+		// not found" errors. Moved to conditional assignment below.
+		// MsAdUserData: read-only (supports='r') — excluded from writes.
 		MsOptions:                        flex.ExpandFrameworkListNestedBlock(ctx, m.MsOptions, diags, ExpandRangeMsOptions),
-		MsServer:                         ExpandRangeMsServer(ctx, m.MsServer, diags),
 		NacFilterRules:                   flex.ExpandFrameworkListNestedBlock(ctx, m.NacFilterRules, diags, ExpandRangeNacFilterRules),
 		Name:                             flex.ExpandStringPointer(m.Name),
 		Network:                          flex.ExpandIPv4CIDR(m.Network),
@@ -1127,6 +1127,14 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		UseSubscribeSettings:             flex.ExpandBoolPointer(m.UseSubscribeSettings),
 		UseUnknownClients:                flex.ExpandBoolPointer(m.UseUnknownClients),
 		UseUpdateDnsOnLeaseRenewal:       flex.ExpandBoolPointer(m.UseUpdateDnsOnLeaseRenewal),
+	}
+	// TODO(SDK): Only include Member/MsServer when user has set them.
+	// The SDK sends empty structs ({}) which WAPI rejects as "not found".
+	if !m.Member.IsNull() && !m.Member.IsUnknown() {
+		to.Member = ExpandRangeMember(ctx, m.Member, diags)
+	}
+	if !m.MsServer.IsNull() && !m.MsServer.IsUnknown() {
+		to.MsServer = ExpandRangeMsServer(ctx, m.MsServer, diags)
 	}
 	if isCreate {
 		to.SplitMember = ExpandRangeSplitMember(ctx, m.SplitMember, diags)

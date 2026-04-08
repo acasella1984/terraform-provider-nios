@@ -78,6 +78,7 @@ var DtcLbdnResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
@@ -248,8 +249,7 @@ func (m *DtcLbdnModel) Expand(ctx context.Context, diags *diag.Diagnostics) *dtc
 		Persistence:              flex.ExpandInt64Pointer(m.Persistence),
 		Pools:                    flex.ExpandFrameworkListNestedBlock(ctx, m.Pools, diags, ExpandDtcLbdnPools),
 		Priority:                 flex.ExpandInt64Pointer(m.Priority),
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// Topology:                 flex.ExpandStringPointer(m.Topology),
+		Topology:                 flex.ExpandStringPointer(m.Topology),
 		Ttl:                      flex.ExpandInt64Pointer(m.Ttl),
 		Types:                    flex.ExpandFrameworkListString(ctx, m.Types, diags),
 		UseTtl:                   flex.ExpandBoolPointer(m.UseTtl),

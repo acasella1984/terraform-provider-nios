@@ -302,6 +302,7 @@ var NetworkResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -1363,11 +1364,6 @@ func (m *NetworkModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCr
 		LowWaterMarkReset:                flex.ExpandInt64Pointer(m.LowWaterMarkReset),
 		Members:                          flex.ExpandFrameworkListNestedBlock(ctx, m.Members, diags, ExpandNetworkMembers),
 		MgmPrivate:                       flex.ExpandBoolPointer(m.MgmPrivate),
-		// TODO(SDK): MsAdUserData is read-only (WAPI supports=r) but the Go SDK
-		// includes it in the update struct. The proper fix is for the SDK to
-		// exclude read-only fields from write payloads based on schema metadata.
-		// Temporarily commented out to prevent "Field is not writable" errors.
-		// MsAdUserData: ExpandXxxMsAdUserData(ctx, m.MsAdUserData, diags),
 		Netmask:                          flex.ExpandInt64Pointer(m.Netmask),
 		FuncCall:                         ExpandFuncCall(ctx, m.FuncCall, diags),
 		Nextserver:                       flex.ExpandStringPointer(m.Nextserver),
@@ -1376,21 +1372,9 @@ func (m *NetworkModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCr
 		PxeLeaseTime:                     flex.ExpandInt64Pointer(m.PxeLeaseTime),
 		RecycleLeases:                    flex.ExpandBoolPointer(m.RecycleLeases),
 		RestartIfNeeded:                  flex.ExpandBoolPointer(m.RestartIfNeeded),
-		// TODO(SDK): Read-only field (WAPI supports='r') included in write struct.
-		// The Go SDK should exclude read-only fields from PUT/POST payloads
-		// by generating separate Read/Write model structs from WAPI schema.
-		// See: wapi-terraform-schema-generation-walkthrough.md "SDK-Level Fix"
-		// 		// RirOrganization:                  flex.ExpandStringPointer(m.RirOrganization),
-		// TODO(SDK): Read-only field (WAPI supports='r') included in write struct.
-		// The Go SDK should exclude read-only fields from PUT/POST payloads
-		// by generating separate Read/Write model structs from WAPI schema.
-		// See: wapi-terraform-schema-generation-walkthrough.md "SDK-Level Fix"
-		// 		// RirRegistrationAction:            flex.ExpandStringPointer(m.RirRegistrationAction),
-		// TODO(SDK): Read-only field (WAPI supports='r') included in write struct.
-		// The Go SDK should exclude read-only fields from PUT/POST payloads
-		// by generating separate Read/Write model structs from WAPI schema.
-		// See: wapi-terraform-schema-generation-walkthrough.md "SDK-Level Fix"
-		// 		// RirRegistrationStatus:            flex.ExpandStringPointer(m.RirRegistrationStatus),
+		RirOrganization:                  flex.ExpandStringPointer(m.RirOrganization),
+		RirRegistrationAction:            flex.ExpandStringPointer(m.RirRegistrationAction),
+		RirRegistrationStatus:            flex.ExpandStringPointer(m.RirRegistrationStatus),
 		SamePortControlDiscoveryBlackout: flex.ExpandBoolPointer(m.SamePortControlDiscoveryBlackout),
 		SendRirRequest:                   flex.ExpandBoolPointer(m.SendRirRequest),
 		SubscribeSettings:                ExpandNetworkSubscribeSettings(ctx, m.SubscribeSettings, diags),

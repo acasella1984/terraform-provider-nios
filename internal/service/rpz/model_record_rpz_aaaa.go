@@ -66,6 +66,7 @@ var RecordRpzAaaaResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference to the object.",
 	},

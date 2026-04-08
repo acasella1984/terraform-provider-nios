@@ -177,6 +177,7 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
@@ -772,11 +773,6 @@ func (m *FixedaddressModel) Expand(ctx context.Context, diags *diag.Diagnostics,
 		LogicFilterRules:               flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandFixedaddressLogicFilterRules),
 		Mac:                            flex.ExpandMACAddress(m.Mac),
 		MatchClient:                    flex.ExpandStringPointer(m.MatchClient),
-		// TODO(SDK): MsAdUserData is read-only (WAPI supports=r) but the Go SDK
-		// includes it in the update struct. The proper fix is for the SDK to
-		// exclude read-only fields from write payloads based on schema metadata.
-		// Temporarily commented out to prevent "Field is not writable" errors.
-		// MsAdUserData: ExpandXxxMsAdUserData(ctx, m.MsAdUserData, diags),
 		MsOptions:                      flex.ExpandFrameworkListNestedBlock(ctx, m.MsOptions, diags, ExpandFixedaddressMsOptions),
 		MsServer:                       ExpandFixedaddressMsServer(ctx, m.MsServer, diags),
 		Name:                           flex.ExpandStringPointer(m.Name),

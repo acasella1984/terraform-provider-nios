@@ -291,6 +291,7 @@ var ZoneAuthResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
@@ -1399,8 +1400,7 @@ func (m *ZoneAuthModel) Expand(ctx context.Context, diags *diag.Diagnostics, isC
 		NotifyDelay:                         flex.ExpandInt64Pointer(m.NotifyDelay),
 		NsGroup:                             flex.ExpandStringPointer(m.NsGroup),
 		Prefix:                              flex.ExpandStringPointer(m.Prefix.StringValue),
-		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
-		// RecordNamePolicy:                    flex.ExpandStringPointer(m.RecordNamePolicy),
+		RecordNamePolicy:                    flex.ExpandStringPointer(m.RecordNamePolicy),
 		RemoveSubzones:                      flex.ExpandBoolPointer(m.RemoveSubzones),
 		RestartIfNeeded:                     flex.ExpandBoolPointer(m.RestartIfNeeded),
 		ScavengingSettings:                  ExpandZoneAuthScavengingSettings(ctx, m.ScavengingSettings, diags),

@@ -85,6 +85,7 @@ var DtcPoolResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -263,23 +264,17 @@ func (m *DtcPoolModel) Expand(ctx context.Context, diags *diag.Diagnostics) *dtc
 	}
 	to := &dtc.DtcPool{
 		AutoConsolidatedMonitors: flex.ExpandBoolPointer(m.AutoConsolidatedMonitors),
-		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
-		// Availability:             flex.ExpandStringPointer(m.Availability),
+		Availability:             flex.ExpandStringPointer(m.Availability),
 		Comment:                  flex.ExpandStringPointer(m.Comment),
-		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
-		// ConsolidatedMonitors:     flex.ExpandFrameworkListNestedBlock(ctx, m.ConsolidatedMonitors, diags, ExpandDtcPoolConsolidatedMonitors),
+		ConsolidatedMonitors:     flex.ExpandFrameworkListNestedBlock(ctx, m.ConsolidatedMonitors, diags, ExpandDtcPoolConsolidatedMonitors),
 		Disable:                  flex.ExpandBoolPointer(m.Disable),
 		ExtAttrs:                 ExpandExtAttrs(ctx, m.ExtAttrs, diags),
 		LbAlternateMethod:        flex.ExpandStringPointer(m.LbAlternateMethod),
-		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
-		// LbAlternateTopology:      flex.ExpandStringPointer(m.LbAlternateTopology),
-		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
-		// LbDynamicRatioAlternate:  ExpandDtcPoolLbDynamicRatioAlternate(ctx, m.LbDynamicRatioAlternate, diags),
-		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
-		// LbDynamicRatioPreferred:  ExpandDtcPoolLbDynamicRatioPreferred(ctx, m.LbDynamicRatioPreferred, diags),
+		LbAlternateTopology:      flex.ExpandStringPointer(m.LbAlternateTopology),
+		LbDynamicRatioAlternate:  ExpandDtcPoolLbDynamicRatioAlternate(ctx, m.LbDynamicRatioAlternate, diags),
+		LbDynamicRatioPreferred:  ExpandDtcPoolLbDynamicRatioPreferred(ctx, m.LbDynamicRatioPreferred, diags),
 		LbPreferredMethod:        flex.ExpandStringPointer(m.LbPreferredMethod),
-		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
-		// LbPreferredTopology:      flex.ExpandStringPointer(m.LbPreferredTopology),
+		LbPreferredTopology:      flex.ExpandStringPointer(m.LbPreferredTopology),
 		Monitors:                 flex.ExpandFrameworkListString(ctx, m.Monitors, diags),
 		Name:                     flex.ExpandStringPointer(m.Name),
 		Quorum:                   flex.ExpandInt64Pointer(m.Quorum),

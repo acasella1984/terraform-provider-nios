@@ -249,6 +249,7 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -1064,12 +1065,9 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 	}
 	to := &dhcp.Range{
 		AlwaysUpdateDns:                  flex.ExpandBoolPointer(m.AlwaysUpdateDns),
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// Bootfile:                         flex.ExpandStringPointer(m.Bootfile),
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// Bootserver:                       flex.ExpandStringPointer(m.Bootserver),
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// CloudInfo:                        ExpandRangeCloudInfo(ctx, m.CloudInfo, diags),
+		Bootfile:                         flex.ExpandStringPointer(m.Bootfile),
+		Bootserver:                       flex.ExpandStringPointer(m.Bootserver),
+		CloudInfo:                        ExpandRangeCloudInfo(ctx, m.CloudInfo, diags),
 		Comment:                          flex.ExpandStringPointer(m.Comment),
 		DdnsDomainname:                   flex.ExpandStringPointer(m.DdnsDomainname),
 		DdnsGenerateHostname:             flex.ExpandBoolPointer(m.DdnsGenerateHostname),
@@ -1078,8 +1076,7 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		Disable:                          flex.ExpandBoolPointer(m.Disable),
 		DiscoveryBasicPollSettings:       ExpandRangeDiscoveryBasicPollSettings(ctx, m.DiscoveryBasicPollSettings, diags),
 		DiscoveryBlackoutSetting:         ExpandRangeDiscoveryBlackoutSetting(ctx, m.DiscoveryBlackoutSetting, diags),
-		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
-		// DiscoveryMember:                  flex.ExpandStringPointer(m.DiscoveryMember),
+		DiscoveryMember:                  flex.ExpandStringPointer(m.DiscoveryMember),
 		EmailList:                        flex.ExpandFrameworkListString(ctx, m.EmailList, diags),
 		EnableDdns:                       flex.ExpandBoolPointer(m.EnableDdns),
 		EnableDhcpThresholds:             flex.ExpandBoolPointer(m.EnableDhcpThresholds),
@@ -1092,34 +1089,25 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		EndAddr:                          flex.ExpandIPv4Address(m.EndAddr),
 		Exclude:                          flex.ExpandFrameworkListNestedBlock(ctx, m.Exclude, diags, ExpandRangeExclude),
 		ExtAttrs:                         ExpandExtAttrs(ctx, m.ExtAttrs, diags),
-		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
-		// FailoverAssociation:              flex.ExpandStringPointer(m.FailoverAssociation),
+		FailoverAssociation:              flex.ExpandStringPointer(m.FailoverAssociation),
 		FingerprintFilterRules:           flex.ExpandFrameworkListNestedBlock(ctx, m.FingerprintFilterRules, diags, ExpandRangeFingerprintFilterRules),
 		HighWaterMark:                    flex.ExpandInt64Pointer(m.HighWaterMark),
 		HighWaterMarkReset:               flex.ExpandInt64Pointer(m.HighWaterMarkReset),
 		IgnoreDhcpOptionListRequest:      flex.ExpandBoolPointer(m.IgnoreDhcpOptionListRequest),
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// IgnoreId:                         flex.ExpandStringPointer(m.IgnoreId),
+		IgnoreId:                         flex.ExpandStringPointer(m.IgnoreId),
 		IgnoreMacAddresses:               flex.ExpandFrameworkListString(ctx, m.IgnoreMacAddresses, diags),
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// KnownClients:                     flex.ExpandStringPointer(m.KnownClients),
+		KnownClients:                     flex.ExpandStringPointer(m.KnownClients),
 		LeaseScavengeTime:                flex.ExpandInt64Pointer(m.LeaseScavengeTime),
 		LogicFilterRules:                 flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandRangeLogicFilterRules),
 		LowWaterMark:                     flex.ExpandInt64Pointer(m.LowWaterMark),
 		LowWaterMarkReset:                flex.ExpandInt64Pointer(m.LowWaterMarkReset),
 		MacFilterRules:                   flex.ExpandFrameworkListNestedBlock(ctx, m.MacFilterRules, diags, ExpandRangeMacFilterRules),
-		// TODO(SDK): Member and MsServer are writable but the SDK serializes
-		// empty structs as {} instead of omitting them, causing "Grid Member
-		// not found" errors. Moved to conditional assignment below.
-		// MsAdUserData: read-only (supports='r') — excluded from writes.
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// MsOptions:                        flex.ExpandFrameworkListNestedBlock(ctx, m.MsOptions, diags, ExpandRangeMsOptions),
+		MsOptions:                        flex.ExpandFrameworkListNestedBlock(ctx, m.MsOptions, diags, ExpandRangeMsOptions),
 		NacFilterRules:                   flex.ExpandFrameworkListNestedBlock(ctx, m.NacFilterRules, diags, ExpandRangeNacFilterRules),
 		Name:                             flex.ExpandStringPointer(m.Name),
 		Network:                          flex.ExpandIPv4CIDR(m.Network),
 		NetworkView:                      flex.ExpandStringPointer(m.NetworkView),
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// Nextserver:                       flex.ExpandStringPointer(m.Nextserver),
+		Nextserver:                       flex.ExpandStringPointer(m.Nextserver),
 		OptionFilterRules:                flex.ExpandFrameworkListNestedBlock(ctx, m.OptionFilterRules, diags, ExpandRangeOptionFilterRules),
 		Options:                          flex.ExpandFrameworkListNestedBlock(ctx, m.Options, diags, ExpandRangeOptions),
 		PortControlBlackoutSetting:       ExpandRangePortControlBlackoutSetting(ctx, m.PortControlBlackoutSetting, diags),
@@ -1128,12 +1116,10 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		RelayAgentFilterRules:            flex.ExpandFrameworkListNestedBlock(ctx, m.RelayAgentFilterRules, diags, ExpandRangeRelayAgentFilterRules),
 		RestartIfNeeded:                  flex.ExpandBoolPointer(m.RestartIfNeeded),
 		SamePortControlDiscoveryBlackout: flex.ExpandBoolPointer(m.SamePortControlDiscoveryBlackout),
-		// TODO(SDK): Optional ref/struct field sends empty value on update. Excluded until SDK handles omitempty.
-		// ServerAssociationType:            flex.ExpandStringPointer(m.ServerAssociationType),
+		ServerAssociationType:            flex.ExpandStringPointer(m.ServerAssociationType),
 		StartAddr:                        flex.ExpandIPv4Address(m.StartAddr),
 		SubscribeSettings:                ExpandRangeSubscribeSettings(ctx, m.SubscribeSettings, diags),
-		// TODO(SDK): Optional field sends empty value on update. Excluded until SDK handles omitempty.
-		// UnknownClients:                   flex.ExpandStringPointer(m.UnknownClients),
+		UnknownClients:                   flex.ExpandStringPointer(m.UnknownClients),
 		UpdateDnsOnLeaseRenewal:          flex.ExpandBoolPointer(m.UpdateDnsOnLeaseRenewal),
 		UseBlackoutSetting:               flex.ExpandBoolPointer(m.UseBlackoutSetting),
 		UseBootfile:                      flex.ExpandBoolPointer(m.UseBootfile),
@@ -1161,11 +1147,6 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		UseUnknownClients:                flex.ExpandBoolPointer(m.UseUnknownClients),
 		UseUpdateDnsOnLeaseRenewal:       flex.ExpandBoolPointer(m.UseUpdateDnsOnLeaseRenewal),
 	}
-	// TODO(SDK): Member and MsServer contain nested refs that the SDK
-	// serializes as empty strings when the sub-fields are unset, causing
-	// "Grid Member not found". The Read function populates these from the
-	// server, so IsNull() is false even when the user never set them.
-	// Excluded entirely until SDK handles omitempty on nested structs.
 	if isCreate {
 		to.SplitMember = ExpandRangeSplitMember(ctx, m.SplitMember, diags)
 		to.SplitScopeExclusionPercent = flex.ExpandInt64Pointer(m.SplitScopeExclusionPercent)

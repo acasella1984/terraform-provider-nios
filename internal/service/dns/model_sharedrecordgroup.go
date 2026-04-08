@@ -55,6 +55,7 @@ var SharedrecordgroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -131,8 +132,7 @@ func (m *SharedrecordgroupModel) Expand(ctx context.Context, diags *diag.Diagnos
 		Comment:             flex.ExpandStringPointer(m.Comment),
 		ExtAttrs:            ExpandExtAttrs(ctx, m.ExtAttrs, diags),
 		Name:                flex.ExpandStringPointer(m.Name),
-		// TODO(SDK): Optional field sends empty value when unset. Guard until SDK handles omitempty.
-		// RecordNamePolicy:    flex.ExpandStringPointer(m.RecordNamePolicy),
+		RecordNamePolicy:    flex.ExpandStringPointer(m.RecordNamePolicy),
 		UseRecordNamePolicy: flex.ExpandBoolPointer(m.UseRecordNamePolicy),
 		ZoneAssociations:    flex.ExpandFrameworkListNestedBlock(ctx, m.ZoneAssociations, diags, ExpandSharedrecordgroupZoneAssociations),
 	}

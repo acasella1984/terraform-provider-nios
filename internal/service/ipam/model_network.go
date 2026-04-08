@@ -302,7 +302,6 @@ var NetworkResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
-			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -1285,9 +1284,6 @@ var NetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	"utilization_update": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when the utilization statistics were last updated.",
-		PlanModifiers: []planmodifier.Int64{
-			int64planmodifier.UseStateForUnknown(),
-		},
 	},
 	"vlans": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{

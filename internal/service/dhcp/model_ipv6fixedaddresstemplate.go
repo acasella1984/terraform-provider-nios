@@ -81,7 +81,6 @@ var Ipv6fixedaddresstemplateResourceSchemaAttributes = map[string]schema.Attribu
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
-			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference to the object.",
 	},

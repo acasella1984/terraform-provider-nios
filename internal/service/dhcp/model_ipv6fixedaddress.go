@@ -146,7 +146,6 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
-			stringplanmodifier.UseStateForUnknown(),
 		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",

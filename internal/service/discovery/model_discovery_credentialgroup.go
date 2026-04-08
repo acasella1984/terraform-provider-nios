@@ -15,7 +15,6 @@ import (
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
 	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type DiscoveryCredentialgroupModel struct {
@@ -33,7 +32,6 @@ var DiscoveryCredentialgroupResourceSchemaAttributes = map[string]schema.Attribu
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
-			stringplanmodifier.UseStateForUnknown(),
 		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",

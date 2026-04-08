@@ -14,7 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
 	"github.com/infobloxopen/infoblox-nios-go-client/dtc"
@@ -60,7 +59,6 @@ var DtcRecordNaptrResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
-			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference to the object.",
 	},

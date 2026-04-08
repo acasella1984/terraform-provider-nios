@@ -60,7 +60,6 @@ var AdmingroupUserAccessResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			refmod.UseStateUnlessResourceChanges(),
-			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The reference of the ACL object.",
 	},

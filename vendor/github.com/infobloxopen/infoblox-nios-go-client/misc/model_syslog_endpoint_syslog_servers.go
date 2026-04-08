@@ -377,7 +377,7 @@ func (o SyslogEndpointSyslogServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Severity) && *o.Severity != "" {
 		toSerialize["severity"] = o.Severity
 	}
-	if !IsNil(o.Certificate) && *o.Certificate != "" {
+	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate
 	}
 	if !IsNil(o.CertificateToken) {

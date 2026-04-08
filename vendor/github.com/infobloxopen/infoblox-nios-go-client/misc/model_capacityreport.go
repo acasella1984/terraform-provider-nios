@@ -332,7 +332,7 @@ func (o Capacityreport) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.ObjectCounts) {
+	if !IsNil(o.ObjectCounts) && len(o.ObjectCounts) > 0 {
 		toSerialize["object_counts"] = o.ObjectCounts
 	}
 	if !IsNil(o.PercentUsed) {

@@ -230,7 +230,7 @@ func (o MemberBgpAs) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Holddown) {
 		toSerialize["holddown"] = o.Holddown
 	}
-	if !IsNil(o.Neighbors) {
+	if !IsNil(o.Neighbors) && len(o.Neighbors) > 0 {
 		toSerialize["neighbors"] = o.Neighbors
 	}
 	if !IsNil(o.LinkDetect) {

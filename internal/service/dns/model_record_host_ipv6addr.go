@@ -24,6 +24,7 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type RecordHostIpv6addrModel struct {
@@ -97,6 +98,9 @@ var RecordHostIpv6addrAttrTypes = map[string]attr.Type{
 var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -132,6 +136,9 @@ var RecordHostIpv6addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"domain_name": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Use this method to set or retrieve the domain_name value of the DHCP IPv6 Host Address object.",
 	},
 	"domain_name_servers": schema.ListAttribute{
@@ -309,7 +316,8 @@ func (m *RecordHostIpv6addrModel) Expand(ctx context.Context, diags *diag.Diagno
 		Ref:                  flex.ExpandStringPointer(m.Ref),
 		AddressType:          flex.ExpandStringPointer(m.AddressType),
 		ConfigureForDhcp:     flex.ExpandBoolPointer(m.ConfigureForDhcp),
-		DiscoveredData:       ExpandRecordHostIpv6addrDiscoveredData(ctx, m.DiscoveredData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// DiscoveredData:       ExpandRecordHostIpv6addrDiscoveredData(ctx, m.DiscoveredData, diags),
 		DomainName:           flex.ExpandStringPointer(m.DomainName),
 		DomainNameServers:    flex.ExpandFrameworkListString(ctx, m.DomainNameServers, diags),
 		Duid:                 flex.ExpandStringPointer(m.Duid),
@@ -320,7 +328,8 @@ func (m *RecordHostIpv6addrModel) Expand(ctx context.Context, diags *diag.Diagno
 		LogicFilterRules:     flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandRecordHostIpv6addrLogicFilterRules),
 		Mac:                  flex.ExpandStringPointer(m.Mac),
 		MatchClient:          flex.ExpandStringPointer(m.MatchClient),
-		MsAdUserData:         ExpandRecordHostIpv6addrMsAdUserData(ctx, m.MsAdUserData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// MsAdUserData:         ExpandRecordHostIpv6addrMsAdUserData(ctx, m.MsAdUserData, diags),
 		Options:              flex.ExpandFrameworkListNestedBlock(ctx, m.Options, diags, ExpandRecordHostIpv6addrOptions),
 		PreferredLifetime:    flex.ExpandInt64Pointer(m.PreferredLifetime),
 		ReservedInterface:    flex.ExpandStringPointerEmptyAsNil(m.ReservedInterface),

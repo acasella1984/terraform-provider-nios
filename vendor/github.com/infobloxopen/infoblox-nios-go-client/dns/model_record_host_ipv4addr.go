@@ -1181,11 +1181,13 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DenyBootp) {
 		toSerialize["deny_bootp"] = o.DenyBootp
 	}
-	if !IsNil(o.DiscoverNowStatus) {
+	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
 		toSerialize["discover_now_status"] = o.DiscoverNowStatus
 	}
 	if !IsNil(o.DiscoveredData) {
-		toSerialize["discovered_data"] = o.DiscoveredData
+		if discovered_dataMap, err := o.DiscoveredData.ToMap(); err == nil && len(discovered_dataMap) > 0 {
+			toSerialize["discovered_data"] = o.DiscoveredData
+		}
 	}
 	if !IsNil(o.EnablePxeLeaseTime) {
 		toSerialize["enable_pxe_lease_time"] = o.EnablePxeLeaseTime
@@ -1200,7 +1202,9 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
 	if !IsNil(o.FuncCall) {
-		toSerialize["func_call"] = o.FuncCall
+		if func_callMap, err := o.FuncCall.ToMap(); err == nil && len(func_callMap) > 0 {
+			toSerialize["func_call"] = o.FuncCall
+		}
 	}
 	if !IsNil(o.IsInvalidMac) {
 		toSerialize["is_invalid_mac"] = o.IsInvalidMac
@@ -1208,7 +1212,7 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried
 	}
-	if !IsNil(o.LogicFilterRules) {
+	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
 	if !IsNil(o.Mac) {
@@ -1218,7 +1222,9 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 		toSerialize["match_client"] = o.MatchClient
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
@@ -1229,13 +1235,13 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Nextserver) {
 		toSerialize["nextserver"] = o.Nextserver
 	}
-	if !IsNil(o.Options) {
+	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
 	if !IsNil(o.PxeLeaseTime) {
 		toSerialize["pxe_lease_time"] = o.PxeLeaseTime
 	}
-	if !IsNil(o.ReservedInterface) {
+	if !IsNil(o.ReservedInterface) && *o.ReservedInterface != "" {
 		toSerialize["reserved_interface"] = o.ReservedInterface
 	}
 	if !IsNil(o.UseBootfile) {

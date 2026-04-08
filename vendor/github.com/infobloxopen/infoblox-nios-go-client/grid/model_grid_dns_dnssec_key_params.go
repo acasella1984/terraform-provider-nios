@@ -669,7 +669,7 @@ func (o GridDnsDnssecKeyParams) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.KskAlgorithm) {
 		toSerialize["ksk_algorithm"] = o.KskAlgorithm
 	}
-	if !IsNil(o.KskAlgorithms) {
+	if !IsNil(o.KskAlgorithms) && len(o.KskAlgorithms) > 0 {
 		toSerialize["ksk_algorithms"] = o.KskAlgorithms
 	}
 	if !IsNil(o.KskRollover) {
@@ -705,7 +705,7 @@ func (o GridDnsDnssecKeyParams) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ZskAlgorithm) {
 		toSerialize["zsk_algorithm"] = o.ZskAlgorithm
 	}
-	if !IsNil(o.ZskAlgorithms) {
+	if !IsNil(o.ZskAlgorithms) && len(o.ZskAlgorithms) > 0 {
 		toSerialize["zsk_algorithms"] = o.ZskAlgorithms
 	}
 	if !IsNil(o.ZskRollover) {

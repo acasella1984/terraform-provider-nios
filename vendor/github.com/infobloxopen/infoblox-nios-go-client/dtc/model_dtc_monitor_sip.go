@@ -666,19 +666,19 @@ func (o DtcMonitorSip) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ciphers) {
 		toSerialize["ciphers"] = o.Ciphers
 	}
-	if !IsNil(o.ClientCert) {
+	if !IsNil(o.ClientCert) && *o.ClientCert != "" {
 		toSerialize["client_cert"] = o.ClientCert
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Interval) {
@@ -693,7 +693,7 @@ func (o DtcMonitorSip) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Request) {
 		toSerialize["request"] = o.Request
 	}
-	if !IsNil(o.Result) {
+	if !IsNil(o.Result) && *o.Result != "" {
 		toSerialize["result"] = o.Result
 	}
 	if !IsNil(o.ResultCode) {
@@ -708,7 +708,7 @@ func (o DtcMonitorSip) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}
-	if !IsNil(o.Transport) {
+	if !IsNil(o.Transport) && *o.Transport != "" {
 		toSerialize["transport"] = o.Transport
 	}
 	if !IsNil(o.ValidateCert) {

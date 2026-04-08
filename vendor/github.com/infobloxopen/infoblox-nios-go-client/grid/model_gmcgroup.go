@@ -292,10 +292,10 @@ func (o Gmcgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.GmcPromotionPolicy) {
+	if !IsNil(o.GmcPromotionPolicy) && *o.GmcPromotionPolicy != "" {
 		toSerialize["gmc_promotion_policy"] = o.GmcPromotionPolicy
 	}
-	if !IsNil(o.Members) {
+	if !IsNil(o.Members) && len(o.Members) > 0 {
 		toSerialize["members"] = o.Members
 	}
 	if !IsNil(o.Name) {

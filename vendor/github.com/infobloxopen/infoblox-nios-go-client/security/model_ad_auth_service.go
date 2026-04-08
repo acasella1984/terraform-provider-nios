@@ -332,7 +332,7 @@ func (o AdAuthService) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !IsNil(o.DomainControllers) {
+	if !IsNil(o.DomainControllers) && len(o.DomainControllers) > 0 {
 		toSerialize["domain_controllers"] = o.DomainControllers
 	}
 	if !IsNil(o.Name) {

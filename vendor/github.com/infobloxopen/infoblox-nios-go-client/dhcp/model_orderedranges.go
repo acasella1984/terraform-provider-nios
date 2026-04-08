@@ -153,10 +153,10 @@ func (o Orderedranges) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.Ranges) {
+	if !IsNil(o.Ranges) && len(o.Ranges) > 0 {
 		toSerialize["ranges"] = o.Ranges
 	}
 	return toSerialize, nil

@@ -397,7 +397,7 @@ func (o HsmEntrustnshieldgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.EntrustnshieldHsm) {
+	if !IsNil(o.EntrustnshieldHsm) && len(o.EntrustnshieldHsm) > 0 {
 		toSerialize["entrustnshield_hsm"] = o.EntrustnshieldHsm
 	}
 	if !IsNil(o.KeyServerIp) {
@@ -412,7 +412,7 @@ func (o HsmEntrustnshieldgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PassPhrase) {
 		toSerialize["pass_phrase"] = o.PassPhrase
 	}
-	if !IsNil(o.Protection) {
+	if !IsNil(o.Protection) && *o.Protection != "" {
 		toSerialize["protection"] = o.Protection
 	}
 	if !IsNil(o.Status) {

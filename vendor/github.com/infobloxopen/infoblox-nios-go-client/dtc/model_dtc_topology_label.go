@@ -153,7 +153,7 @@ func (o DtcTopologyLabel) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Field) {
+	if !IsNil(o.Field) && *o.Field != "" {
 		toSerialize["field"] = o.Field
 	}
 	if !IsNil(o.Label) {

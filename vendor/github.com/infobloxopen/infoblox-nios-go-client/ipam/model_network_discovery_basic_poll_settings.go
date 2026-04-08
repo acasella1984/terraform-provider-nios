@@ -554,7 +554,9 @@ func (o NetworkDiscoveryBasicPollSettings) ToMap() (map[string]interface{}, erro
 		toSerialize["switch_port_data_collection_polling"] = o.SwitchPortDataCollectionPolling
 	}
 	if !IsNil(o.SwitchPortDataCollectionPollingSchedule) {
-		toSerialize["switch_port_data_collection_polling_schedule"] = o.SwitchPortDataCollectionPollingSchedule
+		if switch_port_data_collection_polling_scheduleMap, err := o.SwitchPortDataCollectionPollingSchedule.ToMap(); err == nil && len(switch_port_data_collection_polling_scheduleMap) > 0 {
+			toSerialize["switch_port_data_collection_polling_schedule"] = o.SwitchPortDataCollectionPollingSchedule
+		}
 	}
 	if !IsNil(o.SwitchPortDataCollectionPollingInterval) {
 		toSerialize["switch_port_data_collection_polling_interval"] = o.SwitchPortDataCollectionPollingInterval

@@ -84,7 +84,7 @@ func (o ListGridMemberCloudapiResponseObject) MarshalJSON() ([]byte, error) {
 
 func (o ListGridMemberCloudapiResponseObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Result) {
+	if !IsNil(o.Result) && len(o.Result) > 0 {
 		toSerialize["result"] = o.Result
 	}
 

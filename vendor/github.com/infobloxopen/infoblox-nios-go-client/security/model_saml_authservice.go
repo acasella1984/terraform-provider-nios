@@ -224,7 +224,9 @@ func (o SamlAuthservice) ToMap() (map[string]interface{}, error) {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Idp) {
-		toSerialize["idp"] = o.Idp
+		if idpMap, err := o.Idp.ToMap(); err == nil && len(idpMap) > 0 {
+			toSerialize["idp"] = o.Idp
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

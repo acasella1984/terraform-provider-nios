@@ -289,13 +289,13 @@ func (o Rir) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.CommunicationMode) {
+	if !IsNil(o.CommunicationMode) && *o.CommunicationMode != "" {
 		toSerialize["communication_mode"] = o.CommunicationMode
 	}
 	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Url) {

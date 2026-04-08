@@ -357,10 +357,10 @@ func (o Scavengingtask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Action) {
+	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
-	if !IsNil(o.AssociatedObject) {
+	if !IsNil(o.AssociatedObject) && *o.AssociatedObject != "" {
 		toSerialize["associated_object"] = o.AssociatedObject
 	}
 	if !IsNil(o.EndTime) {
@@ -378,7 +378,7 @@ func (o Scavengingtask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StartTime) {
 		toSerialize["start_time"] = o.StartTime
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil

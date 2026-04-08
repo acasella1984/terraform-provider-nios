@@ -156,7 +156,7 @@ func (o ZoneRpFireeyeRuleMapping) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AptOverride) {
 		toSerialize["apt_override"] = o.AptOverride
 	}
-	if !IsNil(o.FireeyeAlertMapping) {
+	if !IsNil(o.FireeyeAlertMapping) && len(o.FireeyeAlertMapping) > 0 {
 		toSerialize["fireeye_alert_mapping"] = o.FireeyeAlertMapping
 	}
 	if !IsNil(o.SubstitutedDomainName) {

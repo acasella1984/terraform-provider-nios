@@ -458,13 +458,15 @@ func (o RecordNs) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Addresses) {
+	if !IsNil(o.Addresses) && len(o.Addresses) > 0 {
 		toSerialize["addresses"] = o.Addresses
 	}
 	if !IsNil(o.CloudInfo) {
-		toSerialize["cloud_info"] = o.CloudInfo
+		if cloud_infoMap, err := o.CloudInfo.ToMap(); err == nil && len(cloud_infoMap) > 0 {
+			toSerialize["cloud_info"] = o.CloudInfo
+		}
 	}
-	if !IsNil(o.Creator) {
+	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
 	if !IsNil(o.DnsName) {

@@ -15,12 +15,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
 	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type ExtensibleattributedefModel struct {
@@ -56,6 +58,9 @@ var ExtensibleattributedefAttrTypes = map[string]attr.Type{
 var ExtensibleattributedefResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"allowed_object_types": schema.ListAttribute{
@@ -88,6 +93,9 @@ var ExtensibleattributedefResourceSchemaAttributes = map[string]schema.Attribute
 	"descendants_action": schema.SingleNestedAttribute{
 		Attributes:          ExtensibleattributedefDescendantsActionResourceSchemaAttributes,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "This option describes the action that must be taken on the extensible attribute by its descendant in case the ‘Inheritable’ flag is set.",
 	},
 	"flags": schema.StringAttribute{

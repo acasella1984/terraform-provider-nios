@@ -457,7 +457,7 @@ func (o Extensibleattributedef) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AllowedObjectTypes) {
+	if !IsNil(o.AllowedObjectTypes) && len(o.AllowedObjectTypes) > 0 {
 		toSerialize["allowed_object_types"] = o.AllowedObjectTypes
 	}
 	if !IsNil(o.Comment) {
@@ -467,12 +467,14 @@ func (o Extensibleattributedef) ToMap() (map[string]interface{}, error) {
 		toSerialize["default_value"] = o.DefaultValue
 	}
 	if !IsNil(o.DescendantsAction) {
-		toSerialize["descendants_action"] = o.DescendantsAction
+		if descendants_actionMap, err := o.DescendantsAction.ToMap(); err == nil && len(descendants_actionMap) > 0 {
+			toSerialize["descendants_action"] = o.DescendantsAction
+		}
 	}
 	if !IsNil(o.Flags) {
 		toSerialize["flags"] = o.Flags
 	}
-	if !IsNil(o.ListValues) {
+	if !IsNil(o.ListValues) && len(o.ListValues) > 0 {
 		toSerialize["list_values"] = o.ListValues
 	}
 	if !IsNil(o.Max) {
@@ -484,10 +486,10 @@ func (o Extensibleattributedef) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Namespace) {
+	if !IsNil(o.Namespace) && *o.Namespace != "" {
 		toSerialize["namespace"] = o.Namespace
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil

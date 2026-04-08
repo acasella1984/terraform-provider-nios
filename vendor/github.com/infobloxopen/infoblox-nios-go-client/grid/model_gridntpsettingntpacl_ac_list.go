@@ -119,9 +119,11 @@ func (o GridntpsettingntpaclAcList) MarshalJSON() ([]byte, error) {
 func (o GridntpsettingntpaclAcList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AddressAc) {
-		toSerialize["address_ac"] = o.AddressAc
+		if address_acMap, err := o.AddressAc.ToMap(); err == nil && len(address_acMap) > 0 {
+			toSerialize["address_ac"] = o.AddressAc
+		}
 	}
-	if !IsNil(o.Service) {
+	if !IsNil(o.Service) && *o.Service != "" {
 		toSerialize["service"] = o.Service
 	}
 

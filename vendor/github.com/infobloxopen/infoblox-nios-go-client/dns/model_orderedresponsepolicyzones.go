@@ -153,7 +153,7 @@ func (o Orderedresponsepolicyzones) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.RpZones) {
+	if !IsNil(o.RpZones) && len(o.RpZones) > 0 {
 		toSerialize["rp_zones"] = o.RpZones
 	}
 	if !IsNil(o.View) {

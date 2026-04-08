@@ -22,6 +22,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -34,6 +36,8 @@ import (
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	derivedmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/derived"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type ZoneRpModel struct {
@@ -147,12 +151,18 @@ var ZoneRpAttrTypes = map[string]attr.Type{
 var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"address": schema.StringAttribute{
 		CustomType:          iptypes.IPAddressType{},
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The IP address of the server that is serving this zone.",
 	},
 	"comment": schema.StringAttribute{
@@ -180,6 +190,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"dns_soa_email": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			derivedmod.PunycodeDerivedFrom("soa_email"),
+		},
 		MarkdownDescription: "The SOA email for the zone in punycode format.",
 	},
 	"extattrs": schema.MapAttribute{
@@ -198,6 +211,7 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"external_primaries": schema.ListNestedAttribute{
@@ -212,6 +226,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The list of external primary servers.",
 	},
 	"external_secondaries": schema.ListNestedAttribute{
@@ -224,6 +241,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The list of external secondary servers.",
 	},
 	"fireeye_rule_mapping": schema.SingleNestedAttribute{
@@ -258,6 +278,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The grid primary servers for this zone.",
 	},
 	"grid_secondaries": schema.ListNestedAttribute{
@@ -266,6 +289,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.ConflictsWith(
 				path.MatchRoot("ns_group"),
@@ -282,6 +308,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"locked_by": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The name of a superuser or the administrator who locked this zone.",
 	},
 	"log_rpz": schema.BoolAttribute{
@@ -309,6 +338,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The list of per-member SOA MNAME information.",
 	},
 	"member_soa_serials": schema.ListNestedAttribute{
@@ -316,6 +348,9 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 			Attributes: ZoneRpMemberSoaSerialsResourceSchemaAttributes,
 		},
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The list of per-member SOA serial information.",
 	},
 	"network_view": schema.StringAttribute{
@@ -446,6 +481,7 @@ var ZoneRpResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "The type of rpz zone.",
 	},

@@ -372,7 +372,7 @@ func (o DtcRecordCname) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsCanonical) {
 		toSerialize["dns_canonical"] = o.DnsCanonical
 	}
-	if !IsNil(o.DtcServer) {
+	if !IsNil(o.DtcServer) && *o.DtcServer != "" {
 		toSerialize["dtc_server"] = o.DtcServer
 	}
 	if !IsNil(o.Ttl) {

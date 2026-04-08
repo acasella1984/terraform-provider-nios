@@ -224,7 +224,7 @@ func (o DbObjects) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastSequenceId) {
 		toSerialize["last_sequence_id"] = o.LastSequenceId
 	}
-	if !IsNil(o.Object) {
+	if !IsNil(o.Object) && *o.Object != "" {
 		toSerialize["object"] = o.Object
 	}
 	if !IsNil(o.ObjectType) {

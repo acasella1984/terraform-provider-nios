@@ -1919,7 +1919,7 @@ func (o Sharednetwork) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DhcpUtilization) {
 		toSerialize["dhcp_utilization"] = o.DhcpUtilization
 	}
-	if !IsNil(o.DhcpUtilizationStatus) {
+	if !IsNil(o.DhcpUtilizationStatus) && *o.DhcpUtilizationStatus != "" {
 		toSerialize["dhcp_utilization_status"] = o.DhcpUtilizationStatus
 	}
 	if !IsNil(o.Disable) {
@@ -1934,13 +1934,13 @@ func (o Sharednetwork) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnablePxeLeaseTime) {
 		toSerialize["enable_pxe_lease_time"] = o.EnablePxeLeaseTime
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.IgnoreClientIdentifier) {
@@ -1949,20 +1949,22 @@ func (o Sharednetwork) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IgnoreDhcpOptionListRequest) {
 		toSerialize["ignore_dhcp_option_list_request"] = o.IgnoreDhcpOptionListRequest
 	}
-	if !IsNil(o.IgnoreId) {
+	if !IsNil(o.IgnoreId) && *o.IgnoreId != "" {
 		toSerialize["ignore_id"] = o.IgnoreId
 	}
-	if !IsNil(o.IgnoreMacAddresses) {
+	if !IsNil(o.IgnoreMacAddresses) && len(o.IgnoreMacAddresses) > 0 {
 		toSerialize["ignore_mac_addresses"] = o.IgnoreMacAddresses
 	}
 	if !IsNil(o.LeaseScavengeTime) {
 		toSerialize["lease_scavenge_time"] = o.LeaseScavengeTime
 	}
-	if !IsNil(o.LogicFilterRules) {
+	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -1970,13 +1972,13 @@ func (o Sharednetwork) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Networks) {
+	if !IsNil(o.Networks) && len(o.Networks) > 0 {
 		toSerialize["networks"] = o.Networks
 	}
 	if !IsNil(o.Nextserver) {
 		toSerialize["nextserver"] = o.Nextserver
 	}
-	if !IsNil(o.Options) {
+	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
 	if !IsNil(o.PxeLeaseTime) {

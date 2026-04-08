@@ -307,7 +307,7 @@ func (o GridThreatprotectionNatRules) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndAddress) {
 		toSerialize["end_address"] = o.EndAddress
 	}
-	if !IsNil(o.NatPorts) {
+	if !IsNil(o.NatPorts) && len(o.NatPorts) > 0 {
 		toSerialize["nat_ports"] = o.NatPorts
 	}
 

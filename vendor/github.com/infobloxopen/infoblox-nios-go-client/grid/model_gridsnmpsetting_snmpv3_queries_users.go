@@ -119,7 +119,7 @@ func (o GridsnmpsettingSnmpv3QueriesUsers) MarshalJSON() ([]byte, error) {
 
 func (o GridsnmpsettingSnmpv3QueriesUsers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
+	if !IsNil(o.User) && *o.User != "" {
 		toSerialize["user"] = o.User
 	}
 	if !IsNil(o.Comment) {

@@ -156,7 +156,7 @@ func (o GridsnmpsettingTrapReceivers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.User) {
+	if !IsNil(o.User) && *o.User != "" {
 		toSerialize["user"] = o.User
 	}
 	if !IsNil(o.Comment) {

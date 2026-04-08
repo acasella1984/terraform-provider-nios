@@ -3588,7 +3588,7 @@ func (o RecordADiscoveredData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndpointGroups) {
 		toSerialize["endpoint_groups"] = o.EndpointGroups
 	}
-	if !IsNil(o.Tenant) {
+	if !IsNil(o.Tenant) && *o.Tenant != "" {
 		toSerialize["tenant"] = o.Tenant
 	}
 	if !IsNil(o.VrfName) {

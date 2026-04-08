@@ -48,6 +48,9 @@ var NetworkMembersResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		MarkdownDescription: "The IPv4 Address or FQDN of the Microsoft server.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6addr": schema.StringAttribute{
 		Optional:            true,

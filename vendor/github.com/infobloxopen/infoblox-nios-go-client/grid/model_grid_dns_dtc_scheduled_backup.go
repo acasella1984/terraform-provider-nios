@@ -941,7 +941,7 @@ func (o GridDnsDtcScheduledBackup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Execute) {
 		toSerialize["execute"] = o.Execute
 	}
-	if !IsNil(o.Operation) {
+	if !IsNil(o.Operation) && *o.Operation != "" {
 		toSerialize["operation"] = o.Operation
 	}
 	if !IsNil(o.BackupType) {

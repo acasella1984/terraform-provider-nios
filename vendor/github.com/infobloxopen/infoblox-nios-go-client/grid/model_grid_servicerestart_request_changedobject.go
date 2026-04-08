@@ -289,10 +289,10 @@ func (o GridServicerestartRequestChangedobject) ToMap() (map[string]interface{},
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Action) {
+	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
-	if !IsNil(o.ChangedProperties) {
+	if !IsNil(o.ChangedProperties) && len(o.ChangedProperties) > 0 {
 		toSerialize["changed_properties"] = o.ChangedProperties
 	}
 	if !IsNil(o.ChangedTime) {

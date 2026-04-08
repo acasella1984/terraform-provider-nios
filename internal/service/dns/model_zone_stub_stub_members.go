@@ -14,6 +14,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 )
 
 // ZoneStubStubMembersModel defines the model for members in a stub zone.
@@ -64,6 +65,9 @@ var ZoneStubStubMembersResourceSchemaAttributes = map[string]schema.Attribute{
 			Attributes: ZonestubstubmembersPreferredPrimariesResourceSchemaAttributes,
 		},
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The primary preference list with Grid member names and\\or External Server extserver structs for this member.",
 	},
 	"enable_preferred_primaries": schema.BoolAttribute{

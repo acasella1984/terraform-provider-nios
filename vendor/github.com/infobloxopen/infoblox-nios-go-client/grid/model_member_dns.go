@@ -7120,25 +7120,25 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddClientIpMacOptions) {
 		toSerialize["add_client_ip_mac_options"] = o.AddClientIpMacOptions
 	}
-	if !IsNil(o.AdditionalIpList) {
+	if !IsNil(o.AdditionalIpList) && len(o.AdditionalIpList) > 0 {
 		toSerialize["additional_ip_list"] = o.AdditionalIpList
 	}
-	if !IsNil(o.AdditionalIpListStruct) {
+	if !IsNil(o.AdditionalIpListStruct) && len(o.AdditionalIpListStruct) > 0 {
 		toSerialize["additional_ip_list_struct"] = o.AdditionalIpListStruct
 	}
 	if !IsNil(o.AllowGssTsigZoneUpdates) {
 		toSerialize["allow_gss_tsig_zone_updates"] = o.AllowGssTsigZoneUpdates
 	}
-	if !IsNil(o.AllowQuery) {
+	if !IsNil(o.AllowQuery) && len(o.AllowQuery) > 0 {
 		toSerialize["allow_query"] = o.AllowQuery
 	}
 	if !IsNil(o.AllowRecursiveQuery) {
 		toSerialize["allow_recursive_query"] = o.AllowRecursiveQuery
 	}
-	if !IsNil(o.AllowTransfer) {
+	if !IsNil(o.AllowTransfer) && len(o.AllowTransfer) > 0 {
 		toSerialize["allow_transfer"] = o.AllowTransfer
 	}
-	if !IsNil(o.AllowUpdate) {
+	if !IsNil(o.AllowUpdate) && len(o.AllowUpdate) > 0 {
 		toSerialize["allow_update"] = o.AllowUpdate
 	}
 	if !IsNil(o.AnonymizeResponseLogging) {
@@ -7148,10 +7148,14 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 		toSerialize["atc_fwd_enable"] = o.AtcFwdEnable
 	}
 	if !IsNil(o.AttackMitigation) {
-		toSerialize["attack_mitigation"] = o.AttackMitigation
+		if attack_mitigationMap, err := o.AttackMitigation.ToMap(); err == nil && len(attack_mitigationMap) > 0 {
+			toSerialize["attack_mitigation"] = o.AttackMitigation
+		}
 	}
 	if !IsNil(o.AutoBlackhole) {
-		toSerialize["auto_blackhole"] = o.AutoBlackhole
+		if auto_blackholeMap, err := o.AutoBlackhole.ToMap(); err == nil && len(auto_blackholeMap) > 0 {
+			toSerialize["auto_blackhole"] = o.AutoBlackhole
+		}
 	}
 	if !IsNil(o.AutoCreateAAndPtrForLan2) {
 		toSerialize["auto_create_a_and_ptr_for_lan2"] = o.AutoCreateAAndPtrForLan2
@@ -7162,31 +7166,31 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoSortViews) {
 		toSerialize["auto_sort_views"] = o.AutoSortViews
 	}
-	if !IsNil(o.BindCheckNamesPolicy) {
+	if !IsNil(o.BindCheckNamesPolicy) && *o.BindCheckNamesPolicy != "" {
 		toSerialize["bind_check_names_policy"] = o.BindCheckNamesPolicy
 	}
-	if !IsNil(o.BindHostnameDirective) {
+	if !IsNil(o.BindHostnameDirective) && *o.BindHostnameDirective != "" {
 		toSerialize["bind_hostname_directive"] = o.BindHostnameDirective
 	}
 	if !IsNil(o.BindHostnameDirectiveFqdn) {
 		toSerialize["bind_hostname_directive_fqdn"] = o.BindHostnameDirectiveFqdn
 	}
-	if !IsNil(o.BlackholeList) {
+	if !IsNil(o.BlackholeList) && len(o.BlackholeList) > 0 {
 		toSerialize["blackhole_list"] = o.BlackholeList
 	}
-	if !IsNil(o.BlacklistAction) {
+	if !IsNil(o.BlacklistAction) && *o.BlacklistAction != "" {
 		toSerialize["blacklist_action"] = o.BlacklistAction
 	}
 	if !IsNil(o.BlacklistLogQuery) {
 		toSerialize["blacklist_log_query"] = o.BlacklistLogQuery
 	}
-	if !IsNil(o.BlacklistRedirectAddresses) {
+	if !IsNil(o.BlacklistRedirectAddresses) && len(o.BlacklistRedirectAddresses) > 0 {
 		toSerialize["blacklist_redirect_addresses"] = o.BlacklistRedirectAddresses
 	}
 	if !IsNil(o.BlacklistRedirectTtl) {
 		toSerialize["blacklist_redirect_ttl"] = o.BlacklistRedirectTtl
 	}
-	if !IsNil(o.BlacklistRulesets) {
+	if !IsNil(o.BlacklistRulesets) && len(o.BlacklistRulesets) > 0 {
 		toSerialize["blacklist_rulesets"] = o.BlacklistRulesets
 	}
 	if !IsNil(o.CaptureDnsQueriesOnAllDomains) {
@@ -7201,13 +7205,13 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CopyXferToNotify) {
 		toSerialize["copy_xfer_to_notify"] = o.CopyXferToNotify
 	}
-	if !IsNil(o.CustomRootNameServers) {
+	if !IsNil(o.CustomRootNameServers) && len(o.CustomRootNameServers) > 0 {
 		toSerialize["custom_root_name_servers"] = o.CustomRootNameServers
 	}
 	if !IsNil(o.DisableEdns) {
 		toSerialize["disable_edns"] = o.DisableEdns
 	}
-	if !IsNil(o.Dns64Groups) {
+	if !IsNil(o.Dns64Groups) && len(o.Dns64Groups) > 0 {
 		toSerialize["dns64_groups"] = o.Dns64Groups
 	}
 	if !IsNil(o.DnsCacheAccelerationStatus) {
@@ -7219,7 +7223,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsHealthCheckAnycastControl) {
 		toSerialize["dns_health_check_anycast_control"] = o.DnsHealthCheckAnycastControl
 	}
-	if !IsNil(o.DnsHealthCheckDomainList) {
+	if !IsNil(o.DnsHealthCheckDomainList) && len(o.DnsHealthCheckDomainList) > 0 {
 		toSerialize["dns_health_check_domain_list"] = o.DnsHealthCheckDomainList
 	}
 	if !IsNil(o.DnsHealthCheckInterval) {
@@ -7234,7 +7238,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsHealthCheckTimeout) {
 		toSerialize["dns_health_check_timeout"] = o.DnsHealthCheckTimeout
 	}
-	if !IsNil(o.DnsNotifyTransferSource) {
+	if !IsNil(o.DnsNotifyTransferSource) && *o.DnsNotifyTransferSource != "" {
 		toSerialize["dns_notify_transfer_source"] = o.DnsNotifyTransferSource
 	}
 	if !IsNil(o.DnsNotifyTransferSourceAddress) {
@@ -7249,10 +7253,10 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsQuerySourceAddress) {
 		toSerialize["dns_query_source_address"] = o.DnsQuerySourceAddress
 	}
-	if !IsNil(o.DnsQuerySourceInterface) {
+	if !IsNil(o.DnsQuerySourceInterface) && *o.DnsQuerySourceInterface != "" {
 		toSerialize["dns_query_source_interface"] = o.DnsQuerySourceInterface
 	}
-	if !IsNil(o.DnsViewAddressSettings) {
+	if !IsNil(o.DnsViewAddressSettings) && len(o.DnsViewAddressSettings) > 0 {
 		toSerialize["dns_view_address_settings"] = o.DnsViewAddressSettings
 	}
 	if !IsNil(o.DnssecBlacklistEnabled) {
@@ -7267,7 +7271,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnssecExpiredSignaturesEnabled) {
 		toSerialize["dnssec_expired_signatures_enabled"] = o.DnssecExpiredSignaturesEnabled
 	}
-	if !IsNil(o.DnssecNegativeTrustAnchors) {
+	if !IsNil(o.DnssecNegativeTrustAnchors) && len(o.DnssecNegativeTrustAnchors) > 0 {
 		toSerialize["dnssec_negative_trust_anchors"] = o.DnssecNegativeTrustAnchors
 	}
 	if !IsNil(o.DnssecNxdomainEnabled) {
@@ -7276,14 +7280,16 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnssecRpzEnabled) {
 		toSerialize["dnssec_rpz_enabled"] = o.DnssecRpzEnabled
 	}
-	if !IsNil(o.DnssecTrustedKeys) {
+	if !IsNil(o.DnssecTrustedKeys) && len(o.DnssecTrustedKeys) > 0 {
 		toSerialize["dnssec_trusted_keys"] = o.DnssecTrustedKeys
 	}
 	if !IsNil(o.DnssecValidationEnabled) {
 		toSerialize["dnssec_validation_enabled"] = o.DnssecValidationEnabled
 	}
 	if !IsNil(o.DnstapSetting) {
-		toSerialize["dnstap_setting"] = o.DnstapSetting
+		if dnstap_settingMap, err := o.DnstapSetting.ToMap(); err == nil && len(dnstap_settingMap) > 0 {
+			toSerialize["dnstap_setting"] = o.DnstapSetting
+		}
 	}
 	if !IsNil(o.DohHttpsSessionDuration) {
 		toSerialize["doh_https_session_duration"] = o.DohHttpsSessionDuration
@@ -7291,16 +7297,16 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DohService) {
 		toSerialize["doh_service"] = o.DohService
 	}
-	if !IsNil(o.DomainsToCaptureDnsQueries) {
+	if !IsNil(o.DomainsToCaptureDnsQueries) && len(o.DomainsToCaptureDnsQueries) > 0 {
 		toSerialize["domains_to_capture_dns_queries"] = o.DomainsToCaptureDnsQueries
 	}
-	if !IsNil(o.DtcDnsQueriesSpecificBehavior) {
+	if !IsNil(o.DtcDnsQueriesSpecificBehavior) && *o.DtcDnsQueriesSpecificBehavior != "" {
 		toSerialize["dtc_dns_queries_specific_behavior"] = o.DtcDnsQueriesSpecificBehavior
 	}
 	if !IsNil(o.DtcEdnsPreferClientSubnet) {
 		toSerialize["dtc_edns_prefer_client_subnet"] = o.DtcEdnsPreferClientSubnet
 	}
-	if !IsNil(o.DtcHealthSource) {
+	if !IsNil(o.DtcHealthSource) && *o.DtcHealthSource != "" {
 		toSerialize["dtc_health_source"] = o.DtcHealthSource
 	}
 	if !IsNil(o.DtcHealthSourceAddress) {
@@ -7363,28 +7369,30 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableQuerySourcePort) {
 		toSerialize["enable_query_source_port"] = o.EnableQuerySourcePort
 	}
-	if !IsNil(o.ExcludedDomainNames) {
+	if !IsNil(o.ExcludedDomainNames) && len(o.ExcludedDomainNames) > 0 {
 		toSerialize["excluded_domain_names"] = o.ExcludedDomainNames
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.FileTransferSetting) {
-		toSerialize["file_transfer_setting"] = o.FileTransferSetting
+		if file_transfer_settingMap, err := o.FileTransferSetting.ToMap(); err == nil && len(file_transfer_settingMap) > 0 {
+			toSerialize["file_transfer_setting"] = o.FileTransferSetting
+		}
 	}
-	if !IsNil(o.FilterAaaa) {
+	if !IsNil(o.FilterAaaa) && *o.FilterAaaa != "" {
 		toSerialize["filter_aaaa"] = o.FilterAaaa
 	}
-	if !IsNil(o.FilterAaaaList) {
+	if !IsNil(o.FilterAaaaList) && len(o.FilterAaaaList) > 0 {
 		toSerialize["filter_aaaa_list"] = o.FilterAaaaList
 	}
-	if !IsNil(o.FixedRrsetOrderFqdns) {
+	if !IsNil(o.FixedRrsetOrderFqdns) && len(o.FixedRrsetOrderFqdns) > 0 {
 		toSerialize["fixed_rrset_order_fqdns"] = o.FixedRrsetOrderFqdns
 	}
 	if !IsNil(o.ForwardOnly) {
@@ -7393,7 +7401,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ForwardUpdates) {
 		toSerialize["forward_updates"] = o.ForwardUpdates
 	}
-	if !IsNil(o.Forwarders) {
+	if !IsNil(o.Forwarders) && len(o.Forwarders) > 0 {
 		toSerialize["forwarders"] = o.Forwarders
 	}
 	if !IsNil(o.FtcExpiredRecordTimeout) {
@@ -7402,10 +7410,10 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FtcExpiredRecordTtl) {
 		toSerialize["ftc_expired_record_ttl"] = o.FtcExpiredRecordTtl
 	}
-	if !IsNil(o.GlueRecordAddresses) {
+	if !IsNil(o.GlueRecordAddresses) && len(o.GlueRecordAddresses) > 0 {
 		toSerialize["glue_record_addresses"] = o.GlueRecordAddresses
 	}
-	if !IsNil(o.GssTsigKeys) {
+	if !IsNil(o.GssTsigKeys) && len(o.GssTsigKeys) > 0 {
 		toSerialize["gss_tsig_keys"] = o.GssTsigKeys
 	}
 	if !IsNil(o.HostName) {
@@ -7414,14 +7422,16 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv4addr) {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
-	if !IsNil(o.Ipv6GlueRecordAddresses) {
+	if !IsNil(o.Ipv6GlueRecordAddresses) && len(o.Ipv6GlueRecordAddresses) > 0 {
 		toSerialize["ipv6_glue_record_addresses"] = o.Ipv6GlueRecordAddresses
 	}
 	if !IsNil(o.Ipv6addr) {
 		toSerialize["ipv6addr"] = o.Ipv6addr
 	}
 	if !IsNil(o.LoggingCategories) {
-		toSerialize["logging_categories"] = o.LoggingCategories
+		if logging_categoriesMap, err := o.LoggingCategories.ToMap(); err == nil && len(logging_categoriesMap) > 0 {
+			toSerialize["logging_categories"] = o.LoggingCategories
+		}
 	}
 	if !IsNil(o.MaxCacheTtl) {
 		toSerialize["max_cache_ttl"] = o.MaxCacheTtl
@@ -7450,40 +7460,42 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NxdomainRedirect) {
 		toSerialize["nxdomain_redirect"] = o.NxdomainRedirect
 	}
-	if !IsNil(o.NxdomainRedirectAddresses) {
+	if !IsNil(o.NxdomainRedirectAddresses) && len(o.NxdomainRedirectAddresses) > 0 {
 		toSerialize["nxdomain_redirect_addresses"] = o.NxdomainRedirectAddresses
 	}
-	if !IsNil(o.NxdomainRedirectAddressesV6) {
+	if !IsNil(o.NxdomainRedirectAddressesV6) && len(o.NxdomainRedirectAddressesV6) > 0 {
 		toSerialize["nxdomain_redirect_addresses_v6"] = o.NxdomainRedirectAddressesV6
 	}
 	if !IsNil(o.NxdomainRedirectTtl) {
 		toSerialize["nxdomain_redirect_ttl"] = o.NxdomainRedirectTtl
 	}
-	if !IsNil(o.NxdomainRulesets) {
+	if !IsNil(o.NxdomainRulesets) && len(o.NxdomainRulesets) > 0 {
 		toSerialize["nxdomain_rulesets"] = o.NxdomainRulesets
 	}
 	if !IsNil(o.QuerySourcePort) {
 		toSerialize["query_source_port"] = o.QuerySourcePort
 	}
-	if !IsNil(o.RecordNamePolicy) {
+	if !IsNil(o.RecordNamePolicy) && *o.RecordNamePolicy != "" {
 		toSerialize["record_name_policy"] = o.RecordNamePolicy
 	}
 	if !IsNil(o.RecursiveClientLimit) {
 		toSerialize["recursive_client_limit"] = o.RecursiveClientLimit
 	}
-	if !IsNil(o.RecursiveQueryList) {
+	if !IsNil(o.RecursiveQueryList) && len(o.RecursiveQueryList) > 0 {
 		toSerialize["recursive_query_list"] = o.RecursiveQueryList
 	}
-	if !IsNil(o.RecursiveResolver) {
+	if !IsNil(o.RecursiveResolver) && *o.RecursiveResolver != "" {
 		toSerialize["recursive_resolver"] = o.RecursiveResolver
 	}
 	if !IsNil(o.ResolverQueryTimeout) {
 		toSerialize["resolver_query_timeout"] = o.ResolverQueryTimeout
 	}
 	if !IsNil(o.ResponseRateLimiting) {
-		toSerialize["response_rate_limiting"] = o.ResponseRateLimiting
+		if response_rate_limitingMap, err := o.ResponseRateLimiting.ToMap(); err == nil && len(response_rate_limitingMap) > 0 {
+			toSerialize["response_rate_limiting"] = o.ResponseRateLimiting
+		}
 	}
-	if !IsNil(o.RootNameServerType) {
+	if !IsNil(o.RootNameServerType) && *o.RootNameServerType != "" {
 		toSerialize["root_name_server_type"] = o.RootNameServerType
 	}
 	if !IsNil(o.RpzDisableNsdnameNsip) {
@@ -7504,7 +7516,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SerialQueryRate) {
 		toSerialize["serial_query_rate"] = o.SerialQueryRate
 	}
-	if !IsNil(o.ServerIdDirective) {
+	if !IsNil(o.ServerIdDirective) && *o.ServerIdDirective != "" {
 		toSerialize["server_id_directive"] = o.ServerIdDirective
 	}
 	if !IsNil(o.ServerIdDirectiveString) {
@@ -7513,13 +7525,13 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipInGridRpzQueries) {
 		toSerialize["skip_in_grid_rpz_queries"] = o.SkipInGridRpzQueries
 	}
-	if !IsNil(o.Sortlist) {
+	if !IsNil(o.Sortlist) && len(o.Sortlist) > 0 {
 		toSerialize["sortlist"] = o.Sortlist
 	}
 	if !IsNil(o.StoreLocally) {
 		toSerialize["store_locally"] = o.StoreLocally
 	}
-	if !IsNil(o.SyslogFacility) {
+	if !IsNil(o.SyslogFacility) && *o.SyslogFacility != "" {
 		toSerialize["syslog_facility"] = o.SyslogFacility
 	}
 	if !IsNil(o.TcpIdleTimeout) {
@@ -7528,10 +7540,10 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TlsSessionDuration) {
 		toSerialize["tls_session_duration"] = o.TlsSessionDuration
 	}
-	if !IsNil(o.TransferExcludedServers) {
+	if !IsNil(o.TransferExcludedServers) && len(o.TransferExcludedServers) > 0 {
 		toSerialize["transfer_excluded_servers"] = o.TransferExcludedServers
 	}
-	if !IsNil(o.TransferFormat) {
+	if !IsNil(o.TransferFormat) && *o.TransferFormat != "" {
 		toSerialize["transfer_format"] = o.TransferFormat
 	}
 	if !IsNil(o.TransfersIn) {
@@ -7543,7 +7555,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TransfersPerNs) {
 		toSerialize["transfers_per_ns"] = o.TransfersPerNs
 	}
-	if !IsNil(o.UpstreamAddressFamilyPreference) {
+	if !IsNil(o.UpstreamAddressFamilyPreference) && *o.UpstreamAddressFamilyPreference != "" {
 		toSerialize["upstream_address_family_preference"] = o.UpstreamAddressFamilyPreference
 	}
 	if !IsNil(o.UseAddClientIpMacOptions) {
@@ -7735,7 +7747,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseZoneTransferFormat) {
 		toSerialize["use_zone_transfer_format"] = o.UseZoneTransferFormat
 	}
-	if !IsNil(o.Views) {
+	if !IsNil(o.Views) && len(o.Views) > 0 {
 		toSerialize["views"] = o.Views
 	}
 	return toSerialize, nil

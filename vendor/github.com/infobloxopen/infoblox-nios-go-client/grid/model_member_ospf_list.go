@@ -690,7 +690,7 @@ func (o MemberOspfList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HelloInterval) {
 		toSerialize["hello_interval"] = o.HelloInterval
 	}
-	if !IsNil(o.Interface) {
+	if !IsNil(o.Interface) && *o.Interface != "" {
 		toSerialize["interface"] = o.Interface
 	}
 	if !IsNil(o.IsIpv4) {

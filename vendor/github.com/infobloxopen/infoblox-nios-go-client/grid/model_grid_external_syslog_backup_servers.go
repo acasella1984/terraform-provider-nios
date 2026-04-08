@@ -304,7 +304,7 @@ func (o GridExternalSyslogBackupServers) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.Protocol) {
+	if !IsNil(o.Protocol) && *o.Protocol != "" {
 		toSerialize["protocol"] = o.Protocol
 	}
 	if !IsNil(o.Username) {

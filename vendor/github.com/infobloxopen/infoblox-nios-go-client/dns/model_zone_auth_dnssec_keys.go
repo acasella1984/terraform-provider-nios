@@ -267,7 +267,7 @@ func (o ZoneAuthDnssecKeys) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Algorithm) {
+	if !IsNil(o.Algorithm) && *o.Algorithm != "" {
 		toSerialize["algorithm"] = o.Algorithm
 	}
 	if !IsNil(o.PublicKey) {

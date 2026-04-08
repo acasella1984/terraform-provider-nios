@@ -17,6 +17,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 )
 
 type ZoneRpFireeyeRuleMappingModel struct {
@@ -52,6 +53,9 @@ var ZoneRpFireeyeRuleMappingResourceSchemaAttributes = map[string]schema.Attribu
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The FireEye alert mapping.",
 	},
 	"substituted_domain_name": schema.StringAttribute{

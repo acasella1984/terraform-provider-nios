@@ -22,6 +22,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -33,6 +36,7 @@ import (
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type Ipv6fixedaddressModel struct {
@@ -140,6 +144,9 @@ var Ipv6fixedaddressAttrTypes = map[string]attr.Type{
 var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -168,11 +175,17 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The CLI credentials for the IPv6 fixed address.",
 	},
 	"cloud_info": schema.SingleNestedAttribute{
 		Attributes:          Ipv6fixedaddressCloudInfoResourceSchemaAttributes,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Structure containing all cloud API related information for this object.",
 	},
 	"comment": schema.StringAttribute{
@@ -270,6 +283,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The IPv6 addresses of DNS recursive name servers to which the DHCP client can send name resolution requests. The DHCP server includes this information in the DNS Recursive Name Server option in Advertise, Rebind, Information-Request, and Reply messages.",
 	},
 	"duid": schema.StringAttribute{
@@ -287,6 +303,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"enable_immediate_discovery": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Determines if the discovery for the IPv6 fixed address should be immediately enabled.",
 	},
 	"extattrs": schema.MapAttribute{
@@ -343,6 +362,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "This field contains the logic filters to be applied to this IPv6 fixed address. This list corresponds to the match rules that are written to the DHCPv6 configuration file.",
 	},
 	"mac_address": schema.StringAttribute{
@@ -371,6 +393,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"ms_ad_user_data": schema.SingleNestedAttribute{
 		Attributes:          Ipv6fixedaddressMsAdUserDataResourceSchemaAttributes,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The Microsoft Active Directory user related information.",
 	},
 	"name": schema.StringAttribute{
@@ -429,6 +454,9 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"reserved_interface": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the reserved interface to which the device belongs.",
 	},
 	"restart_if_needed": schema.BoolAttribute{
@@ -467,6 +495,7 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed: true,
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "If set on creation, the IPv6 fixed address will be created according to the values specified in the named template.",
 	},
@@ -541,6 +570,7 @@ var Ipv6fixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 }
@@ -553,7 +583,8 @@ func (m *Ipv6fixedaddressModel) Expand(ctx context.Context, diags *diag.Diagnost
 		AddressType:              flex.ExpandStringPointer(m.AddressType),
 		AllowTelnet:              flex.ExpandBoolPointer(m.AllowTelnet),
 		CliCredentials:           flex.ExpandFrameworkListNestedBlock(ctx, m.CliCredentials, diags, ExpandIpv6fixedaddressCliCredentials),
-		CloudInfo:                ExpandIpv6fixedaddressCloudInfo(ctx, m.CloudInfo, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// CloudInfo:                ExpandIpv6fixedaddressCloudInfo(ctx, m.CloudInfo, diags),
 		Comment:                  flex.ExpandStringPointer(m.Comment),
 		DeviceDescription:        flex.ExpandStringPointer(m.DeviceDescription),
 		DeviceLocation:           flex.ExpandStringPointer(m.DeviceLocation),
@@ -561,7 +592,8 @@ func (m *Ipv6fixedaddressModel) Expand(ctx context.Context, diags *diag.Diagnost
 		DeviceVendor:             flex.ExpandStringPointer(m.DeviceVendor),
 		Disable:                  flex.ExpandBoolPointer(m.Disable),
 		DisableDiscovery:         flex.ExpandBoolPointer(m.DisableDiscovery),
-		DiscoveredData:           ExpandIpv6fixedaddressDiscoveredData(ctx, m.DiscoveredData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// DiscoveredData:           ExpandIpv6fixedaddressDiscoveredData(ctx, m.DiscoveredData, diags),
 		DomainName:               flex.ExpandStringPointer(m.DomainName.StringValue),
 		DomainNameServers:        flex.ExpandFrameworkListString(ctx, m.DomainNameServers, diags),
 		Duid:                     flex.ExpandDUID(m.Duid),
@@ -573,7 +605,8 @@ func (m *Ipv6fixedaddressModel) Expand(ctx context.Context, diags *diag.Diagnost
 		LogicFilterRules:         flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandIpv6fixedaddressLogicFilterRules),
 		MacAddress:               flex.ExpandMACAddr(m.MacAddress),
 		MatchClient:              flex.ExpandStringPointer(m.MatchClient),
-		MsAdUserData:             ExpandIpv6fixedaddressMsAdUserData(ctx, m.MsAdUserData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// MsAdUserData:             ExpandIpv6fixedaddressMsAdUserData(ctx, m.MsAdUserData, diags),
 		Name:                     flex.ExpandStringPointer(m.Name),
 		Network:                  flex.ExpandIPv6CIDR(m.Network),
 		NetworkView:              flex.ExpandStringPointer(m.NetworkView),

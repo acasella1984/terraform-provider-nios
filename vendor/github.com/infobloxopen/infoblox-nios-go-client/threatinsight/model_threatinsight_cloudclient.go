@@ -221,7 +221,7 @@ func (o ThreatinsightCloudclient) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.BlacklistRpzList) {
+	if !IsNil(o.BlacklistRpzList) && len(o.BlacklistRpzList) > 0 {
 		toSerialize["blacklist_rpz_list"] = o.BlacklistRpzList
 	}
 	if !IsNil(o.Enable) {

@@ -1009,7 +1009,7 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DelegateTo) {
+	if !IsNil(o.DelegateTo) && len(o.DelegateTo) > 0 {
 		toSerialize["delegate_to"] = o.DelegateTo
 	}
 	if !IsNil(o.DelegatedTtl) {
@@ -1027,13 +1027,13 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableRfc2317Exclusion) {
 		toSerialize["enable_rfc2317_exclusion"] = o.EnableRfc2317Exclusion
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Fqdn) {
@@ -1051,10 +1051,10 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsAdIntegrated) {
 		toSerialize["ms_ad_integrated"] = o.MsAdIntegrated
 	}
-	if !IsNil(o.MsDdnsMode) {
+	if !IsNil(o.MsDdnsMode) && *o.MsDdnsMode != "" {
 		toSerialize["ms_ddns_mode"] = o.MsDdnsMode
 	}
-	if !IsNil(o.MsManaged) {
+	if !IsNil(o.MsManaged) && *o.MsManaged != "" {
 		toSerialize["ms_managed"] = o.MsManaged
 	}
 	if !IsNil(o.MsReadOnly) {
@@ -1063,7 +1063,7 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsSyncMasterName) {
 		toSerialize["ms_sync_master_name"] = o.MsSyncMasterName
 	}
-	if !IsNil(o.NsGroup) {
+	if !IsNil(o.NsGroup) && *o.NsGroup != "" {
 		toSerialize["ns_group"] = o.NsGroup
 	}
 	if !IsNil(o.Parent) {
@@ -1081,7 +1081,7 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.View) {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.ZoneFormat) {
+	if !IsNil(o.ZoneFormat) && *o.ZoneFormat != "" {
 		toSerialize["zone_format"] = o.ZoneFormat
 	}
 	return toSerialize, nil

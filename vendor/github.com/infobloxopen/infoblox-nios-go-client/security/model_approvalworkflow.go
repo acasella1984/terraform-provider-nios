@@ -833,16 +833,16 @@ func (o Approvalworkflow) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.ApprovalGroup) {
+	if !IsNil(o.ApprovalGroup) && *o.ApprovalGroup != "" {
 		toSerialize["approval_group"] = o.ApprovalGroup
 	}
-	if !IsNil(o.ApprovalNotifyTo) {
+	if !IsNil(o.ApprovalNotifyTo) && *o.ApprovalNotifyTo != "" {
 		toSerialize["approval_notify_to"] = o.ApprovalNotifyTo
 	}
-	if !IsNil(o.ApprovedNotifyTo) {
+	if !IsNil(o.ApprovedNotifyTo) && *o.ApprovedNotifyTo != "" {
 		toSerialize["approved_notify_to"] = o.ApprovedNotifyTo
 	}
-	if !IsNil(o.ApproverComment) {
+	if !IsNil(o.ApproverComment) && *o.ApproverComment != "" {
 		toSerialize["approver_comment"] = o.ApproverComment
 	}
 	if !IsNil(o.EnableApprovalNotify) {
@@ -869,34 +869,34 @@ func (o Approvalworkflow) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableSucceededNotify) {
 		toSerialize["enable_succeeded_notify"] = o.EnableSucceededNotify
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.FailedNotifyTo) {
+	if !IsNil(o.FailedNotifyTo) && *o.FailedNotifyTo != "" {
 		toSerialize["failed_notify_to"] = o.FailedNotifyTo
 	}
-	if !IsNil(o.RejectedNotifyTo) {
+	if !IsNil(o.RejectedNotifyTo) && *o.RejectedNotifyTo != "" {
 		toSerialize["rejected_notify_to"] = o.RejectedNotifyTo
 	}
-	if !IsNil(o.RescheduledNotifyTo) {
+	if !IsNil(o.RescheduledNotifyTo) && *o.RescheduledNotifyTo != "" {
 		toSerialize["rescheduled_notify_to"] = o.RescheduledNotifyTo
 	}
-	if !IsNil(o.SubmitterComment) {
+	if !IsNil(o.SubmitterComment) && *o.SubmitterComment != "" {
 		toSerialize["submitter_comment"] = o.SubmitterComment
 	}
-	if !IsNil(o.SubmitterGroup) {
+	if !IsNil(o.SubmitterGroup) && *o.SubmitterGroup != "" {
 		toSerialize["submitter_group"] = o.SubmitterGroup
 	}
-	if !IsNil(o.SucceededNotifyTo) {
+	if !IsNil(o.SucceededNotifyTo) && *o.SucceededNotifyTo != "" {
 		toSerialize["succeeded_notify_to"] = o.SucceededNotifyTo
 	}
-	if !IsNil(o.TicketNumber) {
+	if !IsNil(o.TicketNumber) && *o.TicketNumber != "" {
 		toSerialize["ticket_number"] = o.TicketNumber
 	}
 	return toSerialize, nil

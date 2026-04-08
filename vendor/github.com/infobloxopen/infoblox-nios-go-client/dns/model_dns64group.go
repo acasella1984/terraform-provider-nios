@@ -459,7 +459,7 @@ func (o Dns64group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Clients) {
+	if !IsNil(o.Clients) && len(o.Clients) > 0 {
 		toSerialize["clients"] = o.Clients
 	}
 	if !IsNil(o.Comment) {
@@ -471,19 +471,19 @@ func (o Dns64group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableDnssecDns64) {
 		toSerialize["enable_dnssec_dns64"] = o.EnableDnssecDns64
 	}
-	if !IsNil(o.Exclude) {
+	if !IsNil(o.Exclude) && len(o.Exclude) > 0 {
 		toSerialize["exclude"] = o.Exclude
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Mapped) {
+	if !IsNil(o.Mapped) && len(o.Mapped) > 0 {
 		toSerialize["mapped"] = o.Mapped
 	}
 	if !IsNil(o.Name) {

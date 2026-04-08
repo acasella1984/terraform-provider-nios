@@ -378,7 +378,7 @@ func (o TacacsplusAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Servers) {
+	if !IsNil(o.Servers) && len(o.Servers) > 0 {
 		toSerialize["servers"] = o.Servers
 	}
 	return toSerialize, nil

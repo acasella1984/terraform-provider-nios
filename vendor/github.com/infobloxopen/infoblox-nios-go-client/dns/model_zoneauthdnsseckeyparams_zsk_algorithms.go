@@ -119,7 +119,7 @@ func (o ZoneauthdnsseckeyparamsZskAlgorithms) MarshalJSON() ([]byte, error) {
 
 func (o ZoneauthdnsseckeyparamsZskAlgorithms) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Algorithm) {
+	if !IsNil(o.Algorithm) && *o.Algorithm != "" {
 		toSerialize["algorithm"] = o.Algorithm
 	}
 	if !IsNil(o.Size) {

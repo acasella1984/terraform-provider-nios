@@ -394,7 +394,7 @@ func (o ParentalcontrolAvp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DomainTypes) {
+	if !IsNil(o.DomainTypes) && len(o.DomainTypes) > 0 {
 		toSerialize["domain_types"] = o.DomainTypes
 	}
 	if !IsNil(o.IsRestricted) {
@@ -409,7 +409,7 @@ func (o ParentalcontrolAvp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserDefined) {
 		toSerialize["user_defined"] = o.UserDefined
 	}
-	if !IsNil(o.ValueType) {
+	if !IsNil(o.ValueType) && *o.ValueType != "" {
 		toSerialize["value_type"] = o.ValueType
 	}
 	if !IsNil(o.VendorId) {

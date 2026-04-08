@@ -847,38 +847,40 @@ func (o NotificationRestEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.LogLevel) {
+	if !IsNil(o.LogLevel) && *o.LogLevel != "" {
 		toSerialize["log_level"] = o.LogLevel
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.OutboundMemberType) {
+	if !IsNil(o.OutboundMemberType) && *o.OutboundMemberType != "" {
 		toSerialize["outbound_member_type"] = o.OutboundMemberType
 	}
-	if !IsNil(o.OutboundMembers) {
+	if !IsNil(o.OutboundMembers) && len(o.OutboundMembers) > 0 {
 		toSerialize["outbound_members"] = o.OutboundMembers
 	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
-	if !IsNil(o.ServerCertValidation) {
+	if !IsNil(o.ServerCertValidation) && *o.ServerCertValidation != "" {
 		toSerialize["server_cert_validation"] = o.ServerCertValidation
 	}
 	if !IsNil(o.SyncDisabled) {
 		toSerialize["sync_disabled"] = o.SyncDisabled
 	}
 	if !IsNil(o.TemplateInstance) {
-		toSerialize["template_instance"] = o.TemplateInstance
+		if template_instanceMap, err := o.TemplateInstance.ToMap(); err == nil && len(template_instanceMap) > 0 {
+			toSerialize["template_instance"] = o.TemplateInstance
+		}
 	}
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout

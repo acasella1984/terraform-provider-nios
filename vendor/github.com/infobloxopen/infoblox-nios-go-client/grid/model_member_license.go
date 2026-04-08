@@ -357,7 +357,7 @@ func (o MemberLicense) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.ExpirationStatus) {
+	if !IsNil(o.ExpirationStatus) && *o.ExpirationStatus != "" {
 		toSerialize["expiration_status"] = o.ExpirationStatus
 	}
 	if !IsNil(o.ExpiryDate) {
@@ -369,13 +369,13 @@ func (o MemberLicense) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !IsNil(o.Kind) {
+	if !IsNil(o.Kind) && *o.Kind != "" {
 		toSerialize["kind"] = o.Kind
 	}
 	if !IsNil(o.Limit) {
 		toSerialize["limit"] = o.Limit
 	}
-	if !IsNil(o.LimitContext) {
+	if !IsNil(o.LimitContext) && *o.LimitContext != "" {
 		toSerialize["limit_context"] = o.LimitContext
 	}
 	if !IsNil(o.Type) {

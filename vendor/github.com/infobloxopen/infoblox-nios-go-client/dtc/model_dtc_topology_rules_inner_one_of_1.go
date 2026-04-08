@@ -252,22 +252,22 @@ func (o DtcTopologyRulesInnerOneOf1) MarshalJSON() ([]byte, error) {
 
 func (o DtcTopologyRulesInnerOneOf1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DestType) {
+	if !IsNil(o.DestType) && *o.DestType != "" {
 		toSerialize["dest_type"] = o.DestType
 	}
 	if !IsNil(o.DestinationLink) {
 		toSerialize["destination_link"] = o.DestinationLink
 	}
-	if !IsNil(o.ReturnType) {
+	if !IsNil(o.ReturnType) && *o.ReturnType != "" {
 		toSerialize["return_type"] = o.ReturnType
 	}
-	if !IsNil(o.Topology) {
+	if !IsNil(o.Topology) && *o.Topology != "" {
 		toSerialize["topology"] = o.Topology
 	}
 	if !IsNil(o.Valid) {
 		toSerialize["valid"] = o.Valid
 	}
-	if !IsNil(o.Sources) {
+	if !IsNil(o.Sources) && len(o.Sources) > 0 {
 		toSerialize["sources"] = o.Sources
 	}
 	return toSerialize, nil

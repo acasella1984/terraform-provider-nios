@@ -289,7 +289,7 @@ func (o ZoneAuthAwsRte53ZoneInfo) MarshalJSON() ([]byte, error) {
 
 func (o ZoneAuthAwsRte53ZoneInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AssociatedVpcs) {
+	if !IsNil(o.AssociatedVpcs) && len(o.AssociatedVpcs) > 0 {
 		toSerialize["associated_vpcs"] = o.AssociatedVpcs
 	}
 	if !IsNil(o.CallerReference) {
@@ -301,7 +301,7 @@ func (o ZoneAuthAwsRte53ZoneInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HostedZoneId) {
 		toSerialize["hosted_zone_id"] = o.HostedZoneId
 	}
-	if !IsNil(o.NameServers) {
+	if !IsNil(o.NameServers) && len(o.NameServers) > 0 {
 		toSerialize["name_servers"] = o.NameServers
 	}
 	if !IsNil(o.RecordSetCount) {

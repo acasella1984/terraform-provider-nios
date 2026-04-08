@@ -255,19 +255,19 @@ func (o Permission) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Group) {
+	if !IsNil(o.Group) && *o.Group != "" {
 		toSerialize["group"] = o.Group
 	}
-	if !IsNil(o.Object) {
+	if !IsNil(o.Object) && *o.Object != "" {
 		toSerialize["object"] = o.Object
 	}
-	if !IsNil(o.Permission) {
+	if !IsNil(o.Permission) && *o.Permission != "" {
 		toSerialize["permission"] = o.Permission
 	}
-	if !IsNil(o.ResourceType) {
+	if !IsNil(o.ResourceType) && *o.ResourceType != "" {
 		toSerialize["resource_type"] = o.ResourceType
 	}
-	if !IsNil(o.Role) {
+	if !IsNil(o.Role) && *o.Role != "" {
 		toSerialize["role"] = o.Role
 	}
 	return toSerialize, nil

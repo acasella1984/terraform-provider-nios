@@ -270,7 +270,7 @@ func (o MemberSyslogProxySetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UdpPort) {
 		toSerialize["udp_port"] = o.UdpPort
 	}
-	if !IsNil(o.ClientAcls) {
+	if !IsNil(o.ClientAcls) && len(o.ClientAcls) > 0 {
 		toSerialize["client_acls"] = o.ClientAcls
 	}
 

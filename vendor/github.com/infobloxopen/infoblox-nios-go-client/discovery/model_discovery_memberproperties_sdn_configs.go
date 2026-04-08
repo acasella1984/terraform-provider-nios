@@ -530,13 +530,13 @@ func (o DiscoveryMemberpropertiesSdnConfigs) ToMap() (map[string]interface{}, er
 	if !IsNil(o.SdnType) {
 		toSerialize["sdn_type"] = o.SdnType
 	}
-	if !IsNil(o.Addresses) {
+	if !IsNil(o.Addresses) && len(o.Addresses) > 0 {
 		toSerialize["addresses"] = o.Addresses
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Protocol) {
+	if !IsNil(o.Protocol) && *o.Protocol != "" {
 		toSerialize["protocol"] = o.Protocol
 	}
 	if !IsNil(o.Handle) {

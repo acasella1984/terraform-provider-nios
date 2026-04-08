@@ -153,7 +153,7 @@ func (o DtcServerHealth) MarshalJSON() ([]byte, error) {
 
 func (o DtcServerHealth) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Availability) {
+	if !IsNil(o.Availability) && *o.Availability != "" {
 		toSerialize["availability"] = o.Availability
 	}
 	if !IsNil(o.EnabledState) {

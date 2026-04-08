@@ -425,7 +425,7 @@ func (o MemberbgpasNeighbors) MarshalJSON() ([]byte, error) {
 
 func (o MemberbgpasNeighbors) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Interface) {
+	if !IsNil(o.Interface) && *o.Interface != "" {
 		toSerialize["interface"] = o.Interface
 	}
 	if !IsNil(o.NeighborIp) {

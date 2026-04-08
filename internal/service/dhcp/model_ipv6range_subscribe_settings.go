@@ -59,6 +59,9 @@ var Ipv6rangeSubscribeSettingsResourceSchemaAttributes = map[string]schema.Attri
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},

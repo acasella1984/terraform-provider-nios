@@ -1037,7 +1037,7 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AltSubscriberId) {
+	if !IsNil(o.AltSubscriberId) && *o.AltSubscriberId != "" {
 		toSerialize["alt_subscriber_id"] = o.AltSubscriberId
 	}
 	if !IsNil(o.AltSubscriberIdRegexp) {
@@ -1046,7 +1046,7 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AltSubscriberIdSubexpression) {
 		toSerialize["alt_subscriber_id_subexpression"] = o.AltSubscriberIdSubexpression
 	}
-	if !IsNil(o.Ancillaries) {
+	if !IsNil(o.Ancillaries) && len(o.Ancillaries) > 0 {
 		toSerialize["ancillaries"] = o.Ancillaries
 	}
 	if !IsNil(o.CatAcctname) {
@@ -1070,7 +1070,7 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InterimAccountingInterval) {
 		toSerialize["interim_accounting_interval"] = o.InterimAccountingInterval
 	}
-	if !IsNil(o.IpAnchors) {
+	if !IsNil(o.IpAnchors) && len(o.IpAnchors) > 0 {
 		toSerialize["ip_anchors"] = o.IpAnchors
 	}
 	if !IsNil(o.IpSpaceDiscRegexp) {
@@ -1079,10 +1079,10 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IpSpaceDiscSubexpression) {
 		toSerialize["ip_space_disc_subexpression"] = o.IpSpaceDiscSubexpression
 	}
-	if !IsNil(o.IpSpaceDiscriminator) {
+	if !IsNil(o.IpSpaceDiscriminator) && *o.IpSpaceDiscriminator != "" {
 		toSerialize["ip_space_discriminator"] = o.IpSpaceDiscriminator
 	}
-	if !IsNil(o.LocalId) {
+	if !IsNil(o.LocalId) && *o.LocalId != "" {
 		toSerialize["local_id"] = o.LocalId
 	}
 	if !IsNil(o.LocalIdRegexp) {
@@ -1094,7 +1094,7 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogGuestLookups) {
 		toSerialize["log_guest_lookups"] = o.LogGuestLookups
 	}
-	if !IsNil(o.NasContextInfo) {
+	if !IsNil(o.NasContextInfo) && *o.NasContextInfo != "" {
 		toSerialize["nas_context_info"] = o.NasContextInfo
 	}
 	if !IsNil(o.PcZoneName) {

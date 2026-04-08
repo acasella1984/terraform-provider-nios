@@ -301,7 +301,7 @@ func (o AdAuthServiceDomainControllers) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !IsNil(o.Encryption) {
+	if !IsNil(o.Encryption) && *o.Encryption != "" {
 		toSerialize["encryption"] = o.Encryption
 	}
 	if !IsNil(o.MgmtPort) {

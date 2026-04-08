@@ -323,15 +323,17 @@ func (o ThreatprotectionProfileRule) ToMap() (map[string]interface{}, error) {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Config) {
-		toSerialize["config"] = o.Config
+		if configMap, err := o.Config.ToMap(); err == nil && len(configMap) > 0 {
+			toSerialize["config"] = o.Config
+		}
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.Profile) {
+	if !IsNil(o.Profile) && *o.Profile != "" {
 		toSerialize["profile"] = o.Profile
 	}
-	if !IsNil(o.Rule) {
+	if !IsNil(o.Rule) && *o.Rule != "" {
 		toSerialize["rule"] = o.Rule
 	}
 	if !IsNil(o.Sid) {

@@ -323,7 +323,9 @@ func (o ThreatprotectionRule) ToMap() (map[string]interface{}, error) {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Config) {
-		toSerialize["config"] = o.Config
+		if configMap, err := o.Config.ToMap(); err == nil && len(configMap) > 0 {
+			toSerialize["config"] = o.Config
+		}
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
@@ -331,7 +333,7 @@ func (o ThreatprotectionRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Member) {
 		toSerialize["member"] = o.Member
 	}
-	if !IsNil(o.Rule) {
+	if !IsNil(o.Rule) && *o.Rule != "" {
 		toSerialize["rule"] = o.Rule
 	}
 	if !IsNil(o.Sid) {

@@ -159,7 +159,7 @@ func (o MembernodeinfolanhaportsettingHaPortSetting) ToMap() (map[string]interfa
 	if !IsNil(o.Speed) {
 		toSerialize["speed"] = o.Speed
 	}
-	if !IsNil(o.Duplex) {
+	if !IsNil(o.Duplex) && *o.Duplex != "" {
 		toSerialize["duplex"] = o.Duplex
 	}
 

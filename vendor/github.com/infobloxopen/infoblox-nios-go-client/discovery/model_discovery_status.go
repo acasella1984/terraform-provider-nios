@@ -765,16 +765,22 @@ func (o DiscoveryStatus) ToMap() (map[string]interface{}, error) {
 		toSerialize["cli_collection_enabled"] = o.CliCollectionEnabled
 	}
 	if !IsNil(o.CliCredentialInfo) {
-		toSerialize["cli_credential_info"] = o.CliCredentialInfo
+		if cli_credential_infoMap, err := o.CliCredentialInfo.ToMap(); err == nil && len(cli_credential_infoMap) > 0 {
+			toSerialize["cli_credential_info"] = o.CliCredentialInfo
+		}
 	}
 	if !IsNil(o.ExistenceInfo) {
-		toSerialize["existence_info"] = o.ExistenceInfo
+		if existence_infoMap, err := o.ExistenceInfo.ToMap(); err == nil && len(existence_infoMap) > 0 {
+			toSerialize["existence_info"] = o.ExistenceInfo
+		}
 	}
 	if !IsNil(o.FingerprintEnabled) {
 		toSerialize["fingerprint_enabled"] = o.FingerprintEnabled
 	}
 	if !IsNil(o.FingerprintInfo) {
-		toSerialize["fingerprint_info"] = o.FingerprintInfo
+		if fingerprint_infoMap, err := o.FingerprintInfo.ToMap(); err == nil && len(fingerprint_infoMap) > 0 {
+			toSerialize["fingerprint_info"] = o.FingerprintInfo
+		}
 	}
 	if !IsNil(o.FirstSeen) {
 		toSerialize["first_seen"] = o.FirstSeen
@@ -795,22 +801,30 @@ func (o DiscoveryStatus) ToMap() (map[string]interface{}, error) {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.ReachableInfo) {
-		toSerialize["reachable_info"] = o.ReachableInfo
+		if reachable_infoMap, err := o.ReachableInfo.ToMap(); err == nil && len(reachable_infoMap) > 0 {
+			toSerialize["reachable_info"] = o.ReachableInfo
+		}
 	}
 	if !IsNil(o.SdnCollectionEnabled) {
 		toSerialize["sdn_collection_enabled"] = o.SdnCollectionEnabled
 	}
 	if !IsNil(o.SdnCollectionInfo) {
-		toSerialize["sdn_collection_info"] = o.SdnCollectionInfo
+		if sdn_collection_infoMap, err := o.SdnCollectionInfo.ToMap(); err == nil && len(sdn_collection_infoMap) > 0 {
+			toSerialize["sdn_collection_info"] = o.SdnCollectionInfo
+		}
 	}
 	if !IsNil(o.SnmpCollectionEnabled) {
 		toSerialize["snmp_collection_enabled"] = o.SnmpCollectionEnabled
 	}
 	if !IsNil(o.SnmpCollectionInfo) {
-		toSerialize["snmp_collection_info"] = o.SnmpCollectionInfo
+		if snmp_collection_infoMap, err := o.SnmpCollectionInfo.ToMap(); err == nil && len(snmp_collection_infoMap) > 0 {
+			toSerialize["snmp_collection_info"] = o.SnmpCollectionInfo
+		}
 	}
 	if !IsNil(o.SnmpCredentialInfo) {
-		toSerialize["snmp_credential_info"] = o.SnmpCredentialInfo
+		if snmp_credential_infoMap, err := o.SnmpCredentialInfo.ToMap(); err == nil && len(snmp_credential_infoMap) > 0 {
+			toSerialize["snmp_credential_info"] = o.SnmpCredentialInfo
+		}
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status

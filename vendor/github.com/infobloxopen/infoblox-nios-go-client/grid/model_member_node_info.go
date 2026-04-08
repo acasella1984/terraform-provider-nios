@@ -556,13 +556,13 @@ func (o MemberNodeInfo) MarshalJSON() ([]byte, error) {
 
 func (o MemberNodeInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ServiceStatus) {
+	if !IsNil(o.ServiceStatus) && len(o.ServiceStatus) > 0 {
 		toSerialize["service_status"] = o.ServiceStatus
 	}
 	if !IsNil(o.PhysicalOid) {
 		toSerialize["physical_oid"] = o.PhysicalOid
 	}
-	if !IsNil(o.HaStatus) {
+	if !IsNil(o.HaStatus) && *o.HaStatus != "" {
 		toSerialize["ha_status"] = o.HaStatus
 	}
 	if !IsNil(o.Hwid) {
@@ -584,22 +584,32 @@ func (o MemberNodeInfo) ToMap() (map[string]interface{}, error) {
 		toSerialize["paid_nios"] = o.PaidNios
 	}
 	if !IsNil(o.MgmtNetworkSetting) {
-		toSerialize["mgmt_network_setting"] = o.MgmtNetworkSetting
+		if mgmt_network_settingMap, err := o.MgmtNetworkSetting.ToMap(); err == nil && len(mgmt_network_settingMap) > 0 {
+			toSerialize["mgmt_network_setting"] = o.MgmtNetworkSetting
+		}
 	}
 	if !IsNil(o.LanHaPortSetting) {
-		toSerialize["lan_ha_port_setting"] = o.LanHaPortSetting
+		if lan_ha_port_settingMap, err := o.LanHaPortSetting.ToMap(); err == nil && len(lan_ha_port_settingMap) > 0 {
+			toSerialize["lan_ha_port_setting"] = o.LanHaPortSetting
+		}
 	}
 	if !IsNil(o.MgmtPhysicalSetting) {
-		toSerialize["mgmt_physical_setting"] = o.MgmtPhysicalSetting
+		if mgmt_physical_settingMap, err := o.MgmtPhysicalSetting.ToMap(); err == nil && len(mgmt_physical_settingMap) > 0 {
+			toSerialize["mgmt_physical_setting"] = o.MgmtPhysicalSetting
+		}
 	}
 	if !IsNil(o.Lan2PhysicalSetting) {
-		toSerialize["lan2_physical_setting"] = o.Lan2PhysicalSetting
+		if lan2_physical_settingMap, err := o.Lan2PhysicalSetting.ToMap(); err == nil && len(lan2_physical_settingMap) > 0 {
+			toSerialize["lan2_physical_setting"] = o.Lan2PhysicalSetting
+		}
 	}
 	if !IsNil(o.NatExternalIp) {
 		toSerialize["nat_external_ip"] = o.NatExternalIp
 	}
 	if !IsNil(o.V6MgmtNetworkSetting) {
-		toSerialize["v6_mgmt_network_setting"] = o.V6MgmtNetworkSetting
+		if v6_mgmt_network_settingMap, err := o.V6MgmtNetworkSetting.ToMap(); err == nil && len(v6_mgmt_network_settingMap) > 0 {
+			toSerialize["v6_mgmt_network_setting"] = o.V6MgmtNetworkSetting
+		}
 	}
 
 	for key, value := range o.AdditionalProperties {

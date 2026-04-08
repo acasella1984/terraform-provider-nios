@@ -801,7 +801,7 @@ func (o MemberThreatprotection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.CurrentRuleset) {
+	if !IsNil(o.CurrentRuleset) && *o.CurrentRuleset != "" {
 		toSerialize["current_ruleset"] = o.CurrentRuleset
 	}
 	if !IsNil(o.DisableMultipleDnsTcpRequest) {
@@ -834,13 +834,15 @@ func (o MemberThreatprotection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6address) {
 		toSerialize["ipv6address"] = o.Ipv6address
 	}
-	if !IsNil(o.NatRules) {
+	if !IsNil(o.NatRules) && len(o.NatRules) > 0 {
 		toSerialize["nat_rules"] = o.NatRules
 	}
 	if !IsNil(o.OutboundSettings) {
-		toSerialize["outbound_settings"] = o.OutboundSettings
+		if outbound_settingsMap, err := o.OutboundSettings.ToMap(); err == nil && len(outbound_settingsMap) > 0 {
+			toSerialize["outbound_settings"] = o.OutboundSettings
+		}
 	}
-	if !IsNil(o.Profile) {
+	if !IsNil(o.Profile) && *o.Profile != "" {
 		toSerialize["profile"] = o.Profile
 	}
 	if !IsNil(o.UseCurrentRuleset) {

@@ -468,28 +468,28 @@ func (o Fingerprint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Ipv6OptionSequence) {
+	if !IsNil(o.Ipv6OptionSequence) && len(o.Ipv6OptionSequence) > 0 {
 		toSerialize["ipv6_option_sequence"] = o.Ipv6OptionSequence
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.OptionSequence) {
+	if !IsNil(o.OptionSequence) && len(o.OptionSequence) > 0 {
 		toSerialize["option_sequence"] = o.OptionSequence
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.VendorId) {
+	if !IsNil(o.VendorId) && len(o.VendorId) > 0 {
 		toSerialize["vendor_id"] = o.VendorId
 	}
 	return toSerialize, nil

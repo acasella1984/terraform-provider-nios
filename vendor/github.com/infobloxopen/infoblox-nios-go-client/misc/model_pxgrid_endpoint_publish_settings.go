@@ -85,7 +85,7 @@ func (o PxgridEndpointPublishSettings) MarshalJSON() ([]byte, error) {
 
 func (o PxgridEndpointPublishSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EnabledAttributes) {
+	if !IsNil(o.EnabledAttributes) && len(o.EnabledAttributes) > 0 {
 		toSerialize["enabled_attributes"] = o.EnabledAttributes
 	}
 

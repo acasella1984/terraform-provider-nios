@@ -19,6 +19,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/infobloxopen/infoblox-nios-go-client/security"
@@ -27,6 +29,7 @@ import (
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type AdmingroupModel struct {
@@ -128,6 +131,9 @@ var AdmingroupAttrTypes = map[string]attr.Type{
 var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -190,6 +196,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          AdmingroupCloudShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Cloud show commands for admin group.",
 	},
 	"comment": schema.StringAttribute{
@@ -233,6 +242,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          AdmingroupDhcpShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Dhcp show commands for the dhcp command group.",
 	},
 	"disable": schema.BoolAttribute{
@@ -327,6 +339,7 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"grid_set_commands": schema.SingleNestedAttribute{
@@ -462,6 +475,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          AdmingroupSecurityShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Show commands for the security command group.",
 	},
 	"superuser": schema.BoolAttribute{
@@ -474,6 +490,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          AdmingroupTroubleShootingToplevelCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Toplevel commands for the troubleshooting command group.",
 	},
 	"use_account_inactivity_lockout_enable": schema.BoolAttribute{
@@ -509,6 +528,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The access control items for this Admin Group.",
 	},
 }

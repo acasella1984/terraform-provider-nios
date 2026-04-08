@@ -156,7 +156,7 @@ func (o Gmcschedule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActivateGmcGroupSchedule) {
 		toSerialize["activate_gmc_group_schedule"] = o.ActivateGmcGroupSchedule
 	}
-	if !IsNil(o.GmcGroups) {
+	if !IsNil(o.GmcGroups) && len(o.GmcGroups) > 0 {
 		toSerialize["gmc_groups"] = o.GmcGroups
 	}
 	return toSerialize, nil

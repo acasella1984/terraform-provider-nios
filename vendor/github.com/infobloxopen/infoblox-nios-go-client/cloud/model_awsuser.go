@@ -378,7 +378,7 @@ func (o Awsuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecretAccessKey) {
 		toSerialize["secret_access_key"] = o.SecretAccessKey
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil

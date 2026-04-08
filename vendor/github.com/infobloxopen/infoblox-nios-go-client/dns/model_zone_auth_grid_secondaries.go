@@ -267,7 +267,7 @@ func (o ZoneAuthGridSecondaries) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Lead) {
 		toSerialize["lead"] = o.Lead
 	}
-	if !IsNil(o.PreferredPrimaries) {
+	if !IsNil(o.PreferredPrimaries) && len(o.PreferredPrimaries) > 0 {
 		toSerialize["preferred_primaries"] = o.PreferredPrimaries
 	}
 	if !IsNil(o.EnablePreferredPrimaries) {

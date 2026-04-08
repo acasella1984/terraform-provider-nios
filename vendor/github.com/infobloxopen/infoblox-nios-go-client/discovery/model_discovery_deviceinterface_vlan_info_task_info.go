@@ -151,13 +151,19 @@ func (o DiscoveryDeviceinterfaceVlanInfoTaskInfo) MarshalJSON() ([]byte, error) 
 func (o DiscoveryDeviceinterfaceVlanInfoTaskInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DataVlanInfo) {
-		toSerialize["data_vlan_info"] = o.DataVlanInfo
+		if data_vlan_infoMap, err := o.DataVlanInfo.ToMap(); err == nil && len(data_vlan_infoMap) > 0 {
+			toSerialize["data_vlan_info"] = o.DataVlanInfo
+		}
 	}
 	if !IsNil(o.VoiceVlanInfo) {
-		toSerialize["voice_vlan_info"] = o.VoiceVlanInfo
+		if voice_vlan_infoMap, err := o.VoiceVlanInfo.ToMap(); err == nil && len(voice_vlan_infoMap) > 0 {
+			toSerialize["voice_vlan_info"] = o.VoiceVlanInfo
+		}
 	}
 	if !IsNil(o.Details) {
-		toSerialize["details"] = o.Details
+		if detailsMap, err := o.Details.ToMap(); err == nil && len(detailsMap) > 0 {
+			toSerialize["details"] = o.Details
+		}
 	}
 
 	for key, value := range o.AdditionalProperties {

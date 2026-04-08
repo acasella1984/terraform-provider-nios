@@ -610,10 +610,10 @@ func (o Gcpdnstaskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GcpProjectIdsFileToken) {
 		toSerialize["gcp_project_ids_file_token"] = o.GcpProjectIdsFileToken
 	}
-	if !IsNil(o.GridMember) {
+	if !IsNil(o.GridMember) && *o.GridMember != "" {
 		toSerialize["grid_member"] = o.GridMember
 	}
-	if !IsNil(o.MultipleProjectsSyncPolicy) {
+	if !IsNil(o.MultipleProjectsSyncPolicy) && *o.MultipleProjectsSyncPolicy != "" {
 		toSerialize["multiple_projects_sync_policy"] = o.MultipleProjectsSyncPolicy
 	}
 	if !IsNil(o.Name) {
@@ -622,7 +622,7 @@ func (o Gcpdnstaskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.NetworkViewMappingPolicy) {
+	if !IsNil(o.NetworkViewMappingPolicy) && *o.NetworkViewMappingPolicy != "" {
 		toSerialize["network_view_mapping_policy"] = o.NetworkViewMappingPolicy
 	}
 	if !IsNil(o.ProjectId) {
@@ -634,10 +634,10 @@ func (o Gcpdnstaskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SyncChildProjects) {
 		toSerialize["sync_child_projects"] = o.SyncChildProjects
 	}
-	if !IsNil(o.SyncStatus) {
+	if !IsNil(o.SyncStatus) && *o.SyncStatus != "" {
 		toSerialize["sync_status"] = o.SyncStatus
 	}
-	if !IsNil(o.TaskList) {
+	if !IsNil(o.TaskList) && len(o.TaskList) > 0 {
 		toSerialize["task_list"] = o.TaskList
 	}
 	return toSerialize, nil

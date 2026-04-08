@@ -21,6 +21,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -30,6 +31,7 @@ import (
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type Ipv6rangeModel struct {
@@ -119,6 +121,9 @@ var Ipv6rangeAttrTypes = map[string]attr.Type{
 var Ipv6rangeResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"address_type": schema.StringAttribute{
@@ -134,6 +139,9 @@ var Ipv6rangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          Ipv6rangeCloudInfoResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Structure containing all cloud API related information for this object.",
 	},
 	"comment": schema.StringAttribute{
@@ -231,6 +239,9 @@ var Ipv6rangeResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -250,6 +261,7 @@ var Ipv6rangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed: true,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "Extensible attributes associated with the object , including default and internal attributes.",
 		ElementType:         types.StringType,
@@ -282,6 +294,9 @@ var Ipv6rangeResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 			listvalidator.AlsoRequires(path.MatchRoot("use_logic_filter_rules")),
@@ -328,6 +343,9 @@ var Ipv6rangeResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -337,6 +355,9 @@ var Ipv6rangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          Ipv6rangePortControlBlackoutSettingResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The port control blackout setting for this range.",
 	},
 	"recycle_leases": schema.BoolAttribute{
@@ -392,6 +413,9 @@ var Ipv6rangeResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"template": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "If set on creation, the range will be created according to the values specified in the named template.",
 	},
 	"use_blackout_setting": schema.BoolAttribute{
@@ -438,7 +462,8 @@ func (m *Ipv6rangeModel) Expand(ctx context.Context, diags *diag.Diagnostics) *d
 	}
 	to := &dhcp.Ipv6range{
 		AddressType:                      flex.ExpandStringPointer(m.AddressType),
-		CloudInfo:                        ExpandIpv6rangeCloudInfo(ctx, m.CloudInfo, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// CloudInfo:                        ExpandIpv6rangeCloudInfo(ctx, m.CloudInfo, diags),
 		Comment:                          flex.ExpandStringPointer(m.Comment),
 		Disable:                          flex.ExpandBoolPointer(m.Disable),
 		DiscoveryBasicPollSettings:       ExpandIpv6rangeDiscoveryBasicPollSettings(ctx, m.DiscoveryBasicPollSettings, diags),

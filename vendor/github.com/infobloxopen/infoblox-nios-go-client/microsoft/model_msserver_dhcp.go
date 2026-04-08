@@ -808,7 +808,7 @@ func (o MsserverDhcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DhcpUtilization) {
 		toSerialize["dhcp_utilization"] = o.DhcpUtilization
 	}
-	if !IsNil(o.DhcpUtilizationStatus) {
+	if !IsNil(o.DhcpUtilizationStatus) && *o.DhcpUtilizationStatus != "" {
 		toSerialize["dhcp_utilization_status"] = o.DhcpUtilizationStatus
 	}
 	if !IsNil(o.DynamicHosts) {
@@ -826,7 +826,7 @@ func (o MsserverDhcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.NextSyncControl) {
+	if !IsNil(o.NextSyncControl) && *o.NextSyncControl != "" {
 		toSerialize["next_sync_control"] = o.NextSyncControl
 	}
 	if !IsNil(o.ReadOnly) {

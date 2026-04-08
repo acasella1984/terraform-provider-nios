@@ -1279,7 +1279,7 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillingClass) {
 		toSerialize["billing_class"] = o.BillingClass
 	}
-	if !IsNil(o.BindingState) {
+	if !IsNil(o.BindingState) && *o.BindingState != "" {
 		toSerialize["binding_state"] = o.BindingState
 	}
 	if !IsNil(o.ClientHostname) {
@@ -1289,7 +1289,9 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 		toSerialize["cltt"] = o.Cltt
 	}
 	if !IsNil(o.DiscoveredData) {
-		toSerialize["discovered_data"] = o.DiscoveredData
+		if discovered_dataMap, err := o.DiscoveredData.ToMap(); err == nil && len(discovered_dataMap) > 0 {
+			toSerialize["discovered_data"] = o.DiscoveredData
+		}
 	}
 	if !IsNil(o.Ends) {
 		toSerialize["ends"] = o.Ends
@@ -1316,7 +1318,9 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 		toSerialize["is_invalid_mac"] = o.IsInvalidMac
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
@@ -1330,7 +1334,7 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NeverStarts) {
 		toSerialize["never_starts"] = o.NeverStarts
 	}
-	if !IsNil(o.NextBindingState) {
+	if !IsNil(o.NextBindingState) && *o.NextBindingState != "" {
 		toSerialize["next_binding_state"] = o.NextBindingState
 	}
 	if !IsNil(o.OnCommit) {
@@ -1345,7 +1349,7 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Option) {
 		toSerialize["option"] = o.Option
 	}
-	if !IsNil(o.Protocol) {
+	if !IsNil(o.Protocol) && *o.Protocol != "" {
 		toSerialize["protocol"] = o.Protocol
 	}
 	if !IsNil(o.RemoteId) {

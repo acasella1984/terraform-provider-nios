@@ -1412,10 +1412,10 @@ func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.AddressRef) {
+	if !IsNil(o.AddressRef) && *o.AddressRef != "" {
 		toSerialize["address_ref"] = o.AddressRef
 	}
-	if !IsNil(o.AvailableMgmtIps) {
+	if !IsNil(o.AvailableMgmtIps) && len(o.AvailableMgmtIps) > 0 {
 		toSerialize["available_mgmt_ips"] = o.AvailableMgmtIps
 	}
 	if !IsNil(o.CapAdminStatusInd) {
@@ -1466,16 +1466,16 @@ func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Interfaces) {
+	if !IsNil(o.Interfaces) && len(o.Interfaces) > 0 {
 		toSerialize["interfaces"] = o.Interfaces
 	}
 	if !IsNil(o.Location) {
@@ -1485,31 +1485,35 @@ func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 		toSerialize["model"] = o.Model
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Neighbors) {
+	if !IsNil(o.Neighbors) && len(o.Neighbors) > 0 {
 		toSerialize["neighbors"] = o.Neighbors
 	}
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkInfos) {
+	if !IsNil(o.NetworkInfos) && len(o.NetworkInfos) > 0 {
 		toSerialize["network_infos"] = o.NetworkInfos
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Networks) {
+	if !IsNil(o.Networks) && len(o.Networks) > 0 {
 		toSerialize["networks"] = o.Networks
 	}
 	if !IsNil(o.OsVersion) {
 		toSerialize["os_version"] = o.OsVersion
 	}
 	if !IsNil(o.PortStats) {
-		toSerialize["port_stats"] = o.PortStats
+		if port_statsMap, err := o.PortStats.ToMap(); err == nil && len(port_statsMap) > 0 {
+			toSerialize["port_stats"] = o.PortStats
+		}
 	}
 	if !IsNil(o.PrivilegedPolling) {
 		toSerialize["privileged_polling"] = o.PrivilegedPolling
@@ -1523,7 +1527,7 @@ func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Vendor) {
 		toSerialize["vendor"] = o.Vendor
 	}
-	if !IsNil(o.VlanInfos) {
+	if !IsNil(o.VlanInfos) && len(o.VlanInfos) > 0 {
 		toSerialize["vlan_infos"] = o.VlanInfos
 	}
 	return toSerialize, nil

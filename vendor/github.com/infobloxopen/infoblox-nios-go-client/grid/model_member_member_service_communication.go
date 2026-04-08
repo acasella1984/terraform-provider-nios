@@ -153,7 +153,7 @@ func (o MemberMemberServiceCommunication) MarshalJSON() ([]byte, error) {
 
 func (o MemberMemberServiceCommunication) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Service) {
+	if !IsNil(o.Service) && *o.Service != "" {
 		toSerialize["service"] = o.Service
 	}
 	if !IsNil(o.Type) {

@@ -539,7 +539,7 @@ func (o MsserverDhcpServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Managed) {
 		toSerialize["managed"] = o.Managed
 	}
-	if !IsNil(o.NextSyncControl) {
+	if !IsNil(o.NextSyncControl) && *o.NextSyncControl != "" {
 		toSerialize["next_sync_control"] = o.NextSyncControl
 	}
 	if !IsNil(o.Status) {

@@ -221,16 +221,16 @@ func (o Restartservicestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.DhcpStatus) {
+	if !IsNil(o.DhcpStatus) && *o.DhcpStatus != "" {
 		toSerialize["dhcp_status"] = o.DhcpStatus
 	}
-	if !IsNil(o.DnsStatus) {
+	if !IsNil(o.DnsStatus) && *o.DnsStatus != "" {
 		toSerialize["dns_status"] = o.DnsStatus
 	}
-	if !IsNil(o.Member) {
+	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
-	if !IsNil(o.ReportingStatus) {
+	if !IsNil(o.ReportingStatus) && *o.ReportingStatus != "" {
 		toSerialize["reporting_status"] = o.ReportingStatus
 	}
 	return toSerialize, nil

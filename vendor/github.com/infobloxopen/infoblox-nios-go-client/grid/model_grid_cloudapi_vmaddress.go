@@ -1415,19 +1415,21 @@ func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddressType) {
 		toSerialize["address_type"] = o.AddressType
 	}
-	if !IsNil(o.AssociatedIp) {
+	if !IsNil(o.AssociatedIp) && *o.AssociatedIp != "" {
 		toSerialize["associated_ip"] = o.AssociatedIp
 	}
-	if !IsNil(o.AssociatedObjectTypes) {
+	if !IsNil(o.AssociatedObjectTypes) && len(o.AssociatedObjectTypes) > 0 {
 		toSerialize["associated_object_types"] = o.AssociatedObjectTypes
 	}
-	if !IsNil(o.AssociatedObjects) {
+	if !IsNil(o.AssociatedObjects) && len(o.AssociatedObjects) > 0 {
 		toSerialize["associated_objects"] = o.AssociatedObjects
 	}
 	if !IsNil(o.CloudInfo) {
-		toSerialize["cloud_info"] = o.CloudInfo
+		if cloud_infoMap, err := o.CloudInfo.ToMap(); err == nil && len(cloud_infoMap) > 0 {
+			toSerialize["cloud_info"] = o.CloudInfo
+		}
 	}
-	if !IsNil(o.DnsNames) {
+	if !IsNil(o.DnsNames) && len(o.DnsNames) > 0 {
 		toSerialize["dns_names"] = o.DnsNames
 	}
 	if !IsNil(o.ElasticAddress) {
@@ -1443,7 +1445,9 @@ func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 		toSerialize["mac_address"] = o.MacAddress
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
@@ -1475,7 +1479,7 @@ func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubnetId) {
 		toSerialize["subnet_id"] = o.SubnetId
 	}
-	if !IsNil(o.Tenant) {
+	if !IsNil(o.Tenant) && *o.Tenant != "" {
 		toSerialize["tenant"] = o.Tenant
 	}
 	if !IsNil(o.VmAvailabilityZone) {
@@ -1523,7 +1527,7 @@ func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VmVpcName) {
 		toSerialize["vm_vpc_name"] = o.VmVpcName
 	}
-	if !IsNil(o.VmVpcRef) {
+	if !IsNil(o.VmVpcRef) && *o.VmVpcRef != "" {
 		toSerialize["vm_vpc_ref"] = o.VmVpcRef
 	}
 	return toSerialize, nil

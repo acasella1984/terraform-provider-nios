@@ -1679,11 +1679,13 @@ func (o DiscoveryDeviceinterface) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AdminStatus) {
+	if !IsNil(o.AdminStatus) && *o.AdminStatus != "" {
 		toSerialize["admin_status"] = o.AdminStatus
 	}
 	if !IsNil(o.AdminStatusTaskInfo) {
-		toSerialize["admin_status_task_info"] = o.AdminStatusTaskInfo
+		if admin_status_task_infoMap, err := o.AdminStatusTaskInfo.ToMap(); err == nil && len(admin_status_task_infoMap) > 0 {
+			toSerialize["admin_status_task_info"] = o.AdminStatusTaskInfo
+		}
 	}
 	if !IsNil(o.AggrInterfaceName) {
 		toSerialize["aggr_interface_name"] = o.AggrInterfaceName
@@ -1740,24 +1742,26 @@ func (o DiscoveryDeviceinterface) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.DescriptionTaskInfo) {
-		toSerialize["description_task_info"] = o.DescriptionTaskInfo
+		if description_task_infoMap, err := o.DescriptionTaskInfo.ToMap(); err == nil && len(description_task_infoMap) > 0 {
+			toSerialize["description_task_info"] = o.DescriptionTaskInfo
+		}
 	}
-	if !IsNil(o.Device) {
+	if !IsNil(o.Device) && *o.Device != "" {
 		toSerialize["device"] = o.Device
 	}
-	if !IsNil(o.Duplex) {
+	if !IsNil(o.Duplex) && *o.Duplex != "" {
 		toSerialize["duplex"] = o.Duplex
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.IfaddrInfos) {
+	if !IsNil(o.IfaddrInfos) && len(o.IfaddrInfos) > 0 {
 		toSerialize["ifaddr_infos"] = o.IfaddrInfos
 	}
 	if !IsNil(o.Index) {
@@ -1773,7 +1777,9 @@ func (o DiscoveryDeviceinterface) ToMap() (map[string]interface{}, error) {
 		toSerialize["mac"] = o.Mac
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -1781,34 +1787,36 @@ func (o DiscoveryDeviceinterface) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.OperStatus) {
+	if !IsNil(o.OperStatus) && *o.OperStatus != "" {
 		toSerialize["oper_status"] = o.OperStatus
 	}
-	if !IsNil(o.PortFast) {
+	if !IsNil(o.PortFast) && *o.PortFast != "" {
 		toSerialize["port_fast"] = o.PortFast
 	}
-	if !IsNil(o.ReservedObject) {
+	if !IsNil(o.ReservedObject) && *o.ReservedObject != "" {
 		toSerialize["reserved_object"] = o.ReservedObject
 	}
 	if !IsNil(o.Speed) {
 		toSerialize["speed"] = o.Speed
 	}
-	if !IsNil(o.TrunkStatus) {
+	if !IsNil(o.TrunkStatus) && *o.TrunkStatus != "" {
 		toSerialize["trunk_status"] = o.TrunkStatus
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.VlanInfoTaskInfo) {
-		toSerialize["vlan_info_task_info"] = o.VlanInfoTaskInfo
+		if vlan_info_task_infoMap, err := o.VlanInfoTaskInfo.ToMap(); err == nil && len(vlan_info_task_infoMap) > 0 {
+			toSerialize["vlan_info_task_info"] = o.VlanInfoTaskInfo
+		}
 	}
-	if !IsNil(o.VlanInfos) {
+	if !IsNil(o.VlanInfos) && len(o.VlanInfos) > 0 {
 		toSerialize["vlan_infos"] = o.VlanInfos
 	}
 	if !IsNil(o.VpcPeer) {
 		toSerialize["vpc_peer"] = o.VpcPeer
 	}
-	if !IsNil(o.VpcPeerDevice) {
+	if !IsNil(o.VpcPeerDevice) && *o.VpcPeerDevice != "" {
 		toSerialize["vpc_peer_device"] = o.VpcPeerDevice
 	}
 	if !IsNil(o.VrfDescription) {

@@ -219,16 +219,22 @@ func (o GridDnsAttackMitigation) MarshalJSON() ([]byte, error) {
 func (o GridDnsAttackMitigation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DetectChr) {
-		toSerialize["detect_chr"] = o.DetectChr
+		if detect_chrMap, err := o.DetectChr.ToMap(); err == nil && len(detect_chrMap) > 0 {
+			toSerialize["detect_chr"] = o.DetectChr
+		}
 	}
 	if !IsNil(o.DetectChrGrace) {
 		toSerialize["detect_chr_grace"] = o.DetectChrGrace
 	}
 	if !IsNil(o.DetectNxdomainResponses) {
-		toSerialize["detect_nxdomain_responses"] = o.DetectNxdomainResponses
+		if detect_nxdomain_responsesMap, err := o.DetectNxdomainResponses.ToMap(); err == nil && len(detect_nxdomain_responsesMap) > 0 {
+			toSerialize["detect_nxdomain_responses"] = o.DetectNxdomainResponses
+		}
 	}
 	if !IsNil(o.DetectUdpDrop) {
-		toSerialize["detect_udp_drop"] = o.DetectUdpDrop
+		if detect_udp_dropMap, err := o.DetectUdpDrop.ToMap(); err == nil && len(detect_udp_dropMap) > 0 {
+			toSerialize["detect_udp_drop"] = o.DetectUdpDrop
+		}
 	}
 	if !IsNil(o.Interval) {
 		toSerialize["interval"] = o.Interval

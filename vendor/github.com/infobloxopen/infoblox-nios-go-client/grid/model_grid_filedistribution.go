@@ -335,7 +335,7 @@ func (o GridFiledistribution) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableAnonymousFtp) {
 		toSerialize["enable_anonymous_ftp"] = o.EnableAnonymousFtp
 	}
-	if !IsNil(o.GlobalStatus) {
+	if !IsNil(o.GlobalStatus) && *o.GlobalStatus != "" {
 		toSerialize["global_status"] = o.GlobalStatus
 	}
 	if !IsNil(o.Name) {

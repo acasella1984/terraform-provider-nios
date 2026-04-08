@@ -82,7 +82,9 @@ func (o GetThreatinsightCloudclientResponseObjectAsResult) MarshalJSON() ([]byte
 func (o GetThreatinsightCloudclientResponseObjectAsResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Result) {
-		toSerialize["result"] = o.Result
+		if resultMap, err := o.Result.ToMap(); err == nil && len(resultMap) > 0 {
+			toSerialize["result"] = o.Result
+		}
 	}
 	return toSerialize, nil
 }

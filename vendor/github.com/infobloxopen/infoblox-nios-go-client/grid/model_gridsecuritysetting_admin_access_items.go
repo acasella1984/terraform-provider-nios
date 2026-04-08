@@ -258,7 +258,7 @@ func (o GridsecuritysettingAdminAccessItems) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Permission) {
+	if !IsNil(o.Permission) && *o.Permission != "" {
 		toSerialize["permission"] = o.Permission
 	}
 	if !IsNil(o.TsigKey) {

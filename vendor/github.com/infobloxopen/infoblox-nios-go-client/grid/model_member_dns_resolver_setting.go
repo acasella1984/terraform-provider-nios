@@ -119,10 +119,10 @@ func (o MemberDnsResolverSetting) MarshalJSON() ([]byte, error) {
 
 func (o MemberDnsResolverSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Resolvers) {
+	if !IsNil(o.Resolvers) && len(o.Resolvers) > 0 {
 		toSerialize["resolvers"] = o.Resolvers
 	}
-	if !IsNil(o.SearchDomains) {
+	if !IsNil(o.SearchDomains) && len(o.SearchDomains) > 0 {
 		toSerialize["search_domains"] = o.SearchDomains
 	}
 

@@ -304,7 +304,7 @@ func (o MemberExternalSyslogBackupServers) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.Protocol) {
+	if !IsNil(o.Protocol) && *o.Protocol != "" {
 		toSerialize["protocol"] = o.Protocol
 	}
 	if !IsNil(o.Username) {

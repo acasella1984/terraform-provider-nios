@@ -156,7 +156,7 @@ func (o SmartfolderGlobalGroupBys) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !IsNil(o.ValueType) {
+	if !IsNil(o.ValueType) && *o.ValueType != "" {
 		toSerialize["value_type"] = o.ValueType
 	}
 	if !IsNil(o.EnableGrouping) {

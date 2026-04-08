@@ -810,19 +810,19 @@ func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiscoveryTaskOid) {
 		toSerialize["discovery_task_oid"] = o.DiscoveryTaskOid
 	}
-	if !IsNil(o.MemberName) {
+	if !IsNil(o.MemberName) && *o.MemberName != "" {
 		toSerialize["member_name"] = o.MemberName
 	}
 	if !IsNil(o.MergeData) {
 		toSerialize["merge_data"] = o.MergeData
 	}
-	if !IsNil(o.Mode) {
+	if !IsNil(o.Mode) && *o.Mode != "" {
 		toSerialize["mode"] = o.Mode
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Networks) {
+	if !IsNil(o.Networks) && len(o.Networks) > 0 {
 		toSerialize["networks"] = o.Networks
 	}
 	if !IsNil(o.PingRetries) {
@@ -832,9 +832,11 @@ func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 		toSerialize["ping_timeout"] = o.PingTimeout
 	}
 	if !IsNil(o.ScheduledRun) {
-		toSerialize["scheduled_run"] = o.ScheduledRun
+		if scheduled_runMap, err := o.ScheduledRun.ToMap(); err == nil && len(scheduled_runMap) > 0 {
+			toSerialize["scheduled_run"] = o.ScheduledRun
+		}
 	}
-	if !IsNil(o.State) {
+	if !IsNil(o.State) && *o.State != "" {
 		toSerialize["state"] = o.State
 	}
 	if !IsNil(o.StateTime) {
@@ -846,16 +848,16 @@ func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StatusTime) {
 		toSerialize["status_time"] = o.StatusTime
 	}
-	if !IsNil(o.TcpPorts) {
+	if !IsNil(o.TcpPorts) && len(o.TcpPorts) > 0 {
 		toSerialize["tcp_ports"] = o.TcpPorts
 	}
-	if !IsNil(o.TcpScanTechnique) {
+	if !IsNil(o.TcpScanTechnique) && *o.TcpScanTechnique != "" {
 		toSerialize["tcp_scan_technique"] = o.TcpScanTechnique
 	}
 	if !IsNil(o.VNetworkView) {
 		toSerialize["v_network_view"] = o.VNetworkView
 	}
-	if !IsNil(o.Vservers) {
+	if !IsNil(o.Vservers) && len(o.Vservers) > 0 {
 		toSerialize["vservers"] = o.Vservers
 	}
 	if !IsNil(o.Warning) {

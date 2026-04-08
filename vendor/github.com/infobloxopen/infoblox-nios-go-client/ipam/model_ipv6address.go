@@ -800,25 +800,27 @@ func (o Ipv6address) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ConflictTypes) {
+	if !IsNil(o.ConflictTypes) && len(o.ConflictTypes) > 0 {
 		toSerialize["conflict_types"] = o.ConflictTypes
 	}
-	if !IsNil(o.DiscoverNowStatus) {
+	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
 		toSerialize["discover_now_status"] = o.DiscoverNowStatus
 	}
 	if !IsNil(o.DiscoveredData) {
-		toSerialize["discovered_data"] = o.DiscoveredData
+		if discovered_dataMap, err := o.DiscoveredData.ToMap(); err == nil && len(discovered_dataMap) > 0 {
+			toSerialize["discovered_data"] = o.DiscoveredData
+		}
 	}
 	if !IsNil(o.Duid) {
 		toSerialize["duid"] = o.Duid
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Fingerprint) {
@@ -834,9 +836,11 @@ func (o Ipv6address) ToMap() (map[string]interface{}, error) {
 		toSerialize["lease_state"] = o.LeaseState
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
-	if !IsNil(o.Names) {
+	if !IsNil(o.Names) && len(o.Names) > 0 {
 		toSerialize["names"] = o.Names
 	}
 	if !IsNil(o.Network) {
@@ -851,13 +855,13 @@ func (o Ipv6address) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ReservedPort) {
 		toSerialize["reserved_port"] = o.ReservedPort
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.Types) {
+	if !IsNil(o.Types) && len(o.Types) > 0 {
 		toSerialize["types"] = o.Types
 	}
-	if !IsNil(o.Usage) {
+	if !IsNil(o.Usage) && len(o.Usage) > 0 {
 		toSerialize["usage"] = o.Usage
 	}
 	return toSerialize, nil

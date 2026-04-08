@@ -59,6 +59,9 @@ var RangeSubscribeSettingsResourceSchemaAttributes = map[string]schema.Attribute
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},

@@ -1293,16 +1293,16 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsFqdn) {
 		toSerialize["dns_fqdn"] = o.DnsFqdn
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.ExternalNsGroup) {
+	if !IsNil(o.ExternalNsGroup) && *o.ExternalNsGroup != "" {
 		toSerialize["external_ns_group"] = o.ExternalNsGroup
 	}
 	if !IsNil(o.Fqdn) {
@@ -1320,10 +1320,10 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsAdIntegrated) {
 		toSerialize["ms_ad_integrated"] = o.MsAdIntegrated
 	}
-	if !IsNil(o.MsDdnsMode) {
+	if !IsNil(o.MsDdnsMode) && *o.MsDdnsMode != "" {
 		toSerialize["ms_ddns_mode"] = o.MsDdnsMode
 	}
-	if !IsNil(o.MsManaged) {
+	if !IsNil(o.MsManaged) && *o.MsManaged != "" {
 		toSerialize["ms_managed"] = o.MsManaged
 	}
 	if !IsNil(o.MsReadOnly) {
@@ -1332,7 +1332,7 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsSyncMasterName) {
 		toSerialize["ms_sync_master_name"] = o.MsSyncMasterName
 	}
-	if !IsNil(o.NsGroup) {
+	if !IsNil(o.NsGroup) && *o.NsGroup != "" {
 		toSerialize["ns_group"] = o.NsGroup
 	}
 	if !IsNil(o.Parent) {
@@ -1362,13 +1362,13 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SoaSerial) {
 		toSerialize["soa_serial_number"] = o.SoaSerial
 	}
-	if !IsNil(o.StubFrom) {
+	if !IsNil(o.StubFrom) && len(o.StubFrom) > 0 {
 		toSerialize["stub_from"] = o.StubFrom
 	}
-	if !IsNil(o.StubMembers) {
+	if !IsNil(o.StubMembers) && len(o.StubMembers) > 0 {
 		toSerialize["stub_members"] = o.StubMembers
 	}
-	if !IsNil(o.StubMsservers) {
+	if !IsNil(o.StubMsservers) && len(o.StubMsservers) > 0 {
 		toSerialize["stub_msservers"] = o.StubMsservers
 	}
 	if !IsNil(o.UsingSrgAssociations) {
@@ -1377,7 +1377,7 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.View) {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.ZoneFormat) {
+	if !IsNil(o.ZoneFormat) && *o.ZoneFormat != "" {
 		toSerialize["zone_format"] = o.ZoneFormat
 	}
 	return toSerialize, nil

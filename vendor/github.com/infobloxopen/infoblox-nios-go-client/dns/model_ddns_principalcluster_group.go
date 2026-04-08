@@ -187,7 +187,7 @@ func (o DdnsPrincipalclusterGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Clusters) {
+	if !IsNil(o.Clusters) && len(o.Clusters) > 0 {
 		toSerialize["clusters"] = o.Clusters
 	}
 	if !IsNil(o.Comment) {

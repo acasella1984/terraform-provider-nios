@@ -2067,41 +2067,55 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AllowRecursiveDeletion) {
+	if !IsNil(o.AllowRecursiveDeletion) && *o.AllowRecursiveDeletion != "" {
 		toSerialize["allow_recursive_deletion"] = o.AllowRecursiveDeletion
 	}
-	if !IsNil(o.AuditLogFormat) {
+	if !IsNil(o.AuditLogFormat) && *o.AuditLogFormat != "" {
 		toSerialize["audit_log_format"] = o.AuditLogFormat
 	}
 	if !IsNil(o.AuditToSyslogEnable) {
 		toSerialize["audit_to_syslog_enable"] = o.AuditToSyslogEnable
 	}
 	if !IsNil(o.AutomatedTrafficCaptureSetting) {
-		toSerialize["automated_traffic_capture_setting"] = o.AutomatedTrafficCaptureSetting
+		if automated_traffic_capture_settingMap, err := o.AutomatedTrafficCaptureSetting.ToMap(); err == nil && len(automated_traffic_capture_settingMap) > 0 {
+			toSerialize["automated_traffic_capture_setting"] = o.AutomatedTrafficCaptureSetting
+		}
 	}
 	if !IsNil(o.ConsentBannerSetting) {
-		toSerialize["consent_banner_setting"] = o.ConsentBannerSetting
+		if consent_banner_settingMap, err := o.ConsentBannerSetting.ToMap(); err == nil && len(consent_banner_settingMap) > 0 {
+			toSerialize["consent_banner_setting"] = o.ConsentBannerSetting
+		}
 	}
 	if !IsNil(o.CspApiConfig) {
-		toSerialize["csp_api_config"] = o.CspApiConfig
+		if csp_api_configMap, err := o.CspApiConfig.ToMap(); err == nil && len(csp_api_configMap) > 0 {
+			toSerialize["csp_api_config"] = o.CspApiConfig
+		}
 	}
 	if !IsNil(o.CspGridSetting) {
-		toSerialize["csp_grid_setting"] = o.CspGridSetting
+		if csp_grid_settingMap, err := o.CspGridSetting.ToMap(); err == nil && len(csp_grid_settingMap) > 0 {
+			toSerialize["csp_grid_setting"] = o.CspGridSetting
+		}
 	}
 	if !IsNil(o.DenyMgmSnapshots) {
 		toSerialize["deny_mgm_snapshots"] = o.DenyMgmSnapshots
 	}
 	if !IsNil(o.DescendantsAction) {
-		toSerialize["descendants_action"] = o.DescendantsAction
+		if descendants_actionMap, err := o.DescendantsAction.ToMap(); err == nil && len(descendants_actionMap) > 0 {
+			toSerialize["descendants_action"] = o.DescendantsAction
+		}
 	}
 	if !IsNil(o.DnsResolverSetting) {
-		toSerialize["dns_resolver_setting"] = o.DnsResolverSetting
+		if dns_resolver_settingMap, err := o.DnsResolverSetting.ToMap(); err == nil && len(dns_resolver_settingMap) > 0 {
+			toSerialize["dns_resolver_setting"] = o.DnsResolverSetting
+		}
 	}
 	if !IsNil(o.Dscp) {
 		toSerialize["dscp"] = o.Dscp
 	}
 	if !IsNil(o.EmailSetting) {
-		toSerialize["email_setting"] = o.EmailSetting
+		if email_settingMap, err := o.EmailSetting.ToMap(); err == nil && len(email_settingMap) > 0 {
+			toSerialize["email_setting"] = o.EmailSetting
+		}
 	}
 	if !IsNil(o.EnableFederation) {
 		toSerialize["enable_federation"] = o.EnableFederation
@@ -2124,52 +2138,68 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableRirSwip) {
 		toSerialize["enable_rir_swip"] = o.EnableRirSwip
 	}
-	if !IsNil(o.ExternalSyslogBackupServers) {
+	if !IsNil(o.ExternalSyslogBackupServers) && len(o.ExternalSyslogBackupServers) > 0 {
 		toSerialize["external_syslog_backup_servers"] = o.ExternalSyslogBackupServers
 	}
 	if !IsNil(o.ExternalSyslogServerEnable) {
 		toSerialize["external_syslog_server_enable"] = o.ExternalSyslogServerEnable
 	}
 	if !IsNil(o.HttpProxyServerSetting) {
-		toSerialize["http_proxy_server_setting"] = o.HttpProxyServerSetting
+		if http_proxy_server_settingMap, err := o.HttpProxyServerSetting.ToMap(); err == nil && len(http_proxy_server_settingMap) > 0 {
+			toSerialize["http_proxy_server_setting"] = o.HttpProxyServerSetting
+		}
 	}
 	if !IsNil(o.InformationalBannerSetting) {
-		toSerialize["informational_banner_setting"] = o.InformationalBannerSetting
+		if informational_banner_settingMap, err := o.InformationalBannerSetting.ToMap(); err == nil && len(informational_banner_settingMap) > 0 {
+			toSerialize["informational_banner_setting"] = o.InformationalBannerSetting
+		}
 	}
 	if !IsNil(o.IsGridVisualizationVisible) {
 		toSerialize["is_grid_visualization_visible"] = o.IsGridVisualizationVisible
 	}
 	if !IsNil(o.LockoutSetting) {
-		toSerialize["lockout_setting"] = o.LockoutSetting
+		if lockout_settingMap, err := o.LockoutSetting.ToMap(); err == nil && len(lockout_settingMap) > 0 {
+			toSerialize["lockout_setting"] = o.LockoutSetting
+		}
 	}
-	if !IsNil(o.LomUsers) {
+	if !IsNil(o.LomUsers) && len(o.LomUsers) > 0 {
 		toSerialize["lom_users"] = o.LomUsers
 	}
 	if !IsNil(o.MgmStrictDelegateMode) {
 		toSerialize["mgm_strict_delegate_mode"] = o.MgmStrictDelegateMode
 	}
 	if !IsNil(o.MsSetting) {
-		toSerialize["ms_setting"] = o.MsSetting
+		if ms_settingMap, err := o.MsSetting.ToMap(); err == nil && len(ms_settingMap) > 0 {
+			toSerialize["ms_setting"] = o.MsSetting
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NatGroups) {
+	if !IsNil(o.NatGroups) && len(o.NatGroups) > 0 {
 		toSerialize["nat_groups"] = o.NatGroups
 	}
 	if !IsNil(o.NtpSetting) {
-		toSerialize["ntp_setting"] = o.NtpSetting
+		if ntp_settingMap, err := o.NtpSetting.ToMap(); err == nil && len(ntp_settingMap) > 0 {
+			toSerialize["ntp_setting"] = o.NtpSetting
+		}
 	}
 	if !IsNil(o.ObjectsChangesTrackingSetting) {
-		toSerialize["objects_changes_tracking_setting"] = o.ObjectsChangesTrackingSetting
+		if objects_changes_tracking_settingMap, err := o.ObjectsChangesTrackingSetting.ToMap(); err == nil && len(objects_changes_tracking_settingMap) > 0 {
+			toSerialize["objects_changes_tracking_setting"] = o.ObjectsChangesTrackingSetting
+		}
 	}
 	if !IsNil(o.PasswordSetting) {
-		toSerialize["password_setting"] = o.PasswordSetting
+		if password_settingMap, err := o.PasswordSetting.ToMap(); err == nil && len(password_settingMap) > 0 {
+			toSerialize["password_setting"] = o.PasswordSetting
+		}
 	}
 	if !IsNil(o.RestartBannerSetting) {
-		toSerialize["restart_banner_setting"] = o.RestartBannerSetting
+		if restart_banner_settingMap, err := o.RestartBannerSetting.ToMap(); err == nil && len(restart_banner_settingMap) > 0 {
+			toSerialize["restart_banner_setting"] = o.RestartBannerSetting
+		}
 	}
-	if !IsNil(o.RestartStatus) {
+	if !IsNil(o.RestartStatus) && *o.RestartStatus != "" {
 		toSerialize["restart_status"] = o.RestartStatus
 	}
 	if !IsNil(o.RpzHitRateInterval) {
@@ -2182,36 +2212,44 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 		toSerialize["rpz_hit_rate_min_query"] = o.RpzHitRateMinQuery
 	}
 	if !IsNil(o.ScheduledBackup) {
-		toSerialize["scheduled_backup"] = o.ScheduledBackup
+		if scheduled_backupMap, err := o.ScheduledBackup.ToMap(); err == nil && len(scheduled_backupMap) > 0 {
+			toSerialize["scheduled_backup"] = o.ScheduledBackup
+		}
 	}
 	if !IsNil(o.Secret) {
 		toSerialize["secret"] = o.Secret
 	}
 	if !IsNil(o.SecurityBannerSetting) {
-		toSerialize["security_banner_setting"] = o.SecurityBannerSetting
+		if security_banner_settingMap, err := o.SecurityBannerSetting.ToMap(); err == nil && len(security_banner_settingMap) > 0 {
+			toSerialize["security_banner_setting"] = o.SecurityBannerSetting
+		}
 	}
 	if !IsNil(o.SecuritySetting) {
-		toSerialize["security_setting"] = o.SecuritySetting
+		if security_settingMap, err := o.SecuritySetting.ToMap(); err == nil && len(security_settingMap) > 0 {
+			toSerialize["security_setting"] = o.SecuritySetting
+		}
 	}
-	if !IsNil(o.ServiceStatus) {
+	if !IsNil(o.ServiceStatus) && *o.ServiceStatus != "" {
 		toSerialize["service_status"] = o.ServiceStatus
 	}
 	if !IsNil(o.SnmpSetting) {
-		toSerialize["snmp_setting"] = o.SnmpSetting
+		if snmp_settingMap, err := o.SnmpSetting.ToMap(); err == nil && len(snmp_settingMap) > 0 {
+			toSerialize["snmp_setting"] = o.SnmpSetting
+		}
 	}
 	if !IsNil(o.SupportBundleDownloadTimeout) {
 		toSerialize["support_bundle_download_timeout"] = o.SupportBundleDownloadTimeout
 	}
-	if !IsNil(o.SyslogFacility) {
+	if !IsNil(o.SyslogFacility) && *o.SyslogFacility != "" {
 		toSerialize["syslog_facility"] = o.SyslogFacility
 	}
-	if !IsNil(o.SyslogServers) {
+	if !IsNil(o.SyslogServers) && len(o.SyslogServers) > 0 {
 		toSerialize["syslog_servers"] = o.SyslogServers
 	}
 	if !IsNil(o.SyslogSize) {
 		toSerialize["syslog_size"] = o.SyslogSize
 	}
-	if !IsNil(o.ThresholdTraps) {
+	if !IsNil(o.ThresholdTraps) && len(o.ThresholdTraps) > 0 {
 		toSerialize["threshold_traps"] = o.ThresholdTraps
 	}
 	if !IsNil(o.TimeZone) {
@@ -2221,24 +2259,34 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 		toSerialize["token_usage_delay"] = o.TokenUsageDelay
 	}
 	if !IsNil(o.TrafficCaptureAuthDnsSetting) {
-		toSerialize["traffic_capture_auth_dns_setting"] = o.TrafficCaptureAuthDnsSetting
+		if traffic_capture_auth_dns_settingMap, err := o.TrafficCaptureAuthDnsSetting.ToMap(); err == nil && len(traffic_capture_auth_dns_settingMap) > 0 {
+			toSerialize["traffic_capture_auth_dns_setting"] = o.TrafficCaptureAuthDnsSetting
+		}
 	}
 	if !IsNil(o.TrafficCaptureChrSetting) {
-		toSerialize["traffic_capture_chr_setting"] = o.TrafficCaptureChrSetting
+		if traffic_capture_chr_settingMap, err := o.TrafficCaptureChrSetting.ToMap(); err == nil && len(traffic_capture_chr_settingMap) > 0 {
+			toSerialize["traffic_capture_chr_setting"] = o.TrafficCaptureChrSetting
+		}
 	}
 	if !IsNil(o.TrafficCaptureQpsSetting) {
-		toSerialize["traffic_capture_qps_setting"] = o.TrafficCaptureQpsSetting
+		if traffic_capture_qps_settingMap, err := o.TrafficCaptureQpsSetting.ToMap(); err == nil && len(traffic_capture_qps_settingMap) > 0 {
+			toSerialize["traffic_capture_qps_setting"] = o.TrafficCaptureQpsSetting
+		}
 	}
 	if !IsNil(o.TrafficCaptureRecDnsSetting) {
-		toSerialize["traffic_capture_rec_dns_setting"] = o.TrafficCaptureRecDnsSetting
+		if traffic_capture_rec_dns_settingMap, err := o.TrafficCaptureRecDnsSetting.ToMap(); err == nil && len(traffic_capture_rec_dns_settingMap) > 0 {
+			toSerialize["traffic_capture_rec_dns_setting"] = o.TrafficCaptureRecDnsSetting
+		}
 	}
 	if !IsNil(o.TrafficCaptureRecQueriesSetting) {
-		toSerialize["traffic_capture_rec_queries_setting"] = o.TrafficCaptureRecQueriesSetting
+		if traffic_capture_rec_queries_settingMap, err := o.TrafficCaptureRecQueriesSetting.ToMap(); err == nil && len(traffic_capture_rec_queries_settingMap) > 0 {
+			toSerialize["traffic_capture_rec_queries_setting"] = o.TrafficCaptureRecQueriesSetting
+		}
 	}
-	if !IsNil(o.TrapNotifications) {
+	if !IsNil(o.TrapNotifications) && len(o.TrapNotifications) > 0 {
 		toSerialize["trap_notifications"] = o.TrapNotifications
 	}
-	if !IsNil(o.UpdatesDownloadMemberConfig) {
+	if !IsNil(o.UpdatesDownloadMemberConfig) && len(o.UpdatesDownloadMemberConfig) > 0 {
 		toSerialize["updates_download_member_config"] = o.UpdatesDownloadMemberConfig
 	}
 	if !IsNil(o.VpnPort) {

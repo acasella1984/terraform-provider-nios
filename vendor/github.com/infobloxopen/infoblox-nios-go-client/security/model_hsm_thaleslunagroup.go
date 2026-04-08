@@ -329,7 +329,7 @@ func (o HsmThaleslunagroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GroupSn) {
 		toSerialize["group_sn"] = o.GroupSn
 	}
-	if !IsNil(o.HsmVersion) {
+	if !IsNil(o.HsmVersion) && *o.HsmVersion != "" {
 		toSerialize["hsm_version"] = o.HsmVersion
 	}
 	if !IsNil(o.Name) {
@@ -341,7 +341,7 @@ func (o HsmThaleslunagroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.Thalesluna) {
+	if !IsNil(o.Thalesluna) && len(o.Thalesluna) > 0 {
 		toSerialize["thalesluna"] = o.Thalesluna
 	}
 	return toSerialize, nil

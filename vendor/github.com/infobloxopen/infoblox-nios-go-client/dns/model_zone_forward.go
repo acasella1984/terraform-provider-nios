@@ -1055,23 +1055,23 @@ func (o ZoneForward) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsFqdn) {
 		toSerialize["dns_fqdn"] = o.DnsFqdn
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	toSerialize["external_ns_group"] = o.ExternalNsGroup
-	if !IsNil(o.ForwardTo) {
+	if !IsNil(o.ForwardTo) && len(o.ForwardTo) > 0 {
 		toSerialize["forward_to"] = o.ForwardTo
 	}
 	if !IsNil(o.ForwardersOnly) {
 		toSerialize["forwarders_only"] = o.ForwardersOnly
 	}
-	if !IsNil(o.ForwardingServers) {
+	if !IsNil(o.ForwardingServers) && len(o.ForwardingServers) > 0 {
 		toSerialize["forwarding_servers"] = o.ForwardingServers
 	}
 	if !IsNil(o.Fqdn) {
@@ -1089,10 +1089,10 @@ func (o ZoneForward) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsAdIntegrated) {
 		toSerialize["ms_ad_integrated"] = o.MsAdIntegrated
 	}
-	if !IsNil(o.MsDdnsMode) {
+	if !IsNil(o.MsDdnsMode) && *o.MsDdnsMode != "" {
 		toSerialize["ms_ddns_mode"] = o.MsDdnsMode
 	}
-	if !IsNil(o.MsManaged) {
+	if !IsNil(o.MsManaged) && *o.MsManaged != "" {
 		toSerialize["ms_managed"] = o.MsManaged
 	}
 	if !IsNil(o.MsReadOnly) {
@@ -1101,7 +1101,7 @@ func (o ZoneForward) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsSyncMasterName) {
 		toSerialize["ms_sync_master_name"] = o.MsSyncMasterName
 	}
-	if !IsNil(o.NsGroup) {
+	if !IsNil(o.NsGroup) && *o.NsGroup != "" {
 		toSerialize["ns_group"] = o.NsGroup
 	}
 	if !IsNil(o.Parent) {
@@ -1116,7 +1116,7 @@ func (o ZoneForward) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.View) {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.ZoneFormat) {
+	if !IsNil(o.ZoneFormat) && *o.ZoneFormat != "" {
 		toSerialize["zone_format"] = o.ZoneFormat
 	}
 	return toSerialize, nil

@@ -122,7 +122,7 @@ func (o RangetemplateFingerprintFilterRules) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
-	if !IsNil(o.Permission) {
+	if !IsNil(o.Permission) && *o.Permission != "" {
 		toSerialize["permission"] = o.Permission
 	}
 

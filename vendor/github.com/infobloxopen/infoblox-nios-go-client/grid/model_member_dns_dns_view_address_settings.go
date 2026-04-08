@@ -462,13 +462,13 @@ func (o MemberDnsDnsViewAddressSettings) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.ViewName) {
 		toSerialize["view_name"] = o.ViewName
 	}
-	if !IsNil(o.DnsNotifyTransferSource) {
+	if !IsNil(o.DnsNotifyTransferSource) && *o.DnsNotifyTransferSource != "" {
 		toSerialize["dns_notify_transfer_source"] = o.DnsNotifyTransferSource
 	}
 	if !IsNil(o.DnsNotifyTransferSourceAddress) {
 		toSerialize["dns_notify_transfer_source_address"] = o.DnsNotifyTransferSourceAddress
 	}
-	if !IsNil(o.DnsQuerySourceInterface) {
+	if !IsNil(o.DnsQuerySourceInterface) && *o.DnsQuerySourceInterface != "" {
 		toSerialize["dns_query_source_interface"] = o.DnsQuerySourceInterface
 	}
 	if !IsNil(o.DnsQuerySourceAddress) {

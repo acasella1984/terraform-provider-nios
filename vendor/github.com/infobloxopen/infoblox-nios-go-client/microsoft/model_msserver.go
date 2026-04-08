@@ -1241,10 +1241,14 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 		toSerialize["ad_domain"] = o.AdDomain
 	}
 	if !IsNil(o.AdSites) {
-		toSerialize["ad_sites"] = o.AdSites
+		if ad_sitesMap, err := o.AdSites.ToMap(); err == nil && len(ad_sitesMap) > 0 {
+			toSerialize["ad_sites"] = o.AdSites
+		}
 	}
 	if !IsNil(o.AdUser) {
-		toSerialize["ad_user"] = o.AdUser
+		if ad_userMap, err := o.AdUser.ToMap(); err == nil && len(ad_userMap) > 0 {
+			toSerialize["ad_user"] = o.AdUser
+		}
 	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
@@ -1259,36 +1263,40 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 		toSerialize["connection_status_detail"] = o.ConnectionStatusDetail
 	}
 	if !IsNil(o.DhcpServer) {
-		toSerialize["dhcp_server"] = o.DhcpServer
+		if dhcp_serverMap, err := o.DhcpServer.ToMap(); err == nil && len(dhcp_serverMap) > 0 {
+			toSerialize["dhcp_server"] = o.DhcpServer
+		}
 	}
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
 	if !IsNil(o.DnsServer) {
-		toSerialize["dns_server"] = o.DnsServer
+		if dns_serverMap, err := o.DnsServer.ToMap(); err == nil && len(dns_serverMap) > 0 {
+			toSerialize["dns_server"] = o.DnsServer
+		}
 	}
-	if !IsNil(o.DnsView) {
+	if !IsNil(o.DnsView) && *o.DnsView != "" {
 		toSerialize["dns_view"] = o.DnsView
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.GridMember) {
+	if !IsNil(o.GridMember) && *o.GridMember != "" {
 		toSerialize["grid_member"] = o.GridMember
 	}
 	if !IsNil(o.LastSeen) {
 		toSerialize["last_seen"] = o.LastSeen
 	}
-	if !IsNil(o.LogDestination) {
+	if !IsNil(o.LogDestination) && *o.LogDestination != "" {
 		toSerialize["log_destination"] = o.LogDestination
 	}
-	if !IsNil(o.LogLevel) {
+	if !IsNil(o.LogLevel) && *o.LogLevel != "" {
 		toSerialize["log_level"] = o.LogLevel
 	}
 	if !IsNil(o.LoginName) {
@@ -1306,7 +1314,7 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsRpcTimeoutInSeconds) {
 		toSerialize["ms_rpc_timeout_in_seconds"] = o.MsRpcTimeoutInSeconds
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.ReadOnly) {
@@ -1321,7 +1329,7 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SynchronizationMinDelay) {
 		toSerialize["synchronization_min_delay"] = o.SynchronizationMinDelay
 	}
-	if !IsNil(o.SynchronizationStatus) {
+	if !IsNil(o.SynchronizationStatus) && *o.SynchronizationStatus != "" {
 		toSerialize["synchronization_status"] = o.SynchronizationStatus
 	}
 	if !IsNil(o.SynchronizationStatusDetail) {

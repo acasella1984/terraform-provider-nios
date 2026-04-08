@@ -159,7 +159,7 @@ func (o GridMemberCloudapiGatewayConfig) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.EndpointMapping) {
+	if !IsNil(o.EndpointMapping) && len(o.EndpointMapping) > 0 {
 		toSerialize["endpoint_mapping"] = o.EndpointMapping
 	}
 

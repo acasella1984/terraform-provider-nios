@@ -595,7 +595,7 @@ func (o Csvimporttask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Action) {
+	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
 	if !IsNil(o.AdminName) {
@@ -622,22 +622,22 @@ func (o Csvimporttask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LinesWarning) {
 		toSerialize["lines_warning"] = o.LinesWarning
 	}
-	if !IsNil(o.OnError) {
+	if !IsNil(o.OnError) && *o.OnError != "" {
 		toSerialize["on_error"] = o.OnError
 	}
-	if !IsNil(o.Operation) {
+	if !IsNil(o.Operation) && *o.Operation != "" {
 		toSerialize["operation"] = o.Operation
 	}
-	if !IsNil(o.Separator) {
+	if !IsNil(o.Separator) && *o.Separator != "" {
 		toSerialize["separator"] = o.Separator
 	}
 	if !IsNil(o.StartTime) {
 		toSerialize["start_time"] = o.StartTime
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.UpdateMethod) {
+	if !IsNil(o.UpdateMethod) && *o.UpdateMethod != "" {
 		toSerialize["update_method"] = o.UpdateMethod
 	}
 	return toSerialize, nil

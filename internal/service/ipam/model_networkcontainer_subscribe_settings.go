@@ -42,6 +42,9 @@ var NetworkcontainerSubscribeSettingsResourceSchemaAttributes = map[string]schem
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The list of NIOS extensible attributes to Cisco ISE attributes mappings.",
 	},
 }

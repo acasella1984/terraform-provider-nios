@@ -709,7 +709,7 @@ func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableEventDeduplicationLog) {
 		toSerialize["enable_event_deduplication_log"] = o.EnableEventDeduplicationLog
 	}
-	if !IsNil(o.EventDeduplicationFields) {
+	if !IsNil(o.EventDeduplicationFields) && len(o.EventDeduplicationFields) > 0 {
 		toSerialize["event_deduplication_fields"] = o.EventDeduplicationFields
 	}
 	if !IsNil(o.EventDeduplicationLookbackPeriod) {
@@ -721,29 +721,35 @@ func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventType) {
 		toSerialize["event_type"] = o.EventType
 	}
-	if !IsNil(o.ExpressionList) {
+	if !IsNil(o.ExpressionList) && len(o.ExpressionList) > 0 {
 		toSerialize["expression_list"] = o.ExpressionList
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NotificationAction) {
+	if !IsNil(o.NotificationAction) && *o.NotificationAction != "" {
 		toSerialize["notification_action"] = o.NotificationAction
 	}
-	if !IsNil(o.NotificationTarget) {
+	if !IsNil(o.NotificationTarget) && *o.NotificationTarget != "" {
 		toSerialize["notification_target"] = o.NotificationTarget
 	}
 	if !IsNil(o.PublishSettings) {
-		toSerialize["publish_settings"] = o.PublishSettings
+		if publish_settingsMap, err := o.PublishSettings.ToMap(); err == nil && len(publish_settingsMap) > 0 {
+			toSerialize["publish_settings"] = o.PublishSettings
+		}
 	}
 	if !IsNil(o.ScheduledEvent) {
-		toSerialize["scheduled_event"] = o.ScheduledEvent
+		if scheduled_eventMap, err := o.ScheduledEvent.ToMap(); err == nil && len(scheduled_eventMap) > 0 {
+			toSerialize["scheduled_event"] = o.ScheduledEvent
+		}
 	}
-	if !IsNil(o.SelectedMembers) {
+	if !IsNil(o.SelectedMembers) && len(o.SelectedMembers) > 0 {
 		toSerialize["selected_members"] = o.SelectedMembers
 	}
 	if !IsNil(o.TemplateInstance) {
-		toSerialize["template_instance"] = o.TemplateInstance
+		if template_instanceMap, err := o.TemplateInstance.ToMap(); err == nil && len(template_instanceMap) > 0 {
+			toSerialize["template_instance"] = o.TemplateInstance
+		}
 	}
 	if !IsNil(o.UsePublishSettings) {
 		toSerialize["use_publish_settings"] = o.UsePublishSettings

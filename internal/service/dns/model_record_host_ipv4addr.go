@@ -20,6 +20,7 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
@@ -102,6 +103,9 @@ var RecordHostIpv4addrAttrTypes = map[string]attr.Type{
 var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
@@ -257,6 +261,9 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The name in FQDN format and/or IPv4 Address of the next server that the host needs to boot.",
 	},
 	"options": schema.ListNestedAttribute{
@@ -338,7 +345,8 @@ func (m *RecordHostIpv4addrModel) Expand(ctx context.Context, diags *diag.Diagno
 		Bootserver:                      flex.ExpandStringPointer(m.Bootserver),
 		ConfigureForDhcp:                flex.ExpandBoolPointer(m.ConfigureForDhcp),
 		DenyBootp:                       flex.ExpandBoolPointer(m.DenyBootp),
-		DiscoveredData:                  ExpandRecordHostIpv4addrDiscoveredData(ctx, m.DiscoveredData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// DiscoveredData:                  ExpandRecordHostIpv4addrDiscoveredData(ctx, m.DiscoveredData, diags),
 		EnablePxeLeaseTime:              flex.ExpandBoolPointer(m.EnablePxeLeaseTime),
 		IgnoreClientRequestedOptions:    flex.ExpandBoolPointer(m.IgnoreClientRequestedOptions),
 		Ipv4addr:                        ExpandRecordHostIpv4addrIpv4addr(m.Ipv4addr),
@@ -346,7 +354,8 @@ func (m *RecordHostIpv4addrModel) Expand(ctx context.Context, diags *diag.Diagno
 		LogicFilterRules:                flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandRecordHostIpv4addrLogicFilterRules),
 		Mac:                             flex.ExpandStringPointer(m.Mac),
 		MatchClient:                     flex.ExpandStringPointer(m.MatchClient),
-		MsAdUserData:                    ExpandRecordHostIpv4addrMsAdUserData(ctx, m.MsAdUserData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// MsAdUserData:                    ExpandRecordHostIpv4addrMsAdUserData(ctx, m.MsAdUserData, diags),
 		Nextserver:                      flex.ExpandStringPointer(m.Nextserver),
 		Options:                         flex.ExpandFrameworkListNestedBlock(ctx, m.Options, diags, ExpandRecordHostIpv4addrOptions),
 		PxeLeaseTime:                    flex.ExpandInt64Pointer(m.PxeLeaseTime),

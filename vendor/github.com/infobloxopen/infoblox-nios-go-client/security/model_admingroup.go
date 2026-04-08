@@ -1587,38 +1587,56 @@ func (o Admingroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AccessMethod) {
+	if !IsNil(o.AccessMethod) && len(o.AccessMethod) > 0 {
 		toSerialize["access_method"] = o.AccessMethod
 	}
 	if !IsNil(o.AdminSetCommands) {
-		toSerialize["admin_set_commands"] = o.AdminSetCommands
+		if admin_set_commandsMap, err := o.AdminSetCommands.ToMap(); err == nil && len(admin_set_commandsMap) > 0 {
+			toSerialize["admin_set_commands"] = o.AdminSetCommands
+		}
 	}
 	if !IsNil(o.AdminShowCommands) {
-		toSerialize["admin_show_commands"] = o.AdminShowCommands
+		if admin_show_commandsMap, err := o.AdminShowCommands.ToMap(); err == nil && len(admin_show_commandsMap) > 0 {
+			toSerialize["admin_show_commands"] = o.AdminShowCommands
+		}
 	}
 	if !IsNil(o.AdminToplevelCommands) {
-		toSerialize["admin_toplevel_commands"] = o.AdminToplevelCommands
+		if admin_toplevel_commandsMap, err := o.AdminToplevelCommands.ToMap(); err == nil && len(admin_toplevel_commandsMap) > 0 {
+			toSerialize["admin_toplevel_commands"] = o.AdminToplevelCommands
+		}
 	}
 	if !IsNil(o.CloudSetCommands) {
-		toSerialize["cloud_set_commands"] = o.CloudSetCommands
+		if cloud_set_commandsMap, err := o.CloudSetCommands.ToMap(); err == nil && len(cloud_set_commandsMap) > 0 {
+			toSerialize["cloud_set_commands"] = o.CloudSetCommands
+		}
 	}
 	if !IsNil(o.CloudShowCommands) {
-		toSerialize["cloud_show_commands"] = o.CloudShowCommands
+		if cloud_show_commandsMap, err := o.CloudShowCommands.ToMap(); err == nil && len(cloud_show_commandsMap) > 0 {
+			toSerialize["cloud_show_commands"] = o.CloudShowCommands
+		}
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DatabaseSetCommands) {
-		toSerialize["database_set_commands"] = o.DatabaseSetCommands
+		if database_set_commandsMap, err := o.DatabaseSetCommands.ToMap(); err == nil && len(database_set_commandsMap) > 0 {
+			toSerialize["database_set_commands"] = o.DatabaseSetCommands
+		}
 	}
 	if !IsNil(o.DatabaseShowCommands) {
-		toSerialize["database_show_commands"] = o.DatabaseShowCommands
+		if database_show_commandsMap, err := o.DatabaseShowCommands.ToMap(); err == nil && len(database_show_commandsMap) > 0 {
+			toSerialize["database_show_commands"] = o.DatabaseShowCommands
+		}
 	}
 	if !IsNil(o.DhcpSetCommands) {
-		toSerialize["dhcp_set_commands"] = o.DhcpSetCommands
+		if dhcp_set_commandsMap, err := o.DhcpSetCommands.ToMap(); err == nil && len(dhcp_set_commandsMap) > 0 {
+			toSerialize["dhcp_set_commands"] = o.DhcpSetCommands
+		}
 	}
 	if !IsNil(o.DhcpShowCommands) {
-		toSerialize["dhcp_show_commands"] = o.DhcpShowCommands
+		if dhcp_show_commandsMap, err := o.DhcpShowCommands.ToMap(); err == nil && len(dhcp_show_commandsMap) > 0 {
+			toSerialize["dhcp_show_commands"] = o.DhcpShowCommands
+		}
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
@@ -1627,85 +1645,123 @@ func (o Admingroup) ToMap() (map[string]interface{}, error) {
 		toSerialize["disable_concurrent_login"] = o.DisableConcurrentLogin
 	}
 	if !IsNil(o.DnsSetCommands) {
-		toSerialize["dns_set_commands"] = o.DnsSetCommands
+		if dns_set_commandsMap, err := o.DnsSetCommands.ToMap(); err == nil && len(dns_set_commandsMap) > 0 {
+			toSerialize["dns_set_commands"] = o.DnsSetCommands
+		}
 	}
 	if !IsNil(o.DnsShowCommands) {
-		toSerialize["dns_show_commands"] = o.DnsShowCommands
+		if dns_show_commandsMap, err := o.DnsShowCommands.ToMap(); err == nil && len(dns_show_commandsMap) > 0 {
+			toSerialize["dns_show_commands"] = o.DnsShowCommands
+		}
 	}
 	if !IsNil(o.DnsToplevelCommands) {
-		toSerialize["dns_toplevel_commands"] = o.DnsToplevelCommands
+		if dns_toplevel_commandsMap, err := o.DnsToplevelCommands.ToMap(); err == nil && len(dns_toplevel_commandsMap) > 0 {
+			toSerialize["dns_toplevel_commands"] = o.DnsToplevelCommands
+		}
 	}
 	if !IsNil(o.DockerSetCommands) {
-		toSerialize["docker_set_commands"] = o.DockerSetCommands
+		if docker_set_commandsMap, err := o.DockerSetCommands.ToMap(); err == nil && len(docker_set_commandsMap) > 0 {
+			toSerialize["docker_set_commands"] = o.DockerSetCommands
+		}
 	}
 	if !IsNil(o.DockerShowCommands) {
-		toSerialize["docker_show_commands"] = o.DockerShowCommands
+		if docker_show_commandsMap, err := o.DockerShowCommands.ToMap(); err == nil && len(docker_show_commandsMap) > 0 {
+			toSerialize["docker_show_commands"] = o.DockerShowCommands
+		}
 	}
-	if !IsNil(o.EmailAddresses) {
+	if !IsNil(o.EmailAddresses) && len(o.EmailAddresses) > 0 {
 		toSerialize["email_addresses"] = o.EmailAddresses
 	}
 	if !IsNil(o.EnableRestrictedUserAccess) {
 		toSerialize["enable_restricted_user_access"] = o.EnableRestrictedUserAccess
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.GridSetCommands) {
-		toSerialize["grid_set_commands"] = o.GridSetCommands
+		if grid_set_commandsMap, err := o.GridSetCommands.ToMap(); err == nil && len(grid_set_commandsMap) > 0 {
+			toSerialize["grid_set_commands"] = o.GridSetCommands
+		}
 	}
 	if !IsNil(o.GridShowCommands) {
-		toSerialize["grid_show_commands"] = o.GridShowCommands
+		if grid_show_commandsMap, err := o.GridShowCommands.ToMap(); err == nil && len(grid_show_commandsMap) > 0 {
+			toSerialize["grid_show_commands"] = o.GridShowCommands
+		}
 	}
 	if !IsNil(o.InactivityLockoutSetting) {
-		toSerialize["inactivity_lockout_setting"] = o.InactivityLockoutSetting
+		if inactivity_lockout_settingMap, err := o.InactivityLockoutSetting.ToMap(); err == nil && len(inactivity_lockout_settingMap) > 0 {
+			toSerialize["inactivity_lockout_setting"] = o.InactivityLockoutSetting
+		}
 	}
 	if !IsNil(o.LicensingSetCommands) {
-		toSerialize["licensing_set_commands"] = o.LicensingSetCommands
+		if licensing_set_commandsMap, err := o.LicensingSetCommands.ToMap(); err == nil && len(licensing_set_commandsMap) > 0 {
+			toSerialize["licensing_set_commands"] = o.LicensingSetCommands
+		}
 	}
 	if !IsNil(o.LicensingShowCommands) {
-		toSerialize["licensing_show_commands"] = o.LicensingShowCommands
+		if licensing_show_commandsMap, err := o.LicensingShowCommands.ToMap(); err == nil && len(licensing_show_commandsMap) > 0 {
+			toSerialize["licensing_show_commands"] = o.LicensingShowCommands
+		}
 	}
 	if !IsNil(o.LockoutSetting) {
-		toSerialize["lockout_setting"] = o.LockoutSetting
+		if lockout_settingMap, err := o.LockoutSetting.ToMap(); err == nil && len(lockout_settingMap) > 0 {
+			toSerialize["lockout_setting"] = o.LockoutSetting
+		}
 	}
 	if !IsNil(o.MachineControlToplevelCommands) {
-		toSerialize["machine_control_toplevel_commands"] = o.MachineControlToplevelCommands
+		if machine_control_toplevel_commandsMap, err := o.MachineControlToplevelCommands.ToMap(); err == nil && len(machine_control_toplevel_commandsMap) > 0 {
+			toSerialize["machine_control_toplevel_commands"] = o.MachineControlToplevelCommands
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NetworkingSetCommands) {
-		toSerialize["networking_set_commands"] = o.NetworkingSetCommands
+		if networking_set_commandsMap, err := o.NetworkingSetCommands.ToMap(); err == nil && len(networking_set_commandsMap) > 0 {
+			toSerialize["networking_set_commands"] = o.NetworkingSetCommands
+		}
 	}
 	if !IsNil(o.NetworkingShowCommands) {
-		toSerialize["networking_show_commands"] = o.NetworkingShowCommands
+		if networking_show_commandsMap, err := o.NetworkingShowCommands.ToMap(); err == nil && len(networking_show_commandsMap) > 0 {
+			toSerialize["networking_show_commands"] = o.NetworkingShowCommands
+		}
 	}
 	if !IsNil(o.PasswordSetting) {
-		toSerialize["password_setting"] = o.PasswordSetting
+		if password_settingMap, err := o.PasswordSetting.ToMap(); err == nil && len(password_settingMap) > 0 {
+			toSerialize["password_setting"] = o.PasswordSetting
+		}
 	}
-	if !IsNil(o.Roles) {
+	if !IsNil(o.Roles) && len(o.Roles) > 0 {
 		toSerialize["roles"] = o.Roles
 	}
 	if !IsNil(o.SamlSetting) {
-		toSerialize["saml_setting"] = o.SamlSetting
+		if saml_settingMap, err := o.SamlSetting.ToMap(); err == nil && len(saml_settingMap) > 0 {
+			toSerialize["saml_setting"] = o.SamlSetting
+		}
 	}
 	if !IsNil(o.SecuritySetCommands) {
-		toSerialize["security_set_commands"] = o.SecuritySetCommands
+		if security_set_commandsMap, err := o.SecuritySetCommands.ToMap(); err == nil && len(security_set_commandsMap) > 0 {
+			toSerialize["security_set_commands"] = o.SecuritySetCommands
+		}
 	}
 	if !IsNil(o.SecurityShowCommands) {
-		toSerialize["security_show_commands"] = o.SecurityShowCommands
+		if security_show_commandsMap, err := o.SecurityShowCommands.ToMap(); err == nil && len(security_show_commandsMap) > 0 {
+			toSerialize["security_show_commands"] = o.SecurityShowCommands
+		}
 	}
 	if !IsNil(o.Superuser) {
 		toSerialize["superuser"] = o.Superuser
 	}
 	if !IsNil(o.TroubleShootingToplevelCommands) {
-		toSerialize["trouble_shooting_toplevel_commands"] = o.TroubleShootingToplevelCommands
+		if trouble_shooting_toplevel_commandsMap, err := o.TroubleShootingToplevelCommands.ToMap(); err == nil && len(trouble_shooting_toplevel_commandsMap) > 0 {
+			toSerialize["trouble_shooting_toplevel_commands"] = o.TroubleShootingToplevelCommands
+		}
 	}
 	if !IsNil(o.UseAccountInactivityLockoutEnable) {
 		toSerialize["use_account_inactivity_lockout_enable"] = o.UseAccountInactivityLockoutEnable
@@ -1719,7 +1775,7 @@ func (o Admingroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsePasswordSetting) {
 		toSerialize["use_password_setting"] = o.UsePasswordSetting
 	}
-	if !IsNil(o.UserAccess) {
+	if !IsNil(o.UserAccess) && len(o.UserAccess) > 0 {
 		toSerialize["user_access"] = o.UserAccess
 	}
 	return toSerialize, nil

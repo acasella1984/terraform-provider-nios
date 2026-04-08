@@ -119,7 +119,7 @@ func (o DtcServerMonitors) MarshalJSON() ([]byte, error) {
 
 func (o DtcServerMonitors) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Monitor) {
+	if !IsNil(o.Monitor) && *o.Monitor != "" {
 		toSerialize["monitor"] = o.Monitor
 	}
 	if !IsNil(o.Host) {

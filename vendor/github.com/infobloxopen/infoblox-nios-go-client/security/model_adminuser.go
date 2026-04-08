@@ -731,16 +731,16 @@ func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AdminGroups) {
+	if !IsNil(o.AdminGroups) && len(o.AdminGroups) > 0 {
 		toSerialize["admin_groups"] = o.AdminGroups
 	}
-	if !IsNil(o.AuthMethod) {
+	if !IsNil(o.AuthMethod) && *o.AuthMethod != "" {
 		toSerialize["auth_method"] = o.AuthMethod
 	}
-	if !IsNil(o.AuthType) {
+	if !IsNil(o.AuthType) && *o.AuthType != "" {
 		toSerialize["auth_type"] = o.AuthType
 	}
-	if !IsNil(o.CaCertificateIssuer) {
+	if !IsNil(o.CaCertificateIssuer) && *o.CaCertificateIssuer != "" {
 		toSerialize["ca_certificate_issuer"] = o.CaCertificateIssuer
 	}
 	if !IsNil(o.ClientCertificateSerialNumber) {
@@ -758,13 +758,13 @@ func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableCertificateAuthentication) {
 		toSerialize["enable_certificate_authentication"] = o.EnableCertificateAuthentication
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Name) {
@@ -773,10 +773,10 @@ func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
-	if !IsNil(o.SshKeys) {
+	if !IsNil(o.SshKeys) && len(o.SshKeys) > 0 {
 		toSerialize["ssh_keys"] = o.SshKeys
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.TimeZone) {

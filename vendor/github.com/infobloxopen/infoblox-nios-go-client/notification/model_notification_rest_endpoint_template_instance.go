@@ -122,7 +122,7 @@ func (o NotificationRestEndpointTemplateInstance) ToMap() (map[string]interface{
 	if !IsNil(o.Template) {
 		toSerialize["template"] = o.Template
 	}
-	if !IsNil(o.Parameters) {
+	if !IsNil(o.Parameters) && len(o.Parameters) > 0 {
 		toSerialize["parameters"] = o.Parameters
 	}
 

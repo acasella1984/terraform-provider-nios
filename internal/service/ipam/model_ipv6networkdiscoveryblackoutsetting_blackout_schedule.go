@@ -120,6 +120,9 @@ var Ipv6networkdiscoveryblackoutsettingBlackoutScheduleResourceSchemaAttributes 
 		},
 		MarkdownDescription: "The minutes past the hour for the scheduled task.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"hour_of_day": schema.Int64Attribute{
 		Optional: true,
@@ -128,6 +131,9 @@ var Ipv6networkdiscoveryblackoutsettingBlackoutScheduleResourceSchemaAttributes 
 		},
 		MarkdownDescription: "The hour of day for the scheduled task.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"year": schema.Int64Attribute{
 		Optional:            true,
@@ -155,6 +161,9 @@ var Ipv6networkdiscoveryblackoutsettingBlackoutScheduleResourceSchemaAttributes 
 		},
 		MarkdownDescription: "The day of the month for the scheduled task.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"repeat": schema.StringAttribute{
 		Optional:            true,

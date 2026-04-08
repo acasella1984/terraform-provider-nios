@@ -566,7 +566,7 @@ func (o Awsrte53taskgroupTaskList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ZoneCount) {
 		toSerialize["zone_count"] = o.ZoneCount
 	}
-	if !IsNil(o.CredentialsType) {
+	if !IsNil(o.CredentialsType) && *o.CredentialsType != "" {
 		toSerialize["credentials_type"] = o.CredentialsType
 	}
 

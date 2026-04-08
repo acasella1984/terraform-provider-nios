@@ -44,6 +44,9 @@ var NetworkcontainerLogicFilterRulesResourceSchemaAttributes = map[string]schema
 			stringvalidator.OneOf("MAC", "NAC", "Option"),
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

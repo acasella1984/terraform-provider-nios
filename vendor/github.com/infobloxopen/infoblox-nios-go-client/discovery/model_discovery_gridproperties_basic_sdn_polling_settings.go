@@ -233,7 +233,9 @@ func (o DiscoveryGridpropertiesBasicSdnPollingSettings) ToMap() (map[string]inte
 		toSerialize["end_host_polling_interval"] = o.EndHostPollingInterval
 	}
 	if !IsNil(o.EndHostPollingSchedule) {
-		toSerialize["end_host_polling_schedule"] = o.EndHostPollingSchedule
+		if end_host_polling_scheduleMap, err := o.EndHostPollingSchedule.ToMap(); err == nil && len(end_host_polling_scheduleMap) > 0 {
+			toSerialize["end_host_polling_schedule"] = o.EndHostPollingSchedule
+		}
 	}
 
 	for key, value := range o.AdditionalProperties {

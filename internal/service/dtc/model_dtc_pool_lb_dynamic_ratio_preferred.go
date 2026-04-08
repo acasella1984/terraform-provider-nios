@@ -57,6 +57,9 @@ var DtcPoolLbDynamicRatioPreferredResourceSchemaAttributes = map[string]schema.A
 	"monitor_metric": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The metric of the DTC SNMP monitor that will be used for dynamic weighing.",
 	},
 	"monitor_weighing": schema.StringAttribute{

@@ -363,7 +363,7 @@ func (o RadiusAuthserviceServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AuthPort) {
 		toSerialize["auth_port"] = o.AuthPort
 	}
-	if !IsNil(o.AuthType) {
+	if !IsNil(o.AuthType) && *o.AuthType != "" {
 		toSerialize["auth_type"] = o.AuthType
 	}
 	if !IsNil(o.Comment) {

@@ -153,7 +153,7 @@ func (o DtcCertificate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Certificate) {
+	if !IsNil(o.Certificate) && *o.Certificate != "" {
 		toSerialize["certificate"] = o.Certificate
 	}
 	if !IsNil(o.InUse) {

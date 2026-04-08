@@ -289,7 +289,7 @@ func (o MsserverAdsitesDomain) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.EaDefinition) {
+	if !IsNil(o.EaDefinition) && *o.EaDefinition != "" {
 		toSerialize["ea_definition"] = o.EaDefinition
 	}
 	if !IsNil(o.MsSyncMasterName) {

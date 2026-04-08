@@ -24,6 +24,7 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type VdiscoverytaskModel struct {
@@ -133,12 +134,18 @@ var VdiscoverytaskAttrTypes = map[string]attr.Type{
 var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+		},
 		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"accounts_list": schema.ListAttribute{
 		ElementType:         types.StringType,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The AWS Account IDs or GCP Project IDs list associated with this task.",
 	},
 	"allow_unsecured_connection": schema.BoolAttribute{
@@ -269,6 +276,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 	"fqdn_or_ip": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "FQDN or IP of the cloud management platform.",
 	},
 	"govcloud_enabled": schema.BoolAttribute{
@@ -452,6 +462,9 @@ var VdiscoverytaskResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"state_msg": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "State message of the complete discovery process.",
 	},
 	"sync_child_accounts": schema.BoolAttribute{

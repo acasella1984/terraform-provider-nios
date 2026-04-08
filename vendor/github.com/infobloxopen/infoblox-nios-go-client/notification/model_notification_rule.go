@@ -691,13 +691,13 @@ func (o NotificationRule) MarshalJSON() ([]byte, error) {
 
 func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllMembers) {
 		toSerialize["all_members"] = o.AllMembers
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -715,16 +715,16 @@ func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventDeduplicationLookbackPeriod) {
 		toSerialize["event_deduplication_lookback_period"] = o.EventDeduplicationLookbackPeriod
 	}
-	if !IsNil(o.EventPriority) {
+	if !IsNil(o.EventPriority) && *o.EventPriority != "" {
 		toSerialize["event_priority"] = o.EventPriority
 	}
-	if !IsNil(o.EventType) {
+	if !IsNil(o.EventType) && *o.EventType != "" {
 		toSerialize["event_type"] = o.EventType
 	}
 	if !IsNil(o.ExpressionList) && len(o.ExpressionList) > 0 {
 		toSerialize["expression_list"] = o.ExpressionList
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NotificationAction) && *o.NotificationAction != "" {

@@ -150,7 +150,7 @@ func (o Gmcschedule) MarshalJSON() ([]byte, error) {
 
 func (o Gmcschedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.ActivateGmcGroupSchedule) {

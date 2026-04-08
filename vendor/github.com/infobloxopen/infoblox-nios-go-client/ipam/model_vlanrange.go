@@ -455,10 +455,10 @@ func (o Vlanrange) MarshalJSON() ([]byte, error) {
 
 func (o Vlanrange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DeleteVlans) {
@@ -476,7 +476,7 @@ func (o Vlanrange) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.PreCreateVlan) {
@@ -485,7 +485,7 @@ func (o Vlanrange) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StartVlanId) {
 		toSerialize["start_vlan_id"] = o.StartVlanId
 	}
-	if !IsNil(o.VlanNamePrefix) {
+	if !IsNil(o.VlanNamePrefix) && *o.VlanNamePrefix != "" {
 		toSerialize["vlan_name_prefix"] = o.VlanNamePrefix
 	}
 	if !IsNil(o.VlanView) {

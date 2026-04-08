@@ -493,10 +493,10 @@ func (o MsserverAdUser) MarshalJSON() ([]byte, error) {
 
 func (o MsserverAdUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.LoginName) {
+	if !IsNil(o.LoginName) && *o.LoginName != "" {
 		toSerialize["login_name"] = o.LoginName
 	}
-	if !IsNil(o.LoginPassword) {
+	if !IsNil(o.LoginPassword) && *o.LoginPassword != "" {
 		toSerialize["login_password"] = o.LoginPassword
 	}
 	if !IsNil(o.EnableUserSync) {
@@ -508,10 +508,10 @@ func (o MsserverAdUser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastSyncTime) {
 		toSerialize["last_sync_time"] = o.LastSyncTime
 	}
-	if !IsNil(o.LastSyncStatus) {
+	if !IsNil(o.LastSyncStatus) && *o.LastSyncStatus != "" {
 		toSerialize["last_sync_status"] = o.LastSyncStatus
 	}
-	if !IsNil(o.LastSyncDetail) {
+	if !IsNil(o.LastSyncDetail) && *o.LastSyncDetail != "" {
 		toSerialize["last_sync_detail"] = o.LastSyncDetail
 	}
 	if !IsNil(o.LastSuccessSyncTime) {

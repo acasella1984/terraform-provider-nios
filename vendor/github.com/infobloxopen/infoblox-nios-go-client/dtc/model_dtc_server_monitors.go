@@ -122,7 +122,7 @@ func (o DtcServerMonitors) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Monitor) && *o.Monitor != "" {
 		toSerialize["monitor"] = o.Monitor
 	}
-	if !IsNil(o.Host) {
+	if !IsNil(o.Host) && *o.Host != "" {
 		toSerialize["host"] = o.Host
 	}
 

@@ -558,19 +558,19 @@ func (o Azurednstaskgroup) MarshalJSON() ([]byte, error) {
 
 func (o Azurednstaskgroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AzureSubscriptionIdsFileToken) {
+	if !IsNil(o.AzureSubscriptionIdsFileToken) && *o.AzureSubscriptionIdsFileToken != "" {
 		toSerialize["azure_subscription_ids_file_token"] = o.AzureSubscriptionIdsFileToken
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ConsolidateZones) {
 		toSerialize["consolidate_zones"] = o.ConsolidateZones
 	}
-	if !IsNil(o.ConsolidatedView) {
+	if !IsNil(o.ConsolidatedView) && *o.ConsolidatedView != "" {
 		toSerialize["consolidated_view"] = o.ConsolidatedView
 	}
 	if !IsNil(o.Disabled) {
@@ -582,16 +582,16 @@ func (o Azurednstaskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MultipleSubscriptionsSyncPolicy) && *o.MultipleSubscriptionsSyncPolicy != "" {
 		toSerialize["multiple_subscriptions_sync_policy"] = o.MultipleSubscriptionsSyncPolicy
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.NetworkViewMappingPolicy) && *o.NetworkViewMappingPolicy != "" {
 		toSerialize["network_view_mapping_policy"] = o.NetworkViewMappingPolicy
 	}
-	if !IsNil(o.SubscriptionsList) {
+	if !IsNil(o.SubscriptionsList) && *o.SubscriptionsList != "" {
 		toSerialize["subscriptions_list"] = o.SubscriptionsList
 	}
 	if !IsNil(o.SyncStatus) && *o.SyncStatus != "" {
@@ -600,7 +600,7 @@ func (o Azurednstaskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TaskList) && len(o.TaskList) > 0 {
 		toSerialize["task_list"] = o.TaskList
 	}
-	if !IsNil(o.TenantId) {
+	if !IsNil(o.TenantId) && *o.TenantId != "" {
 		toSerialize["tenant_id"] = o.TenantId
 	}
 	return toSerialize, nil

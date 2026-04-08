@@ -218,19 +218,19 @@ func (o DiscoveryDevicesupportbundle) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryDevicesupportbundle) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Author) {
+	if !IsNil(o.Author) && *o.Author != "" {
 		toSerialize["author"] = o.Author
 	}
 	if !IsNil(o.IntegratedInd) {
 		toSerialize["integrated_ind"] = o.IntegratedInd
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Version) {
+	if !IsNil(o.Version) && *o.Version != "" {
 		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil

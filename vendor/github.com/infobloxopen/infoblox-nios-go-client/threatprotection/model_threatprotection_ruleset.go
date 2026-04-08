@@ -320,7 +320,7 @@ func (o ThreatprotectionRuleset) MarshalJSON() ([]byte, error) {
 
 func (o ThreatprotectionRuleset) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AddType) && *o.AddType != "" {
@@ -329,7 +329,7 @@ func (o ThreatprotectionRuleset) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddedTime) {
 		toSerialize["added_time"] = o.AddedTime
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DoNotDelete) {
@@ -341,7 +341,7 @@ func (o ThreatprotectionRuleset) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsedBy) && len(o.UsedBy) > 0 {
 		toSerialize["used_by"] = o.UsedBy
 	}
-	if !IsNil(o.Version) {
+	if !IsNil(o.Version) && *o.Version != "" {
 		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil

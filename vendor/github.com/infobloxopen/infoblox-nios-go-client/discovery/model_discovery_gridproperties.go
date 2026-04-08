@@ -925,7 +925,7 @@ func (o DiscoveryGridproperties) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryGridproperties) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AdvancedPollingSettings) {
@@ -982,7 +982,7 @@ func (o DiscoveryGridproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableAutoUpdates) {
 		toSerialize["enable_auto_updates"] = o.EnableAutoUpdates
 	}
-	if !IsNil(o.GridName) {
+	if !IsNil(o.GridName) && *o.GridName != "" {
 		toSerialize["grid_name"] = o.GridName
 	}
 	if !IsNil(o.IgnoreConflictDuration) {

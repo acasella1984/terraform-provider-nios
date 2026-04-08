@@ -254,13 +254,13 @@ func (o SmartfolderPersonalQueryItems) MarshalJSON() ([]byte, error) {
 
 func (o SmartfolderPersonalQueryItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.FieldType) {
+	if !IsNil(o.FieldType) && *o.FieldType != "" {
 		toSerialize["field_type"] = o.FieldType
 	}
-	if !IsNil(o.Operator) {
+	if !IsNil(o.Operator) && *o.Operator != "" {
 		toSerialize["operator"] = o.Operator
 	}
 	if !IsNil(o.OpMatch) {

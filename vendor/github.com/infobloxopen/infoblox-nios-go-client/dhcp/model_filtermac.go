@@ -490,10 +490,10 @@ func (o Filtermac) MarshalJSON() ([]byte, error) {
 
 func (o Filtermac) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DefaultMacAddressExpiration) {
@@ -517,7 +517,7 @@ func (o Filtermac) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LeaseTime) {
 		toSerialize["lease_time"] = o.LeaseTime
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NeverExpires) {
@@ -526,7 +526,7 @@ func (o Filtermac) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
-	if !IsNil(o.ReservedForInfoblox) {
+	if !IsNil(o.ReservedForInfoblox) && *o.ReservedForInfoblox != "" {
 		toSerialize["reserved_for_infoblox"] = o.ReservedForInfoblox
 	}
 	return toSerialize, nil

@@ -320,7 +320,7 @@ func (o GridFiledistribution) MarshalJSON() ([]byte, error) {
 
 func (o GridFiledistribution) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowUploads) {
@@ -338,7 +338,7 @@ func (o GridFiledistribution) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GlobalStatus) && *o.GlobalStatus != "" {
 		toSerialize["global_status"] = o.GlobalStatus
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.StorageLimit) {

@@ -592,10 +592,10 @@ func (o RecordRpzSrv) MarshalJSON() ([]byte, error) {
 
 func (o RecordRpzSrv) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -610,7 +610,7 @@ func (o RecordRpzSrv) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Port) {
@@ -619,10 +619,10 @@ func (o RecordRpzSrv) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
-	if !IsNil(o.RpZone) {
+	if !IsNil(o.RpZone) && *o.RpZone != "" {
 		toSerialize["rp_zone"] = o.RpZone
 	}
-	if !IsNil(o.Target) {
+	if !IsNil(o.Target) && *o.Target != "" {
 		toSerialize["target"] = o.Target
 	}
 	if !IsNil(o.Ttl) {
@@ -631,13 +631,13 @@ func (o RecordRpzSrv) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
 	if !IsNil(o.Weight) {
 		toSerialize["weight"] = o.Weight
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

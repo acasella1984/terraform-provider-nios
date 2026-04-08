@@ -119,10 +119,10 @@ func (o DiscoveryDeviceNetworkInfos) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryDeviceNetworkInfos) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkStr) {
+	if !IsNil(o.NetworkStr) && *o.NetworkStr != "" {
 		toSerialize["network_str"] = o.NetworkStr
 	}
 

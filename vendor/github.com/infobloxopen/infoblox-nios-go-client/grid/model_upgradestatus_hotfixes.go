@@ -119,10 +119,10 @@ func (o UpgradestatusHotfixes) MarshalJSON() ([]byte, error) {
 
 func (o UpgradestatusHotfixes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StatusText) {
+	if !IsNil(o.StatusText) && *o.StatusText != "" {
 		toSerialize["status_text"] = o.StatusText
 	}
-	if !IsNil(o.UniqueId) {
+	if !IsNil(o.UniqueId) && *o.UniqueId != "" {
 		toSerialize["unique_id"] = o.UniqueId
 	}
 

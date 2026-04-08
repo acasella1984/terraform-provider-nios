@@ -286,13 +286,13 @@ func (o Allendpoints) MarshalJSON() ([]byte, error) {
 
 func (o Allendpoints) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -304,7 +304,7 @@ func (o Allendpoints) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Version) {
+	if !IsNil(o.Version) && *o.Version != "" {
 		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil

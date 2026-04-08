@@ -320,7 +320,7 @@ func (o GridMaxminddbinfo) MarshalJSON() ([]byte, error) {
 
 func (o GridMaxminddbinfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.BinaryMajorVersion) {
@@ -332,13 +332,13 @@ func (o GridMaxminddbinfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildTime) {
 		toSerialize["build_time"] = o.BuildTime
 	}
-	if !IsNil(o.DatabaseType) {
+	if !IsNil(o.DatabaseType) && *o.DatabaseType != "" {
 		toSerialize["database_type"] = o.DatabaseType
 	}
 	if !IsNil(o.DeploymentTime) {
 		toSerialize["deployment_time"] = o.DeploymentTime
 	}
-	if !IsNil(o.Member) {
+	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
 	if !IsNil(o.TopologyType) && *o.TopologyType != "" {

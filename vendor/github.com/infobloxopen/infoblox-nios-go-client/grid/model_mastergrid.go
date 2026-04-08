@@ -490,10 +490,10 @@ func (o Mastergrid) MarshalJSON() ([]byte, error) {
 
 func (o Mastergrid) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.ConnectionDisabled) {
@@ -514,7 +514,7 @@ func (o Mastergrid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastEvent) && *o.LastEvent != "" {
 		toSerialize["last_event"] = o.LastEvent
 	}
-	if !IsNil(o.LastEventDetails) {
+	if !IsNil(o.LastEventDetails) && *o.LastEventDetails != "" {
 		toSerialize["last_event_details"] = o.LastEventDetails
 	}
 	if !IsNil(o.LastSyncTimestamp) {
@@ -523,7 +523,7 @@ func (o Mastergrid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.UseMgmtPort) {

@@ -490,16 +490,16 @@ func (o DtcObject) MarshalJSON() ([]byte, error) {
 
 func (o DtcObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AbstractType) {
+	if !IsNil(o.AbstractType) && *o.AbstractType != "" {
 		toSerialize["abstract_type"] = o.AbstractType
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DisplayType) {
+	if !IsNil(o.DisplayType) && *o.DisplayType != "" {
 		toSerialize["display_type"] = o.DisplayType
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -517,7 +517,7 @@ func (o DtcObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6AddressList) && len(o.Ipv6AddressList) > 0 {
 		toSerialize["ipv6_address_list"] = o.Ipv6AddressList
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Object) && *o.Object != "" {

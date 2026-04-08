@@ -153,7 +153,7 @@ func (o GridLicensePoolSubpools) MarshalJSON() ([]byte, error) {
 
 func (o GridLicensePoolSubpools) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Key) {
+	if !IsNil(o.Key) && *o.Key != "" {
 		toSerialize["key"] = o.Key
 	}
 	if !IsNil(o.Installed) {

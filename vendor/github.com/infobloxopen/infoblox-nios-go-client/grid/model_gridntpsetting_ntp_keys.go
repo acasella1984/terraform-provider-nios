@@ -156,10 +156,10 @@ func (o GridntpsettingNtpKeys) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Number) {
 		toSerialize["number"] = o.Number
 	}
-	if !IsNil(o.String) {
+	if !IsNil(o.String) && *o.String != "" {
 		toSerialize["string"] = o.String
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 

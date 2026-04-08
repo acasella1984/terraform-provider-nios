@@ -727,7 +727,7 @@ func (o RecordUnknown) MarshalJSON() ([]byte, error) {
 
 func (o RecordUnknown) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.CloudInfo) {
@@ -735,7 +735,7 @@ func (o RecordUnknown) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Creator) && *o.Creator != "" {
@@ -744,10 +744,10 @@ func (o RecordUnknown) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DisplayRdata) {
+	if !IsNil(o.DisplayRdata) && *o.DisplayRdata != "" {
 		toSerialize["display_rdata"] = o.DisplayRdata
 	}
-	if !IsNil(o.DnsName) {
+	if !IsNil(o.DnsName) && *o.DnsName != "" {
 		toSerialize["dns_name"] = o.DnsName
 	}
 	if !IsNil(o.EnableHostNamePolicy) {
@@ -765,13 +765,13 @@ func (o RecordUnknown) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Policy) {
+	if !IsNil(o.Policy) && *o.Policy != "" {
 		toSerialize["policy"] = o.Policy
 	}
-	if !IsNil(o.RecordType) {
+	if !IsNil(o.RecordType) && *o.RecordType != "" {
 		toSerialize["record_type"] = o.RecordType
 	}
 	if !IsNil(o.SubfieldValues) && len(o.SubfieldValues) > 0 {
@@ -783,10 +783,10 @@ func (o RecordUnknown) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

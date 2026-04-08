@@ -150,13 +150,13 @@ func (o DtcTopologyLabel) MarshalJSON() ([]byte, error) {
 
 func (o DtcTopologyLabel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Field) && *o.Field != "" {
 		toSerialize["field"] = o.Field
 	}
-	if !IsNil(o.Label) {
+	if !IsNil(o.Label) && *o.Label != "" {
 		toSerialize["label"] = o.Label
 	}
 	return toSerialize, nil

@@ -459,37 +459,37 @@ func (o RecordAliasAwsRte53RecordInfo) MarshalJSON() ([]byte, error) {
 
 func (o RecordAliasAwsRte53RecordInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AliasTargetDnsName) {
+	if !IsNil(o.AliasTargetDnsName) && *o.AliasTargetDnsName != "" {
 		toSerialize["alias_target_dns_name"] = o.AliasTargetDnsName
 	}
-	if !IsNil(o.AliasTargetHostedZoneId) {
+	if !IsNil(o.AliasTargetHostedZoneId) && *o.AliasTargetHostedZoneId != "" {
 		toSerialize["alias_target_hosted_zone_id"] = o.AliasTargetHostedZoneId
 	}
 	if !IsNil(o.AliasTargetEvaluateTargetHealth) {
 		toSerialize["alias_target_evaluate_target_health"] = o.AliasTargetEvaluateTargetHealth
 	}
-	if !IsNil(o.Failover) {
+	if !IsNil(o.Failover) && *o.Failover != "" {
 		toSerialize["failover"] = o.Failover
 	}
-	if !IsNil(o.GeolocationContinentCode) {
+	if !IsNil(o.GeolocationContinentCode) && *o.GeolocationContinentCode != "" {
 		toSerialize["geolocation_continent_code"] = o.GeolocationContinentCode
 	}
-	if !IsNil(o.GeolocationCountryCode) {
+	if !IsNil(o.GeolocationCountryCode) && *o.GeolocationCountryCode != "" {
 		toSerialize["geolocation_country_code"] = o.GeolocationCountryCode
 	}
-	if !IsNil(o.GeolocationSubdivisionCode) {
+	if !IsNil(o.GeolocationSubdivisionCode) && *o.GeolocationSubdivisionCode != "" {
 		toSerialize["geolocation_subdivision_code"] = o.GeolocationSubdivisionCode
 	}
-	if !IsNil(o.HealthCheckId) {
+	if !IsNil(o.HealthCheckId) && *o.HealthCheckId != "" {
 		toSerialize["health_check_id"] = o.HealthCheckId
 	}
-	if !IsNil(o.Region) {
+	if !IsNil(o.Region) && *o.Region != "" {
 		toSerialize["region"] = o.Region
 	}
-	if !IsNil(o.SetIdentifier) {
+	if !IsNil(o.SetIdentifier) && *o.SetIdentifier != "" {
 		toSerialize["set_identifier"] = o.SetIdentifier
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Weight) {

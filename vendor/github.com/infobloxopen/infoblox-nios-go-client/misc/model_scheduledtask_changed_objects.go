@@ -224,13 +224,13 @@ func (o ScheduledtaskChangedObjects) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.ObjectType) {
+	if !IsNil(o.ObjectType) && *o.ObjectType != "" {
 		toSerialize["object_type"] = o.ObjectType
 	}
 	if !IsNil(o.Properties) && len(o.Properties) > 0 {

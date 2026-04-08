@@ -366,16 +366,16 @@ func (o RadiusAuthserviceServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AuthType) && *o.AuthType != "" {
 		toSerialize["auth_type"] = o.AuthType
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.SharedSecret) {
+	if !IsNil(o.SharedSecret) && *o.SharedSecret != "" {
 		toSerialize["shared_secret"] = o.SharedSecret
 	}
 	if !IsNil(o.UseAccounting) {

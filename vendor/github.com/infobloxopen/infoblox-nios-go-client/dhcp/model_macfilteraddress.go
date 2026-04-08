@@ -830,13 +830,13 @@ func (o Macfilteraddress) MarshalJSON() ([]byte, error) {
 
 func (o Macfilteraddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AuthenticationTime) {
 		toSerialize["authentication_time"] = o.AuthenticationTime
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ExpirationTime) {
@@ -851,52 +851,52 @@ func (o Macfilteraddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Filter) {
+	if !IsNil(o.Filter) && *o.Filter != "" {
 		toSerialize["filter"] = o.Filter
 	}
-	if !IsNil(o.Fingerprint) {
+	if !IsNil(o.Fingerprint) && *o.Fingerprint != "" {
 		toSerialize["fingerprint"] = o.Fingerprint
 	}
-	if !IsNil(o.GuestCustomField1) {
+	if !IsNil(o.GuestCustomField1) && *o.GuestCustomField1 != "" {
 		toSerialize["guest_custom_field1"] = o.GuestCustomField1
 	}
-	if !IsNil(o.GuestCustomField2) {
+	if !IsNil(o.GuestCustomField2) && *o.GuestCustomField2 != "" {
 		toSerialize["guest_custom_field2"] = o.GuestCustomField2
 	}
-	if !IsNil(o.GuestCustomField3) {
+	if !IsNil(o.GuestCustomField3) && *o.GuestCustomField3 != "" {
 		toSerialize["guest_custom_field3"] = o.GuestCustomField3
 	}
-	if !IsNil(o.GuestCustomField4) {
+	if !IsNil(o.GuestCustomField4) && *o.GuestCustomField4 != "" {
 		toSerialize["guest_custom_field4"] = o.GuestCustomField4
 	}
-	if !IsNil(o.GuestEmail) {
+	if !IsNil(o.GuestEmail) && *o.GuestEmail != "" {
 		toSerialize["guest_email"] = o.GuestEmail
 	}
-	if !IsNil(o.GuestFirstName) {
+	if !IsNil(o.GuestFirstName) && *o.GuestFirstName != "" {
 		toSerialize["guest_first_name"] = o.GuestFirstName
 	}
-	if !IsNil(o.GuestLastName) {
+	if !IsNil(o.GuestLastName) && *o.GuestLastName != "" {
 		toSerialize["guest_last_name"] = o.GuestLastName
 	}
-	if !IsNil(o.GuestMiddleName) {
+	if !IsNil(o.GuestMiddleName) && *o.GuestMiddleName != "" {
 		toSerialize["guest_middle_name"] = o.GuestMiddleName
 	}
-	if !IsNil(o.GuestPhone) {
+	if !IsNil(o.GuestPhone) && *o.GuestPhone != "" {
 		toSerialize["guest_phone"] = o.GuestPhone
 	}
 	if !IsNil(o.IsRegisteredUser) {
 		toSerialize["is_registered_user"] = o.IsRegisteredUser
 	}
-	if !IsNil(o.Mac) {
+	if !IsNil(o.Mac) && *o.Mac != "" {
 		toSerialize["mac"] = o.Mac
 	}
 	if !IsNil(o.NeverExpires) {
 		toSerialize["never_expires"] = o.NeverExpires
 	}
-	if !IsNil(o.ReservedForInfoblox) {
+	if !IsNil(o.ReservedForInfoblox) && *o.ReservedForInfoblox != "" {
 		toSerialize["reserved_for_infoblox"] = o.ReservedForInfoblox
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil

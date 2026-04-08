@@ -150,7 +150,7 @@ func (o Orderedranges) MarshalJSON() ([]byte, error) {
 
 func (o Orderedranges) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Network) && *o.Network != "" {

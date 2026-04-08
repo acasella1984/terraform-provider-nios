@@ -119,7 +119,7 @@ func (o DiscoveryGridpropertiesAdvancedSdnPollingSettings) MarshalJSON() ([]byte
 
 func (o DiscoveryGridpropertiesAdvancedSdnPollingSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.NetworksMappingPolicy) {
+	if !IsNil(o.NetworksMappingPolicy) && *o.NetworksMappingPolicy != "" {
 		toSerialize["networks_mapping_policy"] = o.NetworksMappingPolicy
 	}
 	if !IsNil(o.DisableSdnDiscoveryOutsideIpam) {

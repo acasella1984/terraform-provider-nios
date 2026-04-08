@@ -119,10 +119,10 @@ func (o ParentalcontrolSubscribersiteAbss) MarshalJSON() ([]byte, error) {
 
 func (o ParentalcontrolSubscribersiteAbss) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.IpAddress) {
+	if !IsNil(o.IpAddress) && *o.IpAddress != "" {
 		toSerialize["ip_address"] = o.IpAddress
 	}
-	if !IsNil(o.BlockingPolicy) {
+	if !IsNil(o.BlockingPolicy) && *o.BlockingPolicy != "" {
 		toSerialize["blocking_policy"] = o.BlockingPolicy
 	}
 

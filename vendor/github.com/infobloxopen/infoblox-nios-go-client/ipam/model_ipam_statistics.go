@@ -353,7 +353,7 @@ func (o IpamStatistics) MarshalJSON() ([]byte, error) {
 
 func (o IpamStatistics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Cidr) {
@@ -367,10 +367,10 @@ func (o IpamStatistics) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.UnmanagedCount) {

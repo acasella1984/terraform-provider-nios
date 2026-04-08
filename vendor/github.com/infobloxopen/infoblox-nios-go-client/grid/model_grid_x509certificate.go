@@ -252,16 +252,16 @@ func (o GridX509certificate) MarshalJSON() ([]byte, error) {
 
 func (o GridX509certificate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Issuer) {
+	if !IsNil(o.Issuer) && *o.Issuer != "" {
 		toSerialize["issuer"] = o.Issuer
 	}
-	if !IsNil(o.Serial) {
+	if !IsNil(o.Serial) && *o.Serial != "" {
 		toSerialize["serial"] = o.Serial
 	}
-	if !IsNil(o.Subject) {
+	if !IsNil(o.Subject) && *o.Subject != "" {
 		toSerialize["subject"] = o.Subject
 	}
 	if !IsNil(o.ValidNotAfter) {

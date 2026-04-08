@@ -625,7 +625,7 @@ func (o RecordNsec3) MarshalJSON() ([]byte, error) {
 
 func (o RecordNsec3) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Algorithm) && *o.Algorithm != "" {
@@ -642,7 +642,7 @@ func (o RecordNsec3) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
-	if !IsNil(o.DnsName) {
+	if !IsNil(o.DnsName) && *o.DnsName != "" {
 		toSerialize["dns_name"] = o.DnsName
 	}
 	if !IsNil(o.Flags) {
@@ -654,16 +654,16 @@ func (o RecordNsec3) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NextOwnerName) {
+	if !IsNil(o.NextOwnerName) && *o.NextOwnerName != "" {
 		toSerialize["next_owner_name"] = o.NextOwnerName
 	}
 	if !IsNil(o.RrsetTypes) && len(o.RrsetTypes) > 0 {
 		toSerialize["rrset_types"] = o.RrsetTypes
 	}
-	if !IsNil(o.Salt) {
+	if !IsNil(o.Salt) && *o.Salt != "" {
 		toSerialize["salt"] = o.Salt
 	}
 	if !IsNil(o.Ttl) {
@@ -672,10 +672,10 @@ func (o RecordNsec3) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

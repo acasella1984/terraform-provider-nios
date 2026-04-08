@@ -153,13 +153,13 @@ func (o FixedaddressSnmpCredential) MarshalJSON() ([]byte, error) {
 
 func (o FixedaddressSnmpCredential) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CommunityString) {
+	if !IsNil(o.CommunityString) && *o.CommunityString != "" {
 		toSerialize["community_string"] = o.CommunityString
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.CredentialGroup) {
+	if !IsNil(o.CredentialGroup) && *o.CredentialGroup != "" {
 		toSerialize["credential_group"] = o.CredentialGroup
 	}
 

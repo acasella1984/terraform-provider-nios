@@ -119,7 +119,7 @@ func (o NotificationRuleTemplateInstance) MarshalJSON() ([]byte, error) {
 
 func (o NotificationRuleTemplateInstance) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
 	if !IsNil(o.Parameters) && len(o.Parameters) > 0 {

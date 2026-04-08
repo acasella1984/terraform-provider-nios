@@ -255,7 +255,7 @@ func (o GridntpsettingNtpServers) MarshalJSON() ([]byte, error) {
 
 func (o GridntpsettingNtpServers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.EnableAuthentication) {

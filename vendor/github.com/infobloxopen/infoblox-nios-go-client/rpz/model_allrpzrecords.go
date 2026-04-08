@@ -490,13 +490,13 @@ func (o Allrpzrecords) MarshalJSON() ([]byte, error) {
 
 func (o Allrpzrecords) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AlertType) && *o.AlertType != "" {
 		toSerialize["alert_type"] = o.AlertType
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -508,7 +508,7 @@ func (o Allrpzrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastUpdated) {
 		toSerialize["last_updated"] = o.LastUpdated
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Record) && *o.Record != "" {
@@ -523,10 +523,10 @@ func (o Allrpzrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

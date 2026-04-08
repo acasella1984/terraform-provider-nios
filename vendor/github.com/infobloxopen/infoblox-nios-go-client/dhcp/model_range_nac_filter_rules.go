@@ -119,7 +119,7 @@ func (o RangeNacFilterRules) MarshalJSON() ([]byte, error) {
 
 func (o RangeNacFilterRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Filter) {
+	if !IsNil(o.Filter) && *o.Filter != "" {
 		toSerialize["filter"] = o.Filter
 	}
 	if !IsNil(o.Permission) && *o.Permission != "" {

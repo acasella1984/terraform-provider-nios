@@ -828,7 +828,7 @@ func (o GridThreatinsight) MarshalJSON() ([]byte, error) {
 
 func (o GridThreatinsight) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowlistUpdatePolicy) && *o.AllowlistUpdatePolicy != "" {
@@ -864,7 +864,7 @@ func (o GridThreatinsight) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastAllowlistUpdateTime) {
 		toSerialize["last_allowlist_update_time"] = o.LastAllowlistUpdateTime
 	}
-	if !IsNil(o.LastAllowlistUpdateVersion) {
+	if !IsNil(o.LastAllowlistUpdateVersion) && *o.LastAllowlistUpdateVersion != "" {
 		toSerialize["last_allowlist_update_version"] = o.LastAllowlistUpdateVersion
 	}
 	if !IsNil(o.LastCheckedForAllowlistUpdate) {
@@ -879,16 +879,16 @@ func (o GridThreatinsight) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastModuleUpdateTime) {
 		toSerialize["last_module_update_time"] = o.LastModuleUpdateTime
 	}
-	if !IsNil(o.LastModuleUpdateVersion) {
+	if !IsNil(o.LastModuleUpdateVersion) && *o.LastModuleUpdateVersion != "" {
 		toSerialize["last_module_update_version"] = o.LastModuleUpdateVersion
 	}
-	if !IsNil(o.LastUpdatedPackageVersion) {
+	if !IsNil(o.LastUpdatedPackageVersion) && *o.LastUpdatedPackageVersion != "" {
 		toSerialize["last_updated_package_version"] = o.LastUpdatedPackageVersion
 	}
 	if !IsNil(o.ModuleUpdatePolicy) && *o.ModuleUpdatePolicy != "" {
 		toSerialize["module_update_policy"] = o.ModuleUpdatePolicy
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.ScheduledAllowlistDownload) {

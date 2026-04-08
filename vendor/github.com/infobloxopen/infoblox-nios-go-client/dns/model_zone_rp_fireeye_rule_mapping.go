@@ -153,13 +153,13 @@ func (o ZoneRpFireeyeRuleMapping) MarshalJSON() ([]byte, error) {
 
 func (o ZoneRpFireeyeRuleMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AptOverride) {
+	if !IsNil(o.AptOverride) && *o.AptOverride != "" {
 		toSerialize["apt_override"] = o.AptOverride
 	}
 	if !IsNil(o.FireeyeAlertMapping) && len(o.FireeyeAlertMapping) > 0 {
 		toSerialize["fireeye_alert_mapping"] = o.FireeyeAlertMapping
 	}
-	if !IsNil(o.SubstitutedDomainName) {
+	if !IsNil(o.SubstitutedDomainName) && *o.SubstitutedDomainName != "" {
 		toSerialize["substituted_domain_name"] = o.SubstitutedDomainName
 	}
 

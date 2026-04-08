@@ -1646,7 +1646,7 @@ func (o Upgradestatus) MarshalJSON() ([]byte, error) {
 
 func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowDistribution) {
@@ -1676,16 +1676,16 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AllowUpload) {
 		toSerialize["allow_upload"] = o.AllowUpload
 	}
-	if !IsNil(o.AlternateVersion) {
+	if !IsNil(o.AlternateVersion) && *o.AlternateVersion != "" {
 		toSerialize["alternate_version"] = o.AlternateVersion
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.CurrentVersion) {
+	if !IsNil(o.CurrentVersion) && *o.CurrentVersion != "" {
 		toSerialize["current_version"] = o.CurrentVersion
 	}
-	if !IsNil(o.CurrentVersionSummary) {
+	if !IsNil(o.CurrentVersionSummary) && *o.CurrentVersionSummary != "" {
 		toSerialize["current_version_summary"] = o.CurrentVersionSummary
 	}
 	if !IsNil(o.DistributionScheduleActive) {
@@ -1697,10 +1697,10 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DistributionState) && *o.DistributionState != "" {
 		toSerialize["distribution_state"] = o.DistributionState
 	}
-	if !IsNil(o.DistributionVersion) {
+	if !IsNil(o.DistributionVersion) && *o.DistributionVersion != "" {
 		toSerialize["distribution_version"] = o.DistributionVersion
 	}
-	if !IsNil(o.DistributionVersionSummary) {
+	if !IsNil(o.DistributionVersionSummary) && *o.DistributionVersionSummary != "" {
 		toSerialize["distribution_version_summary"] = o.DistributionVersionSummary
 	}
 	if !IsNil(o.ElementStatus) && *o.ElementStatus != "" {
@@ -1718,19 +1718,19 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Hotfixes) && len(o.Hotfixes) > 0 {
 		toSerialize["hotfixes"] = o.Hotfixes
 	}
-	if !IsNil(o.Ipv4Address) {
+	if !IsNil(o.Ipv4Address) && *o.Ipv4Address != "" {
 		toSerialize["ipv4_address"] = o.Ipv4Address
 	}
-	if !IsNil(o.Ipv6Address) {
+	if !IsNil(o.Ipv6Address) && *o.Ipv6Address != "" {
 		toSerialize["ipv6_address"] = o.Ipv6Address
 	}
 	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
-	if !IsNil(o.Message) {
+	if !IsNil(o.Message) && *o.Message != "" {
 		toSerialize["message"] = o.Message
 	}
-	if !IsNil(o.PnodeRole) {
+	if !IsNil(o.PnodeRole) && *o.PnodeRole != "" {
 		toSerialize["pnode_role"] = o.PnodeRole
 	}
 	if !IsNil(o.Reverted) {
@@ -1781,10 +1781,10 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpgradeTestStatus) && *o.UpgradeTestStatus != "" {
 		toSerialize["upgrade_test_status"] = o.UpgradeTestStatus
 	}
-	if !IsNil(o.UploadVersion) {
+	if !IsNil(o.UploadVersion) && *o.UploadVersion != "" {
 		toSerialize["upload_version"] = o.UploadVersion
 	}
-	if !IsNil(o.UploadVersionSummary) {
+	if !IsNil(o.UploadVersionSummary) && *o.UploadVersionSummary != "" {
 		toSerialize["upload_version_summary"] = o.UploadVersionSummary
 	}
 	return toSerialize, nil

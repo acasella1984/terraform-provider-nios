@@ -932,16 +932,16 @@ func (o DtcMonitorHttp) MarshalJSON() ([]byte, error) {
 
 func (o DtcMonitorHttp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Ciphers) {
+	if !IsNil(o.Ciphers) && *o.Ciphers != "" {
 		toSerialize["ciphers"] = o.Ciphers
 	}
 	if !IsNil(o.ClientCert) && *o.ClientCert != "" {
 		toSerialize["client_cert"] = o.ClientCert
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ContentCheck) && *o.ContentCheck != "" {
@@ -953,7 +953,7 @@ func (o DtcMonitorHttp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ContentCheckOp) && *o.ContentCheckOp != "" {
 		toSerialize["content_check_op"] = o.ContentCheckOp
 	}
-	if !IsNil(o.ContentCheckRegex) {
+	if !IsNil(o.ContentCheckRegex) && *o.ContentCheckRegex != "" {
 		toSerialize["content_check_regex"] = o.ContentCheckRegex
 	}
 	if !IsNil(o.ContentExtractGroup) {
@@ -962,7 +962,7 @@ func (o DtcMonitorHttp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ContentExtractType) && *o.ContentExtractType != "" {
 		toSerialize["content_extract_type"] = o.ContentExtractType
 	}
-	if !IsNil(o.ContentExtractValue) {
+	if !IsNil(o.ContentExtractValue) && *o.ContentExtractValue != "" {
 		toSerialize["content_extract_value"] = o.ContentExtractValue
 	}
 	if !IsNil(o.EnableSni) {
@@ -980,13 +980,13 @@ func (o DtcMonitorHttp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Interval) {
 		toSerialize["interval"] = o.Interval
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.Request) {
+	if !IsNil(o.Request) && *o.Request != "" {
 		toSerialize["request"] = o.Request
 	}
 	if !IsNil(o.Result) && *o.Result != "" {

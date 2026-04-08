@@ -1098,7 +1098,7 @@ func (o RecordHostIpv6addr) MarshalJSON() ([]byte, error) {
 
 func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AddressType) && *o.AddressType != "" {
@@ -1115,16 +1115,16 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 			toSerialize["discovered_data"] = o.DiscoveredData
 		}
 	}
-	if !IsNil(o.DomainName) {
+	if !IsNil(o.DomainName) && *o.DomainName != "" {
 		toSerialize["domain_name"] = o.DomainName
 	}
 	if !IsNil(o.DomainNameServers) && len(o.DomainNameServers) > 0 {
 		toSerialize["domain_name_servers"] = o.DomainNameServers
 	}
-	if !IsNil(o.Duid) {
+	if !IsNil(o.Duid) && *o.Duid != "" {
 		toSerialize["duid"] = o.Duid
 	}
-	if !IsNil(o.Host) {
+	if !IsNil(o.Host) && *o.Host != "" {
 		toSerialize["host"] = o.Host
 	}
 	if !IsNil(o.Ipv6addr) {
@@ -1135,7 +1135,7 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 			toSerialize["func_call"] = o.FuncCall
 		}
 	}
-	if !IsNil(o.Ipv6prefix) {
+	if !IsNil(o.Ipv6prefix) && *o.Ipv6prefix != "" {
 		toSerialize["ipv6prefix"] = o.Ipv6prefix
 	}
 	if !IsNil(o.Ipv6prefixBits) {
@@ -1147,7 +1147,7 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
-	if !IsNil(o.Mac) {
+	if !IsNil(o.Mac) && *o.Mac != "" {
 		toSerialize["mac"] = o.Mac
 	}
 	if !IsNil(o.MatchClient) && *o.MatchClient != "" {
@@ -1158,10 +1158,10 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {

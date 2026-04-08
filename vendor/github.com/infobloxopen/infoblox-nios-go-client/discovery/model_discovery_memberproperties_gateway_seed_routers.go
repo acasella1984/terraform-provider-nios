@@ -153,13 +153,13 @@ func (o DiscoveryMemberpropertiesGatewaySeedRouters) MarshalJSON() ([]byte, erro
 
 func (o DiscoveryMemberpropertiesGatewaySeedRouters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

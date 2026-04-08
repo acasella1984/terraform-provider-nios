@@ -218,19 +218,19 @@ func (o Recordnamepolicy) MarshalJSON() ([]byte, error) {
 
 func (o Recordnamepolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["is_default"] = o.IsDefault
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.PreDefined) {
 		toSerialize["pre_defined"] = o.PreDefined
 	}
-	if !IsNil(o.Regex) {
+	if !IsNil(o.Regex) && *o.Regex != "" {
 		toSerialize["regex"] = o.Regex
 	}
 	return toSerialize, nil

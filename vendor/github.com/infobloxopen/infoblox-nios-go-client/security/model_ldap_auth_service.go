@@ -524,10 +524,10 @@ func (o LdapAuthService) MarshalJSON() ([]byte, error) {
 
 func (o LdapAuthService) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -536,19 +536,19 @@ func (o LdapAuthService) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EaMapping) && len(o.EaMapping) > 0 {
 		toSerialize["ea_mapping"] = o.EaMapping
 	}
-	if !IsNil(o.LdapGroupAttribute) {
+	if !IsNil(o.LdapGroupAttribute) && *o.LdapGroupAttribute != "" {
 		toSerialize["ldap_group_attribute"] = o.LdapGroupAttribute
 	}
 	if !IsNil(o.LdapGroupAuthenticationType) && *o.LdapGroupAuthenticationType != "" {
 		toSerialize["ldap_group_authentication_type"] = o.LdapGroupAuthenticationType
 	}
-	if !IsNil(o.LdapUserAttribute) {
+	if !IsNil(o.LdapUserAttribute) && *o.LdapUserAttribute != "" {
 		toSerialize["ldap_user_attribute"] = o.LdapUserAttribute
 	}
 	if !IsNil(o.Mode) && *o.Mode != "" {
 		toSerialize["mode"] = o.Mode
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.RecoveryInterval) {

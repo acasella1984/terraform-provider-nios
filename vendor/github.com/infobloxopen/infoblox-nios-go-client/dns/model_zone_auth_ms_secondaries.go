@@ -255,16 +255,16 @@ func (o ZoneAuthMsSecondaries) MarshalJSON() ([]byte, error) {
 
 func (o ZoneAuthMsSecondaries) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.IsMaster) {
 		toSerialize["is_master"] = o.IsMaster
 	}
-	if !IsNil(o.NsIp) {
+	if !IsNil(o.NsIp) && *o.NsIp != "" {
 		toSerialize["ns_ip"] = o.NsIp
 	}
-	if !IsNil(o.NsName) {
+	if !IsNil(o.NsName) && *o.NsName != "" {
 		toSerialize["ns_name"] = o.NsName
 	}
 	if !IsNil(o.Stealth) {

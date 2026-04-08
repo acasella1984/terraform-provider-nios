@@ -150,7 +150,7 @@ func (o DtcCertificate) MarshalJSON() ([]byte, error) {
 
 func (o DtcCertificate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Certificate) && *o.Certificate != "" {

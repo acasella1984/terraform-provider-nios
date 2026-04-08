@@ -462,13 +462,13 @@ func (o ViewscavengingsettingsScavengingSchedule) ToMap() (map[string]interface{
 	if !IsNil(o.Weekdays) && len(o.Weekdays) > 0 {
 		toSerialize["weekdays"] = o.Weekdays
 	}
-	if !IsNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) && *o.TimeZone != "" {
 		toSerialize["time_zone"] = o.TimeZone
 	}
 	if !IsNil(o.RecurringTime) {
 		toSerialize["recurring_time"] = o.RecurringTime
 	}
-	if !IsNil(o.Frequency) {
+	if !IsNil(o.Frequency) && *o.Frequency != "" {
 		toSerialize["frequency"] = o.Frequency
 	}
 	if !IsNil(o.Every) {
@@ -489,7 +489,7 @@ func (o ViewscavengingsettingsScavengingSchedule) ToMap() (map[string]interface{
 	if !IsNil(o.DayOfMonth) {
 		toSerialize["day_of_month"] = o.DayOfMonth
 	}
-	if !IsNil(o.Repeat) {
+	if !IsNil(o.Repeat) && *o.Repeat != "" {
 		toSerialize["repeat"] = o.Repeat
 	}
 	if !IsNil(o.Disable) {

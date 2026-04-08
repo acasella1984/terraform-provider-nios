@@ -490,7 +490,7 @@ func (o GridServicerestartStatus) MarshalJSON() ([]byte, error) {
 
 func (o GridServicerestartStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Failures) {
@@ -508,7 +508,7 @@ func (o GridServicerestartStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NoRestart) {
 		toSerialize["no_restart"] = o.NoRestart
 	}
-	if !IsNil(o.Parent) {
+	if !IsNil(o.Parent) && *o.Parent != "" {
 		toSerialize["parent"] = o.Parent
 	}
 	if !IsNil(o.Pending) {

@@ -119,10 +119,10 @@ func (o GridmembercloudapigatewayconfigEndpointMapping) MarshalJSON() ([]byte, e
 
 func (o GridmembercloudapigatewayconfigEndpointMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GatewayFqdn) {
+	if !IsNil(o.GatewayFqdn) && *o.GatewayFqdn != "" {
 		toSerialize["gateway_fqdn"] = o.GatewayFqdn
 	}
-	if !IsNil(o.EndpointFqdn) {
+	if !IsNil(o.EndpointFqdn) && *o.EndpointFqdn != "" {
 		toSerialize["endpoint_fqdn"] = o.EndpointFqdn
 	}
 

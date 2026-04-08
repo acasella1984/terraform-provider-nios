@@ -360,13 +360,13 @@ func (o MemberIpv6Setting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.VirtualIp) {
+	if !IsNil(o.VirtualIp) && *o.VirtualIp != "" {
 		toSerialize["virtual_ip"] = o.VirtualIp
 	}
 	if !IsNil(o.CidrPrefix) {
 		toSerialize["cidr_prefix"] = o.CidrPrefix
 	}
-	if !IsNil(o.Gateway) {
+	if !IsNil(o.Gateway) && *o.Gateway != "" {
 		toSerialize["gateway"] = o.Gateway
 	}
 	if !IsNil(o.AutoRouterConfigEnabled) {

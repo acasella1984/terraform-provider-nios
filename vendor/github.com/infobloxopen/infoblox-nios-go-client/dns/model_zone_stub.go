@@ -1272,13 +1272,13 @@ func (o ZoneStub) MarshalJSON() ([]byte, error) {
 
 func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -1287,10 +1287,10 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisableForwarding) {
 		toSerialize["disable_forwarding"] = o.DisableForwarding
 	}
-	if !IsNil(o.DisplayDomain) {
+	if !IsNil(o.DisplayDomain) && *o.DisplayDomain != "" {
 		toSerialize["display_domain"] = o.DisplayDomain
 	}
-	if !IsNil(o.DnsFqdn) {
+	if !IsNil(o.DnsFqdn) && *o.DnsFqdn != "" {
 		toSerialize["dns_fqdn"] = o.DnsFqdn
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -1305,16 +1305,16 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExternalNsGroup) && *o.ExternalNsGroup != "" {
 		toSerialize["external_ns_group"] = o.ExternalNsGroup
 	}
-	if !IsNil(o.Fqdn) {
+	if !IsNil(o.Fqdn) && *o.Fqdn != "" {
 		toSerialize["fqdn"] = o.Fqdn
 	}
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
 	}
-	if !IsNil(o.LockedBy) {
+	if !IsNil(o.LockedBy) && *o.LockedBy != "" {
 		toSerialize["locked_by"] = o.LockedBy
 	}
-	if !IsNil(o.MaskPrefix) {
+	if !IsNil(o.MaskPrefix) && *o.MaskPrefix != "" {
 		toSerialize["mask_prefix"] = o.MaskPrefix
 	}
 	if !IsNil(o.MsAdIntegrated) {
@@ -1329,25 +1329,25 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsReadOnly) {
 		toSerialize["ms_read_only"] = o.MsReadOnly
 	}
-	if !IsNil(o.MsSyncMasterName) {
+	if !IsNil(o.MsSyncMasterName) && *o.MsSyncMasterName != "" {
 		toSerialize["ms_sync_master_name"] = o.MsSyncMasterName
 	}
 	if !IsNil(o.NsGroup) && *o.NsGroup != "" {
 		toSerialize["ns_group"] = o.NsGroup
 	}
-	if !IsNil(o.Parent) {
+	if !IsNil(o.Parent) && *o.Parent != "" {
 		toSerialize["parent"] = o.Parent
 	}
-	if !IsNil(o.Prefix) {
+	if !IsNil(o.Prefix) && *o.Prefix != "" {
 		toSerialize["prefix"] = o.Prefix
 	}
-	if !IsNil(o.SoaEmail) {
+	if !IsNil(o.SoaEmail) && *o.SoaEmail != "" {
 		toSerialize["soa_email"] = o.SoaEmail
 	}
 	if !IsNil(o.SoaExpire) {
 		toSerialize["soa_expire"] = o.SoaExpire
 	}
-	if !IsNil(o.SoaMname) {
+	if !IsNil(o.SoaMname) && *o.SoaMname != "" {
 		toSerialize["soa_mname"] = o.SoaMname
 	}
 	if !IsNil(o.SoaNegativeTtl) {
@@ -1374,7 +1374,7 @@ func (o ZoneStub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsingSrgAssociations) {
 		toSerialize["using_srg_associations"] = o.UsingSrgAssociations
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
 	if !IsNil(o.ZoneFormat) && *o.ZoneFormat != "" {

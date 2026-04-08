@@ -320,10 +320,10 @@ func (o Kerberoskey) MarshalJSON() ([]byte, error) {
 
 func (o Kerberoskey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Domain) {
+	if !IsNil(o.Domain) && *o.Domain != "" {
 		toSerialize["domain"] = o.Domain
 	}
 	if !IsNil(o.Enctype) && *o.Enctype != "" {
@@ -335,7 +335,7 @@ func (o Kerberoskey) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Members) && len(o.Members) > 0 {
 		toSerialize["members"] = o.Members
 	}
-	if !IsNil(o.Principal) {
+	if !IsNil(o.Principal) && *o.Principal != "" {
 		toSerialize["principal"] = o.Principal
 	}
 	if !IsNil(o.UploadTimestamp) {

@@ -230,7 +230,7 @@ func (o GridTrafficCaptureRecDnsSetting) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.RecDnsLatencyReset) {
 		toSerialize["rec_dns_latency_reset"] = o.RecDnsLatencyReset
 	}
-	if !IsNil(o.RecDnsLatencyListenOnSource) {
+	if !IsNil(o.RecDnsLatencyListenOnSource) && *o.RecDnsLatencyListenOnSource != "" {
 		toSerialize["rec_dns_latency_listen_on_source"] = o.RecDnsLatencyListenOnSource
 	}
 	if !IsNil(o.KpiMonitoredDomains) && len(o.KpiMonitoredDomains) > 0 {

@@ -187,7 +187,7 @@ func (o ZoneForwardForwardingServers) MarshalJSON() ([]byte, error) {
 
 func (o ZoneForwardForwardingServers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.ForwardersOnly) {

@@ -796,13 +796,13 @@ func (o MsserverDhcp) MarshalJSON() ([]byte, error) {
 
 func (o MsserverDhcp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DhcpUtilization) {
@@ -817,13 +817,13 @@ func (o MsserverDhcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastSyncTs) {
 		toSerialize["last_sync_ts"] = o.LastSyncTs
 	}
-	if !IsNil(o.LoginName) {
+	if !IsNil(o.LoginName) && *o.LoginName != "" {
 		toSerialize["login_name"] = o.LoginName
 	}
-	if !IsNil(o.LoginPassword) {
+	if !IsNil(o.LoginPassword) && *o.LoginPassword != "" {
 		toSerialize["login_password"] = o.LoginPassword
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.NextSyncControl) && *o.NextSyncControl != "" {
@@ -832,16 +832,16 @@ func (o MsserverDhcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ReadOnly) {
 		toSerialize["read_only"] = o.ReadOnly
 	}
-	if !IsNil(o.ServerName) {
+	if !IsNil(o.ServerName) && *o.ServerName != "" {
 		toSerialize["server_name"] = o.ServerName
 	}
 	if !IsNil(o.StaticHosts) {
 		toSerialize["static_hosts"] = o.StaticHosts
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.StatusDetail) {
+	if !IsNil(o.StatusDetail) && *o.StatusDetail != "" {
 		toSerialize["status_detail"] = o.StatusDetail
 	}
 	if !IsNil(o.StatusLastUpdated) {

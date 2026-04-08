@@ -354,7 +354,7 @@ func (o MemberLicense) MarshalJSON() ([]byte, error) {
 
 func (o MemberLicense) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.ExpirationStatus) && *o.ExpirationStatus != "" {
@@ -363,22 +363,22 @@ func (o MemberLicense) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExpiryDate) {
 		toSerialize["expiry_date"] = o.ExpiryDate
 	}
-	if !IsNil(o.Hwid) {
+	if !IsNil(o.Hwid) && *o.Hwid != "" {
 		toSerialize["hwid"] = o.Hwid
 	}
-	if !IsNil(o.Key) {
+	if !IsNil(o.Key) && *o.Key != "" {
 		toSerialize["key"] = o.Key
 	}
 	if !IsNil(o.Kind) && *o.Kind != "" {
 		toSerialize["kind"] = o.Kind
 	}
-	if !IsNil(o.Limit) {
+	if !IsNil(o.Limit) && *o.Limit != "" {
 		toSerialize["limit"] = o.Limit
 	}
 	if !IsNil(o.LimitContext) && *o.LimitContext != "" {
 		toSerialize["limit_context"] = o.LimitContext
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil

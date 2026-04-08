@@ -2527,7 +2527,7 @@ func (o Networktemplate) MarshalJSON() ([]byte, error) {
 
 func (o Networktemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowAnyNetmask) {
@@ -2539,19 +2539,19 @@ func (o Networktemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoCreateReversezone) {
 		toSerialize["auto_create_reversezone"] = o.AutoCreateReversezone
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.CloudApiCompatible) {
 		toSerialize["cloud_api_compatible"] = o.CloudApiCompatible
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsGenerateHostname) {
@@ -2644,13 +2644,13 @@ func (o Networktemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Members) && len(o.Members) > 0 {
 		toSerialize["members"] = o.Members
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Netmask) {
 		toSerialize["netmask"] = o.Netmask
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {

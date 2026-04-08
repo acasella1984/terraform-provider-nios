@@ -153,10 +153,10 @@ func (o DiscoveryStatusFingerprintInfo) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryStatusFingerprintInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.Message) {
+	if !IsNil(o.Message) && *o.Message != "" {
 		toSerialize["message"] = o.Message
 	}
 	if !IsNil(o.Timestamp) {

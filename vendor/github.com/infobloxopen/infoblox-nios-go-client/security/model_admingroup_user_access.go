@@ -153,10 +153,10 @@ func (o AdmingroupUserAccess) MarshalJSON() ([]byte, error) {
 
 func (o AdmingroupUserAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.Permission) && *o.Permission != "" {

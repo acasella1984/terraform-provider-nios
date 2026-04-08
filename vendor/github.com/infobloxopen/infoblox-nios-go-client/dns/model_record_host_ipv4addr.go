@@ -1166,13 +1166,13 @@ func (o RecordHostIpv4addr) MarshalJSON() ([]byte, error) {
 
 func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.ConfigureForDhcp) {
@@ -1192,7 +1192,7 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnablePxeLeaseTime) {
 		toSerialize["enable_pxe_lease_time"] = o.EnablePxeLeaseTime
 	}
-	if !IsNil(o.Host) {
+	if !IsNil(o.Host) && *o.Host != "" {
 		toSerialize["host"] = o.Host
 	}
 	if !IsNil(o.IgnoreClientRequestedOptions) {
@@ -1215,10 +1215,10 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
-	if !IsNil(o.Mac) {
+	if !IsNil(o.Mac) && *o.Mac != "" {
 		toSerialize["mac"] = o.Mac
 	}
-	if !IsNil(o.MatchClient) {
+	if !IsNil(o.MatchClient) && *o.MatchClient != "" {
 		toSerialize["match_client"] = o.MatchClient
 	}
 	if !IsNil(o.MsAdUserData) {
@@ -1226,13 +1226,13 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {

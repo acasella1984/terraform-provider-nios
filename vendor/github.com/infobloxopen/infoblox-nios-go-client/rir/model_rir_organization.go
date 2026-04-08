@@ -388,7 +388,7 @@ func (o RirOrganization) MarshalJSON() ([]byte, error) {
 
 func (o RirOrganization) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -400,22 +400,22 @@ func (o RirOrganization) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Id) {
+	if !IsNil(o.Id) && *o.Id != "" {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Maintainer) {
+	if !IsNil(o.Maintainer) && *o.Maintainer != "" {
 		toSerialize["maintainer"] = o.Maintainer
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Rir) && *o.Rir != "" {
 		toSerialize["rir"] = o.Rir
 	}
-	if !IsNil(o.SenderEmail) {
+	if !IsNil(o.SenderEmail) && *o.SenderEmail != "" {
 		toSerialize["sender_email"] = o.SenderEmail
 	}
 	return toSerialize, nil

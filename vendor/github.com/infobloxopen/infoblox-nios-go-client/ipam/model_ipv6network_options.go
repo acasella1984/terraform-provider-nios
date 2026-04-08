@@ -221,16 +221,16 @@ func (o Ipv6networkOptions) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6networkOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Num) {
 		toSerialize["num"] = o.Num
 	}
-	if !IsNil(o.VendorClass) {
+	if !IsNil(o.VendorClass) && *o.VendorClass != "" {
 		toSerialize["vendor_class"] = o.VendorClass
 	}
-	if !IsNil(o.Value) {
+	if !IsNil(o.Value) && *o.Value != "" {
 		toSerialize["value"] = o.Value
 	}
 	if !IsNil(o.UseOption) {

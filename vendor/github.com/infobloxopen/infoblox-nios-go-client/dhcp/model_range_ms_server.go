@@ -85,7 +85,7 @@ func (o RangeMsServer) MarshalJSON() ([]byte, error) {
 
 func (o RangeMsServer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ipv4addr) {
+	if !IsNil(o.Ipv4addr) && *o.Ipv4addr != "" {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
 

@@ -153,13 +153,13 @@ func (o GridDescendantsAction) MarshalJSON() ([]byte, error) {
 
 func (o GridDescendantsAction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.OptionWithEa) {
+	if !IsNil(o.OptionWithEa) && *o.OptionWithEa != "" {
 		toSerialize["option_with_ea"] = o.OptionWithEa
 	}
-	if !IsNil(o.OptionWithoutEa) {
+	if !IsNil(o.OptionWithoutEa) && *o.OptionWithoutEa != "" {
 		toSerialize["option_without_ea"] = o.OptionWithoutEa
 	}
-	if !IsNil(o.OptionDeleteEa) {
+	if !IsNil(o.OptionDeleteEa) && *o.OptionDeleteEa != "" {
 		toSerialize["option_delete_ea"] = o.OptionDeleteEa
 	}
 

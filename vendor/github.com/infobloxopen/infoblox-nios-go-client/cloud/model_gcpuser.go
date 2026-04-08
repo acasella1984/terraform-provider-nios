@@ -558,49 +558,49 @@ func (o Gcpuser) MarshalJSON() ([]byte, error) {
 
 func (o Gcpuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AuthProviderX509CertUrl) {
+	if !IsNil(o.AuthProviderX509CertUrl) && *o.AuthProviderX509CertUrl != "" {
 		toSerialize["auth_provider_x509_cert_url"] = o.AuthProviderX509CertUrl
 	}
-	if !IsNil(o.AuthUri) {
+	if !IsNil(o.AuthUri) && *o.AuthUri != "" {
 		toSerialize["auth_uri"] = o.AuthUri
 	}
-	if !IsNil(o.ClientEmail) {
+	if !IsNil(o.ClientEmail) && *o.ClientEmail != "" {
 		toSerialize["client_email"] = o.ClientEmail
 	}
-	if !IsNil(o.ClientId) {
+	if !IsNil(o.ClientId) && *o.ClientId != "" {
 		toSerialize["client_id"] = o.ClientId
 	}
-	if !IsNil(o.ClientX509CertUrl) {
+	if !IsNil(o.ClientX509CertUrl) && *o.ClientX509CertUrl != "" {
 		toSerialize["client_x509_cert_url"] = o.ClientX509CertUrl
 	}
-	if !IsNil(o.FileName) {
+	if !IsNil(o.FileName) && *o.FileName != "" {
 		toSerialize["file_name"] = o.FileName
 	}
 	if !IsNil(o.LastUsed) {
 		toSerialize["last_used"] = o.LastUsed
 	}
-	if !IsNil(o.PrivateKey) {
+	if !IsNil(o.PrivateKey) && *o.PrivateKey != "" {
 		toSerialize["private_key"] = o.PrivateKey
 	}
-	if !IsNil(o.PrivateKeyId) {
+	if !IsNil(o.PrivateKeyId) && *o.PrivateKeyId != "" {
 		toSerialize["private_key_id"] = o.PrivateKeyId
 	}
-	if !IsNil(o.ProjectId) {
+	if !IsNil(o.ProjectId) && *o.ProjectId != "" {
 		toSerialize["project_id"] = o.ProjectId
 	}
 	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.TokenUri) {
+	if !IsNil(o.TokenUri) && *o.TokenUri != "" {
 		toSerialize["token_uri"] = o.TokenUri
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.UserName) {
+	if !IsNil(o.UserName) && *o.UserName != "" {
 		toSerialize["user_name"] = o.UserName
 	}
 	return toSerialize, nil

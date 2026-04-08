@@ -360,19 +360,19 @@ func (o MemberEmailSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.FromAddress) {
+	if !IsNil(o.FromAddress) && *o.FromAddress != "" {
 		toSerialize["from_address"] = o.FromAddress
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.RelayEnabled) {
 		toSerialize["relay_enabled"] = o.RelayEnabled
 	}
-	if !IsNil(o.Relay) {
+	if !IsNil(o.Relay) && *o.Relay != "" {
 		toSerialize["relay"] = o.Relay
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Smtps) {

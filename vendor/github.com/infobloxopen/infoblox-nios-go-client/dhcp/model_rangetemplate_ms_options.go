@@ -258,19 +258,19 @@ func (o RangetemplateMsOptions) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Num) {
 		toSerialize["num"] = o.Num
 	}
-	if !IsNil(o.Value) {
+	if !IsNil(o.Value) && *o.Value != "" {
 		toSerialize["value"] = o.Value
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.VendorClass) {
+	if !IsNil(o.VendorClass) && *o.VendorClass != "" {
 		toSerialize["vendor_class"] = o.VendorClass
 	}
-	if !IsNil(o.UserClass) {
+	if !IsNil(o.UserClass) && *o.UserClass != "" {
 		toSerialize["user_class"] = o.UserClass
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 

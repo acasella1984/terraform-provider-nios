@@ -153,13 +153,13 @@ func (o DtcTopologyRuleDestinationLinkOneOf) MarshalJSON() ([]byte, error) {
 
 func (o DtcTopologyRuleDestinationLinkOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Host) {
+	if !IsNil(o.Host) && *o.Host != "" {
 		toSerialize["host"] = o.Host
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 

@@ -795,19 +795,19 @@ func (o DxlEndpoint) MarshalJSON() ([]byte, error) {
 
 func (o DxlEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Brokers) && len(o.Brokers) > 0 {
 		toSerialize["brokers"] = o.Brokers
 	}
-	if !IsNil(o.BrokersImportToken) {
+	if !IsNil(o.BrokersImportToken) && *o.BrokersImportToken != "" {
 		toSerialize["brokers_import_token"] = o.BrokersImportToken
 	}
-	if !IsNil(o.ClientCertificateSubject) {
+	if !IsNil(o.ClientCertificateSubject) && *o.ClientCertificateSubject != "" {
 		toSerialize["client_certificate_subject"] = o.ClientCertificateSubject
 	}
-	if !IsNil(o.ClientCertificateToken) {
+	if !IsNil(o.ClientCertificateToken) && *o.ClientCertificateToken != "" {
 		toSerialize["client_certificate_token"] = o.ClientCertificateToken
 	}
 	if !IsNil(o.ClientCertificateValidFrom) {
@@ -816,7 +816,7 @@ func (o DxlEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClientCertificateValidTo) {
 		toSerialize["client_certificate_valid_to"] = o.ClientCertificateValidTo
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -834,7 +834,7 @@ func (o DxlEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogLevel) && *o.LogLevel != "" {
 		toSerialize["log_level"] = o.LogLevel
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.OutboundMemberType) && *o.OutboundMemberType != "" {
@@ -854,13 +854,13 @@ func (o DxlEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Topics) && len(o.Topics) > 0 {
 		toSerialize["topics"] = o.Topics
 	}
-	if !IsNil(o.VendorIdentifier) {
+	if !IsNil(o.VendorIdentifier) && *o.VendorIdentifier != "" {
 		toSerialize["vendor_identifier"] = o.VendorIdentifier
 	}
-	if !IsNil(o.WapiUserName) {
+	if !IsNil(o.WapiUserName) && *o.WapiUserName != "" {
 		toSerialize["wapi_user_name"] = o.WapiUserName
 	}
-	if !IsNil(o.WapiUserPassword) {
+	if !IsNil(o.WapiUserPassword) && *o.WapiUserPassword != "" {
 		toSerialize["wapi_user_password"] = o.WapiUserPassword
 	}
 	return toSerialize, nil

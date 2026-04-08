@@ -252,19 +252,19 @@ func (o Taxii) MarshalJSON() ([]byte, error) {
 
 func (o Taxii) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.EnableService) {
 		toSerialize["enable_service"] = o.EnableService
 	}
-	if !IsNil(o.Ipv4addr) {
+	if !IsNil(o.Ipv4addr) && *o.Ipv4addr != "" {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
-	if !IsNil(o.Ipv6addr) {
+	if !IsNil(o.Ipv6addr) && *o.Ipv6addr != "" {
 		toSerialize["ipv6addr"] = o.Ipv6addr
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.TaxiiRpzConfig) && len(o.TaxiiRpzConfig) > 0 {

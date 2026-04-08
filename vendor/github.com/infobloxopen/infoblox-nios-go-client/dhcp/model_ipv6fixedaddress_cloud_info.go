@@ -327,25 +327,25 @@ func (o Ipv6fixedaddressCloudInfo) ToMap() (map[string]interface{}, error) {
 			toSerialize["delegated_member"] = o.DelegatedMember
 		}
 	}
-	if !IsNil(o.DelegatedScope) {
+	if !IsNil(o.DelegatedScope) && *o.DelegatedScope != "" {
 		toSerialize["delegated_scope"] = o.DelegatedScope
 	}
-	if !IsNil(o.DelegatedRoot) {
+	if !IsNil(o.DelegatedRoot) && *o.DelegatedRoot != "" {
 		toSerialize["delegated_root"] = o.DelegatedRoot
 	}
 	if !IsNil(o.OwnedByAdaptor) {
 		toSerialize["owned_by_adaptor"] = o.OwnedByAdaptor
 	}
-	if !IsNil(o.Usage) {
+	if !IsNil(o.Usage) && *o.Usage != "" {
 		toSerialize["usage"] = o.Usage
 	}
 	if !IsNil(o.Tenant) && *o.Tenant != "" {
 		toSerialize["tenant"] = o.Tenant
 	}
-	if !IsNil(o.MgmtPlatform) {
+	if !IsNil(o.MgmtPlatform) && *o.MgmtPlatform != "" {
 		toSerialize["mgmt_platform"] = o.MgmtPlatform
 	}
-	if !IsNil(o.AuthorityType) {
+	if !IsNil(o.AuthorityType) && *o.AuthorityType != "" {
 		toSerialize["authority_type"] = o.AuthorityType
 	}
 

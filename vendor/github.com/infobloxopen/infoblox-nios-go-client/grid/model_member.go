@@ -2954,10 +2954,10 @@ func (o Member) MarshalJSON() ([]byte, error) {
 
 func (o Member) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.ActivePosition) {
+	if !IsNil(o.ActivePosition) && *o.ActivePosition != "" {
 		toSerialize["active_position"] = o.ActivePosition
 	}
 	if !IsNil(o.AdditionalIpList) && len(o.AdditionalIpList) > 0 {
@@ -2971,7 +2971,7 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BgpAs) && len(o.BgpAs) > 0 {
 		toSerialize["bgp_as"] = o.BgpAs
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ConfigAddrType) && *o.ConfigAddrType != "" {
@@ -3031,7 +3031,7 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HaOnCloud) {
 		toSerialize["ha_on_cloud"] = o.HaOnCloud
 	}
-	if !IsNil(o.HostName) {
+	if !IsNil(o.HostName) && *o.HostName != "" {
 		toSerialize["host_name"] = o.HostName
 	}
 	if !IsNil(o.Ipv6Setting) {
@@ -3129,7 +3129,7 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SupportAccessEnable) {
 		toSerialize["support_access_enable"] = o.SupportAccessEnable
 	}
-	if !IsNil(o.SupportAccessInfo) {
+	if !IsNil(o.SupportAccessInfo) && *o.SupportAccessInfo != "" {
 		toSerialize["support_access_info"] = o.SupportAccessInfo
 	}
 	if !IsNil(o.SyslogProxySetting) {
@@ -3146,7 +3146,7 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ThresholdTraps) && len(o.ThresholdTraps) > 0 {
 		toSerialize["threshold_traps"] = o.ThresholdTraps
 	}
-	if !IsNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) && *o.TimeZone != "" {
 		toSerialize["time_zone"] = o.TimeZone
 	}
 	if !IsNil(o.TrafficCaptureAuthDnsSetting) {

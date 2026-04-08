@@ -422,10 +422,10 @@ func (o GridServicerestartRequest) MarshalJSON() ([]byte, error) {
 
 func (o GridServicerestartRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Error) {
+	if !IsNil(o.Error) && *o.Error != "" {
 		toSerialize["error"] = o.Error
 	}
 	if !IsNil(o.Forced) {
@@ -437,7 +437,7 @@ func (o GridServicerestartRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastUpdatedTime) {
 		toSerialize["last_updated_time"] = o.LastUpdatedTime
 	}
-	if !IsNil(o.Member) {
+	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
 	if !IsNil(o.Needed) && *o.Needed != "" {
@@ -452,7 +452,7 @@ func (o GridServicerestartRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Service) && *o.Service != "" {
 		toSerialize["service"] = o.Service
 	}
-	if !IsNil(o.State) {
+	if !IsNil(o.State) && *o.State != "" {
 		toSerialize["state"] = o.State
 	}
 	return toSerialize, nil

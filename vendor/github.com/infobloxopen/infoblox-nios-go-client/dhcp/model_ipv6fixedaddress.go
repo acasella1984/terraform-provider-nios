@@ -1707,7 +1707,7 @@ func (o Ipv6fixedaddress) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AddressType) && *o.AddressType != "" {
@@ -1724,19 +1724,19 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DeviceDescription) {
+	if !IsNil(o.DeviceDescription) && *o.DeviceDescription != "" {
 		toSerialize["device_description"] = o.DeviceDescription
 	}
-	if !IsNil(o.DeviceLocation) {
+	if !IsNil(o.DeviceLocation) && *o.DeviceLocation != "" {
 		toSerialize["device_location"] = o.DeviceLocation
 	}
-	if !IsNil(o.DeviceType) {
+	if !IsNil(o.DeviceType) && *o.DeviceType != "" {
 		toSerialize["device_type"] = o.DeviceType
 	}
-	if !IsNil(o.DeviceVendor) {
+	if !IsNil(o.DeviceVendor) && *o.DeviceVendor != "" {
 		toSerialize["device_vendor"] = o.DeviceVendor
 	}
 	if !IsNil(o.Disable) {
@@ -1753,13 +1753,13 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["discovered_data"] = o.DiscoveredData
 		}
 	}
-	if !IsNil(o.DomainName) {
+	if !IsNil(o.DomainName) && *o.DomainName != "" {
 		toSerialize["domain_name"] = o.DomainName
 	}
 	if !IsNil(o.DomainNameServers) && len(o.DomainNameServers) > 0 {
 		toSerialize["domain_name_servers"] = o.DomainNameServers
 	}
-	if !IsNil(o.Duid) {
+	if !IsNil(o.Duid) && *o.Duid != "" {
 		toSerialize["duid"] = o.Duid
 	}
 	if !IsNil(o.EnableImmediateDiscovery) {
@@ -1782,7 +1782,7 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["func_call"] = o.FuncCall
 		}
 	}
-	if !IsNil(o.Ipv6prefix) {
+	if !IsNil(o.Ipv6prefix) && *o.Ipv6prefix != "" {
 		toSerialize["ipv6prefix"] = o.Ipv6prefix
 	}
 	if !IsNil(o.Ipv6prefixBits) {
@@ -1791,7 +1791,7 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
-	if !IsNil(o.MacAddress) {
+	if !IsNil(o.MacAddress) && *o.MacAddress != "" {
 		toSerialize["mac_address"] = o.MacAddress
 	}
 	if !IsNil(o.MatchClient) && *o.MatchClient != "" {
@@ -1802,13 +1802,13 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {
@@ -1833,7 +1833,7 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["snmp_credential"] = o.SnmpCredential
 		}
 	}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
 	if !IsNil(o.UseCliCredentials) {

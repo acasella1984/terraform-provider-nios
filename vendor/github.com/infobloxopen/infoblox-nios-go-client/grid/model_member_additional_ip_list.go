@@ -300,7 +300,7 @@ func (o MemberAdditionalIpList) ToMap() (map[string]interface{}, error) {
 			toSerialize["ipv6_network_setting"] = o.Ipv6NetworkSetting
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.EnableBgp) {

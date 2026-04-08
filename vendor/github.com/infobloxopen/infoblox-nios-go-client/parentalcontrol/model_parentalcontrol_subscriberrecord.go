@@ -932,31 +932,31 @@ func (o ParentalcontrolSubscriberrecord) MarshalJSON() ([]byte, error) {
 
 func (o ParentalcontrolSubscriberrecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AccountingSessionId) {
+	if !IsNil(o.AccountingSessionId) && *o.AccountingSessionId != "" {
 		toSerialize["accounting_session_id"] = o.AccountingSessionId
 	}
-	if !IsNil(o.AltIpAddr) {
+	if !IsNil(o.AltIpAddr) && *o.AltIpAddr != "" {
 		toSerialize["alt_ip_addr"] = o.AltIpAddr
 	}
-	if !IsNil(o.Ans0) {
+	if !IsNil(o.Ans0) && *o.Ans0 != "" {
 		toSerialize["ans0"] = o.Ans0
 	}
-	if !IsNil(o.Ans1) {
+	if !IsNil(o.Ans1) && *o.Ans1 != "" {
 		toSerialize["ans1"] = o.Ans1
 	}
-	if !IsNil(o.Ans2) {
+	if !IsNil(o.Ans2) && *o.Ans2 != "" {
 		toSerialize["ans2"] = o.Ans2
 	}
-	if !IsNil(o.Ans3) {
+	if !IsNil(o.Ans3) && *o.Ans3 != "" {
 		toSerialize["ans3"] = o.Ans3
 	}
-	if !IsNil(o.Ans4) {
+	if !IsNil(o.Ans4) && *o.Ans4 != "" {
 		toSerialize["ans4"] = o.Ans4
 	}
-	if !IsNil(o.BlackList) {
+	if !IsNil(o.BlackList) && *o.BlackList != "" {
 		toSerialize["black_list"] = o.BlackList
 	}
 	if !IsNil(o.Bwflag) {
@@ -965,25 +965,25 @@ func (o ParentalcontrolSubscriberrecord) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.DynamicCategoryPolicy) {
 		toSerialize["dynamic_category_policy"] = o.DynamicCategoryPolicy
 	}
-	if !IsNil(o.Flags) {
+	if !IsNil(o.Flags) && *o.Flags != "" {
 		toSerialize["flags"] = o.Flags
 	}
-	if !IsNil(o.IpAddr) {
+	if !IsNil(o.IpAddr) && *o.IpAddr != "" {
 		toSerialize["ip_addr"] = o.IpAddr
 	}
-	if !IsNil(o.Ipsd) {
+	if !IsNil(o.Ipsd) && *o.Ipsd != "" {
 		toSerialize["ipsd"] = o.Ipsd
 	}
-	if !IsNil(o.Localid) {
+	if !IsNil(o.Localid) && *o.Localid != "" {
 		toSerialize["localid"] = o.Localid
 	}
-	if !IsNil(o.NasContextual) {
+	if !IsNil(o.NasContextual) && *o.NasContextual != "" {
 		toSerialize["nas_contextual"] = o.NasContextual
 	}
-	if !IsNil(o.OpCode) {
+	if !IsNil(o.OpCode) && *o.OpCode != "" {
 		toSerialize["op_code"] = o.OpCode
 	}
-	if !IsNil(o.ParentalControlPolicy) {
+	if !IsNil(o.ParentalControlPolicy) && *o.ParentalControlPolicy != "" {
 		toSerialize["parental_control_policy"] = o.ParentalControlPolicy
 	}
 	if !IsNil(o.Prefix) {
@@ -992,22 +992,22 @@ func (o ParentalcontrolSubscriberrecord) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.ProxyAll) {
 		toSerialize["proxy_all"] = o.ProxyAll
 	}
-	if !IsNil(o.Site) {
+	if !IsNil(o.Site) && *o.Site != "" {
 		toSerialize["site"] = o.Site
 	}
-	if !IsNil(o.SubscriberId) {
+	if !IsNil(o.SubscriberId) && *o.SubscriberId != "" {
 		toSerialize["subscriber_id"] = o.SubscriberId
 	}
-	if !IsNil(o.SubscriberSecurePolicy) {
+	if !IsNil(o.SubscriberSecurePolicy) && *o.SubscriberSecurePolicy != "" {
 		toSerialize["subscriber_secure_policy"] = o.SubscriberSecurePolicy
 	}
 	if !IsNil(o.UnknownCategoryPolicy) {
 		toSerialize["unknown_category_policy"] = o.UnknownCategoryPolicy
 	}
-	if !IsNil(o.WhiteList) {
+	if !IsNil(o.WhiteList) && *o.WhiteList != "" {
 		toSerialize["white_list"] = o.WhiteList
 	}
-	if !IsNil(o.WpcCategoryPolicy) {
+	if !IsNil(o.WpcCategoryPolicy) && *o.WpcCategoryPolicy != "" {
 		toSerialize["wpc_category_policy"] = o.WpcCategoryPolicy
 	}
 	return toSerialize, nil

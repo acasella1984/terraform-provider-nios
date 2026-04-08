@@ -388,10 +388,10 @@ func (o ParentalcontrolAvp) MarshalJSON() ([]byte, error) {
 
 func (o ParentalcontrolAvp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DomainTypes) && len(o.DomainTypes) > 0 {
@@ -400,7 +400,7 @@ func (o ParentalcontrolAvp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsRestricted) {
 		toSerialize["is_restricted"] = o.IsRestricted
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Type) {

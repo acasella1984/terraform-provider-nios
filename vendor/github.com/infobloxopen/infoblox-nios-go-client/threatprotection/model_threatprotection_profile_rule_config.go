@@ -156,7 +156,7 @@ func (o ThreatprotectionProfileRuleConfig) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
-	if !IsNil(o.LogSeverity) {
+	if !IsNil(o.LogSeverity) && *o.LogSeverity != "" {
 		toSerialize["log_severity"] = o.LogSeverity
 	}
 	if !IsNil(o.Params) && len(o.Params) > 0 {

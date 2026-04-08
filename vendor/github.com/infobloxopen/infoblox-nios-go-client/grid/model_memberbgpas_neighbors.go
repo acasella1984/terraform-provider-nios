@@ -428,19 +428,19 @@ func (o MemberbgpasNeighbors) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Interface) && *o.Interface != "" {
 		toSerialize["interface"] = o.Interface
 	}
-	if !IsNil(o.NeighborIp) {
+	if !IsNil(o.NeighborIp) && *o.NeighborIp != "" {
 		toSerialize["neighbor_ip"] = o.NeighborIp
 	}
 	if !IsNil(o.RemoteAs) {
 		toSerialize["remote_as"] = o.RemoteAs
 	}
-	if !IsNil(o.AuthenticationMode) {
+	if !IsNil(o.AuthenticationMode) && *o.AuthenticationMode != "" {
 		toSerialize["authentication_mode"] = o.AuthenticationMode
 	}
-	if !IsNil(o.BgpNeighborPass) {
+	if !IsNil(o.BgpNeighborPass) && *o.BgpNeighborPass != "" {
 		toSerialize["bgp_neighbor_pass"] = o.BgpNeighborPass
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Multihop) {
@@ -449,7 +449,7 @@ func (o MemberbgpasNeighbors) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MultihopTtl) {
 		toSerialize["multihop_ttl"] = o.MultihopTtl
 	}
-	if !IsNil(o.BfdTemplate) {
+	if !IsNil(o.BfdTemplate) && *o.BfdTemplate != "" {
 		toSerialize["bfd_template"] = o.BfdTemplate
 	}
 	if !IsNil(o.EnableBfd) {

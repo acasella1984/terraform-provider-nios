@@ -1406,13 +1406,13 @@ func (o GridCloudapiVmaddress) MarshalJSON() ([]byte, error) {
 
 func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.AddressType) {
+	if !IsNil(o.AddressType) && *o.AddressType != "" {
 		toSerialize["address_type"] = o.AddressType
 	}
 	if !IsNil(o.AssociatedIp) && *o.AssociatedIp != "" {
@@ -1432,16 +1432,16 @@ func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsNames) && len(o.DnsNames) > 0 {
 		toSerialize["dns_names"] = o.DnsNames
 	}
-	if !IsNil(o.ElasticAddress) {
+	if !IsNil(o.ElasticAddress) && *o.ElasticAddress != "" {
 		toSerialize["elastic_address"] = o.ElasticAddress
 	}
-	if !IsNil(o.InterfaceName) {
+	if !IsNil(o.InterfaceName) && *o.InterfaceName != "" {
 		toSerialize["interface_name"] = o.InterfaceName
 	}
 	if !IsNil(o.IsIpv4) {
 		toSerialize["is_ipv4"] = o.IsIpv4
 	}
-	if !IsNil(o.MacAddress) {
+	if !IsNil(o.MacAddress) && *o.MacAddress != "" {
 		toSerialize["mac_address"] = o.MacAddress
 	}
 	if !IsNil(o.MsAdUserData) {
@@ -1449,82 +1449,82 @@ func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.PortId) {
 		toSerialize["port_id"] = o.PortId
 	}
-	if !IsNil(o.PrivateAddress) {
+	if !IsNil(o.PrivateAddress) && *o.PrivateAddress != "" {
 		toSerialize["private_address"] = o.PrivateAddress
 	}
-	if !IsNil(o.PrivateHostname) {
+	if !IsNil(o.PrivateHostname) && *o.PrivateHostname != "" {
 		toSerialize["private_hostname"] = o.PrivateHostname
 	}
-	if !IsNil(o.PublicAddress) {
+	if !IsNil(o.PublicAddress) && *o.PublicAddress != "" {
 		toSerialize["public_address"] = o.PublicAddress
 	}
-	if !IsNil(o.PublicHostname) {
+	if !IsNil(o.PublicHostname) && *o.PublicHostname != "" {
 		toSerialize["public_hostname"] = o.PublicHostname
 	}
-	if !IsNil(o.SubnetAddress) {
+	if !IsNil(o.SubnetAddress) && *o.SubnetAddress != "" {
 		toSerialize["subnet_address"] = o.SubnetAddress
 	}
 	if !IsNil(o.SubnetCidr) {
 		toSerialize["subnet_cidr"] = o.SubnetCidr
 	}
-	if !IsNil(o.SubnetId) {
+	if !IsNil(o.SubnetId) && *o.SubnetId != "" {
 		toSerialize["subnet_id"] = o.SubnetId
 	}
 	if !IsNil(o.Tenant) && *o.Tenant != "" {
 		toSerialize["tenant"] = o.Tenant
 	}
-	if !IsNil(o.VmAvailabilityZone) {
+	if !IsNil(o.VmAvailabilityZone) && *o.VmAvailabilityZone != "" {
 		toSerialize["vm_availability_zone"] = o.VmAvailabilityZone
 	}
-	if !IsNil(o.VmComment) {
+	if !IsNil(o.VmComment) && *o.VmComment != "" {
 		toSerialize["vm_comment"] = o.VmComment
 	}
 	if !IsNil(o.VmCreationTime) {
 		toSerialize["vm_creation_time"] = o.VmCreationTime
 	}
-	if !IsNil(o.VmHostname) {
+	if !IsNil(o.VmHostname) && *o.VmHostname != "" {
 		toSerialize["vm_hostname"] = o.VmHostname
 	}
-	if !IsNil(o.VmId) {
+	if !IsNil(o.VmId) && *o.VmId != "" {
 		toSerialize["vm_id"] = o.VmId
 	}
-	if !IsNil(o.VmKernelId) {
+	if !IsNil(o.VmKernelId) && *o.VmKernelId != "" {
 		toSerialize["vm_kernel_id"] = o.VmKernelId
 	}
 	if !IsNil(o.VmLastUpdateTime) {
 		toSerialize["vm_last_update_time"] = o.VmLastUpdateTime
 	}
-	if !IsNil(o.VmName) {
+	if !IsNil(o.VmName) && *o.VmName != "" {
 		toSerialize["vm_name"] = o.VmName
 	}
 	if !IsNil(o.VmNetworkCount) {
 		toSerialize["vm_network_count"] = o.VmNetworkCount
 	}
-	if !IsNil(o.VmOperatingSystem) {
+	if !IsNil(o.VmOperatingSystem) && *o.VmOperatingSystem != "" {
 		toSerialize["vm_operating_system"] = o.VmOperatingSystem
 	}
-	if !IsNil(o.VmType) {
+	if !IsNil(o.VmType) && *o.VmType != "" {
 		toSerialize["vm_type"] = o.VmType
 	}
-	if !IsNil(o.VmVpcAddress) {
+	if !IsNil(o.VmVpcAddress) && *o.VmVpcAddress != "" {
 		toSerialize["vm_vpc_address"] = o.VmVpcAddress
 	}
 	if !IsNil(o.VmVpcCidr) {
 		toSerialize["vm_vpc_cidr"] = o.VmVpcCidr
 	}
-	if !IsNil(o.VmVpcId) {
+	if !IsNil(o.VmVpcId) && *o.VmVpcId != "" {
 		toSerialize["vm_vpc_id"] = o.VmVpcId
 	}
-	if !IsNil(o.VmVpcName) {
+	if !IsNil(o.VmVpcName) && *o.VmVpcName != "" {
 		toSerialize["vm_vpc_name"] = o.VmVpcName
 	}
 	if !IsNil(o.VmVpcRef) && *o.VmVpcRef != "" {

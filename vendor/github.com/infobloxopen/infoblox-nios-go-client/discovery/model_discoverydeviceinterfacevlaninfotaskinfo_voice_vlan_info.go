@@ -122,7 +122,7 @@ func (o DiscoverydeviceinterfacevlaninfotaskinfoVoiceVlanInfo) ToMap() (map[stri
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 

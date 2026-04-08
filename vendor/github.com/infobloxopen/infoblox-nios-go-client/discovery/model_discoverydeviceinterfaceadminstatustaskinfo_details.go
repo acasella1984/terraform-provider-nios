@@ -156,7 +156,7 @@ func (o DiscoverydeviceinterfaceadminstatustaskinfoDetails) ToMap() (map[string]
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.IsSynchronized) {

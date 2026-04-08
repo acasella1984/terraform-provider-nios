@@ -422,25 +422,25 @@ func (o NotificationRestTemplate) MarshalJSON() ([]byte, error) {
 
 func (o NotificationRestTemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.ActionName) {
+	if !IsNil(o.ActionName) && *o.ActionName != "" {
 		toSerialize["action_name"] = o.ActionName
 	}
 	if !IsNil(o.AddedOn) {
 		toSerialize["added_on"] = o.AddedOn
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Content) {
+	if !IsNil(o.Content) && *o.Content != "" {
 		toSerialize["content"] = o.Content
 	}
 	if !IsNil(o.EventType) && len(o.EventType) > 0 {
 		toSerialize["event_type"] = o.EventType
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.OutboundType) && *o.OutboundType != "" {
@@ -452,7 +452,7 @@ func (o NotificationRestTemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TemplateType) && *o.TemplateType != "" {
 		toSerialize["template_type"] = o.TemplateType
 	}
-	if !IsNil(o.VendorIdentifier) {
+	if !IsNil(o.VendorIdentifier) && *o.VendorIdentifier != "" {
 		toSerialize["vendor_identifier"] = o.VendorIdentifier
 	}
 	return toSerialize, nil

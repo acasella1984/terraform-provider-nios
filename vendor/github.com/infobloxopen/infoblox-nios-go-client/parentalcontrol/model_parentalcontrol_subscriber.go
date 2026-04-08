@@ -1034,13 +1034,13 @@ func (o ParentalcontrolSubscriber) MarshalJSON() ([]byte, error) {
 
 func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AltSubscriberId) && *o.AltSubscriberId != "" {
 		toSerialize["alt_subscriber_id"] = o.AltSubscriberId
 	}
-	if !IsNil(o.AltSubscriberIdRegexp) {
+	if !IsNil(o.AltSubscriberIdRegexp) && *o.AltSubscriberIdRegexp != "" {
 		toSerialize["alt_subscriber_id_regexp"] = o.AltSubscriberIdRegexp
 	}
 	if !IsNil(o.AltSubscriberIdSubexpression) {
@@ -1049,16 +1049,16 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ancillaries) && len(o.Ancillaries) > 0 {
 		toSerialize["ancillaries"] = o.Ancillaries
 	}
-	if !IsNil(o.CatAcctname) {
+	if !IsNil(o.CatAcctname) && *o.CatAcctname != "" {
 		toSerialize["cat_acctname"] = o.CatAcctname
 	}
-	if !IsNil(o.CatPassword) {
+	if !IsNil(o.CatPassword) && *o.CatPassword != "" {
 		toSerialize["cat_password"] = o.CatPassword
 	}
 	if !IsNil(o.CatUpdateFrequency) {
 		toSerialize["cat_update_frequency"] = o.CatUpdateFrequency
 	}
-	if !IsNil(o.CategoryUrl) {
+	if !IsNil(o.CategoryUrl) && *o.CategoryUrl != "" {
 		toSerialize["category_url"] = o.CategoryUrl
 	}
 	if !IsNil(o.EnableMgmtOnlyNas) {
@@ -1073,7 +1073,7 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IpAnchors) && len(o.IpAnchors) > 0 {
 		toSerialize["ip_anchors"] = o.IpAnchors
 	}
-	if !IsNil(o.IpSpaceDiscRegexp) {
+	if !IsNil(o.IpSpaceDiscRegexp) && *o.IpSpaceDiscRegexp != "" {
 		toSerialize["ip_space_disc_regexp"] = o.IpSpaceDiscRegexp
 	}
 	if !IsNil(o.IpSpaceDiscSubexpression) {
@@ -1085,7 +1085,7 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LocalId) && *o.LocalId != "" {
 		toSerialize["local_id"] = o.LocalId
 	}
-	if !IsNil(o.LocalIdRegexp) {
+	if !IsNil(o.LocalIdRegexp) && *o.LocalIdRegexp != "" {
 		toSerialize["local_id_regexp"] = o.LocalIdRegexp
 	}
 	if !IsNil(o.LocalIdSubexpression) {
@@ -1097,22 +1097,22 @@ func (o ParentalcontrolSubscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NasContextInfo) && *o.NasContextInfo != "" {
 		toSerialize["nas_context_info"] = o.NasContextInfo
 	}
-	if !IsNil(o.PcZoneName) {
+	if !IsNil(o.PcZoneName) && *o.PcZoneName != "" {
 		toSerialize["pc_zone_name"] = o.PcZoneName
 	}
-	if !IsNil(o.ProxyPassword) {
+	if !IsNil(o.ProxyPassword) && *o.ProxyPassword != "" {
 		toSerialize["proxy_password"] = o.ProxyPassword
 	}
-	if !IsNil(o.ProxyUrl) {
+	if !IsNil(o.ProxyUrl) && *o.ProxyUrl != "" {
 		toSerialize["proxy_url"] = o.ProxyUrl
 	}
-	if !IsNil(o.ProxyUsername) {
+	if !IsNil(o.ProxyUsername) && *o.ProxyUsername != "" {
 		toSerialize["proxy_username"] = o.ProxyUsername
 	}
-	if !IsNil(o.SubscriberId) {
+	if !IsNil(o.SubscriberId) && *o.SubscriberId != "" {
 		toSerialize["subscriber_id"] = o.SubscriberId
 	}
-	if !IsNil(o.SubscriberIdRegexp) {
+	if !IsNil(o.SubscriberIdRegexp) && *o.SubscriberIdRegexp != "" {
 		toSerialize["subscriber_id_regexp"] = o.SubscriberIdRegexp
 	}
 	if !IsNil(o.SubscriberIdSubexpression) {

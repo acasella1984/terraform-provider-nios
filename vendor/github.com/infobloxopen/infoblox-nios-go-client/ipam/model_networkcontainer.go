@@ -3506,7 +3506,7 @@ func (o Networkcontainer) MarshalJSON() ([]byte, error) {
 
 func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Authority) {
@@ -3515,10 +3515,10 @@ func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoCreateReversezone) {
 		toSerialize["auto_create_reversezone"] = o.AutoCreateReversezone
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.CloudInfo) {
@@ -3526,10 +3526,10 @@ func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsGenerateHostname) {
@@ -3547,7 +3547,7 @@ func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsUseOption81) {
 		toSerialize["ddns_use_option81"] = o.DdnsUseOption81
 	}
-	if !IsNil(o.DeleteReason) {
+	if !IsNil(o.DeleteReason) && *o.DeleteReason != "" {
 		toSerialize["delete_reason"] = o.DeleteReason
 	}
 	if !IsNil(o.DenyBootp) {
@@ -3642,7 +3642,7 @@ func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastRirRegistrationUpdateSent) {
 		toSerialize["last_rir_registration_update_sent"] = o.LastRirRegistrationUpdateSent
 	}
-	if !IsNil(o.LastRirRegistrationUpdateStatus) {
+	if !IsNil(o.LastRirRegistrationUpdateStatus) && *o.LastRirRegistrationUpdateStatus != "" {
 		toSerialize["last_rir_registration_update_status"] = o.LastRirRegistrationUpdateStatus
 	}
 	if !IsNil(o.LeaseScavengeTime) {
@@ -3676,13 +3676,13 @@ func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 			toSerialize["func_call"] = o.FuncCall
 		}
 	}
-	if !IsNil(o.NetworkContainer) {
+	if !IsNil(o.NetworkContainer) && *o.NetworkContainer != "" {
 		toSerialize["network_container"] = o.NetworkContainer
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {

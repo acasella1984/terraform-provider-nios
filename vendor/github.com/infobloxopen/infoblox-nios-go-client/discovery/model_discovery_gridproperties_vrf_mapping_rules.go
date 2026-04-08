@@ -153,13 +153,13 @@ func (o DiscoveryGridpropertiesVrfMappingRules) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryGridpropertiesVrfMappingRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Criteria) {
+	if !IsNil(o.Criteria) && *o.Criteria != "" {
 		toSerialize["criteria"] = o.Criteria
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

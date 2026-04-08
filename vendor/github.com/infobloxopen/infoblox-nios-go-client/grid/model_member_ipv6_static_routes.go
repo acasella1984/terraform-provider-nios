@@ -153,13 +153,13 @@ func (o MemberIpv6StaticRoutes) MarshalJSON() ([]byte, error) {
 
 func (o MemberIpv6StaticRoutes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.Cidr) {
 		toSerialize["cidr"] = o.Cidr
 	}
-	if !IsNil(o.Gateway) {
+	if !IsNil(o.Gateway) && *o.Gateway != "" {
 		toSerialize["gateway"] = o.Gateway
 	}
 

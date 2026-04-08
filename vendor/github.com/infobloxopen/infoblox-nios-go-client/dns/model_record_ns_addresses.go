@@ -119,7 +119,7 @@ func (o RecordNsAddresses) MarshalJSON() ([]byte, error) {
 
 func (o RecordNsAddresses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.AutoCreatePtr) {

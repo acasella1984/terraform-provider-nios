@@ -119,10 +119,10 @@ func (o Ipv6networkFederatedRealms) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6networkFederatedRealms) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Id) {
+	if !IsNil(o.Id) && *o.Id != "" {
 		toSerialize["id"] = o.Id
 	}
 

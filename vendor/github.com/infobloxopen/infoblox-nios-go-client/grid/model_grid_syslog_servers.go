@@ -425,28 +425,28 @@ func (o GridSyslogServers) MarshalJSON() ([]byte, error) {
 
 func (o GridSyslogServers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AddressOrFqdn) {
+	if !IsNil(o.AddressOrFqdn) && *o.AddressOrFqdn != "" {
 		toSerialize["address_or_fqdn"] = o.AddressOrFqdn
 	}
 	if !IsNil(o.Certificate) && *o.Certificate != "" {
 		toSerialize["certificate"] = o.Certificate
 	}
-	if !IsNil(o.CertificateToken) {
+	if !IsNil(o.CertificateToken) && *o.CertificateToken != "" {
 		toSerialize["certificate_token"] = o.CertificateToken
 	}
-	if !IsNil(o.ConnectionType) {
+	if !IsNil(o.ConnectionType) && *o.ConnectionType != "" {
 		toSerialize["connection_type"] = o.ConnectionType
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.LocalInterface) {
+	if !IsNil(o.LocalInterface) && *o.LocalInterface != "" {
 		toSerialize["local_interface"] = o.LocalInterface
 	}
-	if !IsNil(o.MessageSource) {
+	if !IsNil(o.MessageSource) && *o.MessageSource != "" {
 		toSerialize["message_source"] = o.MessageSource
 	}
-	if !IsNil(o.MessageNodeId) {
+	if !IsNil(o.MessageNodeId) && *o.MessageNodeId != "" {
 		toSerialize["message_node_id"] = o.MessageNodeId
 	}
 	if !IsNil(o.Severity) && *o.Severity != "" {

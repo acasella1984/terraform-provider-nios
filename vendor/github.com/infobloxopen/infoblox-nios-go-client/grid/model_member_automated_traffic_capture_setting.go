@@ -394,7 +394,7 @@ func (o MemberAutomatedTrafficCaptureSetting) ToMap() (map[string]interface{}, e
 	if !IsNil(o.TrafficCaptureEnable) {
 		toSerialize["traffic_capture_enable"] = o.TrafficCaptureEnable
 	}
-	if !IsNil(o.Destination) {
+	if !IsNil(o.Destination) && *o.Destination != "" {
 		toSerialize["destination"] = o.Destination
 	}
 	if !IsNil(o.Duration) {
@@ -406,19 +406,19 @@ func (o MemberAutomatedTrafficCaptureSetting) ToMap() (map[string]interface{}, e
 	if !IsNil(o.KeepLocalCopy) {
 		toSerialize["keep_local_copy"] = o.KeepLocalCopy
 	}
-	if !IsNil(o.DestinationHost) {
+	if !IsNil(o.DestinationHost) && *o.DestinationHost != "" {
 		toSerialize["destination_host"] = o.DestinationHost
 	}
-	if !IsNil(o.TrafficCaptureDirectory) {
+	if !IsNil(o.TrafficCaptureDirectory) && *o.TrafficCaptureDirectory != "" {
 		toSerialize["traffic_capture_directory"] = o.TrafficCaptureDirectory
 	}
-	if !IsNil(o.SupportBundleDirectory) {
+	if !IsNil(o.SupportBundleDirectory) && *o.SupportBundleDirectory != "" {
 		toSerialize["support_bundle_directory"] = o.SupportBundleDirectory
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 

@@ -592,19 +592,19 @@ func (o SharedrecordSrv) MarshalJSON() ([]byte, error) {
 
 func (o SharedrecordSrv) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DnsName) {
+	if !IsNil(o.DnsName) && *o.DnsName != "" {
 		toSerialize["dns_name"] = o.DnsName
 	}
-	if !IsNil(o.DnsTarget) {
+	if !IsNil(o.DnsTarget) && *o.DnsTarget != "" {
 		toSerialize["dns_target"] = o.DnsTarget
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -616,7 +616,7 @@ func (o SharedrecordSrv) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Port) {
@@ -628,7 +628,7 @@ func (o SharedrecordSrv) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SharedRecordGroup) && *o.SharedRecordGroup != "" {
 		toSerialize["shared_record_group"] = o.SharedRecordGroup
 	}
-	if !IsNil(o.Target) {
+	if !IsNil(o.Target) && *o.Target != "" {
 		toSerialize["target"] = o.Target
 	}
 	if !IsNil(o.Ttl) {

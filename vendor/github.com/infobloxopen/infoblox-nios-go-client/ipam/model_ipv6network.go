@@ -2930,7 +2930,7 @@ func (o Ipv6network) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AutoCreateReversezone) {
@@ -2941,10 +2941,10 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsEnableOptionFqdn) {
@@ -2959,7 +2959,7 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsTtl) {
 		toSerialize["ddns_ttl"] = o.DdnsTtl
 	}
-	if !IsNil(o.DeleteReason) {
+	if !IsNil(o.DeleteReason) && *o.DeleteReason != "" {
 		toSerialize["delete_reason"] = o.DeleteReason
 	}
 	if !IsNil(o.Disable) {
@@ -2968,28 +2968,28 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
 		toSerialize["discover_now_status"] = o.DiscoverNowStatus
 	}
-	if !IsNil(o.DiscoveredBgpAs) {
+	if !IsNil(o.DiscoveredBgpAs) && *o.DiscoveredBgpAs != "" {
 		toSerialize["discovered_bgp_as"] = o.DiscoveredBgpAs
 	}
-	if !IsNil(o.DiscoveredBridgeDomain) {
+	if !IsNil(o.DiscoveredBridgeDomain) && *o.DiscoveredBridgeDomain != "" {
 		toSerialize["discovered_bridge_domain"] = o.DiscoveredBridgeDomain
 	}
-	if !IsNil(o.DiscoveredTenant) {
+	if !IsNil(o.DiscoveredTenant) && *o.DiscoveredTenant != "" {
 		toSerialize["discovered_tenant"] = o.DiscoveredTenant
 	}
-	if !IsNil(o.DiscoveredVlanId) {
+	if !IsNil(o.DiscoveredVlanId) && *o.DiscoveredVlanId != "" {
 		toSerialize["discovered_vlan_id"] = o.DiscoveredVlanId
 	}
-	if !IsNil(o.DiscoveredVlanName) {
+	if !IsNil(o.DiscoveredVlanName) && *o.DiscoveredVlanName != "" {
 		toSerialize["discovered_vlan_name"] = o.DiscoveredVlanName
 	}
-	if !IsNil(o.DiscoveredVrfDescription) {
+	if !IsNil(o.DiscoveredVrfDescription) && *o.DiscoveredVrfDescription != "" {
 		toSerialize["discovered_vrf_description"] = o.DiscoveredVrfDescription
 	}
-	if !IsNil(o.DiscoveredVrfName) {
+	if !IsNil(o.DiscoveredVrfName) && *o.DiscoveredVrfName != "" {
 		toSerialize["discovered_vrf_name"] = o.DiscoveredVrfName
 	}
-	if !IsNil(o.DiscoveredVrfRd) {
+	if !IsNil(o.DiscoveredVrfRd) && *o.DiscoveredVrfRd != "" {
 		toSerialize["discovered_vrf_rd"] = o.DiscoveredVrfRd
 	}
 	if !IsNil(o.DiscoveryBasicPollSettings) {
@@ -3008,7 +3008,7 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiscoveryMember) && *o.DiscoveryMember != "" {
 		toSerialize["discovery_member"] = o.DiscoveryMember
 	}
-	if !IsNil(o.DomainName) {
+	if !IsNil(o.DomainName) && *o.DomainName != "" {
 		toSerialize["domain_name"] = o.DomainName
 	}
 	if !IsNil(o.DomainNameServers) && len(o.DomainNameServers) > 0 {
@@ -3044,7 +3044,7 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastRirRegistrationUpdateSent) {
 		toSerialize["last_rir_registration_update_sent"] = o.LastRirRegistrationUpdateSent
 	}
-	if !IsNil(o.LastRirRegistrationUpdateStatus) {
+	if !IsNil(o.LastRirRegistrationUpdateStatus) && *o.LastRirRegistrationUpdateStatus != "" {
 		toSerialize["last_rir_registration_update_status"] = o.LastRirRegistrationUpdateStatus
 	}
 	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
@@ -3072,10 +3072,10 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 			toSerialize["func_call"] = o.FuncCall
 		}
 	}
-	if !IsNil(o.NetworkContainer) {
+	if !IsNil(o.NetworkContainer) && *o.NetworkContainer != "" {
 		toSerialize["network_container"] = o.NetworkContainer
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {
@@ -3118,7 +3118,7 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 			toSerialize["subscribe_settings"] = o.SubscribeSettings
 		}
 	}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
 	if !IsNil(o.Unmanaged) {

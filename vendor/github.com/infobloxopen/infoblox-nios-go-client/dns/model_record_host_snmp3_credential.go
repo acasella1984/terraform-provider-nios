@@ -295,19 +295,19 @@ func (o RecordHostSnmp3Credential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AuthenticationProtocol) && *o.AuthenticationProtocol != "" {
 		toSerialize["authentication_protocol"] = o.AuthenticationProtocol
 	}
-	if !IsNil(o.AuthenticationPassword) {
+	if !IsNil(o.AuthenticationPassword) && *o.AuthenticationPassword != "" {
 		toSerialize["authentication_password"] = o.AuthenticationPassword
 	}
 	if !IsNil(o.PrivacyProtocol) && *o.PrivacyProtocol != "" {
 		toSerialize["privacy_protocol"] = o.PrivacyProtocol
 	}
-	if !IsNil(o.PrivacyPassword) {
+	if !IsNil(o.PrivacyPassword) && *o.PrivacyPassword != "" {
 		toSerialize["privacy_password"] = o.PrivacyPassword
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.CredentialGroup) {
+	if !IsNil(o.CredentialGroup) && *o.CredentialGroup != "" {
 		toSerialize["credential_group"] = o.CredentialGroup
 	}
 

@@ -255,22 +255,22 @@ func (o SamlAuthserviceIdp) MarshalJSON() ([]byte, error) {
 
 func (o SamlAuthserviceIdp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.IdpType) {
+	if !IsNil(o.IdpType) && *o.IdpType != "" {
 		toSerialize["idp_type"] = o.IdpType
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.MetadataUrl) {
+	if !IsNil(o.MetadataUrl) && *o.MetadataUrl != "" {
 		toSerialize["metadata_url"] = o.MetadataUrl
 	}
-	if !IsNil(o.MetadataToken) {
+	if !IsNil(o.MetadataToken) && *o.MetadataToken != "" {
 		toSerialize["metadata_token"] = o.MetadataToken
 	}
-	if !IsNil(o.Groupname) {
+	if !IsNil(o.Groupname) && *o.Groupname != "" {
 		toSerialize["groupname"] = o.Groupname
 	}
-	if !IsNil(o.SsoRedirectUrl) {
+	if !IsNil(o.SsoRedirectUrl) && *o.SsoRedirectUrl != "" {
 		toSerialize["sso_redirect_url"] = o.SsoRedirectUrl
 	}
 

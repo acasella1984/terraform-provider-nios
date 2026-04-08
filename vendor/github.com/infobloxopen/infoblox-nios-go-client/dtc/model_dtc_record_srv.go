@@ -422,10 +422,10 @@ func (o DtcRecordSrv) MarshalJSON() ([]byte, error) {
 
 func (o DtcRecordSrv) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -434,7 +434,7 @@ func (o DtcRecordSrv) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DtcServer) && *o.DtcServer != "" {
 		toSerialize["dtc_server"] = o.DtcServer
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Port) {
@@ -443,7 +443,7 @@ func (o DtcRecordSrv) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
-	if !IsNil(o.Target) {
+	if !IsNil(o.Target) && *o.Target != "" {
 		toSerialize["target"] = o.Target
 	}
 	if !IsNil(o.Ttl) {

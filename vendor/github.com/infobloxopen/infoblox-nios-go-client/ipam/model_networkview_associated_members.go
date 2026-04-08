@@ -119,7 +119,7 @@ func (o NetworkviewAssociatedMembers) MarshalJSON() ([]byte, error) {
 
 func (o NetworkviewAssociatedMembers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Member) {
+	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
 	if !IsNil(o.Failovers) && len(o.Failovers) > 0 {

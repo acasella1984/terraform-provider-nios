@@ -323,28 +323,28 @@ func (o NetworkviewRemoteReverseZones) MarshalJSON() ([]byte, error) {
 
 func (o NetworkviewRemoteReverseZones) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Fqdn) {
+	if !IsNil(o.Fqdn) && *o.Fqdn != "" {
 		toSerialize["fqdn"] = o.Fqdn
 	}
-	if !IsNil(o.ServerAddress) {
+	if !IsNil(o.ServerAddress) && *o.ServerAddress != "" {
 		toSerialize["server_address"] = o.ServerAddress
 	}
-	if !IsNil(o.GssTsigDnsPrincipal) {
+	if !IsNil(o.GssTsigDnsPrincipal) && *o.GssTsigDnsPrincipal != "" {
 		toSerialize["gss_tsig_dns_principal"] = o.GssTsigDnsPrincipal
 	}
-	if !IsNil(o.GssTsigDomain) {
+	if !IsNil(o.GssTsigDomain) && *o.GssTsigDomain != "" {
 		toSerialize["gss_tsig_domain"] = o.GssTsigDomain
 	}
-	if !IsNil(o.TsigKey) {
+	if !IsNil(o.TsigKey) && *o.TsigKey != "" {
 		toSerialize["tsig_key"] = o.TsigKey
 	}
-	if !IsNil(o.TsigKeyAlg) {
+	if !IsNil(o.TsigKeyAlg) && *o.TsigKeyAlg != "" {
 		toSerialize["tsig_key_alg"] = o.TsigKeyAlg
 	}
-	if !IsNil(o.TsigKeyName) {
+	if !IsNil(o.TsigKeyName) && *o.TsigKeyName != "" {
 		toSerialize["tsig_key_name"] = o.TsigKeyName
 	}
-	if !IsNil(o.KeyType) {
+	if !IsNil(o.KeyType) && *o.KeyType != "" {
 		toSerialize["key_type"] = o.KeyType
 	}
 

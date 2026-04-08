@@ -119,7 +119,7 @@ func (o RangetemplateFingerprintFilterRules) MarshalJSON() ([]byte, error) {
 
 func (o RangetemplateFingerprintFilterRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Filter) {
+	if !IsNil(o.Filter) && *o.Filter != "" {
 		toSerialize["filter"] = o.Filter
 	}
 	if !IsNil(o.Permission) && *o.Permission != "" {

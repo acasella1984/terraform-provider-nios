@@ -116,7 +116,7 @@ func (o HsmAllgroups) MarshalJSON() ([]byte, error) {
 
 func (o HsmAllgroups) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Groups) && len(o.Groups) > 0 {

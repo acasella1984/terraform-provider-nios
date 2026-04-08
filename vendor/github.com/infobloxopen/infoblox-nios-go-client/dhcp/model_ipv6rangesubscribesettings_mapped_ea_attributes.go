@@ -119,10 +119,10 @@ func (o Ipv6rangesubscribesettingsMappedEaAttributes) MarshalJSON() ([]byte, err
 
 func (o Ipv6rangesubscribesettingsMappedEaAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.MappedEa) {
+	if !IsNil(o.MappedEa) && *o.MappedEa != "" {
 		toSerialize["mapped_ea"] = o.MappedEa
 	}
 

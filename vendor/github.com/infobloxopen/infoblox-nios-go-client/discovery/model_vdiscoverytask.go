@@ -1679,7 +1679,7 @@ func (o Vdiscoverytask) MarshalJSON() ([]byte, error) {
 
 func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AccountsList) && len(o.AccountsList) > 0 {
@@ -1697,7 +1697,7 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoConsolidateManagedVm) {
 		toSerialize["auto_consolidate_managed_vm"] = o.AutoConsolidateManagedVm
 	}
-	if !IsNil(o.AutoCreateDnsHostnameTemplate) {
+	if !IsNil(o.AutoCreateDnsHostnameTemplate) && *o.AutoCreateDnsHostnameTemplate != "" {
 		toSerialize["auto_create_dns_hostname_template"] = o.AutoCreateDnsHostnameTemplate
 	}
 	if !IsNil(o.AutoCreateDnsRecord) {
@@ -1706,22 +1706,22 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoCreateDnsRecordType) && *o.AutoCreateDnsRecordType != "" {
 		toSerialize["auto_create_dns_record_type"] = o.AutoCreateDnsRecordType
 	}
-	if !IsNil(o.CdiscoveryFileToken) {
+	if !IsNil(o.CdiscoveryFileToken) && *o.CdiscoveryFileToken != "" {
 		toSerialize["cdiscovery_file_token"] = o.CdiscoveryFileToken
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CredentialsType) && *o.CredentialsType != "" {
 		toSerialize["credentials_type"] = o.CredentialsType
 	}
-	if !IsNil(o.DnsViewPrivateIp) {
+	if !IsNil(o.DnsViewPrivateIp) && *o.DnsViewPrivateIp != "" {
 		toSerialize["dns_view_private_ip"] = o.DnsViewPrivateIp
 	}
-	if !IsNil(o.DnsViewPublicIp) {
+	if !IsNil(o.DnsViewPublicIp) && *o.DnsViewPublicIp != "" {
 		toSerialize["dns_view_public_ip"] = o.DnsViewPublicIp
 	}
-	if !IsNil(o.DomainName) {
+	if !IsNil(o.DomainName) && *o.DomainName != "" {
 		toSerialize["domain_name"] = o.DomainName
 	}
 	if !IsNil(o.DriverType) && *o.DriverType != "" {
@@ -1733,7 +1733,7 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.FqdnOrIp) {
+	if !IsNil(o.FqdnOrIp) && *o.FqdnOrIp != "" {
 		toSerialize["fqdn_or_ip"] = o.FqdnOrIp
 	}
 	if !IsNil(o.GovcloudEnabled) {
@@ -1754,7 +1754,7 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MultipleAccountsSyncPolicy) && *o.MultipleAccountsSyncPolicy != "" {
 		toSerialize["multiple_accounts_sync_policy"] = o.MultipleAccountsSyncPolicy
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NetworkFilter) && *o.NetworkFilter != "" {
@@ -1763,13 +1763,13 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkList) && len(o.NetworkList) > 0 {
 		toSerialize["network_list"] = o.NetworkList
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.PrivateNetworkView) {
+	if !IsNil(o.PrivateNetworkView) && *o.PrivateNetworkView != "" {
 		toSerialize["private_network_view"] = o.PrivateNetworkView
 	}
 	if !IsNil(o.PrivateNetworkViewMappingPolicy) && *o.PrivateNetworkViewMappingPolicy != "" {
@@ -1778,13 +1778,13 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Protocol) && *o.Protocol != "" {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if !IsNil(o.PublicNetworkView) {
+	if !IsNil(o.PublicNetworkView) && *o.PublicNetworkView != "" {
 		toSerialize["public_network_view"] = o.PublicNetworkView
 	}
 	if !IsNil(o.PublicNetworkViewMappingPolicy) && *o.PublicNetworkViewMappingPolicy != "" {
 		toSerialize["public_network_view_mapping_policy"] = o.PublicNetworkViewMappingPolicy
 	}
-	if !IsNil(o.RoleArn) {
+	if !IsNil(o.RoleArn) && *o.RoleArn != "" {
 		toSerialize["role_arn"] = o.RoleArn
 	}
 	if !IsNil(o.ScheduledRun) {
@@ -1792,19 +1792,19 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 			toSerialize["scheduled_run"] = o.ScheduledRun
 		}
 	}
-	if !IsNil(o.SelectedRegions) {
+	if !IsNil(o.SelectedRegions) && *o.SelectedRegions != "" {
 		toSerialize["selected_regions"] = o.SelectedRegions
 	}
-	if !IsNil(o.ServiceAccountFile) {
+	if !IsNil(o.ServiceAccountFile) && *o.ServiceAccountFile != "" {
 		toSerialize["service_account_file"] = o.ServiceAccountFile
 	}
-	if !IsNil(o.ServiceAccountFileToken) {
+	if !IsNil(o.ServiceAccountFileToken) && *o.ServiceAccountFileToken != "" {
 		toSerialize["service_account_file_token"] = o.ServiceAccountFileToken
 	}
 	if !IsNil(o.State) && *o.State != "" {
 		toSerialize["state"] = o.State
 	}
-	if !IsNil(o.StateMsg) {
+	if !IsNil(o.StateMsg) && *o.StateMsg != "" {
 		toSerialize["state_msg"] = o.StateMsg
 	}
 	if !IsNil(o.SyncChildAccounts) {
@@ -1822,7 +1822,7 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseIdentity) {
 		toSerialize["use_identity"] = o.UseIdentity
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil

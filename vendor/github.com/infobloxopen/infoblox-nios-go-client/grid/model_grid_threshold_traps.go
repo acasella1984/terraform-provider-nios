@@ -153,7 +153,7 @@ func (o GridThresholdTraps) MarshalJSON() ([]byte, error) {
 
 func (o GridThresholdTraps) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TrapType) {
+	if !IsNil(o.TrapType) && *o.TrapType != "" {
 		toSerialize["trap_type"] = o.TrapType
 	}
 	if !IsNil(o.TrapReset) {

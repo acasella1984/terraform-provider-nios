@@ -3315,28 +3315,28 @@ func (o Ipv6fixedaddressDiscoveredData) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6fixedaddressDiscoveredData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DeviceModel) {
+	if !IsNil(o.DeviceModel) && *o.DeviceModel != "" {
 		toSerialize["device_model"] = o.DeviceModel
 	}
-	if !IsNil(o.DevicePortName) {
+	if !IsNil(o.DevicePortName) && *o.DevicePortName != "" {
 		toSerialize["device_port_name"] = o.DevicePortName
 	}
-	if !IsNil(o.DevicePortType) {
+	if !IsNil(o.DevicePortType) && *o.DevicePortType != "" {
 		toSerialize["device_port_type"] = o.DevicePortType
 	}
-	if !IsNil(o.DeviceType) {
+	if !IsNil(o.DeviceType) && *o.DeviceType != "" {
 		toSerialize["device_type"] = o.DeviceType
 	}
-	if !IsNil(o.DeviceVendor) {
+	if !IsNil(o.DeviceVendor) && *o.DeviceVendor != "" {
 		toSerialize["device_vendor"] = o.DeviceVendor
 	}
-	if !IsNil(o.DiscoveredName) {
+	if !IsNil(o.DiscoveredName) && *o.DiscoveredName != "" {
 		toSerialize["discovered_name"] = o.DiscoveredName
 	}
-	if !IsNil(o.Discoverer) {
+	if !IsNil(o.Discoverer) && *o.Discoverer != "" {
 		toSerialize["discoverer"] = o.Discoverer
 	}
-	if !IsNil(o.Duid) {
+	if !IsNil(o.Duid) && *o.Duid != "" {
 		toSerialize["duid"] = o.Duid
 	}
 	if !IsNil(o.FirstDiscovered) {
@@ -3345,259 +3345,259 @@ func (o Ipv6fixedaddressDiscoveredData) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.IprgNo) {
 		toSerialize["iprg_no"] = o.IprgNo
 	}
-	if !IsNil(o.IprgState) {
+	if !IsNil(o.IprgState) && *o.IprgState != "" {
 		toSerialize["iprg_state"] = o.IprgState
 	}
-	if !IsNil(o.IprgType) {
+	if !IsNil(o.IprgType) && *o.IprgType != "" {
 		toSerialize["iprg_type"] = o.IprgType
 	}
 	if !IsNil(o.LastDiscovered) {
 		toSerialize["last_discovered"] = o.LastDiscovered
 	}
-	if !IsNil(o.MacAddress) {
+	if !IsNil(o.MacAddress) && *o.MacAddress != "" {
 		toSerialize["mac_address"] = o.MacAddress
 	}
-	if !IsNil(o.MgmtIpAddress) {
+	if !IsNil(o.MgmtIpAddress) && *o.MgmtIpAddress != "" {
 		toSerialize["mgmt_ip_address"] = o.MgmtIpAddress
 	}
-	if !IsNil(o.NetbiosName) {
+	if !IsNil(o.NetbiosName) && *o.NetbiosName != "" {
 		toSerialize["netbios_name"] = o.NetbiosName
 	}
-	if !IsNil(o.NetworkComponentDescription) {
+	if !IsNil(o.NetworkComponentDescription) && *o.NetworkComponentDescription != "" {
 		toSerialize["network_component_description"] = o.NetworkComponentDescription
 	}
-	if !IsNil(o.NetworkComponentIp) {
+	if !IsNil(o.NetworkComponentIp) && *o.NetworkComponentIp != "" {
 		toSerialize["network_component_ip"] = o.NetworkComponentIp
 	}
-	if !IsNil(o.NetworkComponentModel) {
+	if !IsNil(o.NetworkComponentModel) && *o.NetworkComponentModel != "" {
 		toSerialize["network_component_model"] = o.NetworkComponentModel
 	}
-	if !IsNil(o.NetworkComponentName) {
+	if !IsNil(o.NetworkComponentName) && *o.NetworkComponentName != "" {
 		toSerialize["network_component_name"] = o.NetworkComponentName
 	}
-	if !IsNil(o.NetworkComponentPortDescription) {
+	if !IsNil(o.NetworkComponentPortDescription) && *o.NetworkComponentPortDescription != "" {
 		toSerialize["network_component_port_description"] = o.NetworkComponentPortDescription
 	}
-	if !IsNil(o.NetworkComponentPortName) {
+	if !IsNil(o.NetworkComponentPortName) && *o.NetworkComponentPortName != "" {
 		toSerialize["network_component_port_name"] = o.NetworkComponentPortName
 	}
-	if !IsNil(o.NetworkComponentPortNumber) {
+	if !IsNil(o.NetworkComponentPortNumber) && *o.NetworkComponentPortNumber != "" {
 		toSerialize["network_component_port_number"] = o.NetworkComponentPortNumber
 	}
-	if !IsNil(o.NetworkComponentType) {
+	if !IsNil(o.NetworkComponentType) && *o.NetworkComponentType != "" {
 		toSerialize["network_component_type"] = o.NetworkComponentType
 	}
-	if !IsNil(o.NetworkComponentVendor) {
+	if !IsNil(o.NetworkComponentVendor) && *o.NetworkComponentVendor != "" {
 		toSerialize["network_component_vendor"] = o.NetworkComponentVendor
 	}
-	if !IsNil(o.OpenPorts) {
+	if !IsNil(o.OpenPorts) && *o.OpenPorts != "" {
 		toSerialize["open_ports"] = o.OpenPorts
 	}
-	if !IsNil(o.Os) {
+	if !IsNil(o.Os) && *o.Os != "" {
 		toSerialize["os"] = o.Os
 	}
-	if !IsNil(o.PortDuplex) {
+	if !IsNil(o.PortDuplex) && *o.PortDuplex != "" {
 		toSerialize["port_duplex"] = o.PortDuplex
 	}
-	if !IsNil(o.PortLinkStatus) {
+	if !IsNil(o.PortLinkStatus) && *o.PortLinkStatus != "" {
 		toSerialize["port_link_status"] = o.PortLinkStatus
 	}
-	if !IsNil(o.PortSpeed) {
+	if !IsNil(o.PortSpeed) && *o.PortSpeed != "" {
 		toSerialize["port_speed"] = o.PortSpeed
 	}
-	if !IsNil(o.PortStatus) {
+	if !IsNil(o.PortStatus) && *o.PortStatus != "" {
 		toSerialize["port_status"] = o.PortStatus
 	}
-	if !IsNil(o.PortType) {
+	if !IsNil(o.PortType) && *o.PortType != "" {
 		toSerialize["port_type"] = o.PortType
 	}
-	if !IsNil(o.PortVlanDescription) {
+	if !IsNil(o.PortVlanDescription) && *o.PortVlanDescription != "" {
 		toSerialize["port_vlan_description"] = o.PortVlanDescription
 	}
-	if !IsNil(o.PortVlanName) {
+	if !IsNil(o.PortVlanName) && *o.PortVlanName != "" {
 		toSerialize["port_vlan_name"] = o.PortVlanName
 	}
-	if !IsNil(o.PortVlanNumber) {
+	if !IsNil(o.PortVlanNumber) && *o.PortVlanNumber != "" {
 		toSerialize["port_vlan_number"] = o.PortVlanNumber
 	}
-	if !IsNil(o.VAdapter) {
+	if !IsNil(o.VAdapter) && *o.VAdapter != "" {
 		toSerialize["v_adapter"] = o.VAdapter
 	}
-	if !IsNil(o.VCluster) {
+	if !IsNil(o.VCluster) && *o.VCluster != "" {
 		toSerialize["v_cluster"] = o.VCluster
 	}
-	if !IsNil(o.VDatacenter) {
+	if !IsNil(o.VDatacenter) && *o.VDatacenter != "" {
 		toSerialize["v_datacenter"] = o.VDatacenter
 	}
-	if !IsNil(o.VEntityName) {
+	if !IsNil(o.VEntityName) && *o.VEntityName != "" {
 		toSerialize["v_entity_name"] = o.VEntityName
 	}
-	if !IsNil(o.VEntityType) {
+	if !IsNil(o.VEntityType) && *o.VEntityType != "" {
 		toSerialize["v_entity_type"] = o.VEntityType
 	}
-	if !IsNil(o.VHost) {
+	if !IsNil(o.VHost) && *o.VHost != "" {
 		toSerialize["v_host"] = o.VHost
 	}
-	if !IsNil(o.VSwitch) {
+	if !IsNil(o.VSwitch) && *o.VSwitch != "" {
 		toSerialize["v_switch"] = o.VSwitch
 	}
-	if !IsNil(o.VmiName) {
+	if !IsNil(o.VmiName) && *o.VmiName != "" {
 		toSerialize["vmi_name"] = o.VmiName
 	}
-	if !IsNil(o.VmiId) {
+	if !IsNil(o.VmiId) && *o.VmiId != "" {
 		toSerialize["vmi_id"] = o.VmiId
 	}
-	if !IsNil(o.VlanPortGroup) {
+	if !IsNil(o.VlanPortGroup) && *o.VlanPortGroup != "" {
 		toSerialize["vlan_port_group"] = o.VlanPortGroup
 	}
-	if !IsNil(o.VswitchName) {
+	if !IsNil(o.VswitchName) && *o.VswitchName != "" {
 		toSerialize["vswitch_name"] = o.VswitchName
 	}
-	if !IsNil(o.VswitchId) {
+	if !IsNil(o.VswitchId) && *o.VswitchId != "" {
 		toSerialize["vswitch_id"] = o.VswitchId
 	}
-	if !IsNil(o.VswitchType) {
+	if !IsNil(o.VswitchType) && *o.VswitchType != "" {
 		toSerialize["vswitch_type"] = o.VswitchType
 	}
 	if !IsNil(o.VswitchIpv6Enabled) {
 		toSerialize["vswitch_ipv6_enabled"] = o.VswitchIpv6Enabled
 	}
-	if !IsNil(o.VportName) {
+	if !IsNil(o.VportName) && *o.VportName != "" {
 		toSerialize["vport_name"] = o.VportName
 	}
-	if !IsNil(o.VportMacAddress) {
+	if !IsNil(o.VportMacAddress) && *o.VportMacAddress != "" {
 		toSerialize["vport_mac_address"] = o.VportMacAddress
 	}
-	if !IsNil(o.VportLinkStatus) {
+	if !IsNil(o.VportLinkStatus) && *o.VportLinkStatus != "" {
 		toSerialize["vport_link_status"] = o.VportLinkStatus
 	}
-	if !IsNil(o.VportConfSpeed) {
+	if !IsNil(o.VportConfSpeed) && *o.VportConfSpeed != "" {
 		toSerialize["vport_conf_speed"] = o.VportConfSpeed
 	}
-	if !IsNil(o.VportConfMode) {
+	if !IsNil(o.VportConfMode) && *o.VportConfMode != "" {
 		toSerialize["vport_conf_mode"] = o.VportConfMode
 	}
-	if !IsNil(o.VportSpeed) {
+	if !IsNil(o.VportSpeed) && *o.VportSpeed != "" {
 		toSerialize["vport_speed"] = o.VportSpeed
 	}
-	if !IsNil(o.VportMode) {
+	if !IsNil(o.VportMode) && *o.VportMode != "" {
 		toSerialize["vport_mode"] = o.VportMode
 	}
-	if !IsNil(o.VswitchSegmentType) {
+	if !IsNil(o.VswitchSegmentType) && *o.VswitchSegmentType != "" {
 		toSerialize["vswitch_segment_type"] = o.VswitchSegmentType
 	}
-	if !IsNil(o.VswitchSegmentName) {
+	if !IsNil(o.VswitchSegmentName) && *o.VswitchSegmentName != "" {
 		toSerialize["vswitch_segment_name"] = o.VswitchSegmentName
 	}
-	if !IsNil(o.VswitchSegmentId) {
+	if !IsNil(o.VswitchSegmentId) && *o.VswitchSegmentId != "" {
 		toSerialize["vswitch_segment_id"] = o.VswitchSegmentId
 	}
-	if !IsNil(o.VswitchSegmentPortGroup) {
+	if !IsNil(o.VswitchSegmentPortGroup) && *o.VswitchSegmentPortGroup != "" {
 		toSerialize["vswitch_segment_port_group"] = o.VswitchSegmentPortGroup
 	}
 	if !IsNil(o.VswitchAvailablePortsCount) {
 		toSerialize["vswitch_available_ports_count"] = o.VswitchAvailablePortsCount
 	}
-	if !IsNil(o.VswitchTepType) {
+	if !IsNil(o.VswitchTepType) && *o.VswitchTepType != "" {
 		toSerialize["vswitch_tep_type"] = o.VswitchTepType
 	}
-	if !IsNil(o.VswitchTepIp) {
+	if !IsNil(o.VswitchTepIp) && *o.VswitchTepIp != "" {
 		toSerialize["vswitch_tep_ip"] = o.VswitchTepIp
 	}
-	if !IsNil(o.VswitchTepPortGroup) {
+	if !IsNil(o.VswitchTepPortGroup) && *o.VswitchTepPortGroup != "" {
 		toSerialize["vswitch_tep_port_group"] = o.VswitchTepPortGroup
 	}
-	if !IsNil(o.VswitchTepVlan) {
+	if !IsNil(o.VswitchTepVlan) && *o.VswitchTepVlan != "" {
 		toSerialize["vswitch_tep_vlan"] = o.VswitchTepVlan
 	}
-	if !IsNil(o.VswitchTepDhcpServer) {
+	if !IsNil(o.VswitchTepDhcpServer) && *o.VswitchTepDhcpServer != "" {
 		toSerialize["vswitch_tep_dhcp_server"] = o.VswitchTepDhcpServer
 	}
-	if !IsNil(o.VswitchTepMulticast) {
+	if !IsNil(o.VswitchTepMulticast) && *o.VswitchTepMulticast != "" {
 		toSerialize["vswitch_tep_multicast"] = o.VswitchTepMulticast
 	}
-	if !IsNil(o.VmhostIpAddress) {
+	if !IsNil(o.VmhostIpAddress) && *o.VmhostIpAddress != "" {
 		toSerialize["vmhost_ip_address"] = o.VmhostIpAddress
 	}
-	if !IsNil(o.VmhostName) {
+	if !IsNil(o.VmhostName) && *o.VmhostName != "" {
 		toSerialize["vmhost_name"] = o.VmhostName
 	}
-	if !IsNil(o.VmhostMacAddress) {
+	if !IsNil(o.VmhostMacAddress) && *o.VmhostMacAddress != "" {
 		toSerialize["vmhost_mac_address"] = o.VmhostMacAddress
 	}
 	if !IsNil(o.VmhostSubnetCidr) {
 		toSerialize["vmhost_subnet_cidr"] = o.VmhostSubnetCidr
 	}
-	if !IsNil(o.VmhostNicNames) {
+	if !IsNil(o.VmhostNicNames) && *o.VmhostNicNames != "" {
 		toSerialize["vmhost_nic_names"] = o.VmhostNicNames
 	}
-	if !IsNil(o.VmiTenantId) {
+	if !IsNil(o.VmiTenantId) && *o.VmiTenantId != "" {
 		toSerialize["vmi_tenant_id"] = o.VmiTenantId
 	}
-	if !IsNil(o.CmpType) {
+	if !IsNil(o.CmpType) && *o.CmpType != "" {
 		toSerialize["cmp_type"] = o.CmpType
 	}
-	if !IsNil(o.VmiIpType) {
+	if !IsNil(o.VmiIpType) && *o.VmiIpType != "" {
 		toSerialize["vmi_ip_type"] = o.VmiIpType
 	}
-	if !IsNil(o.VmiPrivateAddress) {
+	if !IsNil(o.VmiPrivateAddress) && *o.VmiPrivateAddress != "" {
 		toSerialize["vmi_private_address"] = o.VmiPrivateAddress
 	}
 	if !IsNil(o.VmiIsPublicAddress) {
 		toSerialize["vmi_is_public_address"] = o.VmiIsPublicAddress
 	}
-	if !IsNil(o.CiscoIseSsid) {
+	if !IsNil(o.CiscoIseSsid) && *o.CiscoIseSsid != "" {
 		toSerialize["cisco_ise_ssid"] = o.CiscoIseSsid
 	}
-	if !IsNil(o.CiscoIseEndpointProfile) {
+	if !IsNil(o.CiscoIseEndpointProfile) && *o.CiscoIseEndpointProfile != "" {
 		toSerialize["cisco_ise_endpoint_profile"] = o.CiscoIseEndpointProfile
 	}
-	if !IsNil(o.CiscoIseSessionState) {
+	if !IsNil(o.CiscoIseSessionState) && *o.CiscoIseSessionState != "" {
 		toSerialize["cisco_ise_session_state"] = o.CiscoIseSessionState
 	}
-	if !IsNil(o.CiscoIseSecurityGroup) {
+	if !IsNil(o.CiscoIseSecurityGroup) && *o.CiscoIseSecurityGroup != "" {
 		toSerialize["cisco_ise_security_group"] = o.CiscoIseSecurityGroup
 	}
-	if !IsNil(o.TaskName) {
+	if !IsNil(o.TaskName) && *o.TaskName != "" {
 		toSerialize["task_name"] = o.TaskName
 	}
-	if !IsNil(o.NetworkComponentLocation) {
+	if !IsNil(o.NetworkComponentLocation) && *o.NetworkComponentLocation != "" {
 		toSerialize["network_component_location"] = o.NetworkComponentLocation
 	}
-	if !IsNil(o.NetworkComponentContact) {
+	if !IsNil(o.NetworkComponentContact) && *o.NetworkComponentContact != "" {
 		toSerialize["network_component_contact"] = o.NetworkComponentContact
 	}
-	if !IsNil(o.DeviceLocation) {
+	if !IsNil(o.DeviceLocation) && *o.DeviceLocation != "" {
 		toSerialize["device_location"] = o.DeviceLocation
 	}
-	if !IsNil(o.DeviceContact) {
+	if !IsNil(o.DeviceContact) && *o.DeviceContact != "" {
 		toSerialize["device_contact"] = o.DeviceContact
 	}
-	if !IsNil(o.ApName) {
+	if !IsNil(o.ApName) && *o.ApName != "" {
 		toSerialize["ap_name"] = o.ApName
 	}
-	if !IsNil(o.ApIpAddress) {
+	if !IsNil(o.ApIpAddress) && *o.ApIpAddress != "" {
 		toSerialize["ap_ip_address"] = o.ApIpAddress
 	}
-	if !IsNil(o.ApSsid) {
+	if !IsNil(o.ApSsid) && *o.ApSsid != "" {
 		toSerialize["ap_ssid"] = o.ApSsid
 	}
-	if !IsNil(o.BridgeDomain) {
+	if !IsNil(o.BridgeDomain) && *o.BridgeDomain != "" {
 		toSerialize["bridge_domain"] = o.BridgeDomain
 	}
-	if !IsNil(o.EndpointGroups) {
+	if !IsNil(o.EndpointGroups) && *o.EndpointGroups != "" {
 		toSerialize["endpoint_groups"] = o.EndpointGroups
 	}
 	if !IsNil(o.Tenant) && *o.Tenant != "" {
 		toSerialize["tenant"] = o.Tenant
 	}
-	if !IsNil(o.VrfName) {
+	if !IsNil(o.VrfName) && *o.VrfName != "" {
 		toSerialize["vrf_name"] = o.VrfName
 	}
-	if !IsNil(o.VrfDescription) {
+	if !IsNil(o.VrfDescription) && *o.VrfDescription != "" {
 		toSerialize["vrf_description"] = o.VrfDescription
 	}
-	if !IsNil(o.VrfRd) {
+	if !IsNil(o.VrfRd) && *o.VrfRd != "" {
 		toSerialize["vrf_rd"] = o.VrfRd
 	}
 	if !IsNil(o.BgpAs) {

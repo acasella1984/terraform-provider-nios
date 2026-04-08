@@ -153,13 +153,13 @@ func (o AdminuserSshKeys) MarshalJSON() ([]byte, error) {
 
 func (o AdminuserSshKeys) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.KeyName) {
+	if !IsNil(o.KeyName) && *o.KeyName != "" {
 		toSerialize["key_name"] = o.KeyName
 	}
-	if !IsNil(o.KeyType) {
+	if !IsNil(o.KeyType) && *o.KeyType != "" {
 		toSerialize["key_type"] = o.KeyType
 	}
-	if !IsNil(o.KeyValue) {
+	if !IsNil(o.KeyValue) && *o.KeyValue != "" {
 		toSerialize["key_value"] = o.KeyValue
 	}
 

@@ -119,10 +119,10 @@ func (o NetworkFederatedRealms) MarshalJSON() ([]byte, error) {
 
 func (o NetworkFederatedRealms) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Id) {
+	if !IsNil(o.Id) && *o.Id != "" {
 		toSerialize["id"] = o.Id
 	}
 

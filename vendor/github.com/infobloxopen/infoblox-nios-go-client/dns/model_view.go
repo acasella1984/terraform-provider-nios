@@ -2935,7 +2935,7 @@ func (o View) MarshalJSON() ([]byte, error) {
 
 func (o View) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.BlacklistAction) && *o.BlacklistAction != "" {
@@ -2958,7 +2958,7 @@ func (o View) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CustomRootNameServers) && len(o.CustomRootNameServers) > 0 {
@@ -3067,10 +3067,10 @@ func (o View) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaxUdpSize) {
 		toSerialize["max_udp_size"] = o.MaxUdpSize
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.NotifyDelay) {

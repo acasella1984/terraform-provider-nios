@@ -1584,7 +1584,7 @@ func (o Admingroup) MarshalJSON() ([]byte, error) {
 
 func (o Admingroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AccessMethod) && len(o.AccessMethod) > 0 {
@@ -1615,7 +1615,7 @@ func (o Admingroup) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_show_commands"] = o.CloudShowCommands
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DatabaseSetCommands) {
@@ -1719,7 +1719,7 @@ func (o Admingroup) ToMap() (map[string]interface{}, error) {
 			toSerialize["machine_control_toplevel_commands"] = o.MachineControlToplevelCommands
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NetworkingSetCommands) {

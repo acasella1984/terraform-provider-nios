@@ -221,7 +221,7 @@ func (o GridDhcppropertiesOption60MatchRules) MarshalJSON() ([]byte, error) {
 
 func (o GridDhcppropertiesOption60MatchRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MatchValue) {
+	if !IsNil(o.MatchValue) && *o.MatchValue != "" {
 		toSerialize["match_value"] = o.MatchValue
 	}
 	if !IsNil(o.OptionSpace) && *o.OptionSpace != "" {

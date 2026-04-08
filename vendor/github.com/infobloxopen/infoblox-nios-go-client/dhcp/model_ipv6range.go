@@ -1402,10 +1402,10 @@ func (o Ipv6range) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AddressType) {
+	if !IsNil(o.AddressType) && *o.AddressType != "" {
 		toSerialize["address_type"] = o.AddressType
 	}
 	if !IsNil(o.CloudInfo) {
@@ -1413,7 +1413,7 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -1441,7 +1441,7 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableImmediateDiscovery) {
 		toSerialize["enable_immediate_discovery"] = o.EnableImmediateDiscovery
 	}
-	if !IsNil(o.EndAddr) {
+	if !IsNil(o.EndAddr) && *o.EndAddr != "" {
 		toSerialize["end_addr"] = o.EndAddr
 	}
 	if !IsNil(o.EndpointSources) && len(o.EndpointSources) > 0 {
@@ -1459,13 +1459,13 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Ipv6EndPrefix) {
+	if !IsNil(o.Ipv6EndPrefix) && *o.Ipv6EndPrefix != "" {
 		toSerialize["ipv6_end_prefix"] = o.Ipv6EndPrefix
 	}
 	if !IsNil(o.Ipv6PrefixBits) {
 		toSerialize["ipv6_prefix_bits"] = o.Ipv6PrefixBits
 	}
-	if !IsNil(o.Ipv6StartPrefix) {
+	if !IsNil(o.Ipv6StartPrefix) && *o.Ipv6StartPrefix != "" {
 		toSerialize["ipv6_start_prefix"] = o.Ipv6StartPrefix
 	}
 	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
@@ -1476,13 +1476,13 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 			toSerialize["member"] = o.Member
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.OptionFilterRules) && len(o.OptionFilterRules) > 0 {
@@ -1505,7 +1505,7 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerAssociationType) && *o.ServerAssociationType != "" {
 		toSerialize["server_association_type"] = o.ServerAssociationType
 	}
-	if !IsNil(o.StartAddr) {
+	if !IsNil(o.StartAddr) && *o.StartAddr != "" {
 		toSerialize["start_addr"] = o.StartAddr
 	}
 	if !IsNil(o.SubscribeSettings) {
@@ -1513,7 +1513,7 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 			toSerialize["subscribe_settings"] = o.SubscribeSettings
 		}
 	}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
 	if !IsNil(o.UseBlackoutSetting) {

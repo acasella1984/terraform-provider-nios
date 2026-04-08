@@ -190,7 +190,7 @@ func (o SmartfolderChildrenValue) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ValueInteger) {
 		toSerialize["value_integer"] = o.ValueInteger
 	}
-	if !IsNil(o.ValueString) {
+	if !IsNil(o.ValueString) && *o.ValueString != "" {
 		toSerialize["value_string"] = o.ValueString
 	}
 	if !IsNil(o.ValueDate) {

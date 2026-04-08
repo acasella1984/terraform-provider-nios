@@ -119,10 +119,10 @@ func (o TaxiiTaxiiRpzConfig) MarshalJSON() ([]byte, error) {
 
 func (o TaxiiTaxiiRpzConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CollectionName) {
+	if !IsNil(o.CollectionName) && *o.CollectionName != "" {
 		toSerialize["collection_name"] = o.CollectionName
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 

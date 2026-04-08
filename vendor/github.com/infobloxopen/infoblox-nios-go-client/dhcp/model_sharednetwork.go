@@ -1883,19 +1883,19 @@ func (o Sharednetwork) MarshalJSON() ([]byte, error) {
 
 func (o Sharednetwork) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Authority) {
 		toSerialize["authority"] = o.Authority
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DdnsGenerateHostname) {
@@ -1966,16 +1966,16 @@ func (o Sharednetwork) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Networks) && len(o.Networks) > 0 {
 		toSerialize["networks"] = o.Networks
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {

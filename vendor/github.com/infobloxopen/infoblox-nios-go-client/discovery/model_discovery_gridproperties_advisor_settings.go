@@ -836,7 +836,7 @@ func (o DiscoveryGridpropertiesAdvisorSettings) ToMap() (map[string]interface{},
 	if !IsNil(o.EnableProxy) {
 		toSerialize["enable_proxy"] = o.EnableProxy
 	}
-	if !IsNil(o.ProxyAddress) {
+	if !IsNil(o.ProxyAddress) && *o.ProxyAddress != "" {
 		toSerialize["proxy_address"] = o.ProxyAddress
 	}
 	if !IsNil(o.ProxyPort) {
@@ -845,10 +845,10 @@ func (o DiscoveryGridpropertiesAdvisorSettings) ToMap() (map[string]interface{},
 	if !IsNil(o.UseProxyUsernamePasswd) {
 		toSerialize["use_proxy_username_passwd"] = o.UseProxyUsernamePasswd
 	}
-	if !IsNil(o.ProxyUsername) {
+	if !IsNil(o.ProxyUsername) && *o.ProxyUsername != "" {
 		toSerialize["proxy_username"] = o.ProxyUsername
 	}
-	if !IsNil(o.ProxyPassword) {
+	if !IsNil(o.ProxyPassword) && *o.ProxyPassword != "" {
 		toSerialize["proxy_password"] = o.ProxyPassword
 	}
 	if !IsNil(o.ExecutionInterval) {
@@ -857,13 +857,13 @@ func (o DiscoveryGridpropertiesAdvisorSettings) ToMap() (map[string]interface{},
 	if !IsNil(o.ExecutionHour) {
 		toSerialize["execution_hour"] = o.ExecutionHour
 	}
-	if !IsNil(o.NetworkInterfaceType) {
+	if !IsNil(o.NetworkInterfaceType) && *o.NetworkInterfaceType != "" {
 		toSerialize["network_interface_type"] = o.NetworkInterfaceType
 	}
-	if !IsNil(o.NetworkInterfaceVirtualIp) {
+	if !IsNil(o.NetworkInterfaceVirtualIp) && *o.NetworkInterfaceVirtualIp != "" {
 		toSerialize["network_interface_virtual_ip"] = o.NetworkInterfaceVirtualIp
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.Port) {
@@ -872,34 +872,34 @@ func (o DiscoveryGridpropertiesAdvisorSettings) ToMap() (map[string]interface{},
 	if !IsNil(o.AuthType) && *o.AuthType != "" {
 		toSerialize["auth_type"] = o.AuthType
 	}
-	if !IsNil(o.AuthToken) {
+	if !IsNil(o.AuthToken) && *o.AuthToken != "" {
 		toSerialize["auth_token"] = o.AuthToken
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
-	if !IsNil(o.MinSeverity) {
+	if !IsNil(o.MinSeverity) && *o.MinSeverity != "" {
 		toSerialize["min_severity"] = o.MinSeverity
 	}
 	if !IsNil(o.LastExecTime) {
 		toSerialize["last_exec_time"] = o.LastExecTime
 	}
-	if !IsNil(o.LastExecStatus) {
+	if !IsNil(o.LastExecStatus) && *o.LastExecStatus != "" {
 		toSerialize["last_exec_status"] = o.LastExecStatus
 	}
-	if !IsNil(o.LastExecDetails) {
+	if !IsNil(o.LastExecDetails) && *o.LastExecDetails != "" {
 		toSerialize["last_exec_details"] = o.LastExecDetails
 	}
 	if !IsNil(o.LastRunNowTime) {
 		toSerialize["last_run_now_time"] = o.LastRunNowTime
 	}
-	if !IsNil(o.LastRunNowStatus) {
+	if !IsNil(o.LastRunNowStatus) && *o.LastRunNowStatus != "" {
 		toSerialize["last_run_now_status"] = o.LastRunNowStatus
 	}
-	if !IsNil(o.LastRunNowDetails) {
+	if !IsNil(o.LastRunNowDetails) && *o.LastRunNowDetails != "" {
 		toSerialize["last_run_now_details"] = o.LastRunNowDetails
 	}
 

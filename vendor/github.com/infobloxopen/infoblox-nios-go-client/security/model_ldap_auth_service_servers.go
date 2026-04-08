@@ -425,22 +425,22 @@ func (o LdapAuthServiceServers) MarshalJSON() ([]byte, error) {
 
 func (o LdapAuthServiceServers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.AuthenticationType) {
+	if !IsNil(o.AuthenticationType) && *o.AuthenticationType != "" {
 		toSerialize["authentication_type"] = o.AuthenticationType
 	}
-	if !IsNil(o.BaseDn) {
+	if !IsNil(o.BaseDn) && *o.BaseDn != "" {
 		toSerialize["base_dn"] = o.BaseDn
 	}
-	if !IsNil(o.BindPassword) {
+	if !IsNil(o.BindPassword) && *o.BindPassword != "" {
 		toSerialize["bind_password"] = o.BindPassword
 	}
-	if !IsNil(o.BindUserDn) {
+	if !IsNil(o.BindUserDn) && *o.BindUserDn != "" {
 		toSerialize["bind_user_dn"] = o.BindUserDn
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -455,7 +455,7 @@ func (o LdapAuthServiceServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseMgmtPort) {
 		toSerialize["use_mgmt_port"] = o.UseMgmtPort
 	}
-	if !IsNil(o.Version) {
+	if !IsNil(o.Version) && *o.Version != "" {
 		toSerialize["version"] = o.Version
 	}
 

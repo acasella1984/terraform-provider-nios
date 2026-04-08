@@ -555,22 +555,22 @@ func (o Vlan) MarshalJSON() ([]byte, error) {
 
 func (o Vlan) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AssignedTo) && len(o.AssignedTo) > 0 {
 		toSerialize["assigned_to"] = o.AssignedTo
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Contact) {
+	if !IsNil(o.Contact) && *o.Contact != "" {
 		toSerialize["contact"] = o.Contact
 	}
-	if !IsNil(o.Department) {
+	if !IsNil(o.Department) && *o.Department != "" {
 		toSerialize["department"] = o.Department
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -590,7 +590,7 @@ func (o Vlan) ToMap() (map[string]interface{}, error) {
 			toSerialize["func_call"] = o.FuncCall
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Parent) {

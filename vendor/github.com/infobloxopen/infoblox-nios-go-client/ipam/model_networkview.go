@@ -658,7 +658,7 @@ func (o Networkview) MarshalJSON() ([]byte, error) {
 
 func (o Networkview) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AssociatedDnsViews) && len(o.AssociatedDnsViews) > 0 {
@@ -672,7 +672,7 @@ func (o Networkview) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DdnsDnsView) && *o.DdnsDnsView != "" {
@@ -707,7 +707,7 @@ func (o Networkview) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.RemoteForwardZones) && len(o.RemoteForwardZones) > 0 {

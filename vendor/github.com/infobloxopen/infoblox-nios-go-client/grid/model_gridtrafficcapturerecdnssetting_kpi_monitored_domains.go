@@ -119,10 +119,10 @@ func (o GridtrafficcapturerecdnssettingKpiMonitoredDomains) MarshalJSON() ([]byt
 
 func (o GridtrafficcapturerecdnssettingKpiMonitoredDomains) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DomainName) {
+	if !IsNil(o.DomainName) && *o.DomainName != "" {
 		toSerialize["domain_name"] = o.DomainName
 	}
-	if !IsNil(o.RecordType) {
+	if !IsNil(o.RecordType) && *o.RecordType != "" {
 		toSerialize["record_type"] = o.RecordType
 	}
 

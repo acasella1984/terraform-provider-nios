@@ -264,13 +264,13 @@ func (o MemberCspMemberSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseCspHttpsProxy) {
 		toSerialize["use_csp_https_proxy"] = o.UseCspHttpsProxy
 	}
-	if !IsNil(o.CspJoinToken) {
+	if !IsNil(o.CspJoinToken) && *o.CspJoinToken != "" {
 		toSerialize["csp_join_token"] = o.CspJoinToken
 	}
-	if !IsNil(o.CspDnsResolver) {
+	if !IsNil(o.CspDnsResolver) && *o.CspDnsResolver != "" {
 		toSerialize["csp_dns_resolver"] = o.CspDnsResolver
 	}
-	if !IsNil(o.CspHttpsProxy) {
+	if !IsNil(o.CspHttpsProxy) && *o.CspHttpsProxy != "" {
 		toSerialize["csp_https_proxy"] = o.CspHttpsProxy
 	}
 

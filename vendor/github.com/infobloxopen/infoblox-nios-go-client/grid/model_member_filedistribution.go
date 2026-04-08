@@ -796,13 +796,13 @@ func (o MemberFiledistribution) MarshalJSON() ([]byte, error) {
 
 func (o MemberFiledistribution) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowUploads) {
 		toSerialize["allow_uploads"] = o.AllowUploads
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.EnableFtp) {
@@ -832,7 +832,7 @@ func (o MemberFiledistribution) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FtpStatus) && *o.FtpStatus != "" {
 		toSerialize["ftp_status"] = o.FtpStatus
 	}
-	if !IsNil(o.HostName) {
+	if !IsNil(o.HostName) && *o.HostName != "" {
 		toSerialize["host_name"] = o.HostName
 	}
 	if !IsNil(o.HttpAcls) && len(o.HttpAcls) > 0 {
@@ -841,13 +841,13 @@ func (o MemberFiledistribution) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HttpStatus) && *o.HttpStatus != "" {
 		toSerialize["http_status"] = o.HttpStatus
 	}
-	if !IsNil(o.Ipv4Address) {
+	if !IsNil(o.Ipv4Address) && *o.Ipv4Address != "" {
 		toSerialize["ipv4_address"] = o.Ipv4Address
 	}
-	if !IsNil(o.Ipv6Address) {
+	if !IsNil(o.Ipv6Address) && *o.Ipv6Address != "" {
 		toSerialize["ipv6_address"] = o.Ipv6Address
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.TftpAcls) && len(o.TftpAcls) > 0 {

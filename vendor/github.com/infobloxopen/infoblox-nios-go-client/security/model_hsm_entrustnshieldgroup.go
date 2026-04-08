@@ -388,34 +388,34 @@ func (o HsmEntrustnshieldgroup) MarshalJSON() ([]byte, error) {
 
 func (o HsmEntrustnshieldgroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.CardName) {
+	if !IsNil(o.CardName) && *o.CardName != "" {
 		toSerialize["card_name"] = o.CardName
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.EntrustnshieldHsm) && len(o.EntrustnshieldHsm) > 0 {
 		toSerialize["entrustnshield_hsm"] = o.EntrustnshieldHsm
 	}
-	if !IsNil(o.KeyServerIp) {
+	if !IsNil(o.KeyServerIp) && *o.KeyServerIp != "" {
 		toSerialize["key_server_ip"] = o.KeyServerIp
 	}
 	if !IsNil(o.KeyServerPort) {
 		toSerialize["key_server_port"] = o.KeyServerPort
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.PassPhrase) {
+	if !IsNil(o.PassPhrase) && *o.PassPhrase != "" {
 		toSerialize["pass_phrase"] = o.PassPhrase
 	}
 	if !IsNil(o.Protection) && *o.Protection != "" {
 		toSerialize["protection"] = o.Protection
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil

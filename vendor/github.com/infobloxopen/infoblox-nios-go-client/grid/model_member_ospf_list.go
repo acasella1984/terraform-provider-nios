@@ -663,22 +663,22 @@ func (o MemberOspfList) MarshalJSON() ([]byte, error) {
 
 func (o MemberOspfList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AreaId) {
+	if !IsNil(o.AreaId) && *o.AreaId != "" {
 		toSerialize["area_id"] = o.AreaId
 	}
-	if !IsNil(o.AreaType) {
+	if !IsNil(o.AreaType) && *o.AreaType != "" {
 		toSerialize["area_type"] = o.AreaType
 	}
-	if !IsNil(o.AuthenticationKey) {
+	if !IsNil(o.AuthenticationKey) && *o.AuthenticationKey != "" {
 		toSerialize["authentication_key"] = o.AuthenticationKey
 	}
-	if !IsNil(o.AuthenticationType) {
+	if !IsNil(o.AuthenticationType) && *o.AuthenticationType != "" {
 		toSerialize["authentication_type"] = o.AuthenticationType
 	}
 	if !IsNil(o.AutoCalcCostEnabled) {
 		toSerialize["auto_calc_cost_enabled"] = o.AutoCalcCostEnabled
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Cost) {
@@ -705,10 +705,10 @@ func (o MemberOspfList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TransmitDelay) {
 		toSerialize["transmit_delay"] = o.TransmitDelay
 	}
-	if !IsNil(o.AdvertiseInterfaceVlan) {
+	if !IsNil(o.AdvertiseInterfaceVlan) && *o.AdvertiseInterfaceVlan != "" {
 		toSerialize["advertise_interface_vlan"] = o.AdvertiseInterfaceVlan
 	}
-	if !IsNil(o.BfdTemplate) {
+	if !IsNil(o.BfdTemplate) && *o.BfdTemplate != "" {
 		toSerialize["bfd_template"] = o.BfdTemplate
 	}
 	if !IsNil(o.EnableBfd) {

@@ -1102,13 +1102,13 @@ func (o Captiveportal) MarshalJSON() ([]byte, error) {
 
 func (o Captiveportal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AuthnServerGroup) && *o.AuthnServerGroup != "" {
 		toSerialize["authn_server_group"] = o.AuthnServerGroup
 	}
-	if !IsNil(o.CompanyName) {
+	if !IsNil(o.CompanyName) && *o.CompanyName != "" {
 		toSerialize["company_name"] = o.CompanyName
 	}
 	if !IsNil(o.EnableSyslogAuthFailure) {
@@ -1126,25 +1126,25 @@ func (o Captiveportal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Files) && len(o.Files) > 0 {
 		toSerialize["files"] = o.Files
 	}
-	if !IsNil(o.GuestCustomField1Name) {
+	if !IsNil(o.GuestCustomField1Name) && *o.GuestCustomField1Name != "" {
 		toSerialize["guest_custom_field1_name"] = o.GuestCustomField1Name
 	}
 	if !IsNil(o.GuestCustomField1Required) {
 		toSerialize["guest_custom_field1_required"] = o.GuestCustomField1Required
 	}
-	if !IsNil(o.GuestCustomField2Name) {
+	if !IsNil(o.GuestCustomField2Name) && *o.GuestCustomField2Name != "" {
 		toSerialize["guest_custom_field2_name"] = o.GuestCustomField2Name
 	}
 	if !IsNil(o.GuestCustomField2Required) {
 		toSerialize["guest_custom_field2_required"] = o.GuestCustomField2Required
 	}
-	if !IsNil(o.GuestCustomField3Name) {
+	if !IsNil(o.GuestCustomField3Name) && *o.GuestCustomField3Name != "" {
 		toSerialize["guest_custom_field3_name"] = o.GuestCustomField3Name
 	}
 	if !IsNil(o.GuestCustomField3Required) {
 		toSerialize["guest_custom_field3_required"] = o.GuestCustomField3Required
 	}
-	if !IsNil(o.GuestCustomField4Name) {
+	if !IsNil(o.GuestCustomField4Name) && *o.GuestCustomField4Name != "" {
 		toSerialize["guest_custom_field4_name"] = o.GuestCustomField4Name
 	}
 	if !IsNil(o.GuestCustomField4Required) {
@@ -1165,10 +1165,10 @@ func (o Captiveportal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GuestPhoneRequired) {
 		toSerialize["guest_phone_required"] = o.GuestPhoneRequired
 	}
-	if !IsNil(o.HelpdeskMessage) {
+	if !IsNil(o.HelpdeskMessage) && *o.HelpdeskMessage != "" {
 		toSerialize["helpdesk_message"] = o.HelpdeskMessage
 	}
-	if !IsNil(o.ListenAddressIp) {
+	if !IsNil(o.ListenAddressIp) && *o.ListenAddressIp != "" {
 		toSerialize["listen_address_ip"] = o.ListenAddressIp
 	}
 	if !IsNil(o.ListenAddressType) && *o.ListenAddressType != "" {
@@ -1192,7 +1192,7 @@ func (o Captiveportal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SyslogAuthSuccessLevel) && *o.SyslogAuthSuccessLevel != "" {
 		toSerialize["syslog_auth_success_level"] = o.SyslogAuthSuccessLevel
 	}
-	if !IsNil(o.WelcomeMessage) {
+	if !IsNil(o.WelcomeMessage) && *o.WelcomeMessage != "" {
 		toSerialize["welcome_message"] = o.WelcomeMessage
 	}
 	return toSerialize, nil

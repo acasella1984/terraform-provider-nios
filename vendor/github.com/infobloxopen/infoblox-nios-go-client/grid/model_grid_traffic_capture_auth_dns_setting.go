@@ -196,7 +196,7 @@ func (o GridTrafficCaptureAuthDnsSetting) ToMap() (map[string]interface{}, error
 	if !IsNil(o.AuthDnsLatencyReset) {
 		toSerialize["auth_dns_latency_reset"] = o.AuthDnsLatencyReset
 	}
-	if !IsNil(o.AuthDnsLatencyListenOnSource) {
+	if !IsNil(o.AuthDnsLatencyListenOnSource) && *o.AuthDnsLatencyListenOnSource != "" {
 		toSerialize["auth_dns_latency_listen_on_source"] = o.AuthDnsLatencyListenOnSource
 	}
 

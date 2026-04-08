@@ -119,10 +119,10 @@ func (o ViewFixedRrsetOrderFqdns) MarshalJSON() ([]byte, error) {
 
 func (o ViewFixedRrsetOrderFqdns) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Fqdn) {
+	if !IsNil(o.Fqdn) && *o.Fqdn != "" {
 		toSerialize["fqdn"] = o.Fqdn
 	}
-	if !IsNil(o.RecordType) {
+	if !IsNil(o.RecordType) && *o.RecordType != "" {
 		toSerialize["record_type"] = o.RecordType
 	}
 

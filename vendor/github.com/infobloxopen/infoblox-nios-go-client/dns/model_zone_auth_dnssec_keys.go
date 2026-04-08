@@ -258,19 +258,19 @@ func (o ZoneAuthDnssecKeys) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tag) {
 		toSerialize["tag"] = o.Tag
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.NextEventDate) {
 		toSerialize["next_event_date"] = o.NextEventDate
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Algorithm) && *o.Algorithm != "" {
 		toSerialize["algorithm"] = o.Algorithm
 	}
-	if !IsNil(o.PublicKey) {
+	if !IsNil(o.PublicKey) && *o.PublicKey != "" {
 		toSerialize["public_key"] = o.PublicKey
 	}
 

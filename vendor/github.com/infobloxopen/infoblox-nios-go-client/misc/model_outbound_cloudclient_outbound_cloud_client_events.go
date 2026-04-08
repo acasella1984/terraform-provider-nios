@@ -119,7 +119,7 @@ func (o OutboundCloudclientOutboundCloudClientEvents) MarshalJSON() ([]byte, err
 
 func (o OutboundCloudclientOutboundCloudClientEvents) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EventType) {
+	if !IsNil(o.EventType) && *o.EventType != "" {
 		toSerialize["event_type"] = o.EventType
 	}
 	if !IsNil(o.Enabled) {

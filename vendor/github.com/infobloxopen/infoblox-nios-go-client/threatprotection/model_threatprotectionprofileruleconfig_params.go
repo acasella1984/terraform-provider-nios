@@ -323,16 +323,16 @@ func (o ThreatprotectionprofileruleconfigParams) MarshalJSON() ([]byte, error) {
 
 func (o ThreatprotectionprofileruleconfigParams) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Syntax) {
+	if !IsNil(o.Syntax) && *o.Syntax != "" {
 		toSerialize["syntax"] = o.Syntax
 	}
-	if !IsNil(o.Value) {
+	if !IsNil(o.Value) && *o.Value != "" {
 		toSerialize["value"] = o.Value
 	}
 	if !IsNil(o.Min) {

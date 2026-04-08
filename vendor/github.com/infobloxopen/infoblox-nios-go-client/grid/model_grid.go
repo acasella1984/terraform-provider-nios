@@ -2064,7 +2064,7 @@ func (o Grid) MarshalJSON() ([]byte, error) {
 
 func (o Grid) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowRecursiveDeletion) && *o.AllowRecursiveDeletion != "" {
@@ -2173,7 +2173,7 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_setting"] = o.MsSetting
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NatGroups) && len(o.NatGroups) > 0 {
@@ -2216,7 +2216,7 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 			toSerialize["scheduled_backup"] = o.ScheduledBackup
 		}
 	}
-	if !IsNil(o.Secret) {
+	if !IsNil(o.Secret) && *o.Secret != "" {
 		toSerialize["secret"] = o.Secret
 	}
 	if !IsNil(o.SecurityBannerSetting) {
@@ -2252,7 +2252,7 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ThresholdTraps) && len(o.ThresholdTraps) > 0 {
 		toSerialize["threshold_traps"] = o.ThresholdTraps
 	}
-	if !IsNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) && *o.TimeZone != "" {
 		toSerialize["time_zone"] = o.TimeZone
 	}
 	if !IsNil(o.TokenUsageDelay) {

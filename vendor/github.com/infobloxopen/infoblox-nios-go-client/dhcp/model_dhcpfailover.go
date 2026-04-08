@@ -1238,13 +1238,13 @@ func (o Dhcpfailover) MarshalJSON() ([]byte, error) {
 
 func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AssociationType) && *o.AssociationType != "" {
 		toSerialize["association_type"] = o.AssociationType
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -1301,7 +1301,7 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsServer) && *o.MsServer != "" {
 		toSerialize["ms_server"] = o.MsServer
 	}
-	if !IsNil(o.MsSharedSecret) {
+	if !IsNil(o.MsSharedSecret) && *o.MsSharedSecret != "" {
 		toSerialize["ms_shared_secret"] = o.MsSharedSecret
 	}
 	if !IsNil(o.MsState) && *o.MsState != "" {
@@ -1310,10 +1310,10 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsSwitchoverInterval) {
 		toSerialize["ms_switchover_interval"] = o.MsSwitchoverInterval
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Primary) {
+	if !IsNil(o.Primary) && *o.Primary != "" {
 		toSerialize["primary"] = o.Primary
 	}
 	if !IsNil(o.PrimaryServerType) && *o.PrimaryServerType != "" {
@@ -1325,7 +1325,7 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecycleLeases) {
 		toSerialize["recycle_leases"] = o.RecycleLeases
 	}
-	if !IsNil(o.Secondary) {
+	if !IsNil(o.Secondary) && *o.Secondary != "" {
 		toSerialize["secondary"] = o.Secondary
 	}
 	if !IsNil(o.SecondaryServerType) && *o.SecondaryServerType != "" {

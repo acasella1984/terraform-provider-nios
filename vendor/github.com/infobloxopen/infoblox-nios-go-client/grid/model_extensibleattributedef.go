@@ -454,13 +454,13 @@ func (o Extensibleattributedef) MarshalJSON() ([]byte, error) {
 
 func (o Extensibleattributedef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowedObjectTypes) && len(o.AllowedObjectTypes) > 0 {
 		toSerialize["allowed_object_types"] = o.AllowedObjectTypes
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DefaultValue) {
@@ -471,7 +471,7 @@ func (o Extensibleattributedef) ToMap() (map[string]interface{}, error) {
 			toSerialize["descendants_action"] = o.DescendantsAction
 		}
 	}
-	if !IsNil(o.Flags) {
+	if !IsNil(o.Flags) && *o.Flags != "" {
 		toSerialize["flags"] = o.Flags
 	}
 	if !IsNil(o.ListValues) && len(o.ListValues) > 0 {
@@ -483,7 +483,7 @@ func (o Extensibleattributedef) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Min) {
 		toSerialize["min"] = o.Min
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Namespace) && *o.Namespace != "" {

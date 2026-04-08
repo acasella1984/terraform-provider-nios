@@ -694,10 +694,10 @@ func (o RecordRpzNaptr) MarshalJSON() ([]byte, error) {
 
 func (o RecordRpzNaptr) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -712,13 +712,13 @@ func (o RecordRpzNaptr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Flags) {
+	if !IsNil(o.Flags) && *o.Flags != "" {
 		toSerialize["flags"] = o.Flags
 	}
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Order) {
@@ -727,16 +727,16 @@ func (o RecordRpzNaptr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Preference) {
 		toSerialize["preference"] = o.Preference
 	}
-	if !IsNil(o.Regexp) {
+	if !IsNil(o.Regexp) && *o.Regexp != "" {
 		toSerialize["regexp"] = o.Regexp
 	}
-	if !IsNil(o.Replacement) {
+	if !IsNil(o.Replacement) && *o.Replacement != "" {
 		toSerialize["replacement"] = o.Replacement
 	}
-	if !IsNil(o.RpZone) {
+	if !IsNil(o.RpZone) && *o.RpZone != "" {
 		toSerialize["rp_zone"] = o.RpZone
 	}
-	if !IsNil(o.Services) {
+	if !IsNil(o.Services) && *o.Services != "" {
 		toSerialize["services"] = o.Services
 	}
 	if !IsNil(o.Ttl) {
@@ -745,10 +745,10 @@ func (o RecordRpzNaptr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

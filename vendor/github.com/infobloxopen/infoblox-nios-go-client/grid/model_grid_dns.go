@@ -5172,7 +5172,7 @@ func (o GridDns) MarshalJSON() ([]byte, error) {
 
 func (o GridDns) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AddClientIpMacOptions) {
@@ -5380,7 +5380,7 @@ func (o GridDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EdnsUdpSize) {
 		toSerialize["edns_udp_size"] = o.EdnsUdpSize
 	}
-	if !IsNil(o.Email) {
+	if !IsNil(o.Email) && *o.Email != "" {
 		toSerialize["email"] = o.Email
 	}
 	if !IsNil(o.EnableBlackhole) {
@@ -5528,7 +5528,7 @@ func (o GridDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NotifySourcePort) {
 		toSerialize["notify_source_port"] = o.NotifySourcePort
 	}
-	if !IsNil(o.NsgroupDefault) {
+	if !IsNil(o.NsgroupDefault) && *o.NsgroupDefault != "" {
 		toSerialize["nsgroup_default"] = o.NsgroupDefault
 	}
 	if !IsNil(o.Nsgroups) && len(o.Nsgroups) > 0 {
@@ -5561,7 +5561,7 @@ func (o GridDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.QueryRewriteDomainNames) && len(o.QueryRewriteDomainNames) > 0 {
 		toSerialize["query_rewrite_domain_names"] = o.QueryRewriteDomainNames
 	}
-	if !IsNil(o.QueryRewritePrefix) {
+	if !IsNil(o.QueryRewritePrefix) && *o.QueryRewritePrefix != "" {
 		toSerialize["query_rewrite_prefix"] = o.QueryRewritePrefix
 	}
 	if !IsNil(o.QuerySourcePort) {

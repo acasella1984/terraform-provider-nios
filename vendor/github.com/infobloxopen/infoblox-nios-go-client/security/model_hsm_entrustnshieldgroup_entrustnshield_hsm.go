@@ -255,19 +255,19 @@ func (o HsmEntrustnshieldgroupEntrustnshieldHsm) MarshalJSON() ([]byte, error) {
 
 func (o HsmEntrustnshieldgroupEntrustnshieldHsm) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RemoteIp) {
+	if !IsNil(o.RemoteIp) && *o.RemoteIp != "" {
 		toSerialize["remote_ip"] = o.RemoteIp
 	}
 	if !IsNil(o.RemotePort) {
 		toSerialize["remote_port"] = o.RemotePort
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.RemoteEsn) {
+	if !IsNil(o.RemoteEsn) && *o.RemoteEsn != "" {
 		toSerialize["remote_esn"] = o.RemoteEsn
 	}
-	if !IsNil(o.Keyhash) {
+	if !IsNil(o.Keyhash) && *o.Keyhash != "" {
 		toSerialize["keyhash"] = o.Keyhash
 	}
 	if !IsNil(o.Disable) {

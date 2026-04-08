@@ -255,19 +255,19 @@ func (o GridDnsFileTransferSetting) MarshalJSON() ([]byte, error) {
 
 func (o GridDnsFileTransferSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Directory) {
+	if !IsNil(o.Directory) && *o.Directory != "" {
 		toSerialize["directory"] = o.Directory
 	}
-	if !IsNil(o.ServerAddressOrFqdn) {
+	if !IsNil(o.ServerAddressOrFqdn) && *o.ServerAddressOrFqdn != "" {
 		toSerialize["server_address_or_fqdn"] = o.ServerAddressOrFqdn
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
 	if !IsNil(o.Port) {

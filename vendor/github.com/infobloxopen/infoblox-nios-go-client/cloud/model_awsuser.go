@@ -354,13 +354,13 @@ func (o Awsuser) MarshalJSON() ([]byte, error) {
 
 func (o Awsuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AccessKeyId) {
+	if !IsNil(o.AccessKeyId) && *o.AccessKeyId != "" {
 		toSerialize["access_key_id"] = o.AccessKeyId
 	}
-	if !IsNil(o.AccountId) {
+	if !IsNil(o.AccountId) && *o.AccountId != "" {
 		toSerialize["account_id"] = o.AccountId
 	}
 	if !IsNil(o.GovcloudEnabled) {
@@ -369,13 +369,13 @@ func (o Awsuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastUsed) {
 		toSerialize["last_used"] = o.LastUsed
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NiosUserName) {
+	if !IsNil(o.NiosUserName) && *o.NiosUserName != "" {
 		toSerialize["nios_user_name"] = o.NiosUserName
 	}
-	if !IsNil(o.SecretAccessKey) {
+	if !IsNil(o.SecretAccessKey) && *o.SecretAccessKey != "" {
 		toSerialize["secret_access_key"] = o.SecretAccessKey
 	}
 	if !IsNil(o.Status) && *o.Status != "" {

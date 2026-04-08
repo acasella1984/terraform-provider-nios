@@ -354,7 +354,7 @@ func (o GridCloudapiCloudstatistics) MarshalJSON() ([]byte, error) {
 
 func (o GridCloudapiCloudstatistics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllocatedAvailableRatio) {
@@ -363,7 +363,7 @@ func (o GridCloudapiCloudstatistics) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AllocatedIpCount) {
 		toSerialize["allocated_ip_count"] = o.AllocatedIpCount
 	}
-	if !IsNil(o.AvailableIpCount) {
+	if !IsNil(o.AvailableIpCount) && *o.AvailableIpCount != "" {
 		toSerialize["available_ip_count"] = o.AvailableIpCount
 	}
 	if !IsNil(o.FixedIpCount) {

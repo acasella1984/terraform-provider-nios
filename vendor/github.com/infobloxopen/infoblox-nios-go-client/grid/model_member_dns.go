@@ -7114,7 +7114,7 @@ func (o MemberDns) MarshalJSON() ([]byte, error) {
 
 func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AddClientIpMacOptions) {
@@ -7172,7 +7172,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BindHostnameDirective) && *o.BindHostnameDirective != "" {
 		toSerialize["bind_hostname_directive"] = o.BindHostnameDirective
 	}
-	if !IsNil(o.BindHostnameDirectiveFqdn) {
+	if !IsNil(o.BindHostnameDirectiveFqdn) && *o.BindHostnameDirectiveFqdn != "" {
 		toSerialize["bind_hostname_directive_fqdn"] = o.BindHostnameDirectiveFqdn
 	}
 	if !IsNil(o.BlackholeList) && len(o.BlackholeList) > 0 {
@@ -7214,7 +7214,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Dns64Groups) && len(o.Dns64Groups) > 0 {
 		toSerialize["dns64_groups"] = o.Dns64Groups
 	}
-	if !IsNil(o.DnsCacheAccelerationStatus) {
+	if !IsNil(o.DnsCacheAccelerationStatus) && *o.DnsCacheAccelerationStatus != "" {
 		toSerialize["dns_cache_acceleration_status"] = o.DnsCacheAccelerationStatus
 	}
 	if !IsNil(o.DnsCacheAccelerationTtl) {
@@ -7241,7 +7241,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsNotifyTransferSource) && *o.DnsNotifyTransferSource != "" {
 		toSerialize["dns_notify_transfer_source"] = o.DnsNotifyTransferSource
 	}
-	if !IsNil(o.DnsNotifyTransferSourceAddress) {
+	if !IsNil(o.DnsNotifyTransferSourceAddress) && *o.DnsNotifyTransferSourceAddress != "" {
 		toSerialize["dns_notify_transfer_source_address"] = o.DnsNotifyTransferSourceAddress
 	}
 	if !IsNil(o.DnsOverTlsService) {
@@ -7250,7 +7250,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsQueryCaptureFileTimeLimit) {
 		toSerialize["dns_query_capture_file_time_limit"] = o.DnsQueryCaptureFileTimeLimit
 	}
-	if !IsNil(o.DnsQuerySourceAddress) {
+	if !IsNil(o.DnsQuerySourceAddress) && *o.DnsQuerySourceAddress != "" {
 		toSerialize["dns_query_source_address"] = o.DnsQuerySourceAddress
 	}
 	if !IsNil(o.DnsQuerySourceInterface) && *o.DnsQuerySourceInterface != "" {
@@ -7309,7 +7309,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DtcHealthSource) && *o.DtcHealthSource != "" {
 		toSerialize["dtc_health_source"] = o.DtcHealthSource
 	}
-	if !IsNil(o.DtcHealthSourceAddress) {
+	if !IsNil(o.DtcHealthSourceAddress) && *o.DtcHealthSourceAddress != "" {
 		toSerialize["dtc_health_source_address"] = o.DtcHealthSourceAddress
 	}
 	if !IsNil(o.EdnsUdpSize) {
@@ -7416,16 +7416,16 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GssTsigKeys) && len(o.GssTsigKeys) > 0 {
 		toSerialize["gss_tsig_keys"] = o.GssTsigKeys
 	}
-	if !IsNil(o.HostName) {
+	if !IsNil(o.HostName) && *o.HostName != "" {
 		toSerialize["host_name"] = o.HostName
 	}
-	if !IsNil(o.Ipv4addr) {
+	if !IsNil(o.Ipv4addr) && *o.Ipv4addr != "" {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
 	if !IsNil(o.Ipv6GlueRecordAddresses) && len(o.Ipv6GlueRecordAddresses) > 0 {
 		toSerialize["ipv6_glue_record_addresses"] = o.Ipv6GlueRecordAddresses
 	}
-	if !IsNil(o.Ipv6addr) {
+	if !IsNil(o.Ipv6addr) && *o.Ipv6addr != "" {
 		toSerialize["ipv6addr"] = o.Ipv6addr
 	}
 	if !IsNil(o.LoggingCategories) {
@@ -7519,7 +7519,7 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerIdDirective) && *o.ServerIdDirective != "" {
 		toSerialize["server_id_directive"] = o.ServerIdDirective
 	}
-	if !IsNil(o.ServerIdDirectiveString) {
+	if !IsNil(o.ServerIdDirectiveString) && *o.ServerIdDirectiveString != "" {
 		toSerialize["server_id_directive_string"] = o.ServerIdDirectiveString
 	}
 	if !IsNil(o.SkipInGridRpzQueries) {

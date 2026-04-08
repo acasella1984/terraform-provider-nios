@@ -255,13 +255,13 @@ func (o ParentalcontrolSubscribersiteNasGateways) MarshalJSON() ([]byte, error) 
 
 func (o ParentalcontrolSubscribersiteNasGateways) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.IpAddress) {
+	if !IsNil(o.IpAddress) && *o.IpAddress != "" {
 		toSerialize["ip_address"] = o.IpAddress
 	}
-	if !IsNil(o.SharedSecret) {
+	if !IsNil(o.SharedSecret) && *o.SharedSecret != "" {
 		toSerialize["shared_secret"] = o.SharedSecret
 	}
 	if !IsNil(o.SendAck) {
@@ -270,7 +270,7 @@ func (o ParentalcontrolSubscribersiteNasGateways) ToMap() (map[string]interface{
 	if !IsNil(o.MessageRate) {
 		toSerialize["message_rate"] = o.MessageRate
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

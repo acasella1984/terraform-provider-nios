@@ -761,7 +761,7 @@ func (o RecordRrsig) MarshalJSON() ([]byte, error) {
 
 func (o RecordRrsig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Algorithm) && *o.Algorithm != "" {
@@ -778,10 +778,10 @@ func (o RecordRrsig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
-	if !IsNil(o.DnsName) {
+	if !IsNil(o.DnsName) && *o.DnsName != "" {
 		toSerialize["dns_name"] = o.DnsName
 	}
-	if !IsNil(o.DnsSignerName) {
+	if !IsNil(o.DnsSignerName) && *o.DnsSignerName != "" {
 		toSerialize["dns_signer_name"] = o.DnsSignerName
 	}
 	if !IsNil(o.ExpirationTime) {
@@ -799,31 +799,31 @@ func (o RecordRrsig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.OriginalTtl) {
 		toSerialize["original_ttl"] = o.OriginalTtl
 	}
-	if !IsNil(o.Signature) {
+	if !IsNil(o.Signature) && *o.Signature != "" {
 		toSerialize["signature"] = o.Signature
 	}
-	if !IsNil(o.SignerName) {
+	if !IsNil(o.SignerName) && *o.SignerName != "" {
 		toSerialize["signer_name"] = o.SignerName
 	}
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl
 	}
-	if !IsNil(o.TypeCovered) {
+	if !IsNil(o.TypeCovered) && *o.TypeCovered != "" {
 		toSerialize["type_covered"] = o.TypeCovered
 	}
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

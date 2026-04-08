@@ -153,13 +153,13 @@ func (o RangeExclude) MarshalJSON() ([]byte, error) {
 
 func (o RangeExclude) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StartAddress) {
+	if !IsNil(o.StartAddress) && *o.StartAddress != "" {
 		toSerialize["start_address"] = o.StartAddress
 	}
-	if !IsNil(o.EndAddress) {
+	if !IsNil(o.EndAddress) && *o.EndAddress != "" {
 		toSerialize["end_address"] = o.EndAddress
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

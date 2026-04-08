@@ -122,7 +122,7 @@ func (o UpgradestatusSteps) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StatusValue) && *o.StatusValue != "" {
 		toSerialize["status_value"] = o.StatusValue
 	}
-	if !IsNil(o.StatusText) {
+	if !IsNil(o.StatusText) && *o.StatusText != "" {
 		toSerialize["status_text"] = o.StatusText
 	}
 

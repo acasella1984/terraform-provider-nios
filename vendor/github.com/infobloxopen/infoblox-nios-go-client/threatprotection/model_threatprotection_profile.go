@@ -558,10 +558,10 @@ func (o ThreatprotectionProfile) MarshalJSON() ([]byte, error) {
 
 func (o ThreatprotectionProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CurrentRuleset) && *o.CurrentRuleset != "" {
@@ -585,10 +585,10 @@ func (o ThreatprotectionProfile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Members) && len(o.Members) > 0 {
 		toSerialize["members"] = o.Members
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.SourceMember) {
+	if !IsNil(o.SourceMember) && *o.SourceMember != "" {
 		toSerialize["source_member"] = o.SourceMember
 	}
 	if !IsNil(o.SourceProfile) && *o.SourceProfile != "" {

@@ -221,13 +221,13 @@ func (o ViewDnssecTrustedKeys) MarshalJSON() ([]byte, error) {
 
 func (o ViewDnssecTrustedKeys) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Fqdn) {
+	if !IsNil(o.Fqdn) && *o.Fqdn != "" {
 		toSerialize["fqdn"] = o.Fqdn
 	}
 	if !IsNil(o.Algorithm) && *o.Algorithm != "" {
 		toSerialize["algorithm"] = o.Algorithm
 	}
-	if !IsNil(o.Key) {
+	if !IsNil(o.Key) && *o.Key != "" {
 		toSerialize["key"] = o.Key
 	}
 	if !IsNil(o.SecureEntryPoint) {

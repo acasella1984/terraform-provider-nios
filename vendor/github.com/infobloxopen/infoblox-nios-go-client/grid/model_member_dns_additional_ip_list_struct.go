@@ -85,7 +85,7 @@ func (o MemberDnsAdditionalIpListStruct) MarshalJSON() ([]byte, error) {
 
 func (o MemberDnsAdditionalIpListStruct) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.IpAddress) {
+	if !IsNil(o.IpAddress) && *o.IpAddress != "" {
 		toSerialize["ip_address"] = o.IpAddress
 	}
 

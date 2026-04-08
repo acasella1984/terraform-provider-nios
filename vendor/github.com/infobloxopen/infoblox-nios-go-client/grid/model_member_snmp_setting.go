@@ -496,7 +496,7 @@ func (o MemberSnmpSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EngineId) && len(o.EngineId) > 0 {
 		toSerialize["engine_id"] = o.EngineId
 	}
-	if !IsNil(o.QueriesCommunityString) {
+	if !IsNil(o.QueriesCommunityString) && *o.QueriesCommunityString != "" {
 		toSerialize["queries_community_string"] = o.QueriesCommunityString
 	}
 	if !IsNil(o.QueriesEnable) {
@@ -526,7 +526,7 @@ func (o MemberSnmpSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TrapReceivers) && len(o.TrapReceivers) > 0 {
 		toSerialize["trap_receivers"] = o.TrapReceivers
 	}
-	if !IsNil(o.TrapsCommunityString) {
+	if !IsNil(o.TrapsCommunityString) && *o.TrapsCommunityString != "" {
 		toSerialize["traps_community_string"] = o.TrapsCommunityString
 	}
 	if !IsNil(o.TrapsEnable) {

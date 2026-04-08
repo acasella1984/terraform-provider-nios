@@ -2216,13 +2216,13 @@ func (o Fixedaddress) MarshalJSON() ([]byte, error) {
 
 func (o Fixedaddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AgentCircuitId) {
+	if !IsNil(o.AgentCircuitId) && *o.AgentCircuitId != "" {
 		toSerialize["agent_circuit_id"] = o.AgentCircuitId
 	}
-	if !IsNil(o.AgentRemoteId) {
+	if !IsNil(o.AgentRemoteId) && *o.AgentRemoteId != "" {
 		toSerialize["agent_remote_id"] = o.AgentRemoteId
 	}
 	if !IsNil(o.AllowTelnet) {
@@ -2231,10 +2231,10 @@ func (o Fixedaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AlwaysUpdateDns) {
 		toSerialize["always_update_dns"] = o.AlwaysUpdateDns
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.CliCredentials) && len(o.CliCredentials) > 0 {
@@ -2248,31 +2248,31 @@ func (o Fixedaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
-	if !IsNil(o.DdnsHostname) {
+	if !IsNil(o.DdnsHostname) && *o.DdnsHostname != "" {
 		toSerialize["ddns_hostname"] = o.DdnsHostname
 	}
 	if !IsNil(o.DenyBootp) {
 		toSerialize["deny_bootp"] = o.DenyBootp
 	}
-	if !IsNil(o.DeviceDescription) {
+	if !IsNil(o.DeviceDescription) && *o.DeviceDescription != "" {
 		toSerialize["device_description"] = o.DeviceDescription
 	}
-	if !IsNil(o.DeviceLocation) {
+	if !IsNil(o.DeviceLocation) && *o.DeviceLocation != "" {
 		toSerialize["device_location"] = o.DeviceLocation
 	}
-	if !IsNil(o.DeviceType) {
+	if !IsNil(o.DeviceType) && *o.DeviceType != "" {
 		toSerialize["device_type"] = o.DeviceType
 	}
-	if !IsNil(o.DeviceVendor) {
+	if !IsNil(o.DeviceVendor) && *o.DeviceVendor != "" {
 		toSerialize["device_vendor"] = o.DeviceVendor
 	}
-	if !IsNil(o.DhcpClientIdentifier) {
+	if !IsNil(o.DhcpClientIdentifier) && *o.DhcpClientIdentifier != "" {
 		toSerialize["dhcp_client_identifier"] = o.DhcpClientIdentifier
 	}
 	if !IsNil(o.Disable) {
@@ -2324,7 +2324,7 @@ func (o Fixedaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
-	if !IsNil(o.Mac) {
+	if !IsNil(o.Mac) && *o.Mac != "" {
 		toSerialize["mac"] = o.Mac
 	}
 	if !IsNil(o.MatchClient) && *o.MatchClient != "" {
@@ -2343,16 +2343,16 @@ func (o Fixedaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_server"] = o.MsServer
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {
@@ -2377,7 +2377,7 @@ func (o Fixedaddress) ToMap() (map[string]interface{}, error) {
 			toSerialize["snmp_credential"] = o.SnmpCredential
 		}
 	}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
 	if !IsNil(o.UseBootfile) {

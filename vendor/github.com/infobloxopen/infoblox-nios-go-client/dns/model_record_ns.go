@@ -455,7 +455,7 @@ func (o RecordNs) MarshalJSON() ([]byte, error) {
 
 func (o RecordNs) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Addresses) && len(o.Addresses) > 0 {
@@ -469,28 +469,28 @@ func (o RecordNs) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
-	if !IsNil(o.DnsName) {
+	if !IsNil(o.DnsName) && *o.DnsName != "" {
 		toSerialize["dns_name"] = o.DnsName
 	}
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried
 	}
-	if !IsNil(o.MsDelegationName) {
+	if !IsNil(o.MsDelegationName) && *o.MsDelegationName != "" {
 		toSerialize["ms_delegation_name"] = o.MsDelegationName
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Nameserver) {
+	if !IsNil(o.Nameserver) && *o.Nameserver != "" {
 		toSerialize["nameserver"] = o.Nameserver
 	}
-	if !IsNil(o.Policy) {
+	if !IsNil(o.Policy) && *o.Policy != "" {
 		toSerialize["policy"] = o.Policy
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

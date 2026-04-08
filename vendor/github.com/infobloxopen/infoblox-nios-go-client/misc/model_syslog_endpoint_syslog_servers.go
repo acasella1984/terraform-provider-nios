@@ -356,22 +356,22 @@ func (o SyslogEndpointSyslogServers) MarshalJSON() ([]byte, error) {
 
 func (o SyslogEndpointSyslogServers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.ConnectionType) {
+	if !IsNil(o.ConnectionType) && *o.ConnectionType != "" {
 		toSerialize["connection_type"] = o.ConnectionType
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.Hostname) {
+	if !IsNil(o.Hostname) && *o.Hostname != "" {
 		toSerialize["hostname"] = o.Hostname
 	}
-	if !IsNil(o.Format) {
+	if !IsNil(o.Format) && *o.Format != "" {
 		toSerialize["format"] = o.Format
 	}
-	if !IsNil(o.Facility) {
+	if !IsNil(o.Facility) && *o.Facility != "" {
 		toSerialize["facility"] = o.Facility
 	}
 	if !IsNil(o.Severity) && *o.Severity != "" {
@@ -380,7 +380,7 @@ func (o SyslogEndpointSyslogServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate
 	}
-	if !IsNil(o.CertificateToken) {
+	if !IsNil(o.CertificateToken) && *o.CertificateToken != "" {
 		toSerialize["certificate_token"] = o.CertificateToken
 	}
 

@@ -456,40 +456,40 @@ func (o Superhostchild) MarshalJSON() ([]byte, error) {
 
 func (o Superhostchild) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AssociatedObject) && *o.AssociatedObject != "" {
 		toSerialize["associated_object"] = o.AssociatedObject
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CreationTimestamp) {
 		toSerialize["creation_timestamp"] = o.CreationTimestamp
 	}
-	if !IsNil(o.Data) {
+	if !IsNil(o.Data) && *o.Data != "" {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Parent) {
+	if !IsNil(o.Parent) && *o.Parent != "" {
 		toSerialize["parent"] = o.Parent
 	}
-	if !IsNil(o.RecordParent) {
+	if !IsNil(o.RecordParent) && *o.RecordParent != "" {
 		toSerialize["record_parent"] = o.RecordParent
 	}
 	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
 	return toSerialize, nil

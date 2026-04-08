@@ -320,16 +320,16 @@ func (o Bfdtemplate) MarshalJSON() ([]byte, error) {
 
 func (o Bfdtemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AuthenticationKey) {
+	if !IsNil(o.AuthenticationKey) && *o.AuthenticationKey != "" {
 		toSerialize["authentication_key"] = o.AuthenticationKey
 	}
 	if !IsNil(o.AuthenticationKeyId) {
 		toSerialize["authentication_key_id"] = o.AuthenticationKeyId
 	}
-	if !IsNil(o.AuthenticationType) {
+	if !IsNil(o.AuthenticationType) && *o.AuthenticationType != "" {
 		toSerialize["authentication_type"] = o.AuthenticationType
 	}
 	if !IsNil(o.DetectionMultiplier) {
@@ -341,7 +341,7 @@ func (o Bfdtemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MinTxInterval) {
 		toSerialize["min_tx_interval"] = o.MinTxInterval
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil

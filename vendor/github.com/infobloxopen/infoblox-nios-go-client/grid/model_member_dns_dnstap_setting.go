@@ -187,16 +187,16 @@ func (o MemberDnsDnstapSetting) MarshalJSON() ([]byte, error) {
 
 func (o MemberDnsDnstapSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DnstapReceiverAddressOrFqdn) {
+	if !IsNil(o.DnstapReceiverAddressOrFqdn) && *o.DnstapReceiverAddressOrFqdn != "" {
 		toSerialize["dnstap_receiver_address_or_fqdn"] = o.DnstapReceiverAddressOrFqdn
 	}
 	if !IsNil(o.DnstapReceiverPort) {
 		toSerialize["dnstap_receiver_port"] = o.DnstapReceiverPort
 	}
-	if !IsNil(o.DnstapIdentity) {
+	if !IsNil(o.DnstapIdentity) && *o.DnstapIdentity != "" {
 		toSerialize["dnstap_identity"] = o.DnstapIdentity
 	}
-	if !IsNil(o.DnstapVersion) {
+	if !IsNil(o.DnstapVersion) && *o.DnstapVersion != "" {
 		toSerialize["dnstap_version"] = o.DnstapVersion
 	}
 

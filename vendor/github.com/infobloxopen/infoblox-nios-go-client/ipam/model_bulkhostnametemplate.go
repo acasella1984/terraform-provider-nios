@@ -218,7 +218,7 @@ func (o Bulkhostnametemplate) MarshalJSON() ([]byte, error) {
 
 func (o Bulkhostnametemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.IsGridDefault) {
@@ -227,10 +227,10 @@ func (o Bulkhostnametemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PreDefined) {
 		toSerialize["pre_defined"] = o.PreDefined
 	}
-	if !IsNil(o.TemplateFormat) {
+	if !IsNil(o.TemplateFormat) && *o.TemplateFormat != "" {
 		toSerialize["template_format"] = o.TemplateFormat
 	}
-	if !IsNil(o.TemplateName) {
+	if !IsNil(o.TemplateName) && *o.TemplateName != "" {
 		toSerialize["template_name"] = o.TemplateName
 	}
 	return toSerialize, nil

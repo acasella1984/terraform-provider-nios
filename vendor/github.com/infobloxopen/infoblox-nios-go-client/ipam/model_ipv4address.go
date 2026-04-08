@@ -896,16 +896,16 @@ func (o Ipv4address) MarshalJSON() ([]byte, error) {
 
 func (o Ipv4address) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ConflictTypes) && len(o.ConflictTypes) > 0 {
 		toSerialize["conflict_types"] = o.ConflictTypes
 	}
-	if !IsNil(o.DhcpClientIdentifier) {
+	if !IsNil(o.DhcpClientIdentifier) && *o.DhcpClientIdentifier != "" {
 		toSerialize["dhcp_client_identifier"] = o.DhcpClientIdentifier
 	}
 	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
@@ -925,10 +925,10 @@ func (o Ipv4address) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Fingerprint) {
+	if !IsNil(o.Fingerprint) && *o.Fingerprint != "" {
 		toSerialize["fingerprint"] = o.Fingerprint
 	}
-	if !IsNil(o.IpAddress) {
+	if !IsNil(o.IpAddress) && *o.IpAddress != "" {
 		toSerialize["ip_address"] = o.IpAddress
 	}
 	if !IsNil(o.IsConflict) {
@@ -937,10 +937,10 @@ func (o Ipv4address) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsInvalidMac) {
 		toSerialize["is_invalid_mac"] = o.IsInvalidMac
 	}
-	if !IsNil(o.LeaseState) {
+	if !IsNil(o.LeaseState) && *o.LeaseState != "" {
 		toSerialize["lease_state"] = o.LeaseState
 	}
-	if !IsNil(o.MacAddress) {
+	if !IsNil(o.MacAddress) && *o.MacAddress != "" {
 		toSerialize["mac_address"] = o.MacAddress
 	}
 	if !IsNil(o.MsAdUserData) {
@@ -951,19 +951,19 @@ func (o Ipv4address) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Names) && len(o.Names) > 0 {
 		toSerialize["names"] = o.Names
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Objects) {
+	if !IsNil(o.Objects) && *o.Objects != "" {
 		toSerialize["objects"] = o.Objects
 	}
-	if !IsNil(o.ReservedPort) {
+	if !IsNil(o.ReservedPort) && *o.ReservedPort != "" {
 		toSerialize["reserved_port"] = o.ReservedPort
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.Types) && len(o.Types) > 0 {
@@ -972,7 +972,7 @@ func (o Ipv4address) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Usage) && len(o.Usage) > 0 {
 		toSerialize["usage"] = o.Usage
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil

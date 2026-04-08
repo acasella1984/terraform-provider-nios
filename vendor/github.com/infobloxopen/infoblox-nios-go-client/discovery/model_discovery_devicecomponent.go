@@ -286,25 +286,25 @@ func (o DiscoveryDevicecomponent) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryDevicecomponent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.ComponentName) {
+	if !IsNil(o.ComponentName) && *o.ComponentName != "" {
 		toSerialize["component_name"] = o.ComponentName
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Device) && *o.Device != "" {
 		toSerialize["device"] = o.Device
 	}
-	if !IsNil(o.Model) {
+	if !IsNil(o.Model) && *o.Model != "" {
 		toSerialize["model"] = o.Model
 	}
-	if !IsNil(o.Serial) {
+	if !IsNil(o.Serial) && *o.Serial != "" {
 		toSerialize["serial"] = o.Serial
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil

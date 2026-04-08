@@ -1234,10 +1234,10 @@ func (o Msserver) MarshalJSON() ([]byte, error) {
 
 func (o Msserver) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AdDomain) {
+	if !IsNil(o.AdDomain) && *o.AdDomain != "" {
 		toSerialize["ad_domain"] = o.AdDomain
 	}
 	if !IsNil(o.AdSites) {
@@ -1250,16 +1250,16 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 			toSerialize["ad_user"] = o.AdUser
 		}
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ConnectionStatus) {
+	if !IsNil(o.ConnectionStatus) && *o.ConnectionStatus != "" {
 		toSerialize["connection_status"] = o.ConnectionStatus
 	}
-	if !IsNil(o.ConnectionStatusDetail) {
+	if !IsNil(o.ConnectionStatusDetail) && *o.ConnectionStatusDetail != "" {
 		toSerialize["connection_status_detail"] = o.ConnectionStatusDetail
 	}
 	if !IsNil(o.DhcpServer) {
@@ -1299,13 +1299,13 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogLevel) && *o.LogLevel != "" {
 		toSerialize["log_level"] = o.LogLevel
 	}
-	if !IsNil(o.LoginName) {
+	if !IsNil(o.LoginName) && *o.LoginName != "" {
 		toSerialize["login_name"] = o.LoginName
 	}
-	if !IsNil(o.LoginPassword) {
+	if !IsNil(o.LoginPassword) && *o.LoginPassword != "" {
 		toSerialize["login_password"] = o.LoginPassword
 	}
-	if !IsNil(o.ManagingMember) {
+	if !IsNil(o.ManagingMember) && *o.ManagingMember != "" {
 		toSerialize["managing_member"] = o.ManagingMember
 	}
 	if !IsNil(o.MsMaxConnection) {
@@ -1320,10 +1320,10 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ReadOnly) {
 		toSerialize["read_only"] = o.ReadOnly
 	}
-	if !IsNil(o.RootAdDomain) {
+	if !IsNil(o.RootAdDomain) && *o.RootAdDomain != "" {
 		toSerialize["root_ad_domain"] = o.RootAdDomain
 	}
-	if !IsNil(o.ServerName) {
+	if !IsNil(o.ServerName) && *o.ServerName != "" {
 		toSerialize["server_name"] = o.ServerName
 	}
 	if !IsNil(o.SynchronizationMinDelay) {
@@ -1332,7 +1332,7 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SynchronizationStatus) && *o.SynchronizationStatus != "" {
 		toSerialize["synchronization_status"] = o.SynchronizationStatus
 	}
-	if !IsNil(o.SynchronizationStatusDetail) {
+	if !IsNil(o.SynchronizationStatusDetail) && *o.SynchronizationStatusDetail != "" {
 		toSerialize["synchronization_status_detail"] = o.SynchronizationStatusDetail
 	}
 	if !IsNil(o.UseLogDestination) {
@@ -1344,7 +1344,7 @@ func (o Msserver) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseMsRpcTimeoutInSeconds) {
 		toSerialize["use_ms_rpc_timeout_in_seconds"] = o.UseMsRpcTimeoutInSeconds
 	}
-	if !IsNil(o.Version) {
+	if !IsNil(o.Version) && *o.Version != "" {
 		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil

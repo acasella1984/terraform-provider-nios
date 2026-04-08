@@ -255,22 +255,22 @@ func (o DtcMonitorSnmpOids) MarshalJSON() ([]byte, error) {
 
 func (o DtcMonitorSnmpOids) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Oid) {
+	if !IsNil(o.Oid) && *o.Oid != "" {
 		toSerialize["oid"] = o.Oid
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Condition) {
+	if !IsNil(o.Condition) && *o.Condition != "" {
 		toSerialize["condition"] = o.Condition
 	}
-	if !IsNil(o.First) {
+	if !IsNil(o.First) && *o.First != "" {
 		toSerialize["first"] = o.First
 	}
-	if !IsNil(o.Last) {
+	if !IsNil(o.Last) && *o.Last != "" {
 		toSerialize["last"] = o.Last
 	}
 

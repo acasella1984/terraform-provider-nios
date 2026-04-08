@@ -1000,13 +1000,13 @@ func (o ZoneDelegated) MarshalJSON() ([]byte, error) {
 
 func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DelegateTo) && len(o.DelegateTo) > 0 {
@@ -1018,10 +1018,10 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DisplayDomain) {
+	if !IsNil(o.DisplayDomain) && *o.DisplayDomain != "" {
 		toSerialize["display_domain"] = o.DisplayDomain
 	}
-	if !IsNil(o.DnsFqdn) {
+	if !IsNil(o.DnsFqdn) && *o.DnsFqdn != "" {
 		toSerialize["dns_fqdn"] = o.DnsFqdn
 	}
 	if !IsNil(o.EnableRfc2317Exclusion) {
@@ -1036,16 +1036,16 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Fqdn) {
+	if !IsNil(o.Fqdn) && *o.Fqdn != "" {
 		toSerialize["fqdn"] = o.Fqdn
 	}
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
 	}
-	if !IsNil(o.LockedBy) {
+	if !IsNil(o.LockedBy) && *o.LockedBy != "" {
 		toSerialize["locked_by"] = o.LockedBy
 	}
-	if !IsNil(o.MaskPrefix) {
+	if !IsNil(o.MaskPrefix) && *o.MaskPrefix != "" {
 		toSerialize["mask_prefix"] = o.MaskPrefix
 	}
 	if !IsNil(o.MsAdIntegrated) {
@@ -1060,16 +1060,16 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsReadOnly) {
 		toSerialize["ms_read_only"] = o.MsReadOnly
 	}
-	if !IsNil(o.MsSyncMasterName) {
+	if !IsNil(o.MsSyncMasterName) && *o.MsSyncMasterName != "" {
 		toSerialize["ms_sync_master_name"] = o.MsSyncMasterName
 	}
 	if !IsNil(o.NsGroup) && *o.NsGroup != "" {
 		toSerialize["ns_group"] = o.NsGroup
 	}
-	if !IsNil(o.Parent) {
+	if !IsNil(o.Parent) && *o.Parent != "" {
 		toSerialize["parent"] = o.Parent
 	}
-	if !IsNil(o.Prefix) {
+	if !IsNil(o.Prefix) && *o.Prefix != "" {
 		toSerialize["prefix"] = o.Prefix
 	}
 	if !IsNil(o.UseDelegatedTtl) {
@@ -1078,7 +1078,7 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsingSrgAssociations) {
 		toSerialize["using_srg_associations"] = o.UsingSrgAssociations
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
 	if !IsNil(o.ZoneFormat) && *o.ZoneFormat != "" {

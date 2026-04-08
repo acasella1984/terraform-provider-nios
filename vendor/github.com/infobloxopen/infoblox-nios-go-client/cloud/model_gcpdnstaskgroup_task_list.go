@@ -799,28 +799,28 @@ func (o GcpdnstaskgroupTaskList) MarshalJSON() ([]byte, error) {
 
 func (o GcpdnstaskgroupTaskList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !IsNil(o.State) {
+	if !IsNil(o.State) && *o.State != "" {
 		toSerialize["state"] = o.State
 	}
-	if !IsNil(o.StateMsg) {
+	if !IsNil(o.StateMsg) && *o.StateMsg != "" {
 		toSerialize["state_msg"] = o.StateMsg
 	}
-	if !IsNil(o.Filter) {
+	if !IsNil(o.Filter) && *o.Filter != "" {
 		toSerialize["filter"] = o.Filter
 	}
 	if !IsNil(o.ScheduleInterval) {
 		toSerialize["schedule_interval"] = o.ScheduleInterval
 	}
-	if !IsNil(o.ScheduleUnits) {
+	if !IsNil(o.ScheduleUnits) && *o.ScheduleUnits != "" {
 		toSerialize["schedule_units"] = o.ScheduleUnits
 	}
-	if !IsNil(o.GcpUser) {
+	if !IsNil(o.GcpUser) && *o.GcpUser != "" {
 		toSerialize["gcp_user"] = o.GcpUser
 	}
 	if !IsNil(o.StatusTimestamp) {
@@ -829,19 +829,19 @@ func (o GcpdnstaskgroupTaskList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastRun) {
 		toSerialize["last_run"] = o.LastRun
 	}
-	if !IsNil(o.OverlayState) {
+	if !IsNil(o.OverlayState) && *o.OverlayState != "" {
 		toSerialize["overlay_state"] = o.OverlayState
 	}
 	if !IsNil(o.OverlayStatusTimestamp) {
 		toSerialize["overlay_status_timestamp"] = o.OverlayStatusTimestamp
 	}
-	if !IsNil(o.DnsSyncState) {
+	if !IsNil(o.DnsSyncState) && *o.DnsSyncState != "" {
 		toSerialize["dns_sync_state"] = o.DnsSyncState
 	}
 	if !IsNil(o.DnsSyncStatusTimestamp) {
 		toSerialize["dns_sync_status_timestamp"] = o.DnsSyncStatusTimestamp
 	}
-	if !IsNil(o.ProjectSyncState) {
+	if !IsNil(o.ProjectSyncState) && *o.ProjectSyncState != "" {
 		toSerialize["project_sync_state"] = o.ProjectSyncState
 	}
 	if !IsNil(o.ProjectSyncStatusTimestamp) {

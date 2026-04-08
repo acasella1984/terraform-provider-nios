@@ -255,7 +255,7 @@ func (o DtcTopologyRulesInnerOneOf1) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DestType) && *o.DestType != "" {
 		toSerialize["dest_type"] = o.DestType
 	}
-	if !IsNil(o.DestinationLink) {
+	if !IsNil(o.DestinationLink) && *o.DestinationLink != "" {
 		toSerialize["destination_link"] = o.DestinationLink
 	}
 	if !IsNil(o.ReturnType) && *o.ReturnType != "" {

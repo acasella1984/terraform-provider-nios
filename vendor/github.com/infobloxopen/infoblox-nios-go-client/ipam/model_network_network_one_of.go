@@ -250,22 +250,22 @@ func (o NetworkNetworkOneOf) MarshalJSON() ([]byte, error) {
 
 func (o NetworkNetworkOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ObjectFunction) {
+	if !IsNil(o.ObjectFunction) && *o.ObjectFunction != "" {
 		toSerialize["_object_function"] = o.ObjectFunction
 	}
 	if !IsNil(o.Parameters) {
 		toSerialize["_parameters"] = o.Parameters
 	}
-	if !IsNil(o.ResultField) {
+	if !IsNil(o.ResultField) && *o.ResultField != "" {
 		toSerialize["_result_field"] = o.ResultField
 	}
-	if !IsNil(o.Object) {
+	if !IsNil(o.Object) && *o.Object != "" {
 		toSerialize["_object"] = o.Object
 	}
 	if !IsNil(o.ObjectParameters) {
 		toSerialize["_object_parameters"] = o.ObjectParameters
 	}
-	if !IsNil(o.ObjectRef) {
+	if !IsNil(o.ObjectRef) && *o.ObjectRef != "" {
 		toSerialize["_object_ref"] = o.ObjectRef
 	}
 

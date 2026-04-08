@@ -1270,19 +1270,19 @@ func (o Lease) MarshalJSON() ([]byte, error) {
 
 func (o Lease) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.BillingClass) {
+	if !IsNil(o.BillingClass) && *o.BillingClass != "" {
 		toSerialize["billing_class"] = o.BillingClass
 	}
 	if !IsNil(o.BindingState) && *o.BindingState != "" {
 		toSerialize["binding_state"] = o.BindingState
 	}
-	if !IsNil(o.ClientHostname) {
+	if !IsNil(o.ClientHostname) && *o.ClientHostname != "" {
 		toSerialize["client_hostname"] = o.ClientHostname
 	}
 	if !IsNil(o.Cltt) {
@@ -1296,16 +1296,16 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ends) {
 		toSerialize["ends"] = o.Ends
 	}
-	if !IsNil(o.Fingerprint) {
+	if !IsNil(o.Fingerprint) && *o.Fingerprint != "" {
 		toSerialize["fingerprint"] = o.Fingerprint
 	}
-	if !IsNil(o.Hardware) {
+	if !IsNil(o.Hardware) && *o.Hardware != "" {
 		toSerialize["hardware"] = o.Hardware
 	}
-	if !IsNil(o.Ipv6Duid) {
+	if !IsNil(o.Ipv6Duid) && *o.Ipv6Duid != "" {
 		toSerialize["ipv6_duid"] = o.Ipv6Duid
 	}
-	if !IsNil(o.Ipv6Iaid) {
+	if !IsNil(o.Ipv6Iaid) && *o.Ipv6Iaid != "" {
 		toSerialize["ipv6_iaid"] = o.Ipv6Iaid
 	}
 	if !IsNil(o.Ipv6PreferredLifetime) {
@@ -1322,10 +1322,10 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.NeverEnds) {
@@ -1337,31 +1337,31 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NextBindingState) && *o.NextBindingState != "" {
 		toSerialize["next_binding_state"] = o.NextBindingState
 	}
-	if !IsNil(o.OnCommit) {
+	if !IsNil(o.OnCommit) && *o.OnCommit != "" {
 		toSerialize["on_commit"] = o.OnCommit
 	}
-	if !IsNil(o.OnExpiry) {
+	if !IsNil(o.OnExpiry) && *o.OnExpiry != "" {
 		toSerialize["on_expiry"] = o.OnExpiry
 	}
-	if !IsNil(o.OnRelease) {
+	if !IsNil(o.OnRelease) && *o.OnRelease != "" {
 		toSerialize["on_release"] = o.OnRelease
 	}
-	if !IsNil(o.Option) {
+	if !IsNil(o.Option) && *o.Option != "" {
 		toSerialize["option"] = o.Option
 	}
 	if !IsNil(o.Protocol) && *o.Protocol != "" {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if !IsNil(o.RemoteId) {
+	if !IsNil(o.RemoteId) && *o.RemoteId != "" {
 		toSerialize["remote_id"] = o.RemoteId
 	}
-	if !IsNil(o.RequestedOptions) {
+	if !IsNil(o.RequestedOptions) && *o.RequestedOptions != "" {
 		toSerialize["requested_options"] = o.RequestedOptions
 	}
-	if !IsNil(o.ServedBy) {
+	if !IsNil(o.ServedBy) && *o.ServedBy != "" {
 		toSerialize["served_by"] = o.ServedBy
 	}
-	if !IsNil(o.ServerHostName) {
+	if !IsNil(o.ServerHostName) && *o.ServerHostName != "" {
 		toSerialize["server_host_name"] = o.ServerHostName
 	}
 	if !IsNil(o.Starts) {
@@ -1373,13 +1373,13 @@ func (o Lease) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tstp) {
 		toSerialize["tstp"] = o.Tstp
 	}
-	if !IsNil(o.Uid) {
+	if !IsNil(o.Uid) && *o.Uid != "" {
 		toSerialize["uid"] = o.Uid
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
-	if !IsNil(o.Variable) {
+	if !IsNil(o.Variable) && *o.Variable != "" {
 		toSerialize["variable"] = o.Variable
 	}
 	return toSerialize, nil

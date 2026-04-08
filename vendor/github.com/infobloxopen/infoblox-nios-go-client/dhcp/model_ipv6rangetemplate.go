@@ -556,13 +556,13 @@ func (o Ipv6rangetemplate) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6rangetemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.CloudApiCompatible) {
 		toSerialize["cloud_api_compatible"] = o.CloudApiCompatible
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DelegatedMember) {
@@ -581,7 +581,7 @@ func (o Ipv6rangetemplate) ToMap() (map[string]interface{}, error) {
 			toSerialize["member"] = o.Member
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NumberOfAddresses) {

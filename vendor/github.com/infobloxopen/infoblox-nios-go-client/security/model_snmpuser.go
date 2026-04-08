@@ -422,16 +422,16 @@ func (o Snmpuser) MarshalJSON() ([]byte, error) {
 
 func (o Snmpuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AuthenticationPassword) {
+	if !IsNil(o.AuthenticationPassword) && *o.AuthenticationPassword != "" {
 		toSerialize["authentication_password"] = o.AuthenticationPassword
 	}
 	if !IsNil(o.AuthenticationProtocol) && *o.AuthenticationProtocol != "" {
 		toSerialize["authentication_protocol"] = o.AuthenticationProtocol
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -446,10 +446,10 @@ func (o Snmpuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.PrivacyPassword) {
+	if !IsNil(o.PrivacyPassword) && *o.PrivacyPassword != "" {
 		toSerialize["privacy_password"] = o.PrivacyPassword
 	}
 	if !IsNil(o.PrivacyProtocol) && *o.PrivacyProtocol != "" {

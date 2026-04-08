@@ -323,28 +323,28 @@ func (o HsmThaleslunagroupThalesluna) MarshalJSON() ([]byte, error) {
 
 func (o HsmThaleslunagroupThalesluna) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.PartitionSerialNumber) {
+	if !IsNil(o.PartitionSerialNumber) && *o.PartitionSerialNumber != "" {
 		toSerialize["partition_serial_number"] = o.PartitionSerialNumber
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.PartitionId) {
+	if !IsNil(o.PartitionId) && *o.PartitionId != "" {
 		toSerialize["partition_id"] = o.PartitionId
 	}
 	if !IsNil(o.IsFipsCompliant) {
 		toSerialize["is_fips_compliant"] = o.IsFipsCompliant
 	}
-	if !IsNil(o.ServerCert) {
+	if !IsNil(o.ServerCert) && *o.ServerCert != "" {
 		toSerialize["server_cert"] = o.ServerCert
 	}
 	if !IsNil(o.PartitionCapacity) {
 		toSerialize["partition_capacity"] = o.PartitionCapacity
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 

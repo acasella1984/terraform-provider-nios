@@ -931,10 +931,10 @@ func (o GridCloudapiVm) MarshalJSON() ([]byte, error) {
 
 func (o GridCloudapiVm) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AvailabilityZone) {
+	if !IsNil(o.AvailabilityZone) && *o.AvailabilityZone != "" {
 		toSerialize["availability_zone"] = o.AvailabilityZone
 	}
 	if !IsNil(o.CloudInfo) {
@@ -942,10 +942,10 @@ func (o GridCloudapiVm) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ElasticIpAddress) {
+	if !IsNil(o.ElasticIpAddress) && *o.ElasticIpAddress != "" {
 		toSerialize["elastic_ip_address"] = o.ElasticIpAddress
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -960,55 +960,55 @@ func (o GridCloudapiVm) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FirstSeen) {
 		toSerialize["first_seen"] = o.FirstSeen
 	}
-	if !IsNil(o.Hostname) {
+	if !IsNil(o.Hostname) && *o.Hostname != "" {
 		toSerialize["hostname"] = o.Hostname
 	}
-	if !IsNil(o.Id) {
+	if !IsNil(o.Id) && *o.Id != "" {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.KernelId) {
+	if !IsNil(o.KernelId) && *o.KernelId != "" {
 		toSerialize["kernel_id"] = o.KernelId
 	}
 	if !IsNil(o.LastSeen) {
 		toSerialize["last_seen"] = o.LastSeen
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NetworkCount) {
 		toSerialize["network_count"] = o.NetworkCount
 	}
-	if !IsNil(o.OperatingSystem) {
+	if !IsNil(o.OperatingSystem) && *o.OperatingSystem != "" {
 		toSerialize["operating_system"] = o.OperatingSystem
 	}
-	if !IsNil(o.PrimaryMacAddress) {
+	if !IsNil(o.PrimaryMacAddress) && *o.PrimaryMacAddress != "" {
 		toSerialize["primary_mac_address"] = o.PrimaryMacAddress
 	}
-	if !IsNil(o.SubnetAddress) {
+	if !IsNil(o.SubnetAddress) && *o.SubnetAddress != "" {
 		toSerialize["subnet_address"] = o.SubnetAddress
 	}
 	if !IsNil(o.SubnetCidr) {
 		toSerialize["subnet_cidr"] = o.SubnetCidr
 	}
-	if !IsNil(o.SubnetId) {
+	if !IsNil(o.SubnetId) && *o.SubnetId != "" {
 		toSerialize["subnet_id"] = o.SubnetId
 	}
-	if !IsNil(o.TenantName) {
+	if !IsNil(o.TenantName) && *o.TenantName != "" {
 		toSerialize["tenant_name"] = o.TenantName
 	}
-	if !IsNil(o.VmType) {
+	if !IsNil(o.VmType) && *o.VmType != "" {
 		toSerialize["vm_type"] = o.VmType
 	}
-	if !IsNil(o.VpcAddress) {
+	if !IsNil(o.VpcAddress) && *o.VpcAddress != "" {
 		toSerialize["vpc_address"] = o.VpcAddress
 	}
 	if !IsNil(o.VpcCidr) {
 		toSerialize["vpc_cidr"] = o.VpcCidr
 	}
-	if !IsNil(o.VpcId) {
+	if !IsNil(o.VpcId) && *o.VpcId != "" {
 		toSerialize["vpc_id"] = o.VpcId
 	}
-	if !IsNil(o.VpcName) {
+	if !IsNil(o.VpcName) && *o.VpcName != "" {
 		toSerialize["vpc_name"] = o.VpcName
 	}
 	return toSerialize, nil

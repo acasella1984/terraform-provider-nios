@@ -221,19 +221,19 @@ func (o MemberDhcppropertiesDdnsZonePrimaries) MarshalJSON() ([]byte, error) {
 
 func (o MemberDhcppropertiesDdnsZonePrimaries) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ZoneMatch) {
+	if !IsNil(o.ZoneMatch) && *o.ZoneMatch != "" {
 		toSerialize["zone_match"] = o.ZoneMatch
 	}
-	if !IsNil(o.DnsGridZone) {
+	if !IsNil(o.DnsGridZone) && *o.DnsGridZone != "" {
 		toSerialize["dns_grid_zone"] = o.DnsGridZone
 	}
-	if !IsNil(o.DnsGridPrimary) {
+	if !IsNil(o.DnsGridPrimary) && *o.DnsGridPrimary != "" {
 		toSerialize["dns_grid_primary"] = o.DnsGridPrimary
 	}
-	if !IsNil(o.DnsExtZone) {
+	if !IsNil(o.DnsExtZone) && *o.DnsExtZone != "" {
 		toSerialize["dns_ext_zone"] = o.DnsExtZone
 	}
-	if !IsNil(o.DnsExtPrimary) {
+	if !IsNil(o.DnsExtPrimary) && *o.DnsExtPrimary != "" {
 		toSerialize["dns_ext_primary"] = o.DnsExtPrimary
 	}
 

@@ -153,13 +153,13 @@ func (o DiscoveryGridpropertiesDeviceHints) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryGridpropertiesDeviceHints) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DeviceType) {
+	if !IsNil(o.DeviceType) && *o.DeviceType != "" {
 		toSerialize["device_type"] = o.DeviceType
 	}
-	if !IsNil(o.Criteria) {
+	if !IsNil(o.Criteria) && *o.Criteria != "" {
 		toSerialize["criteria"] = o.Criteria
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

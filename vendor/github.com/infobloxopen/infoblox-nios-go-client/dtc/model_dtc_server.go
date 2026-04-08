@@ -489,13 +489,13 @@ func (o DtcServer) MarshalJSON() ([]byte, error) {
 
 func (o DtcServer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AutoCreateHostRecord) {
 		toSerialize["auto_create_host_record"] = o.AutoCreateHostRecord
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -515,16 +515,16 @@ func (o DtcServer) ToMap() (map[string]interface{}, error) {
 			toSerialize["health"] = o.Health
 		}
 	}
-	if !IsNil(o.Host) {
+	if !IsNil(o.Host) && *o.Host != "" {
 		toSerialize["host"] = o.Host
 	}
 	if !IsNil(o.Monitors) && len(o.Monitors) > 0 {
 		toSerialize["monitors"] = o.Monitors
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.SniHostname) {
+	if !IsNil(o.SniHostname) && *o.SniHostname != "" {
 		toSerialize["sni_hostname"] = o.SniHostname
 	}
 	if !IsNil(o.UseSniHostname) {

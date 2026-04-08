@@ -252,7 +252,7 @@ func (o Permission) MarshalJSON() ([]byte, error) {
 
 func (o Permission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Group) && *o.Group != "" {

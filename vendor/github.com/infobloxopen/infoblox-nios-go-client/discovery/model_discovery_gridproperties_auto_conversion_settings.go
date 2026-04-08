@@ -221,19 +221,19 @@ func (o DiscoveryGridpropertiesAutoConversionSettings) MarshalJSON() ([]byte, er
 
 func (o DiscoveryGridpropertiesAutoConversionSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Format) {
+	if !IsNil(o.Format) && *o.Format != "" {
 		toSerialize["format"] = o.Format
 	}
-	if !IsNil(o.Condition) {
+	if !IsNil(o.Condition) && *o.Condition != "" {
 		toSerialize["condition"] = o.Condition
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

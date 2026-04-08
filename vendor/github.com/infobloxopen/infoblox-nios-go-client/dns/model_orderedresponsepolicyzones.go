@@ -150,13 +150,13 @@ func (o Orderedresponsepolicyzones) MarshalJSON() ([]byte, error) {
 
 func (o Orderedresponsepolicyzones) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.RpZones) && len(o.RpZones) > 0 {
 		toSerialize["rp_zones"] = o.RpZones
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
 	return toSerialize, nil

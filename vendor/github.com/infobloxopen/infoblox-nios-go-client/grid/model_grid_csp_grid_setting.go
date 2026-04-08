@@ -153,13 +153,13 @@ func (o GridCspGridSetting) MarshalJSON() ([]byte, error) {
 
 func (o GridCspGridSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CspJoinToken) {
+	if !IsNil(o.CspJoinToken) && *o.CspJoinToken != "" {
 		toSerialize["csp_join_token"] = o.CspJoinToken
 	}
-	if !IsNil(o.CspDnsResolver) {
+	if !IsNil(o.CspDnsResolver) && *o.CspDnsResolver != "" {
 		toSerialize["csp_dns_resolver"] = o.CspDnsResolver
 	}
-	if !IsNil(o.CspHttpsProxy) {
+	if !IsNil(o.CspHttpsProxy) && *o.CspHttpsProxy != "" {
 		toSerialize["csp_https_proxy"] = o.CspHttpsProxy
 	}
 

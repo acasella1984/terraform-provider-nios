@@ -1645,7 +1645,7 @@ func (o Ipv6networktemplate) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6networktemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowAnyNetmask) {
@@ -1660,10 +1660,10 @@ func (o Ipv6networktemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudApiCompatible) {
 		toSerialize["cloud_api_compatible"] = o.CloudApiCompatible
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsEnableOptionFqdn) {
@@ -1683,7 +1683,7 @@ func (o Ipv6networktemplate) ToMap() (map[string]interface{}, error) {
 			toSerialize["delegated_member"] = o.DelegatedMember
 		}
 	}
-	if !IsNil(o.DomainName) {
+	if !IsNil(o.DomainName) && *o.DomainName != "" {
 		toSerialize["domain_name"] = o.DomainName
 	}
 	if !IsNil(o.DomainNameServers) && len(o.DomainNameServers) > 0 {
@@ -1704,7 +1704,7 @@ func (o Ipv6networktemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FixedAddressTemplates) && len(o.FixedAddressTemplates) > 0 {
 		toSerialize["fixed_address_templates"] = o.FixedAddressTemplates
 	}
-	if !IsNil(o.Ipv6prefix) {
+	if !IsNil(o.Ipv6prefix) && *o.Ipv6prefix != "" {
 		toSerialize["ipv6prefix"] = o.Ipv6prefix
 	}
 	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
@@ -1713,7 +1713,7 @@ func (o Ipv6networktemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Members) && len(o.Members) > 0 {
 		toSerialize["members"] = o.Members
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {

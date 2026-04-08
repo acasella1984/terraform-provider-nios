@@ -935,25 +935,25 @@ func (o GridDnsDtcScheduledBackup) MarshalJSON() ([]byte, error) {
 
 func (o GridDnsDtcScheduledBackup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.Execute) {
+	if !IsNil(o.Execute) && *o.Execute != "" {
 		toSerialize["execute"] = o.Execute
 	}
 	if !IsNil(o.Operation) && *o.Operation != "" {
 		toSerialize["operation"] = o.Operation
 	}
-	if !IsNil(o.BackupType) {
+	if !IsNil(o.BackupType) && *o.BackupType != "" {
 		toSerialize["backup_type"] = o.BackupType
 	}
 	if !IsNil(o.KeepLocalCopy) {
 		toSerialize["keep_local_copy"] = o.KeepLocalCopy
 	}
-	if !IsNil(o.BackupFrequency) {
+	if !IsNil(o.BackupFrequency) && *o.BackupFrequency != "" {
 		toSerialize["backup_frequency"] = o.BackupFrequency
 	}
-	if !IsNil(o.Weekday) {
+	if !IsNil(o.Weekday) && *o.Weekday != "" {
 		toSerialize["weekday"] = o.Weekday
 	}
 	if !IsNil(o.HourOfDay) {
@@ -962,31 +962,31 @@ func (o GridDnsDtcScheduledBackup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MinutesPastHour) {
 		toSerialize["minutes_past_hour"] = o.MinutesPastHour
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
-	if !IsNil(o.BackupServer) {
+	if !IsNil(o.BackupServer) && *o.BackupServer != "" {
 		toSerialize["backup_server"] = o.BackupServer
 	}
-	if !IsNil(o.Path) {
+	if !IsNil(o.Path) && *o.Path != "" {
 		toSerialize["path"] = o.Path
 	}
-	if !IsNil(o.RestoreType) {
+	if !IsNil(o.RestoreType) && *o.RestoreType != "" {
 		toSerialize["restore_type"] = o.RestoreType
 	}
-	if !IsNil(o.RestoreServer) {
+	if !IsNil(o.RestoreServer) && *o.RestoreServer != "" {
 		toSerialize["restore_server"] = o.RestoreServer
 	}
-	if !IsNil(o.RestoreUsername) {
+	if !IsNil(o.RestoreUsername) && *o.RestoreUsername != "" {
 		toSerialize["restore_username"] = o.RestoreUsername
 	}
-	if !IsNil(o.RestorePassword) {
+	if !IsNil(o.RestorePassword) && *o.RestorePassword != "" {
 		toSerialize["restore_password"] = o.RestorePassword
 	}
-	if !IsNil(o.RestorePath) {
+	if !IsNil(o.RestorePath) && *o.RestorePath != "" {
 		toSerialize["restore_path"] = o.RestorePath
 	}
 	if !IsNil(o.NiosData) {
@@ -1004,7 +1004,7 @@ func (o GridDnsDtcScheduledBackup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseKeys) {
 		toSerialize["use_keys"] = o.UseKeys
 	}
-	if !IsNil(o.KeyType) {
+	if !IsNil(o.KeyType) && *o.KeyType != "" {
 		toSerialize["key_type"] = o.KeyType
 	}
 	if !IsNil(o.UploadKeys) {

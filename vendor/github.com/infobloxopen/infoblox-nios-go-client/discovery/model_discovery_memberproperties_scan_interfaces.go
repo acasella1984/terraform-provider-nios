@@ -153,13 +153,13 @@ func (o DiscoveryMemberpropertiesScanInterfaces) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryMemberpropertiesScanInterfaces) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.ScanVirtualIp) {
+	if !IsNil(o.ScanVirtualIp) && *o.ScanVirtualIp != "" {
 		toSerialize["scan_virtual_ip"] = o.ScanVirtualIp
 	}
 

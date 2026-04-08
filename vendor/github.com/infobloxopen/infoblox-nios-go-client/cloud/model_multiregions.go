@@ -184,16 +184,16 @@ func (o Multiregions) MarshalJSON() ([]byte, error) {
 
 func (o Multiregions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.CloudPlatform) {
+	if !IsNil(o.CloudPlatform) && *o.CloudPlatform != "" {
 		toSerialize["cloud_platform"] = o.CloudPlatform
 	}
-	if !IsNil(o.GovcloudRegions) {
+	if !IsNil(o.GovcloudRegions) && *o.GovcloudRegions != "" {
 		toSerialize["govcloud_regions"] = o.GovcloudRegions
 	}
-	if !IsNil(o.Regions) {
+	if !IsNil(o.Regions) && *o.Regions != "" {
 		toSerialize["regions"] = o.Regions
 	}
 	return toSerialize, nil

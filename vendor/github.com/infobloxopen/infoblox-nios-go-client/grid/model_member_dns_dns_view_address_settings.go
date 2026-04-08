@@ -459,19 +459,19 @@ func (o MemberDnsDnsViewAddressSettings) MarshalJSON() ([]byte, error) {
 
 func (o MemberDnsDnsViewAddressSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ViewName) {
+	if !IsNil(o.ViewName) && *o.ViewName != "" {
 		toSerialize["view_name"] = o.ViewName
 	}
 	if !IsNil(o.DnsNotifyTransferSource) && *o.DnsNotifyTransferSource != "" {
 		toSerialize["dns_notify_transfer_source"] = o.DnsNotifyTransferSource
 	}
-	if !IsNil(o.DnsNotifyTransferSourceAddress) {
+	if !IsNil(o.DnsNotifyTransferSourceAddress) && *o.DnsNotifyTransferSourceAddress != "" {
 		toSerialize["dns_notify_transfer_source_address"] = o.DnsNotifyTransferSourceAddress
 	}
 	if !IsNil(o.DnsQuerySourceInterface) && *o.DnsQuerySourceInterface != "" {
 		toSerialize["dns_query_source_interface"] = o.DnsQuerySourceInterface
 	}
-	if !IsNil(o.DnsQuerySourceAddress) {
+	if !IsNil(o.DnsQuerySourceAddress) && *o.DnsQuerySourceAddress != "" {
 		toSerialize["dns_query_source_address"] = o.DnsQuerySourceAddress
 	}
 	if !IsNil(o.EnableNotifySourcePort) {

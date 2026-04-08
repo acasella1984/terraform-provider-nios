@@ -218,19 +218,19 @@ func (o DbObjects) MarshalJSON() ([]byte, error) {
 
 func (o DbObjects) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.LastSequenceId) {
+	if !IsNil(o.LastSequenceId) && *o.LastSequenceId != "" {
 		toSerialize["last_sequence_id"] = o.LastSequenceId
 	}
 	if !IsNil(o.Object) && *o.Object != "" {
 		toSerialize["object"] = o.Object
 	}
-	if !IsNil(o.ObjectType) {
+	if !IsNil(o.ObjectType) && *o.ObjectType != "" {
 		toSerialize["object_type"] = o.ObjectType
 	}
-	if !IsNil(o.UniqueId) {
+	if !IsNil(o.UniqueId) && *o.UniqueId != "" {
 		toSerialize["unique_id"] = o.UniqueId
 	}
 	return toSerialize, nil

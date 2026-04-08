@@ -253,13 +253,13 @@ func (o MembernodeinfoLanHaPortSetting) MarshalJSON() ([]byte, error) {
 
 func (o MembernodeinfoLanHaPortSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MgmtLan) {
+	if !IsNil(o.MgmtLan) && *o.MgmtLan != "" {
 		toSerialize["mgmt_lan"] = o.MgmtLan
 	}
-	if !IsNil(o.MgmtIpv6addr) {
+	if !IsNil(o.MgmtIpv6addr) && *o.MgmtIpv6addr != "" {
 		toSerialize["mgmt_ipv6addr"] = o.MgmtIpv6addr
 	}
-	if !IsNil(o.HaIpAddress) {
+	if !IsNil(o.HaIpAddress) && *o.HaIpAddress != "" {
 		toSerialize["ha_ip_address"] = o.HaIpAddress
 	}
 	if !IsNil(o.LanPortSetting) {
@@ -272,7 +272,7 @@ func (o MembernodeinfoLanHaPortSetting) ToMap() (map[string]interface{}, error) 
 			toSerialize["ha_port_setting"] = o.HaPortSetting
 		}
 	}
-	if !IsNil(o.HaCloudAttribute) {
+	if !IsNil(o.HaCloudAttribute) && *o.HaCloudAttribute != "" {
 		toSerialize["ha_cloud_attribute"] = o.HaCloudAttribute
 	}
 

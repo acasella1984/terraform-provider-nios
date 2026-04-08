@@ -2352,7 +2352,7 @@ func (o Ipv6networkcontainer) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6networkcontainer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AutoCreateReversezone) {
@@ -2363,10 +2363,10 @@ func (o Ipv6networkcontainer) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsEnableOptionFqdn) {
@@ -2381,7 +2381,7 @@ func (o Ipv6networkcontainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsTtl) {
 		toSerialize["ddns_ttl"] = o.DdnsTtl
 	}
-	if !IsNil(o.DeleteReason) {
+	if !IsNil(o.DeleteReason) && *o.DeleteReason != "" {
 		toSerialize["delete_reason"] = o.DeleteReason
 	}
 	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
@@ -2433,7 +2433,7 @@ func (o Ipv6networkcontainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastRirRegistrationUpdateSent) {
 		toSerialize["last_rir_registration_update_sent"] = o.LastRirRegistrationUpdateSent
 	}
-	if !IsNil(o.LastRirRegistrationUpdateStatus) {
+	if !IsNil(o.LastRirRegistrationUpdateStatus) && *o.LastRirRegistrationUpdateStatus != "" {
 		toSerialize["last_rir_registration_update_status"] = o.LastRirRegistrationUpdateStatus
 	}
 	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
@@ -2458,10 +2458,10 @@ func (o Ipv6networkcontainer) ToMap() (map[string]interface{}, error) {
 			toSerialize["func_call"] = o.FuncCall
 		}
 	}
-	if !IsNil(o.NetworkContainer) {
+	if !IsNil(o.NetworkContainer) && *o.NetworkContainer != "" {
 		toSerialize["network_container"] = o.NetworkContainer
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {

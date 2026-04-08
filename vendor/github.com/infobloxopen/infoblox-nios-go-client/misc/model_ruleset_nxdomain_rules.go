@@ -122,7 +122,7 @@ func (o RulesetNxdomainRules) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
-	if !IsNil(o.Pattern) {
+	if !IsNil(o.Pattern) && *o.Pattern != "" {
 		toSerialize["pattern"] = o.Pattern
 	}
 

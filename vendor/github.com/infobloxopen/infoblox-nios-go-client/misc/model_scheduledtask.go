@@ -830,16 +830,16 @@ func (o Scheduledtask) MarshalJSON() ([]byte, error) {
 
 func (o Scheduledtask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.ApprovalStatus) && *o.ApprovalStatus != "" {
 		toSerialize["approval_status"] = o.ApprovalStatus
 	}
-	if !IsNil(o.Approver) {
+	if !IsNil(o.Approver) && *o.Approver != "" {
 		toSerialize["approver"] = o.Approver
 	}
-	if !IsNil(o.ApproverComment) {
+	if !IsNil(o.ApproverComment) && *o.ApproverComment != "" {
 		toSerialize["approver_comment"] = o.ApproverComment
 	}
 	if !IsNil(o.AutomaticRestart) {
@@ -884,10 +884,10 @@ func (o Scheduledtask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubmitTime) {
 		toSerialize["submit_time"] = o.SubmitTime
 	}
-	if !IsNil(o.Submitter) {
+	if !IsNil(o.Submitter) && *o.Submitter != "" {
 		toSerialize["submitter"] = o.Submitter
 	}
-	if !IsNil(o.SubmitterComment) {
+	if !IsNil(o.SubmitterComment) && *o.SubmitterComment != "" {
 		toSerialize["submitter_comment"] = o.SubmitterComment
 	}
 	if !IsNil(o.TaskId) {
@@ -896,7 +896,7 @@ func (o Scheduledtask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TaskType) && *o.TaskType != "" {
 		toSerialize["task_type"] = o.TaskType
 	}
-	if !IsNil(o.TicketNumber) {
+	if !IsNil(o.TicketNumber) && *o.TicketNumber != "" {
 		toSerialize["ticket_number"] = o.TicketNumber
 	}
 	return toSerialize, nil

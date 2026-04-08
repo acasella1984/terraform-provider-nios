@@ -218,7 +218,7 @@ func (o ThreatinsightCloudclient) MarshalJSON() ([]byte, error) {
 
 func (o ThreatinsightCloudclient) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.BlacklistRpzList) && len(o.BlacklistRpzList) > 0 {

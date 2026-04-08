@@ -153,7 +153,7 @@ func (o SmartfolderGlobalGroupBys) MarshalJSON() ([]byte, error) {
 
 func (o SmartfolderGlobalGroupBys) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Value) {
+	if !IsNil(o.Value) && *o.Value != "" {
 		toSerialize["value"] = o.Value
 	}
 	if !IsNil(o.ValueType) && *o.ValueType != "" {

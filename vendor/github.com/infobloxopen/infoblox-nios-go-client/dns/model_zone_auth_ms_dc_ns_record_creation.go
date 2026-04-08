@@ -119,10 +119,10 @@ func (o ZoneAuthMsDcNsRecordCreation) MarshalJSON() ([]byte, error) {
 
 func (o ZoneAuthMsDcNsRecordCreation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

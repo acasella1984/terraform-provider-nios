@@ -218,7 +218,7 @@ func (o Upgradeschedule) MarshalJSON() ([]byte, error) {
 
 func (o Upgradeschedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Active) {
@@ -227,7 +227,7 @@ func (o Upgradeschedule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StartTime) {
 		toSerialize["start_time"] = o.StartTime
 	}
-	if !IsNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) && *o.TimeZone != "" {
 		toSerialize["time_zone"] = o.TimeZone
 	}
 	if !IsNil(o.UpgradeGroups) && len(o.UpgradeGroups) > 0 {

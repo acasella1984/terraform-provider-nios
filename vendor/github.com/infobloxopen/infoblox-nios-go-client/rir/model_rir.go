@@ -286,19 +286,19 @@ func (o Rir) MarshalJSON() ([]byte, error) {
 
 func (o Rir) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.CommunicationMode) && *o.CommunicationMode != "" {
 		toSerialize["communication_mode"] = o.CommunicationMode
 	}
-	if !IsNil(o.Email) {
+	if !IsNil(o.Email) && *o.Email != "" {
 		toSerialize["email"] = o.Email
 	}
 	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Url) {
+	if !IsNil(o.Url) && *o.Url != "" {
 		toSerialize["url"] = o.Url
 	}
 	if !IsNil(o.UseEmail) {

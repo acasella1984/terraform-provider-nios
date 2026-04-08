@@ -159,7 +159,7 @@ func (o Ipv6rangetemplateExclude) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NumberOfAddresses) {
 		toSerialize["number_of_addresses"] = o.NumberOfAddresses
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

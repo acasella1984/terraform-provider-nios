@@ -118,7 +118,7 @@ func (o DiscoveryDeviceinterfaceAdminStatusTaskInfo) MarshalJSON() ([]byte, erro
 
 func (o DiscoveryDeviceinterfaceAdminStatusTaskInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.Details) {

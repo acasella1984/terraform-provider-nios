@@ -119,7 +119,7 @@ func (o DtcPoolServers) MarshalJSON() ([]byte, error) {
 
 func (o DtcPoolServers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Server) {
+	if !IsNil(o.Server) && *o.Server != "" {
 		toSerialize["server"] = o.Server
 	}
 	if !IsNil(o.Ratio) {

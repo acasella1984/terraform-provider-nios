@@ -119,7 +119,7 @@ func (o MemberDnsSortlist) MarshalJSON() ([]byte, error) {
 
 func (o MemberDnsSortlist) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.MatchList) && len(o.MatchList) > 0 {

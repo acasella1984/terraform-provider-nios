@@ -119,7 +119,7 @@ func (o GridDnsSortlist) MarshalJSON() ([]byte, error) {
 
 func (o GridDnsSortlist) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.MatchList) && len(o.MatchList) > 0 {

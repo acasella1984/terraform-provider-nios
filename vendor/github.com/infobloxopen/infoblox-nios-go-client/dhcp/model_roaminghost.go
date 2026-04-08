@@ -1952,34 +1952,34 @@ func (o Roaminghost) MarshalJSON() ([]byte, error) {
 
 func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AddressType) && *o.AddressType != "" {
 		toSerialize["address_type"] = o.AddressType
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.ClientIdentifierPrependZero) {
 		toSerialize["client_identifier_prepend_zero"] = o.ClientIdentifierPrependZero
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
-	if !IsNil(o.DdnsHostname) {
+	if !IsNil(o.DdnsHostname) && *o.DdnsHostname != "" {
 		toSerialize["ddns_hostname"] = o.DdnsHostname
 	}
 	if !IsNil(o.DenyBootp) {
 		toSerialize["deny_bootp"] = o.DenyBootp
 	}
-	if !IsNil(o.DhcpClientIdentifier) {
+	if !IsNil(o.DhcpClientIdentifier) && *o.DhcpClientIdentifier != "" {
 		toSerialize["dhcp_client_identifier"] = o.DhcpClientIdentifier
 	}
 	if !IsNil(o.Disable) {
@@ -2006,22 +2006,22 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IgnoreDhcpOptionListRequest) {
 		toSerialize["ignore_dhcp_option_list_request"] = o.IgnoreDhcpOptionListRequest
 	}
-	if !IsNil(o.Ipv6ClientHostname) {
+	if !IsNil(o.Ipv6ClientHostname) && *o.Ipv6ClientHostname != "" {
 		toSerialize["ipv6_client_hostname"] = o.Ipv6ClientHostname
 	}
-	if !IsNil(o.Ipv6DdnsDomainname) {
+	if !IsNil(o.Ipv6DdnsDomainname) && *o.Ipv6DdnsDomainname != "" {
 		toSerialize["ipv6_ddns_domainname"] = o.Ipv6DdnsDomainname
 	}
-	if !IsNil(o.Ipv6DdnsHostname) {
+	if !IsNil(o.Ipv6DdnsHostname) && *o.Ipv6DdnsHostname != "" {
 		toSerialize["ipv6_ddns_hostname"] = o.Ipv6DdnsHostname
 	}
-	if !IsNil(o.Ipv6DomainName) {
+	if !IsNil(o.Ipv6DomainName) && *o.Ipv6DomainName != "" {
 		toSerialize["ipv6_domain_name"] = o.Ipv6DomainName
 	}
 	if !IsNil(o.Ipv6DomainNameServers) && len(o.Ipv6DomainNameServers) > 0 {
 		toSerialize["ipv6_domain_name_servers"] = o.Ipv6DomainNameServers
 	}
-	if !IsNil(o.Ipv6Duid) {
+	if !IsNil(o.Ipv6Duid) && *o.Ipv6Duid != "" {
 		toSerialize["ipv6_duid"] = o.Ipv6Duid
 	}
 	if !IsNil(o.Ipv6EnableDdns) {
@@ -2030,7 +2030,7 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6ForceRoamingHostname) {
 		toSerialize["ipv6_force_roaming_hostname"] = o.Ipv6ForceRoamingHostname
 	}
-	if !IsNil(o.Ipv6MacAddress) {
+	if !IsNil(o.Ipv6MacAddress) && *o.Ipv6MacAddress != "" {
 		toSerialize["ipv6_mac_address"] = o.Ipv6MacAddress
 	}
 	if !IsNil(o.Ipv6MatchOption) && *o.Ipv6MatchOption != "" {
@@ -2039,22 +2039,22 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6Options) && len(o.Ipv6Options) > 0 {
 		toSerialize["ipv6_options"] = o.Ipv6Options
 	}
-	if !IsNil(o.Ipv6Template) {
+	if !IsNil(o.Ipv6Template) && *o.Ipv6Template != "" {
 		toSerialize["ipv6_template"] = o.Ipv6Template
 	}
-	if !IsNil(o.Mac) {
+	if !IsNil(o.Mac) && *o.Mac != "" {
 		toSerialize["mac"] = o.Mac
 	}
 	if !IsNil(o.MatchClient) && *o.MatchClient != "" {
 		toSerialize["match_client"] = o.MatchClient
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {
@@ -2066,7 +2066,7 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PxeLeaseTime) {
 		toSerialize["pxe_lease_time"] = o.PxeLeaseTime
 	}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
 	if !IsNil(o.UseBootfile) {

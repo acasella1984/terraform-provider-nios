@@ -538,7 +538,7 @@ func (o GridSecuritySetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LoginBannerEnable) {
 		toSerialize["login_banner_enable"] = o.LoginBannerEnable
 	}
-	if !IsNil(o.LoginBannerText) {
+	if !IsNil(o.LoginBannerText) && *o.LoginBannerText != "" {
 		toSerialize["login_banner_text"] = o.LoginBannerText
 	}
 	if !IsNil(o.RemoteConsoleAccessEnable) {
@@ -559,7 +559,7 @@ func (o GridSecuritySetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SupportAccessEnable) {
 		toSerialize["support_access_enable"] = o.SupportAccessEnable
 	}
-	if !IsNil(o.SupportAccessInfo) {
+	if !IsNil(o.SupportAccessInfo) && *o.SupportAccessInfo != "" {
 		toSerialize["support_access_info"] = o.SupportAccessInfo
 	}
 	if !IsNil(o.DisableConcurrentLogin) {

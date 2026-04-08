@@ -255,7 +255,7 @@ func (o ZoneAuthGridSecondaries) MarshalJSON() ([]byte, error) {
 
 func (o ZoneAuthGridSecondaries) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Stealth) {

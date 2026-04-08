@@ -728,7 +728,7 @@ func (o Adminuser) MarshalJSON() ([]byte, error) {
 
 func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AdminGroups) && len(o.AdminGroups) > 0 {
@@ -743,16 +743,16 @@ func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CaCertificateIssuer) && *o.CaCertificateIssuer != "" {
 		toSerialize["ca_certificate_issuer"] = o.CaCertificateIssuer
 	}
-	if !IsNil(o.ClientCertificateSerialNumber) {
+	if !IsNil(o.ClientCertificateSerialNumber) && *o.ClientCertificateSerialNumber != "" {
 		toSerialize["client_certificate_serial_number"] = o.ClientCertificateSerialNumber
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.Email) {
+	if !IsNil(o.Email) && *o.Email != "" {
 		toSerialize["email"] = o.Email
 	}
 	if !IsNil(o.EnableCertificateAuthentication) {
@@ -767,10 +767,10 @@ func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.SshKeys) && len(o.SshKeys) > 0 {
@@ -779,7 +779,7 @@ func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) && *o.TimeZone != "" {
 		toSerialize["time_zone"] = o.TimeZone
 	}
 	if !IsNil(o.UseSshKeys) {

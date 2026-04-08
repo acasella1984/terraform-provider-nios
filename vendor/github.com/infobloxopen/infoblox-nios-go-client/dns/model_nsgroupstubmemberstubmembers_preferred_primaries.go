@@ -323,10 +323,10 @@ func (o NsgroupstubmemberstubmembersPreferredPrimaries) MarshalJSON() ([]byte, e
 
 func (o NsgroupstubmemberstubmembersPreferredPrimaries) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.SharedWithMsParentDelegation) {
@@ -335,13 +335,13 @@ func (o NsgroupstubmemberstubmembersPreferredPrimaries) ToMap() (map[string]inte
 	if !IsNil(o.Stealth) {
 		toSerialize["stealth"] = o.Stealth
 	}
-	if !IsNil(o.TsigKey) {
+	if !IsNil(o.TsigKey) && *o.TsigKey != "" {
 		toSerialize["tsig_key"] = o.TsigKey
 	}
-	if !IsNil(o.TsigKeyAlg) {
+	if !IsNil(o.TsigKeyAlg) && *o.TsigKeyAlg != "" {
 		toSerialize["tsig_key_alg"] = o.TsigKeyAlg
 	}
-	if !IsNil(o.TsigKeyName) {
+	if !IsNil(o.TsigKeyName) && *o.TsigKeyName != "" {
 		toSerialize["tsig_key_name"] = o.TsigKeyName
 	}
 	if !IsNil(o.UseTsigKeyName) {

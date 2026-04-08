@@ -755,10 +755,10 @@ func (o DiscoveryStatus) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.CliCollectionEnabled) {
@@ -785,7 +785,7 @@ func (o DiscoveryStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FirstSeen) {
 		toSerialize["first_seen"] = o.FirstSeen
 	}
-	if !IsNil(o.LastAction) {
+	if !IsNil(o.LastAction) && *o.LastAction != "" {
 		toSerialize["last_action"] = o.LastAction
 	}
 	if !IsNil(o.LastSeen) {
@@ -794,10 +794,10 @@ func (o DiscoveryStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastTimestamp) {
 		toSerialize["last_timestamp"] = o.LastTimestamp
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.ReachableInfo) {
@@ -826,10 +826,10 @@ func (o DiscoveryStatus) ToMap() (map[string]interface{}, error) {
 			toSerialize["snmp_credential_info"] = o.SnmpCredentialInfo
 		}
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil

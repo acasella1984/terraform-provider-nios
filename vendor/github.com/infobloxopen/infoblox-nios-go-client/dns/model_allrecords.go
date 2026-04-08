@@ -558,19 +558,19 @@ func (o Allrecords) MarshalJSON() ([]byte, error) {
 
 func (o Allrecords) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
-	if !IsNil(o.DdnsPrincipal) {
+	if !IsNil(o.DdnsPrincipal) && *o.DdnsPrincipal != "" {
 		toSerialize["ddns_principal"] = o.DdnsPrincipal
 	}
 	if !IsNil(o.DdnsProtected) {
@@ -582,7 +582,7 @@ func (o Allrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DtcObscured) && *o.DtcObscured != "" {
 		toSerialize["dtc_obscured"] = o.DtcObscured
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Reclaimable) {
@@ -597,10 +597,10 @@ func (o Allrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

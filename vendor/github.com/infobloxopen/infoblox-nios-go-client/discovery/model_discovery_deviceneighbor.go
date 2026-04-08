@@ -320,10 +320,10 @@ func (o DiscoveryDeviceneighbor) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryDeviceneighbor) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.AddressRef) && *o.AddressRef != "" {
@@ -335,10 +335,10 @@ func (o DiscoveryDeviceneighbor) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Interface) && *o.Interface != "" {
 		toSerialize["interface"] = o.Interface
 	}
-	if !IsNil(o.Mac) {
+	if !IsNil(o.Mac) && *o.Mac != "" {
 		toSerialize["mac"] = o.Mac
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.VlanInfos) && len(o.VlanInfos) > 0 {

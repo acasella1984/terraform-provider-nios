@@ -255,10 +255,10 @@ func (o DistributionscheduleUpgradeGroups) MarshalJSON() ([]byte, error) {
 
 func (o DistributionscheduleUpgradeGroups) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) && *o.TimeZone != "" {
 		toSerialize["time_zone"] = o.TimeZone
 	}
 	if !IsNil(o.DistributionDependentGroup) && *o.DistributionDependentGroup != "" {

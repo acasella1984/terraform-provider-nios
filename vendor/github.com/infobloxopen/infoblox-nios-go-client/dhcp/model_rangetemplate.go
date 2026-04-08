@@ -2289,22 +2289,22 @@ func (o Rangetemplate) MarshalJSON() ([]byte, error) {
 
 func (o Rangetemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.CloudApiCompatible) {
 		toSerialize["cloud_api_compatible"] = o.CloudApiCompatible
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsGenerateHostname) {
@@ -2351,7 +2351,7 @@ func (o Rangetemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.FailoverAssociation) {
+	if !IsNil(o.FailoverAssociation) && *o.FailoverAssociation != "" {
 		toSerialize["failover_association"] = o.FailoverAssociation
 	}
 	if !IsNil(o.FingerprintFilterRules) && len(o.FingerprintFilterRules) > 0 {
@@ -2400,10 +2400,10 @@ func (o Rangetemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NacFilterRules) && len(o.NacFilterRules) > 0 {
 		toSerialize["nac_filter_rules"] = o.NacFilterRules
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.NumberOfAddresses) {

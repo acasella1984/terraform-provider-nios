@@ -4322,7 +4322,7 @@ func (o Network) MarshalJSON() ([]byte, error) {
 
 func (o Network) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Authority) {
@@ -4331,10 +4331,10 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoCreateReversezone) {
 		toSerialize["auto_create_reversezone"] = o.AutoCreateReversezone
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.CloudInfo) {
@@ -4345,13 +4345,13 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudShared) {
 		toSerialize["cloud_shared"] = o.CloudShared
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ConflictCount) {
 		toSerialize["conflict_count"] = o.ConflictCount
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsGenerateHostname) {
@@ -4369,7 +4369,7 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsUseOption81) {
 		toSerialize["ddns_use_option81"] = o.DdnsUseOption81
 	}
-	if !IsNil(o.DeleteReason) {
+	if !IsNil(o.DeleteReason) && *o.DeleteReason != "" {
 		toSerialize["delete_reason"] = o.DeleteReason
 	}
 	if !IsNil(o.DenyBootp) {
@@ -4387,28 +4387,28 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
 		toSerialize["discover_now_status"] = o.DiscoverNowStatus
 	}
-	if !IsNil(o.DiscoveredBgpAs) {
+	if !IsNil(o.DiscoveredBgpAs) && *o.DiscoveredBgpAs != "" {
 		toSerialize["discovered_bgp_as"] = o.DiscoveredBgpAs
 	}
-	if !IsNil(o.DiscoveredBridgeDomain) {
+	if !IsNil(o.DiscoveredBridgeDomain) && *o.DiscoveredBridgeDomain != "" {
 		toSerialize["discovered_bridge_domain"] = o.DiscoveredBridgeDomain
 	}
-	if !IsNil(o.DiscoveredTenant) {
+	if !IsNil(o.DiscoveredTenant) && *o.DiscoveredTenant != "" {
 		toSerialize["discovered_tenant"] = o.DiscoveredTenant
 	}
-	if !IsNil(o.DiscoveredVlanId) {
+	if !IsNil(o.DiscoveredVlanId) && *o.DiscoveredVlanId != "" {
 		toSerialize["discovered_vlan_id"] = o.DiscoveredVlanId
 	}
-	if !IsNil(o.DiscoveredVlanName) {
+	if !IsNil(o.DiscoveredVlanName) && *o.DiscoveredVlanName != "" {
 		toSerialize["discovered_vlan_name"] = o.DiscoveredVlanName
 	}
-	if !IsNil(o.DiscoveredVrfDescription) {
+	if !IsNil(o.DiscoveredVrfDescription) && *o.DiscoveredVrfDescription != "" {
 		toSerialize["discovered_vrf_description"] = o.DiscoveredVrfDescription
 	}
-	if !IsNil(o.DiscoveredVrfName) {
+	if !IsNil(o.DiscoveredVrfName) && *o.DiscoveredVrfName != "" {
 		toSerialize["discovered_vrf_name"] = o.DiscoveredVrfName
 	}
-	if !IsNil(o.DiscoveredVrfRd) {
+	if !IsNil(o.DiscoveredVrfRd) && *o.DiscoveredVrfRd != "" {
 		toSerialize["discovered_vrf_rd"] = o.DiscoveredVrfRd
 	}
 	if !IsNil(o.DiscoveryBasicPollSettings) {
@@ -4500,13 +4500,13 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 			toSerialize["ipam_trap_settings"] = o.IpamTrapSettings
 		}
 	}
-	if !IsNil(o.Ipv4addr) {
+	if !IsNil(o.Ipv4addr) && *o.Ipv4addr != "" {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
 	if !IsNil(o.LastRirRegistrationUpdateSent) {
 		toSerialize["last_rir_registration_update_sent"] = o.LastRirRegistrationUpdateSent
 	}
-	if !IsNil(o.LastRirRegistrationUpdateStatus) {
+	if !IsNil(o.LastRirRegistrationUpdateStatus) && *o.LastRirRegistrationUpdateStatus != "" {
 		toSerialize["last_rir_registration_update_status"] = o.LastRirRegistrationUpdateStatus
 	}
 	if !IsNil(o.LeaseScavengeTime) {
@@ -4546,13 +4546,13 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 			toSerialize["func_call"] = o.FuncCall
 		}
 	}
-	if !IsNil(o.NetworkContainer) {
+	if !IsNil(o.NetworkContainer) && *o.NetworkContainer != "" {
 		toSerialize["network_container"] = o.NetworkContainer
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Options) && len(o.Options) > 0 {
@@ -4598,7 +4598,7 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 			toSerialize["subscribe_settings"] = o.SubscribeSettings
 		}
 	}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
 	if !IsNil(o.TotalHosts) {

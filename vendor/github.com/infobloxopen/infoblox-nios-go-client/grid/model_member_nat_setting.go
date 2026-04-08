@@ -156,7 +156,7 @@ func (o MemberNatSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.ExternalVirtualIp) {
+	if !IsNil(o.ExternalVirtualIp) && *o.ExternalVirtualIp != "" {
 		toSerialize["external_virtual_ip"] = o.ExternalVirtualIp
 	}
 	if !IsNil(o.Group) && *o.Group != "" {

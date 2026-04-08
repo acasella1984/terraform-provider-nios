@@ -795,10 +795,10 @@ func (o MemberThreatprotection) MarshalJSON() ([]byte, error) {
 
 func (o MemberThreatprotection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CurrentRuleset) && *o.CurrentRuleset != "" {
@@ -819,19 +819,19 @@ func (o MemberThreatprotection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventsPerSecondPerRule) {
 		toSerialize["events_per_second_per_rule"] = o.EventsPerSecondPerRule
 	}
-	if !IsNil(o.HardwareModel) {
+	if !IsNil(o.HardwareModel) && *o.HardwareModel != "" {
 		toSerialize["hardware_model"] = o.HardwareModel
 	}
-	if !IsNil(o.HardwareType) {
+	if !IsNil(o.HardwareType) && *o.HardwareType != "" {
 		toSerialize["hardware_type"] = o.HardwareType
 	}
-	if !IsNil(o.HostName) {
+	if !IsNil(o.HostName) && *o.HostName != "" {
 		toSerialize["host_name"] = o.HostName
 	}
-	if !IsNil(o.Ipv4address) {
+	if !IsNil(o.Ipv4address) && *o.Ipv4address != "" {
 		toSerialize["ipv4address"] = o.Ipv4address
 	}
-	if !IsNil(o.Ipv6address) {
+	if !IsNil(o.Ipv6address) && *o.Ipv6address != "" {
 		toSerialize["ipv6address"] = o.Ipv6address
 	}
 	if !IsNil(o.NatRules) && len(o.NatRules) > 0 {

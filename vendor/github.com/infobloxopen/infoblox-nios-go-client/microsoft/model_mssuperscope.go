@@ -660,10 +660,10 @@ func (o Mssuperscope) MarshalJSON() ([]byte, error) {
 
 func (o Mssuperscope) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DhcpUtilization) {
@@ -699,10 +699,10 @@ func (o Mssuperscope) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LowWaterMarkReset) {
 		toSerialize["low_water_mark_reset"] = o.LowWaterMarkReset
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Ranges) && len(o.Ranges) > 0 {

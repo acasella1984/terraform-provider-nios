@@ -230,10 +230,10 @@ func (o MemberTrafficCaptureAuthDnsSetting) ToMap() (map[string]interface{}, err
 	if !IsNil(o.AuthDnsLatencyReset) {
 		toSerialize["auth_dns_latency_reset"] = o.AuthDnsLatencyReset
 	}
-	if !IsNil(o.AuthDnsLatencyListenOnSource) {
+	if !IsNil(o.AuthDnsLatencyListenOnSource) && *o.AuthDnsLatencyListenOnSource != "" {
 		toSerialize["auth_dns_latency_listen_on_source"] = o.AuthDnsLatencyListenOnSource
 	}
-	if !IsNil(o.AuthDnsLatencyListenOnIp) {
+	if !IsNil(o.AuthDnsLatencyListenOnIp) && *o.AuthDnsLatencyListenOnIp != "" {
 		toSerialize["auth_dns_latency_listen_on_ip"] = o.AuthDnsLatencyListenOnIp
 	}
 

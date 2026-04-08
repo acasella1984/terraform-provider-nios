@@ -190,13 +190,13 @@ func (o MemberDnsIpv6GlueRecordAddresses) ToMap() (map[string]interface{}, error
 	if !IsNil(o.AttachEmptyRecursiveView) {
 		toSerialize["attach_empty_recursive_view"] = o.AttachEmptyRecursiveView
 	}
-	if !IsNil(o.GlueRecordAddress) {
+	if !IsNil(o.GlueRecordAddress) && *o.GlueRecordAddress != "" {
 		toSerialize["glue_record_address"] = o.GlueRecordAddress
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.GlueAddressChoice) {
+	if !IsNil(o.GlueAddressChoice) && *o.GlueAddressChoice != "" {
 		toSerialize["glue_address_choice"] = o.GlueAddressChoice
 	}
 

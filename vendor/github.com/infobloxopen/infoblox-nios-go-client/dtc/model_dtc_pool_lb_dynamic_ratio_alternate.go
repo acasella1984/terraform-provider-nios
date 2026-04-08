@@ -221,16 +221,16 @@ func (o DtcPoolLbDynamicRatioAlternate) MarshalJSON() ([]byte, error) {
 
 func (o DtcPoolLbDynamicRatioAlternate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Method) {
+	if !IsNil(o.Method) && *o.Method != "" {
 		toSerialize["method"] = o.Method
 	}
 	if !IsNil(o.Monitor) && *o.Monitor != "" {
 		toSerialize["monitor"] = o.Monitor
 	}
-	if !IsNil(o.MonitorMetric) {
+	if !IsNil(o.MonitorMetric) && *o.MonitorMetric != "" {
 		toSerialize["monitor_metric"] = o.MonitorMetric
 	}
-	if !IsNil(o.MonitorWeighing) {
+	if !IsNil(o.MonitorWeighing) && *o.MonitorWeighing != "" {
 		toSerialize["monitor_weighing"] = o.MonitorWeighing
 	}
 	if !IsNil(o.InvertMonitorMetric) {

@@ -119,7 +119,7 @@ func (o DtcLbdnPools) MarshalJSON() ([]byte, error) {
 
 func (o DtcLbdnPools) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Pool) {
+	if !IsNil(o.Pool) && *o.Pool != "" {
 		toSerialize["pool"] = o.Pool
 	}
 	if !IsNil(o.Ratio) {

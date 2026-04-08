@@ -286,25 +286,25 @@ func (o Azureuser) MarshalJSON() ([]byte, error) {
 
 func (o Azureuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.ClientId) {
+	if !IsNil(o.ClientId) && *o.ClientId != "" {
 		toSerialize["client_id"] = o.ClientId
 	}
-	if !IsNil(o.ClientSecretKey) {
+	if !IsNil(o.ClientSecretKey) && *o.ClientSecretKey != "" {
 		toSerialize["client_secret_key"] = o.ClientSecretKey
 	}
 	if !IsNil(o.LastUsed) {
 		toSerialize["last_used"] = o.LastUsed
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.TenantId) {
+	if !IsNil(o.TenantId) && *o.TenantId != "" {
 		toSerialize["tenant_id"] = o.TenantId
 	}
 	return toSerialize, nil

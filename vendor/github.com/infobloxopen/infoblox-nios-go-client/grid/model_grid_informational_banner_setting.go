@@ -156,10 +156,10 @@ func (o GridInformationalBannerSetting) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Enable) {
 		toSerialize["enable"] = o.Enable
 	}
-	if !IsNil(o.Message) {
+	if !IsNil(o.Message) && *o.Message != "" {
 		toSerialize["message"] = o.Message
 	}
-	if !IsNil(o.Color) {
+	if !IsNil(o.Color) && *o.Color != "" {
 		toSerialize["color"] = o.Color
 	}
 

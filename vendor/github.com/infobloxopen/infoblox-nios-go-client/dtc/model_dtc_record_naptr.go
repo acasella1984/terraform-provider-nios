@@ -456,10 +456,10 @@ func (o DtcRecordNaptr) MarshalJSON() ([]byte, error) {
 
 func (o DtcRecordNaptr) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -468,7 +468,7 @@ func (o DtcRecordNaptr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DtcServer) && *o.DtcServer != "" {
 		toSerialize["dtc_server"] = o.DtcServer
 	}
-	if !IsNil(o.Flags) {
+	if !IsNil(o.Flags) && *o.Flags != "" {
 		toSerialize["flags"] = o.Flags
 	}
 	if !IsNil(o.Order) {
@@ -477,13 +477,13 @@ func (o DtcRecordNaptr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Preference) {
 		toSerialize["preference"] = o.Preference
 	}
-	if !IsNil(o.Regexp) {
+	if !IsNil(o.Regexp) && *o.Regexp != "" {
 		toSerialize["regexp"] = o.Regexp
 	}
-	if !IsNil(o.Replacement) {
+	if !IsNil(o.Replacement) && *o.Replacement != "" {
 		toSerialize["replacement"] = o.Replacement
 	}
-	if !IsNil(o.Services) {
+	if !IsNil(o.Services) && *o.Services != "" {
 		toSerialize["services"] = o.Services
 	}
 	if !IsNil(o.Ttl) {

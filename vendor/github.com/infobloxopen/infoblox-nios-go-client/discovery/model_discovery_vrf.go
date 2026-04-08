@@ -252,22 +252,22 @@ func (o DiscoveryVrf) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryVrf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Device) && *o.Device != "" {
 		toSerialize["device"] = o.Device
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.RouteDistinguisher) {
+	if !IsNil(o.RouteDistinguisher) && *o.RouteDistinguisher != "" {
 		toSerialize["route_distinguisher"] = o.RouteDistinguisher
 	}
 	return toSerialize, nil

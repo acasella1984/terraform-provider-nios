@@ -592,28 +592,28 @@ func (o Networkuser) MarshalJSON() ([]byte, error) {
 
 func (o Networkuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.AddressObject) && *o.AddressObject != "" {
 		toSerialize["address_object"] = o.AddressObject
 	}
-	if !IsNil(o.DataSource) {
+	if !IsNil(o.DataSource) && *o.DataSource != "" {
 		toSerialize["data_source"] = o.DataSource
 	}
-	if !IsNil(o.DataSourceIp) {
+	if !IsNil(o.DataSourceIp) && *o.DataSourceIp != "" {
 		toSerialize["data_source_ip"] = o.DataSourceIp
 	}
-	if !IsNil(o.Domainname) {
+	if !IsNil(o.Domainname) && *o.Domainname != "" {
 		toSerialize["domainname"] = o.Domainname
 	}
 	if !IsNil(o.FirstSeenTime) {
 		toSerialize["first_seen_time"] = o.FirstSeenTime
 	}
-	if !IsNil(o.Guid) {
+	if !IsNil(o.Guid) && *o.Guid != "" {
 		toSerialize["guid"] = o.Guid
 	}
 	if !IsNil(o.LastSeenTime) {
@@ -622,19 +622,19 @@ func (o Networkuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastUpdatedTime) {
 		toSerialize["last_updated_time"] = o.LastUpdatedTime
 	}
-	if !IsNil(o.LogonId) {
+	if !IsNil(o.LogonId) && *o.LogonId != "" {
 		toSerialize["logon_id"] = o.LogonId
 	}
 	if !IsNil(o.LogoutTime) {
 		toSerialize["logout_time"] = o.LogoutTime
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.UserStatus) && *o.UserStatus != "" {

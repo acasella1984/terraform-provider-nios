@@ -354,22 +354,22 @@ func (o DtcRecordCname) MarshalJSON() ([]byte, error) {
 
 func (o DtcRecordCname) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AutoCreated) {
 		toSerialize["auto_created"] = o.AutoCreated
 	}
-	if !IsNil(o.Canonical) {
+	if !IsNil(o.Canonical) && *o.Canonical != "" {
 		toSerialize["canonical"] = o.Canonical
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DnsCanonical) {
+	if !IsNil(o.DnsCanonical) && *o.DnsCanonical != "" {
 		toSerialize["dns_canonical"] = o.DnsCanonical
 	}
 	if !IsNil(o.DtcServer) && *o.DtcServer != "" {

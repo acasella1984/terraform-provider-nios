@@ -795,7 +795,7 @@ func (o Bulkhost) MarshalJSON() ([]byte, error) {
 
 func (o Bulkhost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.CloudInfo) {
@@ -803,16 +803,16 @@ func (o Bulkhost) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DnsPrefix) {
+	if !IsNil(o.DnsPrefix) && *o.DnsPrefix != "" {
 		toSerialize["dns_prefix"] = o.DnsPrefix
 	}
-	if !IsNil(o.EndAddr) {
+	if !IsNil(o.EndAddr) && *o.EndAddr != "" {
 		toSerialize["end_addr"] = o.EndAddr
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -833,19 +833,19 @@ func (o Bulkhost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Policy) {
+	if !IsNil(o.Policy) && *o.Policy != "" {
 		toSerialize["policy"] = o.Policy
 	}
-	if !IsNil(o.Prefix) {
+	if !IsNil(o.Prefix) && *o.Prefix != "" {
 		toSerialize["prefix"] = o.Prefix
 	}
 	if !IsNil(o.Reverse) {
 		toSerialize["reverse"] = o.Reverse
 	}
-	if !IsNil(o.StartAddr) {
+	if !IsNil(o.StartAddr) && *o.StartAddr != "" {
 		toSerialize["start_addr"] = o.StartAddr
 	}
-	if !IsNil(o.TemplateFormat) {
+	if !IsNil(o.TemplateFormat) && *o.TemplateFormat != "" {
 		toSerialize["template_format"] = o.TemplateFormat
 	}
 	if !IsNil(o.Ttl) {
@@ -857,10 +857,10 @@ func (o Bulkhost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

@@ -490,7 +490,7 @@ func (o RadiusAuthservice) MarshalJSON() ([]byte, error) {
 
 func (o RadiusAuthservice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AcctRetries) {
@@ -508,7 +508,7 @@ func (o RadiusAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CacheTtl) {
 		toSerialize["cache_ttl"] = o.CacheTtl
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -520,7 +520,7 @@ func (o RadiusAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) && *o.Mode != "" {
 		toSerialize["mode"] = o.Mode
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.RecoveryInterval) {

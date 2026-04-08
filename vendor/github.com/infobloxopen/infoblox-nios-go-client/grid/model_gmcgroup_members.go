@@ -85,7 +85,7 @@ func (o GmcgroupMembers) MarshalJSON() ([]byte, error) {
 
 func (o GmcgroupMembers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Member) {
+	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
 

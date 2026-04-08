@@ -289,22 +289,22 @@ func (o GridThreatprotectionNatRules) MarshalJSON() ([]byte, error) {
 
 func (o GridThreatprotectionNatRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RuleType) {
+	if !IsNil(o.RuleType) && *o.RuleType != "" {
 		toSerialize["rule_type"] = o.RuleType
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
 	if !IsNil(o.Cidr) {
 		toSerialize["cidr"] = o.Cidr
 	}
-	if !IsNil(o.StartAddress) {
+	if !IsNil(o.StartAddress) && *o.StartAddress != "" {
 		toSerialize["start_address"] = o.StartAddress
 	}
-	if !IsNil(o.EndAddress) {
+	if !IsNil(o.EndAddress) && *o.EndAddress != "" {
 		toSerialize["end_address"] = o.EndAddress
 	}
 	if !IsNil(o.NatPorts) && len(o.NatPorts) > 0 {

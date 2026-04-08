@@ -694,7 +694,7 @@ func (o Userprofile) MarshalJSON() ([]byte, error) {
 
 func (o Userprofile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.ActiveDashboardType) && *o.ActiveDashboardType != "" {
@@ -706,7 +706,7 @@ func (o Userprofile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DaysToExpire) {
 		toSerialize["days_to_expire"] = o.DaysToExpire
 	}
-	if !IsNil(o.Email) {
+	if !IsNil(o.Email) && *o.Email != "" {
 		toSerialize["email"] = o.Email
 	}
 	if !IsNil(o.GlobalSearchOnEa) {
@@ -730,19 +730,19 @@ func (o Userprofile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaxCountWidgets) {
 		toSerialize["max_count_widgets"] = o.MaxCountWidgets
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.OldPassword) {
+	if !IsNil(o.OldPassword) && *o.OldPassword != "" {
 		toSerialize["old_password"] = o.OldPassword
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.TableSize) {
 		toSerialize["table_size"] = o.TableSize
 	}
-	if !IsNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) && *o.TimeZone != "" {
 		toSerialize["time_zone"] = o.TimeZone
 	}
 	if !IsNil(o.UseTimeZone) {

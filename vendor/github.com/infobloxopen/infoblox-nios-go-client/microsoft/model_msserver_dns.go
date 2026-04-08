@@ -354,19 +354,19 @@ func (o MsserverDns) MarshalJSON() ([]byte, error) {
 
 func (o MsserverDns) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.EnableDnsReportsSync) {
 		toSerialize["enable_dns_reports_sync"] = o.EnableDnsReportsSync
 	}
-	if !IsNil(o.LoginName) {
+	if !IsNil(o.LoginName) && *o.LoginName != "" {
 		toSerialize["login_name"] = o.LoginName
 	}
-	if !IsNil(o.LoginPassword) {
+	if !IsNil(o.LoginPassword) && *o.LoginPassword != "" {
 		toSerialize["login_password"] = o.LoginPassword
 	}
 	if !IsNil(o.SynchronizationInterval) {

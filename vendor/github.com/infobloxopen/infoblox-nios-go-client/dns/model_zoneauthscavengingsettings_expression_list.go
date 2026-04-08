@@ -221,19 +221,19 @@ func (o ZoneauthscavengingsettingsExpressionList) MarshalJSON() ([]byte, error) 
 
 func (o ZoneauthscavengingsettingsExpressionList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Op) {
+	if !IsNil(o.Op) && *o.Op != "" {
 		toSerialize["op"] = o.Op
 	}
-	if !IsNil(o.Op1) {
+	if !IsNil(o.Op1) && *o.Op1 != "" {
 		toSerialize["op1"] = o.Op1
 	}
-	if !IsNil(o.Op1Type) {
+	if !IsNil(o.Op1Type) && *o.Op1Type != "" {
 		toSerialize["op1_type"] = o.Op1Type
 	}
-	if !IsNil(o.Op2) {
+	if !IsNil(o.Op2) && *o.Op2 != "" {
 		toSerialize["op2"] = o.Op2
 	}
-	if !IsNil(o.Op2Type) {
+	if !IsNil(o.Op2Type) && *o.Op2Type != "" {
 		toSerialize["op2_type"] = o.Op2Type
 	}
 

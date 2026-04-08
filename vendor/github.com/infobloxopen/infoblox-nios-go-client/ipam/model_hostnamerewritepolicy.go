@@ -252,22 +252,22 @@ func (o Hostnamerewritepolicy) MarshalJSON() ([]byte, error) {
 
 func (o Hostnamerewritepolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["is_default"] = o.IsDefault
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.PreDefined) {
 		toSerialize["pre_defined"] = o.PreDefined
 	}
-	if !IsNil(o.ReplacementCharacter) {
+	if !IsNil(o.ReplacementCharacter) && *o.ReplacementCharacter != "" {
 		toSerialize["replacement_character"] = o.ReplacementCharacter
 	}
-	if !IsNil(o.ValidCharacters) {
+	if !IsNil(o.ValidCharacters) && *o.ValidCharacters != "" {
 		toSerialize["valid_characters"] = o.ValidCharacters
 	}
 	return toSerialize, nil

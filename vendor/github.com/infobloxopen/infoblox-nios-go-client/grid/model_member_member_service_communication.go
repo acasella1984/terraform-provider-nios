@@ -156,10 +156,10 @@ func (o MemberMemberServiceCommunication) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Service) && *o.Service != "" {
 		toSerialize["service"] = o.Service
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Option) {
+	if !IsNil(o.Option) && *o.Option != "" {
 		toSerialize["option"] = o.Option
 	}
 

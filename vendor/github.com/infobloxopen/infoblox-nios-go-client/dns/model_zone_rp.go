@@ -1815,22 +1815,22 @@ func (o ZoneRp) MarshalJSON() ([]byte, error) {
 
 func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DisplayDomain) {
+	if !IsNil(o.DisplayDomain) && *o.DisplayDomain != "" {
 		toSerialize["display_domain"] = o.DisplayDomain
 	}
-	if !IsNil(o.DnsSoaEmail) {
+	if !IsNil(o.DnsSoaEmail) && *o.DnsSoaEmail != "" {
 		toSerialize["dns_soa_email"] = o.DnsSoaEmail
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -1853,7 +1853,7 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 			toSerialize["fireeye_rule_mapping"] = o.FireeyeRuleMapping
 		}
 	}
-	if !IsNil(o.Fqdn) {
+	if !IsNil(o.Fqdn) && *o.Fqdn != "" {
 		toSerialize["fqdn"] = o.Fqdn
 	}
 	if !IsNil(o.GridPrimary) && len(o.GridPrimary) > 0 {
@@ -1865,13 +1865,13 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
 	}
-	if !IsNil(o.LockedBy) {
+	if !IsNil(o.LockedBy) && *o.LockedBy != "" {
 		toSerialize["locked_by"] = o.LockedBy
 	}
 	if !IsNil(o.LogRpz) {
 		toSerialize["log_rpz"] = o.LogRpz
 	}
-	if !IsNil(o.MaskPrefix) {
+	if !IsNil(o.MaskPrefix) && *o.MaskPrefix != "" {
 		toSerialize["mask_prefix"] = o.MaskPrefix
 	}
 	if !IsNil(o.MemberSoaMnames) && len(o.MemberSoaMnames) > 0 {
@@ -1880,16 +1880,16 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MemberSoaSerials) && len(o.MemberSoaSerials) > 0 {
 		toSerialize["member_soa_serials"] = o.MemberSoaSerials
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.NsGroup) && *o.NsGroup != "" {
 		toSerialize["ns_group"] = o.NsGroup
 	}
-	if !IsNil(o.Parent) {
+	if !IsNil(o.Parent) && *o.Parent != "" {
 		toSerialize["parent"] = o.Parent
 	}
-	if !IsNil(o.Prefix) {
+	if !IsNil(o.Prefix) && *o.Prefix != "" {
 		toSerialize["prefix"] = o.Prefix
 	}
 	if !IsNil(o.PrimaryType) && *o.PrimaryType != "" {
@@ -1931,7 +1931,7 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SoaDefaultTtl) {
 		toSerialize["soa_default_ttl"] = o.SoaDefaultTtl
 	}
-	if !IsNil(o.SoaEmail) {
+	if !IsNil(o.SoaEmail) && *o.SoaEmail != "" {
 		toSerialize["soa_email"] = o.SoaEmail
 	}
 	if !IsNil(o.SoaExpire) {
@@ -1949,7 +1949,7 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SoaSerial) {
 		toSerialize["soa_serial_number"] = o.SoaSerial
 	}
-	if !IsNil(o.SubstituteName) {
+	if !IsNil(o.SubstituteName) && *o.SubstituteName != "" {
 		toSerialize["substitute_name"] = o.SubstituteName
 	}
 	if !IsNil(o.UseExternalPrimary) {
@@ -1970,7 +1970,7 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseSoaEmail) {
 		toSerialize["use_soa_email"] = o.UseSoaEmail
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
 	return toSerialize, nil

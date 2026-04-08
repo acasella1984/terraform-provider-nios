@@ -292,13 +292,13 @@ func (o ZoneAuthAwsRte53ZoneInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AssociatedVpcs) && len(o.AssociatedVpcs) > 0 {
 		toSerialize["associated_vpcs"] = o.AssociatedVpcs
 	}
-	if !IsNil(o.CallerReference) {
+	if !IsNil(o.CallerReference) && *o.CallerReference != "" {
 		toSerialize["caller_reference"] = o.CallerReference
 	}
-	if !IsNil(o.DelegationSetId) {
+	if !IsNil(o.DelegationSetId) && *o.DelegationSetId != "" {
 		toSerialize["delegation_set_id"] = o.DelegationSetId
 	}
-	if !IsNil(o.HostedZoneId) {
+	if !IsNil(o.HostedZoneId) && *o.HostedZoneId != "" {
 		toSerialize["hosted_zone_id"] = o.HostedZoneId
 	}
 	if !IsNil(o.NameServers) && len(o.NameServers) > 0 {
@@ -307,7 +307,7 @@ func (o ZoneAuthAwsRte53ZoneInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecordSetCount) {
 		toSerialize["record_set_count"] = o.RecordSetCount
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 

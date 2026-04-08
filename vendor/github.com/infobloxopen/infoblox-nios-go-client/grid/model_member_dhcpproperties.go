@@ -5216,7 +5216,7 @@ func (o MemberDhcpproperties) MarshalJSON() ([]byte, error) {
 
 func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AuthServerGroup) && *o.AuthServerGroup != "" {
@@ -5240,13 +5240,13 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Authority) {
 		toSerialize["authority"] = o.Authority
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsGenerateHostname) {
@@ -5342,7 +5342,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HighWaterMarkReset) {
 		toSerialize["high_water_mark_reset"] = o.HighWaterMarkReset
 	}
-	if !IsNil(o.HostName) {
+	if !IsNil(o.HostName) && *o.HostName != "" {
 		toSerialize["host_name"] = o.HostName
 	}
 	if !IsNil(o.HostnameRewritePolicy) && *o.HostnameRewritePolicy != "" {
@@ -5360,16 +5360,16 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ImmediateFaConfiguration) {
 		toSerialize["immediate_fa_configuration"] = o.ImmediateFaConfiguration
 	}
-	if !IsNil(o.Ipv4addr) {
+	if !IsNil(o.Ipv4addr) && *o.Ipv4addr != "" {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
-	if !IsNil(o.Ipv6DdnsDomainname) {
+	if !IsNil(o.Ipv6DdnsDomainname) && *o.Ipv6DdnsDomainname != "" {
 		toSerialize["ipv6_ddns_domainname"] = o.Ipv6DdnsDomainname
 	}
 	if !IsNil(o.Ipv6DdnsEnableOptionFqdn) {
 		toSerialize["ipv6_ddns_enable_option_fqdn"] = o.Ipv6DdnsEnableOptionFqdn
 	}
-	if !IsNil(o.Ipv6DdnsHostname) {
+	if !IsNil(o.Ipv6DdnsHostname) && *o.Ipv6DdnsHostname != "" {
 		toSerialize["ipv6_ddns_hostname"] = o.Ipv6DdnsHostname
 	}
 	if !IsNil(o.Ipv6DdnsServerAlwaysUpdates) {
@@ -5381,7 +5381,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6DnsUpdateStyle) && *o.Ipv6DnsUpdateStyle != "" {
 		toSerialize["ipv6_dns_update_style"] = o.Ipv6DnsUpdateStyle
 	}
-	if !IsNil(o.Ipv6DomainName) {
+	if !IsNil(o.Ipv6DomainName) && *o.Ipv6DomainName != "" {
 		toSerialize["ipv6_domain_name"] = o.Ipv6DomainName
 	}
 	if !IsNil(o.Ipv6DomainNameServers) && len(o.Ipv6DomainNameServers) > 0 {
@@ -5405,7 +5405,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6GssTsigKeys) && len(o.Ipv6GssTsigKeys) > 0 {
 		toSerialize["ipv6_gss_tsig_keys"] = o.Ipv6GssTsigKeys
 	}
-	if !IsNil(o.Ipv6KdcServer) {
+	if !IsNil(o.Ipv6KdcServer) && *o.Ipv6KdcServer != "" {
 		toSerialize["ipv6_kdc_server"] = o.Ipv6KdcServer
 	}
 	if !IsNil(o.Ipv6LeaseScavengingTime) {
@@ -5426,16 +5426,16 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6RetryUpdatesInterval) {
 		toSerialize["ipv6_retry_updates_interval"] = o.Ipv6RetryUpdatesInterval
 	}
-	if !IsNil(o.Ipv6ServerDuid) {
+	if !IsNil(o.Ipv6ServerDuid) && *o.Ipv6ServerDuid != "" {
 		toSerialize["ipv6_server_duid"] = o.Ipv6ServerDuid
 	}
 	if !IsNil(o.Ipv6UpdateDnsOnLeaseRenewal) {
 		toSerialize["ipv6_update_dns_on_lease_renewal"] = o.Ipv6UpdateDnsOnLeaseRenewal
 	}
-	if !IsNil(o.Ipv6addr) {
+	if !IsNil(o.Ipv6addr) && *o.Ipv6addr != "" {
 		toSerialize["ipv6addr"] = o.Ipv6addr
 	}
-	if !IsNil(o.KdcServer) {
+	if !IsNil(o.KdcServer) && *o.KdcServer != "" {
 		toSerialize["kdc_server"] = o.KdcServer
 	}
 	if !IsNil(o.LeasePerClientSettings) && *o.LeasePerClientSettings != "" {
@@ -5459,7 +5459,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MicrosoftCodePage) && *o.MicrosoftCodePage != "" {
 		toSerialize["microsoft_code_page"] = o.MicrosoftCodePage
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Option60MatchRules) && len(o.Option60MatchRules) > 0 {

@@ -524,13 +524,13 @@ func (o RecordRpzCnameIpaddressdn) MarshalJSON() ([]byte, error) {
 
 func (o RecordRpzCnameIpaddressdn) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Canonical) {
+	if !IsNil(o.Canonical) && *o.Canonical != "" {
 		toSerialize["canonical"] = o.Canonical
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -548,10 +548,10 @@ func (o RecordRpzCnameIpaddressdn) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsIpv4) {
 		toSerialize["is_ipv4"] = o.IsIpv4
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.RpZone) {
+	if !IsNil(o.RpZone) && *o.RpZone != "" {
 		toSerialize["rp_zone"] = o.RpZone
 	}
 	if !IsNil(o.Ttl) {
@@ -560,10 +560,10 @@ func (o RecordRpzCnameIpaddressdn) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

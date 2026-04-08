@@ -150,13 +150,13 @@ func (o GridLicensePoolContainer) MarshalJSON() ([]byte, error) {
 
 func (o GridLicensePoolContainer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.LastEntitlementUpdate) {
 		toSerialize["last_entitlement_update"] = o.LastEntitlementUpdate
 	}
-	if !IsNil(o.LpcUid) {
+	if !IsNil(o.LpcUid) && *o.LpcUid != "" {
 		toSerialize["lpc_uid"] = o.LpcUid
 	}
 	return toSerialize, nil

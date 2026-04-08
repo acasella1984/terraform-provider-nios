@@ -391,7 +391,7 @@ func (o GridHttpProxyServerSetting) MarshalJSON() ([]byte, error) {
 
 func (o GridHttpProxyServerSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.Port) {
@@ -406,13 +406,13 @@ func (o GridHttpProxyServerSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VerifyCname) {
 		toSerialize["verify_cname"] = o.VerifyCname
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Certificate) && *o.Certificate != "" {

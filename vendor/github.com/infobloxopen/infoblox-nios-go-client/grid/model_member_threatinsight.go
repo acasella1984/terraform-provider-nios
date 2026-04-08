@@ -286,25 +286,25 @@ func (o MemberThreatinsight) MarshalJSON() ([]byte, error) {
 
 func (o MemberThreatinsight) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.EnableService) {
 		toSerialize["enable_service"] = o.EnableService
 	}
-	if !IsNil(o.HostName) {
+	if !IsNil(o.HostName) && *o.HostName != "" {
 		toSerialize["host_name"] = o.HostName
 	}
-	if !IsNil(o.Ipv4Address) {
+	if !IsNil(o.Ipv4Address) && *o.Ipv4Address != "" {
 		toSerialize["ipv4_address"] = o.Ipv4Address
 	}
-	if !IsNil(o.Ipv6Address) {
+	if !IsNil(o.Ipv6Address) && *o.Ipv6Address != "" {
 		toSerialize["ipv6_address"] = o.Ipv6Address
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil

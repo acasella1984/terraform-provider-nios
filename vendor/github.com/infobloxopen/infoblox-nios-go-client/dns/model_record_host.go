@@ -1370,7 +1370,7 @@ func (o RecordHost) MarshalJSON() ([]byte, error) {
 
 func (o RecordHost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Aliases) && len(o.Aliases) > 0 {
@@ -1387,7 +1387,7 @@ func (o RecordHost) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ConfigureForDns) {
@@ -1399,16 +1399,16 @@ func (o RecordHost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsProtected) {
 		toSerialize["ddns_protected"] = o.DdnsProtected
 	}
-	if !IsNil(o.DeviceDescription) {
+	if !IsNil(o.DeviceDescription) && *o.DeviceDescription != "" {
 		toSerialize["device_description"] = o.DeviceDescription
 	}
-	if !IsNil(o.DeviceLocation) {
+	if !IsNil(o.DeviceLocation) && *o.DeviceLocation != "" {
 		toSerialize["device_location"] = o.DeviceLocation
 	}
-	if !IsNil(o.DeviceType) {
+	if !IsNil(o.DeviceType) && *o.DeviceType != "" {
 		toSerialize["device_type"] = o.DeviceType
 	}
-	if !IsNil(o.DeviceVendor) {
+	if !IsNil(o.DeviceVendor) && *o.DeviceVendor != "" {
 		toSerialize["device_vendor"] = o.DeviceVendor
 	}
 	if !IsNil(o.Disable) {
@@ -1420,7 +1420,7 @@ func (o RecordHost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsAliases) && len(o.DnsAliases) > 0 {
 		toSerialize["dns_aliases"] = o.DnsAliases
 	}
-	if !IsNil(o.DnsName) {
+	if !IsNil(o.DnsName) && *o.DnsName != "" {
 		toSerialize["dns_name"] = o.DnsName
 	}
 	if !IsNil(o.EnableImmediateDiscovery) {
@@ -1449,16 +1449,16 @@ func (o RecordHost) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.RestartIfNeeded) {
 		toSerialize["restart_if_needed"] = o.RestartIfNeeded
 	}
-	if !IsNil(o.RrsetOrder) {
+	if !IsNil(o.RrsetOrder) && *o.RrsetOrder != "" {
 		toSerialize["rrset_order"] = o.RrsetOrder
 	}
 	if !IsNil(o.Snmp3Credential) {
@@ -1489,10 +1489,10 @@ func (o RecordHost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

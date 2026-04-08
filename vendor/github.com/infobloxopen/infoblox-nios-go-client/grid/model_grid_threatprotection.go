@@ -590,7 +590,7 @@ func (o GridThreatprotection) MarshalJSON() ([]byte, error) {
 
 func (o GridThreatprotection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.CurrentRuleset) && *o.CurrentRuleset != "" {
@@ -614,7 +614,7 @@ func (o GridThreatprotection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventsPerSecondPerRule) {
 		toSerialize["events_per_second_per_rule"] = o.EventsPerSecondPerRule
 	}
-	if !IsNil(o.GridName) {
+	if !IsNil(o.GridName) && *o.GridName != "" {
 		toSerialize["grid_name"] = o.GridName
 	}
 	if !IsNil(o.LastCheckedForUpdate) {
@@ -623,7 +623,7 @@ func (o GridThreatprotection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastRuleUpdateTimestamp) {
 		toSerialize["last_rule_update_timestamp"] = o.LastRuleUpdateTimestamp
 	}
-	if !IsNil(o.LastRuleUpdateVersion) {
+	if !IsNil(o.LastRuleUpdateVersion) && *o.LastRuleUpdateVersion != "" {
 		toSerialize["last_rule_update_version"] = o.LastRuleUpdateVersion
 	}
 	if !IsNil(o.NatRules) && len(o.NatRules) > 0 {

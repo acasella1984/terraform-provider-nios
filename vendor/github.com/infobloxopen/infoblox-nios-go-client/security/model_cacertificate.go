@@ -286,19 +286,19 @@ func (o Cacertificate) MarshalJSON() ([]byte, error) {
 
 func (o Cacertificate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.DistinguishedName) {
+	if !IsNil(o.DistinguishedName) && *o.DistinguishedName != "" {
 		toSerialize["distinguished_name"] = o.DistinguishedName
 	}
-	if !IsNil(o.Issuer) {
+	if !IsNil(o.Issuer) && *o.Issuer != "" {
 		toSerialize["issuer"] = o.Issuer
 	}
-	if !IsNil(o.Serial) {
+	if !IsNil(o.Serial) && *o.Serial != "" {
 		toSerialize["serial"] = o.Serial
 	}
-	if !IsNil(o.UsedBy) {
+	if !IsNil(o.UsedBy) && *o.UsedBy != "" {
 		toSerialize["used_by"] = o.UsedBy
 	}
 	if !IsNil(o.ValidNotAfter) {

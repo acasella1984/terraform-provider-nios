@@ -558,7 +558,7 @@ func (o GridDashboard) MarshalJSON() ([]byte, error) {
 
 func (o GridDashboard) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AnalyticsTunnelingEventCriticalThreshold) {

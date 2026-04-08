@@ -85,7 +85,7 @@ func (o ParentalcontrolSubscribersiteApiMembers) MarshalJSON() ([]byte, error) {
 
 func (o ParentalcontrolSubscribersiteApiMembers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 

@@ -116,10 +116,10 @@ func (o DeletedObjects) MarshalJSON() ([]byte, error) {
 
 func (o DeletedObjects) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.ObjectType) {
+	if !IsNil(o.ObjectType) && *o.ObjectType != "" {
 		toSerialize["object_type"] = o.ObjectType
 	}
 	return toSerialize, nil

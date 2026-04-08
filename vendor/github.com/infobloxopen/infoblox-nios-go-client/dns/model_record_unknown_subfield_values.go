@@ -153,13 +153,13 @@ func (o RecordUnknownSubfieldValues) MarshalJSON() ([]byte, error) {
 
 func (o RecordUnknownSubfieldValues) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FieldValue) {
+	if !IsNil(o.FieldValue) && *o.FieldValue != "" {
 		toSerialize["field_value"] = o.FieldValue
 	}
-	if !IsNil(o.FieldType) {
+	if !IsNil(o.FieldType) && *o.FieldType != "" {
 		toSerialize["field_type"] = o.FieldType
 	}
-	if !IsNil(o.IncludeLength) {
+	if !IsNil(o.IncludeLength) && *o.IncludeLength != "" {
 		toSerialize["include_length"] = o.IncludeLength
 	}
 

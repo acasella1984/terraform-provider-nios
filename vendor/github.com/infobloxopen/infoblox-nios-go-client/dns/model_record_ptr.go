@@ -1027,7 +1027,7 @@ func (o RecordPtr) MarshalJSON() ([]byte, error) {
 
 func (o RecordPtr) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AwsRte53RecordInfo) {
@@ -1040,7 +1040,7 @@ func (o RecordPtr) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CreationTime) {
@@ -1049,7 +1049,7 @@ func (o RecordPtr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
-	if !IsNil(o.DdnsPrincipal) {
+	if !IsNil(o.DdnsPrincipal) && *o.DdnsPrincipal != "" {
 		toSerialize["ddns_principal"] = o.DdnsPrincipal
 	}
 	if !IsNil(o.DdnsProtected) {
@@ -1063,10 +1063,10 @@ func (o RecordPtr) ToMap() (map[string]interface{}, error) {
 			toSerialize["discovered_data"] = o.DiscoveredData
 		}
 	}
-	if !IsNil(o.DnsName) {
+	if !IsNil(o.DnsName) && *o.DnsName != "" {
 		toSerialize["dns_name"] = o.DnsName
 	}
-	if !IsNil(o.DnsPtrdname) {
+	if !IsNil(o.DnsPtrdname) && *o.DnsPtrdname != "" {
 		toSerialize["dns_ptrdname"] = o.DnsPtrdname
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -1100,16 +1100,16 @@ func (o RecordPtr) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Ptrdname) {
+	if !IsNil(o.Ptrdname) && *o.Ptrdname != "" {
 		toSerialize["ptrdname"] = o.Ptrdname
 	}
 	if !IsNil(o.Reclaimable) {
 		toSerialize["reclaimable"] = o.Reclaimable
 	}
-	if !IsNil(o.SharedRecordGroup) {
+	if !IsNil(o.SharedRecordGroup) && *o.SharedRecordGroup != "" {
 		toSerialize["shared_record_group"] = o.SharedRecordGroup
 	}
 	if !IsNil(o.Ttl) {
@@ -1118,10 +1118,10 @@ func (o RecordPtr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTtl) {
 		toSerialize["use_ttl"] = o.UseTtl
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
-	if !IsNil(o.Zone) {
+	if !IsNil(o.Zone) && *o.Zone != "" {
 		toSerialize["zone"] = o.Zone
 	}
 	return toSerialize, nil

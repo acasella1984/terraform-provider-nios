@@ -320,13 +320,13 @@ func (o DtcRecordAaaa) MarshalJSON() ([]byte, error) {
 
 func (o DtcRecordAaaa) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AutoCreated) {
 		toSerialize["auto_created"] = o.AutoCreated
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -335,7 +335,7 @@ func (o DtcRecordAaaa) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DtcServer) && *o.DtcServer != "" {
 		toSerialize["dtc_server"] = o.DtcServer
 	}
-	if !IsNil(o.Ipv6addr) {
+	if !IsNil(o.Ipv6addr) && *o.Ipv6addr != "" {
 		toSerialize["ipv6addr"] = o.Ipv6addr
 	}
 	if !IsNil(o.Ttl) {

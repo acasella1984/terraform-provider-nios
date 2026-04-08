@@ -227,7 +227,7 @@ func (o GridObjectsChangesTrackingSetting) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.EnableCompletion) {
 		toSerialize["enable_completion"] = o.EnableCompletion
 	}
-	if !IsNil(o.State) {
+	if !IsNil(o.State) && *o.State != "" {
 		toSerialize["state"] = o.State
 	}
 	if !IsNil(o.MaxTimeToTrack) {

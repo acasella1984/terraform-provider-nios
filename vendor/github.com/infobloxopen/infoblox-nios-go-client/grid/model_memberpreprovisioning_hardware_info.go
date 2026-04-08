@@ -85,7 +85,7 @@ func (o MemberpreprovisioningHardwareInfo) MarshalJSON() ([]byte, error) {
 
 func (o MemberpreprovisioningHardwareInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Hwtype) {
+	if !IsNil(o.Hwtype) && *o.Hwtype != "" {
 		toSerialize["hwtype"] = o.Hwtype
 	}
 

@@ -223,10 +223,10 @@ func (o DiscoveryGridpropertiesBasicSdnPollingSettings) ToMap() (map[string]inte
 	if !IsNil(o.SdnDiscovery) {
 		toSerialize["sdn_discovery"] = o.SdnDiscovery
 	}
-	if !IsNil(o.DefaultNetworkView) {
+	if !IsNil(o.DefaultNetworkView) && *o.DefaultNetworkView != "" {
 		toSerialize["default_network_view"] = o.DefaultNetworkView
 	}
-	if !IsNil(o.EndHostPolling) {
+	if !IsNil(o.EndHostPolling) && *o.EndHostPolling != "" {
 		toSerialize["end_host_polling"] = o.EndHostPolling
 	}
 	if !IsNil(o.EndHostPollingInterval) {

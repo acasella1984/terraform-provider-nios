@@ -527,28 +527,28 @@ func (o DiscoveryMemberpropertiesSdnConfigs) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryMemberpropertiesSdnConfigs) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SdnType) {
+	if !IsNil(o.SdnType) && *o.SdnType != "" {
 		toSerialize["sdn_type"] = o.SdnType
 	}
 	if !IsNil(o.Addresses) && len(o.Addresses) > 0 {
 		toSerialize["addresses"] = o.Addresses
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Protocol) && *o.Protocol != "" {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if !IsNil(o.Handle) {
+	if !IsNil(o.Handle) && *o.Handle != "" {
 		toSerialize["handle"] = o.Handle
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
-	if !IsNil(o.ApiKey) {
+	if !IsNil(o.ApiKey) && *o.ApiKey != "" {
 		toSerialize["api_key"] = o.ApiKey
 	}
 	if !IsNil(o.OnPrem) {
@@ -557,16 +557,16 @@ func (o DiscoveryMemberpropertiesSdnConfigs) ToMap() (map[string]interface{}, er
 	if !IsNil(o.UseGlobalProxy) {
 		toSerialize["use_global_proxy"] = o.UseGlobalProxy
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.NetworkInterfaceType) {
+	if !IsNil(o.NetworkInterfaceType) && *o.NetworkInterfaceType != "" {
 		toSerialize["network_interface_type"] = o.NetworkInterfaceType
 	}
-	if !IsNil(o.NetworkInterfaceVirtualIp) {
+	if !IsNil(o.NetworkInterfaceVirtualIp) && *o.NetworkInterfaceVirtualIp != "" {
 		toSerialize["network_interface_virtual_ip"] = o.NetworkInterfaceVirtualIp
 	}
-	if !IsNil(o.Uuid) {
+	if !IsNil(o.Uuid) && *o.Uuid != "" {
 		toSerialize["uuid"] = o.Uuid
 	}
 

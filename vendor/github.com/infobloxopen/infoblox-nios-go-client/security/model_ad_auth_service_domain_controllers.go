@@ -289,13 +289,13 @@ func (o AdAuthServiceDomainControllers) MarshalJSON() ([]byte, error) {
 
 func (o AdAuthServiceDomainControllers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FqdnOrIp) {
+	if !IsNil(o.FqdnOrIp) && *o.FqdnOrIp != "" {
 		toSerialize["fqdn_or_ip"] = o.FqdnOrIp
 	}
 	if !IsNil(o.AuthPort) {
 		toSerialize["auth_port"] = o.AuthPort
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disabled) {

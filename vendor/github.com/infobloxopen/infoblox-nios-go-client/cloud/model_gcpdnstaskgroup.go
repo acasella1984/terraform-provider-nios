@@ -592,22 +592,22 @@ func (o Gcpdnstaskgroup) MarshalJSON() ([]byte, error) {
 
 func (o Gcpdnstaskgroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ConsolidateZones) {
 		toSerialize["consolidate_zones"] = o.ConsolidateZones
 	}
-	if !IsNil(o.ConsolidatedView) {
+	if !IsNil(o.ConsolidatedView) && *o.ConsolidatedView != "" {
 		toSerialize["consolidated_view"] = o.ConsolidatedView
 	}
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !IsNil(o.GcpProjectIdsFileToken) {
+	if !IsNil(o.GcpProjectIdsFileToken) && *o.GcpProjectIdsFileToken != "" {
 		toSerialize["gcp_project_ids_file_token"] = o.GcpProjectIdsFileToken
 	}
 	if !IsNil(o.GridMember) && *o.GridMember != "" {
@@ -616,19 +616,19 @@ func (o Gcpdnstaskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MultipleProjectsSyncPolicy) && *o.MultipleProjectsSyncPolicy != "" {
 		toSerialize["multiple_projects_sync_policy"] = o.MultipleProjectsSyncPolicy
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.NetworkViewMappingPolicy) && *o.NetworkViewMappingPolicy != "" {
 		toSerialize["network_view_mapping_policy"] = o.NetworkViewMappingPolicy
 	}
-	if !IsNil(o.ProjectId) {
+	if !IsNil(o.ProjectId) && *o.ProjectId != "" {
 		toSerialize["project_id"] = o.ProjectId
 	}
-	if !IsNil(o.ProjectsList) {
+	if !IsNil(o.ProjectsList) && *o.ProjectsList != "" {
 		toSerialize["projects_list"] = o.ProjectsList
 	}
 	if !IsNil(o.SyncChildProjects) {

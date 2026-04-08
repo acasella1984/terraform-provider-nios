@@ -530,10 +530,10 @@ func (o MsserverDhcpServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseLogin) {
 		toSerialize["use_login"] = o.UseLogin
 	}
-	if !IsNil(o.LoginName) {
+	if !IsNil(o.LoginName) && *o.LoginName != "" {
 		toSerialize["login_name"] = o.LoginName
 	}
-	if !IsNil(o.LoginPassword) {
+	if !IsNil(o.LoginPassword) && *o.LoginPassword != "" {
 		toSerialize["login_password"] = o.LoginPassword
 	}
 	if !IsNil(o.Managed) {
@@ -542,7 +542,7 @@ func (o MsserverDhcpServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NextSyncControl) && *o.NextSyncControl != "" {
 		toSerialize["next_sync_control"] = o.NextSyncControl
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.StatusLastUpdated) {

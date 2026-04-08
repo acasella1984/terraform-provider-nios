@@ -357,13 +357,13 @@ func (o MemberadditionaliplistIpv4NetworkSetting) MarshalJSON() ([]byte, error) 
 
 func (o MemberadditionaliplistIpv4NetworkSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Gateway) {
+	if !IsNil(o.Gateway) && *o.Gateway != "" {
 		toSerialize["gateway"] = o.Gateway
 	}
-	if !IsNil(o.SubnetMask) {
+	if !IsNil(o.SubnetMask) && *o.SubnetMask != "" {
 		toSerialize["subnet_mask"] = o.SubnetMask
 	}
 	if !IsNil(o.VlanId) {
@@ -375,10 +375,10 @@ func (o MemberadditionaliplistIpv4NetworkSetting) ToMap() (map[string]interface{
 	if !IsNil(o.Dscp) {
 		toSerialize["dscp"] = o.Dscp
 	}
-	if !IsNil(o.LanSubnetMask) {
+	if !IsNil(o.LanSubnetMask) && *o.LanSubnetMask != "" {
 		toSerialize["lan_subnet_mask"] = o.LanSubnetMask
 	}
-	if !IsNil(o.LanGateway) {
+	if !IsNil(o.LanGateway) && *o.LanGateway != "" {
 		toSerialize["lan_gateway"] = o.LanGateway
 	}
 	if !IsNil(o.UseDscp) {

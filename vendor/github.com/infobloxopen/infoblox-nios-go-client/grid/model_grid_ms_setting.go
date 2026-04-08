@@ -480,7 +480,7 @@ func (o GridMsSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LdapTimeout) {
 		toSerialize["ldap_timeout"] = o.LdapTimeout
 	}
-	if !IsNil(o.DefaultIpSiteLink) {
+	if !IsNil(o.DefaultIpSiteLink) && *o.DefaultIpSiteLink != "" {
 		toSerialize["default_ip_site_link"] = o.DefaultIpSiteLink
 	}
 	if !IsNil(o.EnableNetworkUsers) {

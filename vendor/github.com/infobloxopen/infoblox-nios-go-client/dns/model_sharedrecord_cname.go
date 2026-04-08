@@ -490,22 +490,22 @@ func (o SharedrecordCname) MarshalJSON() ([]byte, error) {
 
 func (o SharedrecordCname) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Canonical) {
+	if !IsNil(o.Canonical) && *o.Canonical != "" {
 		toSerialize["canonical"] = o.Canonical
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DnsCanonical) {
+	if !IsNil(o.DnsCanonical) && *o.DnsCanonical != "" {
 		toSerialize["dns_canonical"] = o.DnsCanonical
 	}
-	if !IsNil(o.DnsName) {
+	if !IsNil(o.DnsName) && *o.DnsName != "" {
 		toSerialize["dns_name"] = o.DnsName
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -517,7 +517,7 @@ func (o SharedrecordCname) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.SharedRecordGroup) && *o.SharedRecordGroup != "" {

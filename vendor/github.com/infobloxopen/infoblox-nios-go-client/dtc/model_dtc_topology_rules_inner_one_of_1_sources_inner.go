@@ -153,13 +153,13 @@ func (o DtcTopologyRulesInnerOneOf1SourcesInner) MarshalJSON() ([]byte, error) {
 
 func (o DtcTopologyRulesInnerOneOf1SourcesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SourceOp) {
+	if !IsNil(o.SourceOp) && *o.SourceOp != "" {
 		toSerialize["source_op"] = o.SourceOp
 	}
-	if !IsNil(o.SourceType) {
+	if !IsNil(o.SourceType) && *o.SourceType != "" {
 		toSerialize["source_type"] = o.SourceType
 	}
-	if !IsNil(o.SourceValue) {
+	if !IsNil(o.SourceValue) && *o.SourceValue != "" {
 		toSerialize["source_value"] = o.SourceValue
 	}
 

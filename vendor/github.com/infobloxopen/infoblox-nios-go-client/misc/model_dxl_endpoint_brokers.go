@@ -187,16 +187,16 @@ func (o DxlEndpointBrokers) MarshalJSON() ([]byte, error) {
 
 func (o DxlEndpointBrokers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.HostName) {
+	if !IsNil(o.HostName) && *o.HostName != "" {
 		toSerialize["host_name"] = o.HostName
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.UniqueId) {
+	if !IsNil(o.UniqueId) && *o.UniqueId != "" {
 		toSerialize["unique_id"] = o.UniqueId
 	}
 

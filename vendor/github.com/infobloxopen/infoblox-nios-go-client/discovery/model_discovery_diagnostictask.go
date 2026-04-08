@@ -320,10 +320,10 @@ func (o DiscoveryDiagnostictask) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryDiagnostictask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.CommunityString) {
+	if !IsNil(o.CommunityString) && *o.CommunityString != "" {
 		toSerialize["community_string"] = o.CommunityString
 	}
 	if !IsNil(o.DebugSnmp) {
@@ -332,16 +332,16 @@ func (o DiscoveryDiagnostictask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ForceTest) {
 		toSerialize["force_test"] = o.ForceTest
 	}
-	if !IsNil(o.IpAddress) {
+	if !IsNil(o.IpAddress) && *o.IpAddress != "" {
 		toSerialize["ip_address"] = o.IpAddress
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.StartTime) {
 		toSerialize["start_time"] = o.StartTime
 	}
-	if !IsNil(o.TaskId) {
+	if !IsNil(o.TaskId) && *o.TaskId != "" {
 		toSerialize["task_id"] = o.TaskId
 	}
 	return toSerialize, nil

@@ -632,16 +632,16 @@ func (o MsserverAdSites) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseDefaultIpSiteLink) {
 		toSerialize["use_default_ip_site_link"] = o.UseDefaultIpSiteLink
 	}
-	if !IsNil(o.DefaultIpSiteLink) {
+	if !IsNil(o.DefaultIpSiteLink) && *o.DefaultIpSiteLink != "" {
 		toSerialize["default_ip_site_link"] = o.DefaultIpSiteLink
 	}
 	if !IsNil(o.UseLogin) {
 		toSerialize["use_login"] = o.UseLogin
 	}
-	if !IsNil(o.LoginName) {
+	if !IsNil(o.LoginName) && *o.LoginName != "" {
 		toSerialize["login_name"] = o.LoginName
 	}
-	if !IsNil(o.LoginPassword) {
+	if !IsNil(o.LoginPassword) && *o.LoginPassword != "" {
 		toSerialize["login_password"] = o.LoginPassword
 	}
 	if !IsNil(o.UseSynchronizationMinDelay) {
@@ -659,7 +659,7 @@ func (o MsserverAdSites) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LdapAuthPort) {
 		toSerialize["ldap_auth_port"] = o.LdapAuthPort
 	}
-	if !IsNil(o.LdapEncryption) {
+	if !IsNil(o.LdapEncryption) && *o.LdapEncryption != "" {
 		toSerialize["ldap_encryption"] = o.LdapEncryption
 	}
 	if !IsNil(o.Managed) {
@@ -671,10 +671,10 @@ func (o MsserverAdSites) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastSyncTs) {
 		toSerialize["last_sync_ts"] = o.LastSyncTs
 	}
-	if !IsNil(o.LastSyncStatus) {
+	if !IsNil(o.LastSyncStatus) && *o.LastSyncStatus != "" {
 		toSerialize["last_sync_status"] = o.LastSyncStatus
 	}
-	if !IsNil(o.LastSyncDetail) {
+	if !IsNil(o.LastSyncDetail) && *o.LastSyncDetail != "" {
 		toSerialize["last_sync_detail"] = o.LastSyncDetail
 	}
 	if !IsNil(o.SupportsIpv6) {

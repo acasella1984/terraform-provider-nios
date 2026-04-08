@@ -904,10 +904,10 @@ func (o MsserverDnsServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseLogin) {
 		toSerialize["use_login"] = o.UseLogin
 	}
-	if !IsNil(o.LoginName) {
+	if !IsNil(o.LoginName) && *o.LoginName != "" {
 		toSerialize["login_name"] = o.LoginName
 	}
-	if !IsNil(o.LoginPassword) {
+	if !IsNil(o.LoginPassword) && *o.LoginPassword != "" {
 		toSerialize["login_password"] = o.LoginPassword
 	}
 	if !IsNil(o.Managed) {
@@ -916,10 +916,10 @@ func (o MsserverDnsServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NextSyncControl) && *o.NextSyncControl != "" {
 		toSerialize["next_sync_control"] = o.NextSyncControl
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.StatusDetail) {
+	if !IsNil(o.StatusDetail) && *o.StatusDetail != "" {
 		toSerialize["status_detail"] = o.StatusDetail
 	}
 	if !IsNil(o.StatusLastUpdated) {
@@ -928,13 +928,13 @@ func (o MsserverDnsServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastSyncTs) {
 		toSerialize["last_sync_ts"] = o.LastSyncTs
 	}
-	if !IsNil(o.LastSyncStatus) {
+	if !IsNil(o.LastSyncStatus) && *o.LastSyncStatus != "" {
 		toSerialize["last_sync_status"] = o.LastSyncStatus
 	}
-	if !IsNil(o.LastSyncDetail) {
+	if !IsNil(o.LastSyncDetail) && *o.LastSyncDetail != "" {
 		toSerialize["last_sync_detail"] = o.LastSyncDetail
 	}
-	if !IsNil(o.Forwarders) {
+	if !IsNil(o.Forwarders) && len(o.Forwarders) > 0 {
 		toSerialize["forwarders"] = o.Forwarders
 	}
 	if !IsNil(o.SupportsIpv6) {
@@ -952,7 +952,7 @@ func (o MsserverDnsServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SupportsActiveDirectory) {
 		toSerialize["supports_active_directory"] = o.SupportsActiveDirectory
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.SupportsRrNaptr) {

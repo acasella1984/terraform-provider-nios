@@ -153,13 +153,13 @@ func (o MembersnmpsettingTrapReceivers) MarshalJSON() ([]byte, error) {
 
 func (o MembersnmpsettingTrapReceivers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.User) && *o.User != "" {
 		toSerialize["user"] = o.User
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

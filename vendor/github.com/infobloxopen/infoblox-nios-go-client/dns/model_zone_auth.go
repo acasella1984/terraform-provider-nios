@@ -4090,10 +4090,10 @@ func (o ZoneAuth) MarshalJSON() ([]byte, error) {
 
 func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.AllowActiveDir) && len(o.AllowActiveDir) > 0 {
@@ -4130,7 +4130,7 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CopyXferToNotify) {
@@ -4173,10 +4173,10 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisableForwarding) {
 		toSerialize["disable_forwarding"] = o.DisableForwarding
 	}
-	if !IsNil(o.DisplayDomain) {
+	if !IsNil(o.DisplayDomain) && *o.DisplayDomain != "" {
 		toSerialize["display_domain"] = o.DisplayDomain
 	}
-	if !IsNil(o.DnsFqdn) {
+	if !IsNil(o.DnsFqdn) && *o.DnsFqdn != "" {
 		toSerialize["dns_fqdn"] = o.DnsFqdn
 	}
 	if !IsNil(o.DnsIntegrityEnable) {
@@ -4191,7 +4191,7 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsIntegrityVerboseLogging) {
 		toSerialize["dns_integrity_verbose_logging"] = o.DnsIntegrityVerboseLogging
 	}
-	if !IsNil(o.DnsSoaEmail) {
+	if !IsNil(o.DnsSoaEmail) && *o.DnsSoaEmail != "" {
 		toSerialize["dns_soa_email"] = o.DnsSoaEmail
 	}
 	if !IsNil(o.DnssecKeyParams) {
@@ -4214,7 +4214,7 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EffectiveCheckNamesPolicy) && *o.EffectiveCheckNamesPolicy != "" {
 		toSerialize["effective_check_names_policy"] = o.EffectiveCheckNamesPolicy
 	}
-	if !IsNil(o.EffectiveRecordNamePolicy) {
+	if !IsNil(o.EffectiveRecordNamePolicy) && *o.EffectiveRecordNamePolicy != "" {
 		toSerialize["effective_record_name_policy"] = o.EffectiveRecordNamePolicy
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -4232,7 +4232,7 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExternalSecondaries) && len(o.ExternalSecondaries) > 0 {
 		toSerialize["external_secondaries"] = o.ExternalSecondaries
 	}
-	if !IsNil(o.Fqdn) {
+	if !IsNil(o.Fqdn) && *o.Fqdn != "" {
 		toSerialize["fqdn"] = o.Fqdn
 	}
 	if !IsNil(o.GridPrimary) && len(o.GridPrimary) > 0 {
@@ -4244,7 +4244,7 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GridSecondaries) && len(o.GridSecondaries) > 0 {
 		toSerialize["grid_secondaries"] = o.GridSecondaries
 	}
-	if !IsNil(o.ImportFrom) {
+	if !IsNil(o.ImportFrom) && *o.ImportFrom != "" {
 		toSerialize["import_from"] = o.ImportFrom
 	}
 	if !IsNil(o.IsDnssecEnabled) {
@@ -4265,10 +4265,10 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
 	}
-	if !IsNil(o.LockedBy) {
+	if !IsNil(o.LockedBy) && *o.LockedBy != "" {
 		toSerialize["locked_by"] = o.LockedBy
 	}
-	if !IsNil(o.MaskPrefix) {
+	if !IsNil(o.MaskPrefix) && *o.MaskPrefix != "" {
 		toSerialize["mask_prefix"] = o.MaskPrefix
 	}
 	if !IsNil(o.MemberSoaMnames) && len(o.MemberSoaMnames) > 0 {
@@ -4307,23 +4307,23 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsSyncDisabled) {
 		toSerialize["ms_sync_disabled"] = o.MsSyncDisabled
 	}
-	if !IsNil(o.MsSyncMasterName) {
+	if !IsNil(o.MsSyncMasterName) && *o.MsSyncMasterName != "" {
 		toSerialize["ms_sync_master_name"] = o.MsSyncMasterName
 	}
 	if !IsNil(o.NetworkAssociations) && len(o.NetworkAssociations) > 0 {
 		toSerialize["network_associations"] = o.NetworkAssociations
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.NotifyDelay) {
 		toSerialize["notify_delay"] = o.NotifyDelay
 	}
 	toSerialize["ns_group"] = o.NsGroup
-	if !IsNil(o.Parent) {
+	if !IsNil(o.Parent) && *o.Parent != "" {
 		toSerialize["parent"] = o.Parent
 	}
-	if !IsNil(o.Prefix) {
+	if !IsNil(o.Prefix) && *o.Prefix != "" {
 		toSerialize["prefix"] = o.Prefix
 	}
 	if !IsNil(o.PrimaryType) && *o.PrimaryType != "" {
@@ -4355,7 +4355,7 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SoaDefaultTtl) {
 		toSerialize["soa_default_ttl"] = o.SoaDefaultTtl
 	}
-	if !IsNil(o.SoaEmail) {
+	if !IsNil(o.SoaEmail) && *o.SoaEmail != "" {
 		toSerialize["soa_email"] = o.SoaEmail
 	}
 	if !IsNil(o.SoaExpire) {
@@ -4442,7 +4442,7 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsingSrgAssociations) {
 		toSerialize["using_srg_associations"] = o.UsingSrgAssociations
 	}
-	if !IsNil(o.View) {
+	if !IsNil(o.View) && *o.View != "" {
 		toSerialize["view"] = o.View
 	}
 	if !IsNil(o.ZoneFormat) && *o.ZoneFormat != "" {

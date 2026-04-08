@@ -659,7 +659,7 @@ func (o CertificateAuthservice) MarshalJSON() ([]byte, error) {
 
 func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AutoPopulateLogin) && *o.AutoPopulateLogin != "" {
@@ -668,7 +668,7 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CaCertificates) && len(o.CaCertificates) > 0 {
 		toSerialize["ca_certificates"] = o.CaCertificates
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disabled) {
@@ -683,7 +683,7 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaxRetries) {
 		toSerialize["max_retries"] = o.MaxRetries
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.OcspCheck) && *o.OcspCheck != "" {
@@ -695,13 +695,13 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecoveryInterval) {
 		toSerialize["recovery_interval"] = o.RecoveryInterval
 	}
-	if !IsNil(o.RemoteLookupPassword) {
+	if !IsNil(o.RemoteLookupPassword) && *o.RemoteLookupPassword != "" {
 		toSerialize["remote_lookup_password"] = o.RemoteLookupPassword
 	}
 	if !IsNil(o.RemoteLookupService) {
 		toSerialize["remote_lookup_service"] = o.RemoteLookupService
 	}
-	if !IsNil(o.RemoteLookupUsername) {
+	if !IsNil(o.RemoteLookupUsername) && *o.RemoteLookupUsername != "" {
 		toSerialize["remote_lookup_username"] = o.RemoteLookupUsername
 	}
 	if !IsNil(o.ResponseTimeout) {

@@ -527,28 +527,28 @@ func (o Awsrte53taskgroupTaskList) MarshalJSON() ([]byte, error) {
 
 func (o Awsrte53taskgroupTaskList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !IsNil(o.State) {
+	if !IsNil(o.State) && *o.State != "" {
 		toSerialize["state"] = o.State
 	}
-	if !IsNil(o.StateMsg) {
+	if !IsNil(o.StateMsg) && *o.StateMsg != "" {
 		toSerialize["state_msg"] = o.StateMsg
 	}
-	if !IsNil(o.Filter) {
+	if !IsNil(o.Filter) && *o.Filter != "" {
 		toSerialize["filter"] = o.Filter
 	}
 	if !IsNil(o.ScheduleInterval) {
 		toSerialize["schedule_interval"] = o.ScheduleInterval
 	}
-	if !IsNil(o.ScheduleUnits) {
+	if !IsNil(o.ScheduleUnits) && *o.ScheduleUnits != "" {
 		toSerialize["schedule_units"] = o.ScheduleUnits
 	}
-	if !IsNil(o.AwsUser) {
+	if !IsNil(o.AwsUser) && *o.AwsUser != "" {
 		toSerialize["aws_user"] = o.AwsUser
 	}
 	if !IsNil(o.StatusTimestamp) {

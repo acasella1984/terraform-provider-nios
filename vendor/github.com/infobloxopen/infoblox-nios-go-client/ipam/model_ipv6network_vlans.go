@@ -153,13 +153,13 @@ func (o Ipv6networkVlans) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6networkVlans) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Vlan) {
+	if !IsNil(o.Vlan) && *o.Vlan != "" {
 		toSerialize["vlan"] = o.Vlan
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 

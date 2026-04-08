@@ -550,7 +550,7 @@ func (o DiscoveryGridpropertiesBasicPollingSettings) ToMap() (map[string]interfa
 	if !IsNil(o.AutoArpRefreshBeforeSwitchPortPolling) {
 		toSerialize["auto_arp_refresh_before_switch_port_polling"] = o.AutoArpRefreshBeforeSwitchPortPolling
 	}
-	if !IsNil(o.SwitchPortDataCollectionPolling) {
+	if !IsNil(o.SwitchPortDataCollectionPolling) && *o.SwitchPortDataCollectionPolling != "" {
 		toSerialize["switch_port_data_collection_polling"] = o.SwitchPortDataCollectionPolling
 	}
 	if !IsNil(o.SwitchPortDataCollectionPollingSchedule) {
@@ -561,10 +561,10 @@ func (o DiscoveryGridpropertiesBasicPollingSettings) ToMap() (map[string]interfa
 	if !IsNil(o.SwitchPortDataCollectionPollingInterval) {
 		toSerialize["switch_port_data_collection_polling_interval"] = o.SwitchPortDataCollectionPollingInterval
 	}
-	if !IsNil(o.CredentialGroup) {
+	if !IsNil(o.CredentialGroup) && *o.CredentialGroup != "" {
 		toSerialize["credential_group"] = o.CredentialGroup
 	}
-	if !IsNil(o.PollingFrequencyModifier) {
+	if !IsNil(o.PollingFrequencyModifier) && *o.PollingFrequencyModifier != "" {
 		toSerialize["polling_frequency_modifier"] = o.PollingFrequencyModifier
 	}
 	if !IsNil(o.UseGlobalPollingFrequencyModifier) {

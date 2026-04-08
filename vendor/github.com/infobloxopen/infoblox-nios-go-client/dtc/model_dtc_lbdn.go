@@ -693,7 +693,7 @@ func (o DtcLbdn) MarshalJSON() ([]byte, error) {
 
 func (o DtcLbdn) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AuthZones) && len(o.AuthZones) > 0 {
@@ -702,7 +702,7 @@ func (o DtcLbdn) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoConsolidatedMonitors) {
 		toSerialize["auto_consolidated_monitors"] = o.AutoConsolidatedMonitors
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disable) {
@@ -725,7 +725,7 @@ func (o DtcLbdn) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LbMethod) && *o.LbMethod != "" {
 		toSerialize["lb_method"] = o.LbMethod
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Patterns) && len(o.Patterns) > 0 {

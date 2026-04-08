@@ -3405,16 +3405,16 @@ func (o Range) MarshalJSON() ([]byte, error) {
 
 func (o Range) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AlwaysUpdateDns) {
 		toSerialize["always_update_dns"] = o.AlwaysUpdateDns
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.CloudInfo) {
@@ -3422,10 +3422,10 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 			toSerialize["cloud_info"] = o.CloudInfo
 		}
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsGenerateHostname) {
@@ -3492,7 +3492,7 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableSnmpWarnings) {
 		toSerialize["enable_snmp_warnings"] = o.EnableSnmpWarnings
 	}
-	if !IsNil(o.EndAddr) {
+	if !IsNil(o.EndAddr) && *o.EndAddr != "" {
 		toSerialize["end_addr"] = o.EndAddr
 	}
 	if !IsNil(o.EndpointSources) && len(o.EndpointSources) > 0 {
@@ -3510,7 +3510,7 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.FailoverAssociation) {
+	if !IsNil(o.FailoverAssociation) && *o.FailoverAssociation != "" {
 		toSerialize["failover_association"] = o.FailoverAssociation
 	}
 	if !IsNil(o.FingerprintFilterRules) && len(o.FingerprintFilterRules) > 0 {
@@ -3534,7 +3534,7 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsSplitScope) {
 		toSerialize["is_split_scope"] = o.IsSplitScope
 	}
-	if !IsNil(o.KnownClients) {
+	if !IsNil(o.KnownClients) && *o.KnownClients != "" {
 		toSerialize["known_clients"] = o.KnownClients
 	}
 	if !IsNil(o.LeaseScavengeTime) {
@@ -3573,16 +3573,16 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NacFilterRules) && len(o.NacFilterRules) > 0 {
 		toSerialize["nac_filter_rules"] = o.NacFilterRules
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.OptionFilterRules) && len(o.OptionFilterRules) > 0 {
@@ -3622,7 +3622,7 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SplitScopeExclusionPercent) {
 		toSerialize["split_scope_exclusion_percent"] = o.SplitScopeExclusionPercent
 	}
-	if !IsNil(o.StartAddr) {
+	if !IsNil(o.StartAddr) && *o.StartAddr != "" {
 		toSerialize["start_addr"] = o.StartAddr
 	}
 	if !IsNil(o.StaticHosts) {
@@ -3633,13 +3633,13 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 			toSerialize["subscribe_settings"] = o.SubscribeSettings
 		}
 	}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
 	if !IsNil(o.TotalHosts) {
 		toSerialize["total_hosts"] = o.TotalHosts
 	}
-	if !IsNil(o.UnknownClients) {
+	if !IsNil(o.UnknownClients) && *o.UnknownClients != "" {
 		toSerialize["unknown_clients"] = o.UnknownClients
 	}
 	if !IsNil(o.UpdateDnsOnLeaseRenewal) {

@@ -187,13 +187,13 @@ func (o GridSecurityBannerSetting) MarshalJSON() ([]byte, error) {
 
 func (o GridSecurityBannerSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Color) {
+	if !IsNil(o.Color) && *o.Color != "" {
 		toSerialize["color"] = o.Color
 	}
-	if !IsNil(o.Level) {
+	if !IsNil(o.Level) && *o.Level != "" {
 		toSerialize["level"] = o.Level
 	}
-	if !IsNil(o.Message) {
+	if !IsNil(o.Message) && *o.Message != "" {
 		toSerialize["message"] = o.Message
 	}
 	if !IsNil(o.Enable) {

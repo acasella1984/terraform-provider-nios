@@ -156,7 +156,7 @@ func (o MembernodeinfolanhaportsettingHaPortSetting) ToMap() (map[string]interfa
 	if !IsNil(o.AutoPortSettingEnabled) {
 		toSerialize["auto_port_setting_enabled"] = o.AutoPortSettingEnabled
 	}
-	if !IsNil(o.Speed) {
+	if !IsNil(o.Speed) && *o.Speed != "" {
 		toSerialize["speed"] = o.Speed
 	}
 	if !IsNil(o.Duplex) && *o.Duplex != "" {

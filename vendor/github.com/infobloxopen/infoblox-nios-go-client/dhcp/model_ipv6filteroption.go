@@ -422,16 +422,16 @@ func (o Ipv6filteroption) MarshalJSON() ([]byte, error) {
 
 func (o Ipv6filteroption) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.ApplyAsClass) {
 		toSerialize["apply_as_class"] = o.ApplyAsClass
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Expression) {
+	if !IsNil(o.Expression) && *o.Expression != "" {
 		toSerialize["expression"] = o.Expression
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -446,7 +446,7 @@ func (o Ipv6filteroption) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LeaseTime) {
 		toSerialize["lease_time"] = o.LeaseTime
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.OptionList) && len(o.OptionList) > 0 {

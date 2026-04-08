@@ -258,19 +258,19 @@ func (o DiscoveryGridpropertiesCliCredentials) ToMap() (map[string]interface{}, 
 	if !IsNil(o.User) && *o.User != "" {
 		toSerialize["user"] = o.User
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
-	if !IsNil(o.CredentialType) {
+	if !IsNil(o.CredentialType) && *o.CredentialType != "" {
 		toSerialize["credential_type"] = o.CredentialType
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.CredentialGroup) {
+	if !IsNil(o.CredentialGroup) && *o.CredentialGroup != "" {
 		toSerialize["credential_group"] = o.CredentialGroup
 	}
 

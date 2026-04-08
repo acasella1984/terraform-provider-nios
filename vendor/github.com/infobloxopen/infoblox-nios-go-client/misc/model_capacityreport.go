@@ -320,16 +320,16 @@ func (o Capacityreport) MarshalJSON() ([]byte, error) {
 
 func (o Capacityreport) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.HardwareType) {
+	if !IsNil(o.HardwareType) && *o.HardwareType != "" {
 		toSerialize["hardware_type"] = o.HardwareType
 	}
 	if !IsNil(o.MaxCapacity) {
 		toSerialize["max_capacity"] = o.MaxCapacity
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.ObjectCounts) && len(o.ObjectCounts) > 0 {
@@ -338,7 +338,7 @@ func (o Capacityreport) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PercentUsed) {
 		toSerialize["percent_used"] = o.PercentUsed
 	}
-	if !IsNil(o.Role) {
+	if !IsNil(o.Role) && *o.Role != "" {
 		toSerialize["role"] = o.Role
 	}
 	if !IsNil(o.TotalObjects) {

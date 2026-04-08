@@ -559,25 +559,25 @@ func (o MemberNodeInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceStatus) && len(o.ServiceStatus) > 0 {
 		toSerialize["service_status"] = o.ServiceStatus
 	}
-	if !IsNil(o.PhysicalOid) {
+	if !IsNil(o.PhysicalOid) && *o.PhysicalOid != "" {
 		toSerialize["physical_oid"] = o.PhysicalOid
 	}
 	if !IsNil(o.HaStatus) && *o.HaStatus != "" {
 		toSerialize["ha_status"] = o.HaStatus
 	}
-	if !IsNil(o.Hwid) {
+	if !IsNil(o.Hwid) && *o.Hwid != "" {
 		toSerialize["hwid"] = o.Hwid
 	}
-	if !IsNil(o.Hwmodel) {
+	if !IsNil(o.Hwmodel) && *o.Hwmodel != "" {
 		toSerialize["hwmodel"] = o.Hwmodel
 	}
-	if !IsNil(o.Hwtype) {
+	if !IsNil(o.Hwtype) && *o.Hwtype != "" {
 		toSerialize["hwtype"] = o.Hwtype
 	}
-	if !IsNil(o.HostPlatform) {
+	if !IsNil(o.HostPlatform) && *o.HostPlatform != "" {
 		toSerialize["host_platform"] = o.HostPlatform
 	}
-	if !IsNil(o.Hypervisor) {
+	if !IsNil(o.Hypervisor) && *o.Hypervisor != "" {
 		toSerialize["hypervisor"] = o.Hypervisor
 	}
 	if !IsNil(o.PaidNios) {
@@ -603,7 +603,7 @@ func (o MemberNodeInfo) ToMap() (map[string]interface{}, error) {
 			toSerialize["lan2_physical_setting"] = o.Lan2PhysicalSetting
 		}
 	}
-	if !IsNil(o.NatExternalIp) {
+	if !IsNil(o.NatExternalIp) && *o.NatExternalIp != "" {
 		toSerialize["nat_external_ip"] = o.NatExternalIp
 	}
 	if !IsNil(o.V6MgmtNetworkSetting) {

@@ -626,10 +626,10 @@ func (o DiscoveryMemberproperties) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryMemberproperties) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.CliCredentials) && len(o.CliCredentials) > 0 {
@@ -650,7 +650,7 @@ func (o DiscoveryMemberproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsSa) {
 		toSerialize["is_sa"] = o.IsSa
 	}
-	if !IsNil(o.Role) {
+	if !IsNil(o.Role) && *o.Role != "" {
 		toSerialize["role"] = o.Role
 	}
 	if !IsNil(o.ScanInterfaces) && len(o.ScanInterfaces) > 0 {

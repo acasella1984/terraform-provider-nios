@@ -1068,7 +1068,7 @@ func (o ParentalcontrolSubscribersite) MarshalJSON() ([]byte, error) {
 
 func (o ParentalcontrolSubscribersite) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Abss) && len(o.Abss) > 0 {
@@ -1083,19 +1083,19 @@ func (o ParentalcontrolSubscribersite) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BlockSize) {
 		toSerialize["block_size"] = o.BlockSize
 	}
-	if !IsNil(o.BlockingIpv4Vip1) {
+	if !IsNil(o.BlockingIpv4Vip1) && *o.BlockingIpv4Vip1 != "" {
 		toSerialize["blocking_ipv4_vip1"] = o.BlockingIpv4Vip1
 	}
-	if !IsNil(o.BlockingIpv4Vip2) {
+	if !IsNil(o.BlockingIpv4Vip2) && *o.BlockingIpv4Vip2 != "" {
 		toSerialize["blocking_ipv4_vip2"] = o.BlockingIpv4Vip2
 	}
-	if !IsNil(o.BlockingIpv6Vip1) {
+	if !IsNil(o.BlockingIpv6Vip1) && *o.BlockingIpv6Vip1 != "" {
 		toSerialize["blocking_ipv6_vip1"] = o.BlockingIpv6Vip1
 	}
-	if !IsNil(o.BlockingIpv6Vip2) {
+	if !IsNil(o.BlockingIpv6Vip2) && *o.BlockingIpv6Vip2 != "" {
 		toSerialize["blocking_ipv6_vip2"] = o.BlockingIpv6Vip2
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DcaSubBwList) {
@@ -1134,7 +1134,7 @@ func (o ParentalcontrolSubscribersite) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Msps) && len(o.Msps) > 0 {
 		toSerialize["msps"] = o.Msps
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.NasGateways) && len(o.NasGateways) > 0 {

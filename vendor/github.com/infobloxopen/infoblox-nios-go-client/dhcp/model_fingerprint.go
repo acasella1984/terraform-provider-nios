@@ -456,13 +456,13 @@ func (o Fingerprint) MarshalJSON() ([]byte, error) {
 
 func (o Fingerprint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.DeviceClass) {
+	if !IsNil(o.DeviceClass) && *o.DeviceClass != "" {
 		toSerialize["device_class"] = o.DeviceClass
 	}
 	if !IsNil(o.Disable) {
@@ -480,7 +480,7 @@ func (o Fingerprint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6OptionSequence) && len(o.Ipv6OptionSequence) > 0 {
 		toSerialize["ipv6_option_sequence"] = o.Ipv6OptionSequence
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.OptionSequence) && len(o.OptionSequence) > 0 {

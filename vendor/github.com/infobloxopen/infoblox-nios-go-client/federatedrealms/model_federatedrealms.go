@@ -150,13 +150,13 @@ func (o Federatedrealms) MarshalJSON() ([]byte, error) {
 
 func (o Federatedrealms) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Id) {
+	if !IsNil(o.Id) && *o.Id != "" {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil

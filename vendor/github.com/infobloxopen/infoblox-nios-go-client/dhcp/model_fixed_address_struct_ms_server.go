@@ -119,10 +119,10 @@ func (o FixedAddressStructMsServer) MarshalJSON() ([]byte, error) {
 
 func (o FixedAddressStructMsServer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Struct) {
+	if !IsNil(o.Struct) && *o.Struct != "" {
 		toSerialize["_struct"] = o.Struct
 	}
-	if !IsNil(o.Ipv4addr) {
+	if !IsNil(o.Ipv4addr) && *o.Ipv4addr != "" {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
 

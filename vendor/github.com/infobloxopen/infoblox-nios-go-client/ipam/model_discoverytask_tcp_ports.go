@@ -122,7 +122,7 @@ func (o DiscoverytaskTcpPorts) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Number) {
 		toSerialize["number"] = o.Number
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

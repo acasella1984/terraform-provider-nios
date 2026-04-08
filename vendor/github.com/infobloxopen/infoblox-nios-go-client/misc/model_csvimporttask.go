@@ -592,19 +592,19 @@ func (o Csvimporttask) MarshalJSON() ([]byte, error) {
 
 func (o Csvimporttask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
-	if !IsNil(o.AdminName) {
+	if !IsNil(o.AdminName) && *o.AdminName != "" {
 		toSerialize["admin_name"] = o.AdminName
 	}
 	if !IsNil(o.EndTime) {
 		toSerialize["end_time"] = o.EndTime
 	}
-	if !IsNil(o.FileName) {
+	if !IsNil(o.FileName) && *o.FileName != "" {
 		toSerialize["file_name"] = o.FileName
 	}
 	if !IsNil(o.FileSize) {

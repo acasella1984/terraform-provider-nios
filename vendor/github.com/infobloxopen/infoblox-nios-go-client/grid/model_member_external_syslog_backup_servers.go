@@ -289,16 +289,16 @@ func (o MemberExternalSyslogBackupServers) MarshalJSON() ([]byte, error) {
 
 func (o MemberExternalSyslogBackupServers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AddressOrFqdn) {
+	if !IsNil(o.AddressOrFqdn) && *o.AddressOrFqdn != "" {
 		toSerialize["address_or_fqdn"] = o.AddressOrFqdn
 	}
-	if !IsNil(o.DirectoryPath) {
+	if !IsNil(o.DirectoryPath) && *o.DirectoryPath != "" {
 		toSerialize["directory_path"] = o.DirectoryPath
 	}
 	if !IsNil(o.Enable) {
 		toSerialize["enable"] = o.Enable
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Port) {
@@ -307,7 +307,7 @@ func (o MemberExternalSyslogBackupServers) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Protocol) && *o.Protocol != "" {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
 

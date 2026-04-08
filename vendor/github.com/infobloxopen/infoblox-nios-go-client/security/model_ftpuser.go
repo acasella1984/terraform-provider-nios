@@ -354,7 +354,7 @@ func (o Ftpuser) MarshalJSON() ([]byte, error) {
 
 func (o Ftpuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.CreateHomeDir) {
@@ -369,16 +369,16 @@ func (o Ftpuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.HomeDir) {
+	if !IsNil(o.HomeDir) && *o.HomeDir != "" {
 		toSerialize["home_dir"] = o.HomeDir
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Permission) && *o.Permission != "" {
 		toSerialize["permission"] = o.Permission
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil

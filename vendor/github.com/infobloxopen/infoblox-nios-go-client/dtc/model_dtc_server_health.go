@@ -156,10 +156,10 @@ func (o DtcServerHealth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Availability) && *o.Availability != "" {
 		toSerialize["availability"] = o.Availability
 	}
-	if !IsNil(o.EnabledState) {
+	if !IsNil(o.EnabledState) && *o.EnabledState != "" {
 		toSerialize["enabled_state"] = o.EnabledState
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
 

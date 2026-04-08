@@ -558,22 +558,22 @@ func (o Filteroption) MarshalJSON() ([]byte, error) {
 
 func (o Filteroption) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.ApplyAsClass) {
 		toSerialize["apply_as_class"] = o.ApplyAsClass
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Expression) {
+	if !IsNil(o.Expression) && *o.Expression != "" {
 		toSerialize["expression"] = o.Expression
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -588,10 +588,10 @@ func (o Filteroption) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LeaseTime) {
 		toSerialize["lease_time"] = o.LeaseTime
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NextServer) {
+	if !IsNil(o.NextServer) && *o.NextServer != "" {
 		toSerialize["next_server"] = o.NextServer
 	}
 	if !IsNil(o.OptionList) && len(o.OptionList) > 0 {

@@ -289,22 +289,22 @@ func (o TftpfiledirVtftpDirMembers) MarshalJSON() ([]byte, error) {
 
 func (o TftpfiledirVtftpDirMembers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Member) {
+	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
-	if !IsNil(o.IpType) {
+	if !IsNil(o.IpType) && *o.IpType != "" {
 		toSerialize["ip_type"] = o.IpType
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.StartAddress) {
+	if !IsNil(o.StartAddress) && *o.StartAddress != "" {
 		toSerialize["start_address"] = o.StartAddress
 	}
-	if !IsNil(o.EndAddress) {
+	if !IsNil(o.EndAddress) && *o.EndAddress != "" {
 		toSerialize["end_address"] = o.EndAddress
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
 	if !IsNil(o.Cidr) {

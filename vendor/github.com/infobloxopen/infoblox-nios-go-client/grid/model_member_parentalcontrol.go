@@ -150,13 +150,13 @@ func (o MemberParentalcontrol) MarshalJSON() ([]byte, error) {
 
 func (o MemberParentalcontrol) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.EnableService) {
 		toSerialize["enable_service"] = o.EnableService
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil

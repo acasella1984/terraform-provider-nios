@@ -323,25 +323,25 @@ func (o ViewMatchDestinations) MarshalJSON() ([]byte, error) {
 
 func (o ViewMatchDestinations) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Struct) {
+	if !IsNil(o.Struct) && *o.Struct != "" {
 		toSerialize["_struct"] = o.Struct
 	}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.Permission) && *o.Permission != "" {
 		toSerialize["permission"] = o.Permission
 	}
-	if !IsNil(o.TsigKey) {
+	if !IsNil(o.TsigKey) && *o.TsigKey != "" {
 		toSerialize["tsig_key"] = o.TsigKey
 	}
-	if !IsNil(o.TsigKeyAlg) {
+	if !IsNil(o.TsigKeyAlg) && *o.TsigKeyAlg != "" {
 		toSerialize["tsig_key_alg"] = o.TsigKeyAlg
 	}
-	if !IsNil(o.TsigKeyName) {
+	if !IsNil(o.TsigKeyName) && *o.TsigKeyName != "" {
 		toSerialize["tsig_key_name"] = o.TsigKeyName
 	}
 	if !IsNil(o.UseTsigKeyName) {

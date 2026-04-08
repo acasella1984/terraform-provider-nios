@@ -626,25 +626,25 @@ func (o Awsrte53taskgroup) MarshalJSON() ([]byte, error) {
 
 func (o Awsrte53taskgroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AccountId) {
+	if !IsNil(o.AccountId) && *o.AccountId != "" {
 		toSerialize["account_id"] = o.AccountId
 	}
-	if !IsNil(o.AccountsList) {
+	if !IsNil(o.AccountsList) && *o.AccountsList != "" {
 		toSerialize["accounts_list"] = o.AccountsList
 	}
-	if !IsNil(o.AwsAccountIdsFileToken) {
+	if !IsNil(o.AwsAccountIdsFileToken) && *o.AwsAccountIdsFileToken != "" {
 		toSerialize["aws_account_ids_file_token"] = o.AwsAccountIdsFileToken
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ConsolidateZones) {
 		toSerialize["consolidate_zones"] = o.ConsolidateZones
 	}
-	if !IsNil(o.ConsolidatedView) {
+	if !IsNil(o.ConsolidatedView) && *o.ConsolidatedView != "" {
 		toSerialize["consolidated_view"] = o.ConsolidatedView
 	}
 	if !IsNil(o.Disabled) {
@@ -656,16 +656,16 @@ func (o Awsrte53taskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MultipleAccountsSyncPolicy) && *o.MultipleAccountsSyncPolicy != "" {
 		toSerialize["multiple_accounts_sync_policy"] = o.MultipleAccountsSyncPolicy
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.NetworkViewMappingPolicy) && *o.NetworkViewMappingPolicy != "" {
 		toSerialize["network_view_mapping_policy"] = o.NetworkViewMappingPolicy
 	}
-	if !IsNil(o.RoleArn) {
+	if !IsNil(o.RoleArn) && *o.RoleArn != "" {
 		toSerialize["role_arn"] = o.RoleArn
 	}
 	if !IsNil(o.SyncChildAccounts) {

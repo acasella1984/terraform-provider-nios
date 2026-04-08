@@ -150,13 +150,13 @@ func (o Membercloudsync) MarshalJSON() ([]byte, error) {
 
 func (o Membercloudsync) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.CloudSyncEnabled) {
 		toSerialize["cloud_sync_enabled"] = o.CloudSyncEnabled
 	}
-	if !IsNil(o.HostName) {
+	if !IsNil(o.HostName) && *o.HostName != "" {
 		toSerialize["host_name"] = o.HostName
 	}
 	return toSerialize, nil

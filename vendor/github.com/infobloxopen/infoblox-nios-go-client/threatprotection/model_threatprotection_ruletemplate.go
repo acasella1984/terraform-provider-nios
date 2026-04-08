@@ -319,7 +319,7 @@ func (o ThreatprotectionRuletemplate) MarshalJSON() ([]byte, error) {
 
 func (o ThreatprotectionRuletemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowedActions) && len(o.AllowedActions) > 0 {
@@ -333,10 +333,10 @@ func (o ThreatprotectionRuletemplate) ToMap() (map[string]interface{}, error) {
 			toSerialize["default_config"] = o.DefaultConfig
 		}
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Ruleset) && *o.Ruleset != "" {

@@ -218,19 +218,19 @@ func (o DiscoverySdnnetwork) MarshalJSON() ([]byte, error) {
 
 func (o DiscoverySdnnetwork) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.FirstSeen) {
 		toSerialize["first_seen"] = o.FirstSeen
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.SourceSdnConfig) {
+	if !IsNil(o.SourceSdnConfig) && *o.SourceSdnConfig != "" {
 		toSerialize["source_sdn_config"] = o.SourceSdnConfig
 	}
 	return toSerialize, nil

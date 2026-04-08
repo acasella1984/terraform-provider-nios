@@ -153,13 +153,13 @@ func (o DiscoveryDeviceinterfaceIfaddrInfos) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryDeviceinterfaceIfaddrInfos) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.AddressObject) && *o.AddressObject != "" {
 		toSerialize["address_object"] = o.AddressObject
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
 

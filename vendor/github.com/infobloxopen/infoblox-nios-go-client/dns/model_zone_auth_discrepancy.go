@@ -218,10 +218,10 @@ func (o ZoneAuthDiscrepancy) MarshalJSON() ([]byte, error) {
 
 func (o ZoneAuthDiscrepancy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Severity) && *o.Severity != "" {

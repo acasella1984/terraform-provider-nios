@@ -156,10 +156,10 @@ func (o GridCloudapiAllowedApiAdmins) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsRemote) {
 		toSerialize["is_remote"] = o.IsRemote
 	}
-	if !IsNil(o.RemoteAdmin) {
+	if !IsNil(o.RemoteAdmin) && *o.RemoteAdmin != "" {
 		toSerialize["remote_admin"] = o.RemoteAdmin
 	}
-	if !IsNil(o.LocalAdmin) {
+	if !IsNil(o.LocalAdmin) && *o.LocalAdmin != "" {
 		toSerialize["local_admin"] = o.LocalAdmin
 	}
 

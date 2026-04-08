@@ -258,19 +258,19 @@ func (o DiscoverytaskVservers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.ConnectionProtocol) {
+	if !IsNil(o.ConnectionProtocol) && *o.ConnectionProtocol != "" {
 		toSerialize["connection_protocol"] = o.ConnectionProtocol
 	}
-	if !IsNil(o.FqdnOrIp) {
+	if !IsNil(o.FqdnOrIp) && *o.FqdnOrIp != "" {
 		toSerialize["fqdn_or_ip"] = o.FqdnOrIp
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
 

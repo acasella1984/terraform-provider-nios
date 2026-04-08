@@ -489,7 +489,7 @@ func (o ThreatprotectionGridRule) MarshalJSON() ([]byte, error) {
 
 func (o ThreatprotectionGridRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowedActions) && len(o.AllowedActions) > 0 {
@@ -498,7 +498,7 @@ func (o ThreatprotectionGridRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Category) && *o.Category != "" {
 		toSerialize["category"] = o.Category
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Config) {
@@ -506,7 +506,7 @@ func (o ThreatprotectionGridRule) ToMap() (map[string]interface{}, error) {
 			toSerialize["config"] = o.Config
 		}
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Disabled) {
@@ -515,7 +515,7 @@ func (o ThreatprotectionGridRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsFactoryResetEnabled) {
 		toSerialize["is_factory_reset_enabled"] = o.IsFactoryResetEnabled
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Ruleset) && *o.Ruleset != "" {
@@ -524,10 +524,10 @@ func (o ThreatprotectionGridRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Sid) {
 		toSerialize["sid"] = o.Sid
 	}
-	if !IsNil(o.Template) {
+	if !IsNil(o.Template) && *o.Template != "" {
 		toSerialize["template"] = o.Template
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil

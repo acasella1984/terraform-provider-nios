@@ -218,16 +218,16 @@ func (o SmartfolderGlobal) MarshalJSON() ([]byte, error) {
 
 func (o SmartfolderGlobal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.GroupBys) && len(o.GroupBys) > 0 {
 		toSerialize["group_bys"] = o.GroupBys
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.QueryItems) && len(o.QueryItems) > 0 {

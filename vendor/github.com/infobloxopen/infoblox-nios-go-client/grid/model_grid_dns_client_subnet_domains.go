@@ -119,7 +119,7 @@ func (o GridDnsClientSubnetDomains) MarshalJSON() ([]byte, error) {
 
 func (o GridDnsClientSubnetDomains) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Domain) {
+	if !IsNil(o.Domain) && *o.Domain != "" {
 		toSerialize["domain"] = o.Domain
 	}
 	if !IsNil(o.Permission) && *o.Permission != "" {

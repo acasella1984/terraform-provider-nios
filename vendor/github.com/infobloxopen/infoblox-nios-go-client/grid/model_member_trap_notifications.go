@@ -153,7 +153,7 @@ func (o MemberTrapNotifications) MarshalJSON() ([]byte, error) {
 
 func (o MemberTrapNotifications) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TrapType) {
+	if !IsNil(o.TrapType) && *o.TrapType != "" {
 		toSerialize["trap_type"] = o.TrapType
 	}
 	if !IsNil(o.EnableEmail) {

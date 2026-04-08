@@ -122,7 +122,7 @@ func (o GridConsentBannerSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enable) {
 		toSerialize["enable"] = o.Enable
 	}
-	if !IsNil(o.Message) {
+	if !IsNil(o.Message) && *o.Message != "" {
 		toSerialize["message"] = o.Message
 	}
 

@@ -286,10 +286,10 @@ func (o Tftpfiledir) MarshalJSON() ([]byte, error) {
 
 func (o Tftpfiledir) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Directory) {
+	if !IsNil(o.Directory) && *o.Directory != "" {
 		toSerialize["directory"] = o.Directory
 	}
 	if !IsNil(o.IsSyncedToGm) {
@@ -298,7 +298,7 @@ func (o Tftpfiledir) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastModify) {
 		toSerialize["last_modify"] = o.LastModify
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Type) && *o.Type != "" {

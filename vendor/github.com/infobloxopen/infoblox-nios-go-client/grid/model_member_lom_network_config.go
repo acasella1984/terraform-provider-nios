@@ -187,13 +187,13 @@ func (o MemberLomNetworkConfig) MarshalJSON() ([]byte, error) {
 
 func (o MemberLomNetworkConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Gateway) {
+	if !IsNil(o.Gateway) && *o.Gateway != "" {
 		toSerialize["gateway"] = o.Gateway
 	}
-	if !IsNil(o.SubnetMask) {
+	if !IsNil(o.SubnetMask) && *o.SubnetMask != "" {
 		toSerialize["subnet_mask"] = o.SubnetMask
 	}
 	if !IsNil(o.IsLomCapable) {

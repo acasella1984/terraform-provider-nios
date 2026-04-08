@@ -153,13 +153,13 @@ func (o GridCspApiConfig) MarshalJSON() ([]byte, error) {
 
 func (o GridCspApiConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Url) {
+	if !IsNil(o.Url) && *o.Url != "" {
 		toSerialize["url"] = o.Url
 	}
-	if !IsNil(o.Username) {
+	if !IsNil(o.Username) && *o.Username != "" {
 		toSerialize["username"] = o.Username
 	}
-	if !IsNil(o.Password) {
+	if !IsNil(o.Password) && *o.Password != "" {
 		toSerialize["password"] = o.Password
 	}
 

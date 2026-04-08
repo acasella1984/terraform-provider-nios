@@ -386,7 +386,7 @@ func (o GridMemberCloudapi) MarshalJSON() ([]byte, error) {
 
 func (o GridMemberCloudapi) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AllowApiAdmins) && *o.AllowApiAdmins != "" {
@@ -417,7 +417,7 @@ func (o GridMemberCloudapi) ToMap() (map[string]interface{}, error) {
 			toSerialize["member"] = o.Member
 		}
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil

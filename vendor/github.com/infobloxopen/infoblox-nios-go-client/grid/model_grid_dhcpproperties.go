@@ -2937,22 +2937,22 @@ func (o GridDhcpproperties) MarshalJSON() ([]byte, error) {
 
 func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.Authority) {
 		toSerialize["authority"] = o.Authority
 	}
-	if !IsNil(o.Bootfile) {
+	if !IsNil(o.Bootfile) && *o.Bootfile != "" {
 		toSerialize["bootfile"] = o.Bootfile
 	}
-	if !IsNil(o.Bootserver) {
+	if !IsNil(o.Bootserver) && *o.Bootserver != "" {
 		toSerialize["bootserver"] = o.Bootserver
 	}
 	if !IsNil(o.CaptureHostname) {
 		toSerialize["capture_hostname"] = o.CaptureHostname
 	}
-	if !IsNil(o.DdnsDomainname) {
+	if !IsNil(o.DdnsDomainname) && *o.DdnsDomainname != "" {
 		toSerialize["ddns_domainname"] = o.DdnsDomainname
 	}
 	if !IsNil(o.DdnsGenerateHostname) {
@@ -3045,7 +3045,7 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6CaptureHostname) {
 		toSerialize["ipv6_capture_hostname"] = o.Ipv6CaptureHostname
 	}
-	if !IsNil(o.Ipv6DdnsDomainname) {
+	if !IsNil(o.Ipv6DdnsDomainname) && *o.Ipv6DdnsDomainname != "" {
 		toSerialize["ipv6_ddns_domainname"] = o.Ipv6DdnsDomainname
 	}
 	if !IsNil(o.Ipv6DdnsEnableOptionFqdn) {
@@ -3057,13 +3057,13 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6DdnsTtl) {
 		toSerialize["ipv6_ddns_ttl"] = o.Ipv6DdnsTtl
 	}
-	if !IsNil(o.Ipv6DefaultPrefix) {
+	if !IsNil(o.Ipv6DefaultPrefix) && *o.Ipv6DefaultPrefix != "" {
 		toSerialize["ipv6_default_prefix"] = o.Ipv6DefaultPrefix
 	}
 	if !IsNil(o.Ipv6DnsUpdateStyle) && *o.Ipv6DnsUpdateStyle != "" {
 		toSerialize["ipv6_dns_update_style"] = o.Ipv6DnsUpdateStyle
 	}
-	if !IsNil(o.Ipv6DomainName) {
+	if !IsNil(o.Ipv6DomainName) && *o.Ipv6DomainName != "" {
 		toSerialize["ipv6_domain_name"] = o.Ipv6DomainName
 	}
 	if !IsNil(o.Ipv6DomainNameServers) && len(o.Ipv6DomainNameServers) > 0 {
@@ -3087,7 +3087,7 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6GssTsigKeys) && len(o.Ipv6GssTsigKeys) > 0 {
 		toSerialize["ipv6_gss_tsig_keys"] = o.Ipv6GssTsigKeys
 	}
-	if !IsNil(o.Ipv6KdcServer) {
+	if !IsNil(o.Ipv6KdcServer) && *o.Ipv6KdcServer != "" {
 		toSerialize["ipv6_kdc_server"] = o.Ipv6KdcServer
 	}
 	if !IsNil(o.Ipv6LeaseScavengingTime) {
@@ -3117,7 +3117,7 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6UpdateDnsOnLeaseRenewal) {
 		toSerialize["ipv6_update_dns_on_lease_renewal"] = o.Ipv6UpdateDnsOnLeaseRenewal
 	}
-	if !IsNil(o.KdcServer) {
+	if !IsNil(o.KdcServer) && *o.KdcServer != "" {
 		toSerialize["kdc_server"] = o.KdcServer
 	}
 	if !IsNil(o.LeaseLoggingMember) && *o.LeaseLoggingMember != "" {
@@ -3144,7 +3144,7 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MicrosoftCodePage) && *o.MicrosoftCodePage != "" {
 		toSerialize["microsoft_code_page"] = o.MicrosoftCodePage
 	}
-	if !IsNil(o.Nextserver) {
+	if !IsNil(o.Nextserver) && *o.Nextserver != "" {
 		toSerialize["nextserver"] = o.Nextserver
 	}
 	if !IsNil(o.Option60MatchRules) && len(o.Option60MatchRules) > 0 {

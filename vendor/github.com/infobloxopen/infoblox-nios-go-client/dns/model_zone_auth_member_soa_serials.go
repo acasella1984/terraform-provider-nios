@@ -153,10 +153,10 @@ func (o ZoneAuthMemberSoaSerials) MarshalJSON() ([]byte, error) {
 
 func (o ZoneAuthMemberSoaSerials) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GridPrimary) {
+	if !IsNil(o.GridPrimary) && *o.GridPrimary != "" {
 		toSerialize["grid_primary"] = o.GridPrimary
 	}
-	if !IsNil(o.MsServerPrimary) {
+	if !IsNil(o.MsServerPrimary) && *o.MsServerPrimary != "" {
 		toSerialize["ms_server_primary"] = o.MsServerPrimary
 	}
 	if !IsNil(o.Serial) {

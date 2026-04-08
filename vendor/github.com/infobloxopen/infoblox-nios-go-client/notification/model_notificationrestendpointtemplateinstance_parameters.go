@@ -187,16 +187,16 @@ func (o NotificationrestendpointtemplateinstanceParameters) MarshalJSON() ([]byt
 
 func (o NotificationrestendpointtemplateinstanceParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Value) {
+	if !IsNil(o.Value) && *o.Value != "" {
 		toSerialize["value"] = o.Value
 	}
-	if !IsNil(o.DefaultValue) {
+	if !IsNil(o.DefaultValue) && *o.DefaultValue != "" {
 		toSerialize["default_value"] = o.DefaultValue
 	}
-	if !IsNil(o.Syntax) {
+	if !IsNil(o.Syntax) && *o.Syntax != "" {
 		toSerialize["syntax"] = o.Syntax
 	}
 

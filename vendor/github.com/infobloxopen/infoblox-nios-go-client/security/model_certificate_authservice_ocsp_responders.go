@@ -254,13 +254,13 @@ func (o CertificateAuthserviceOcspResponders) MarshalJSON() ([]byte, error) {
 
 func (o CertificateAuthserviceOcspResponders) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FqdnOrIp) {
+	if !IsNil(o.FqdnOrIp) && *o.FqdnOrIp != "" {
 		toSerialize["fqdn_or_ip"] = o.FqdnOrIp
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.Disabled) {
@@ -269,7 +269,7 @@ func (o CertificateAuthserviceOcspResponders) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate
 	}
-	if !IsNil(o.CertificateToken) {
+	if !IsNil(o.CertificateToken) && *o.CertificateToken != "" {
 		toSerialize["certificate_token"] = o.CertificateToken
 	}
 

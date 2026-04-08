@@ -795,10 +795,10 @@ func (o Discoverytask) MarshalJSON() ([]byte, error) {
 
 func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.CsvFileName) {
+	if !IsNil(o.CsvFileName) && *o.CsvFileName != "" {
 		toSerialize["csv_file_name"] = o.CsvFileName
 	}
 	if !IsNil(o.DisableIpScanning) {
@@ -807,7 +807,7 @@ func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisableVmwareScanning) {
 		toSerialize["disable_vmware_scanning"] = o.DisableVmwareScanning
 	}
-	if !IsNil(o.DiscoveryTaskOid) {
+	if !IsNil(o.DiscoveryTaskOid) && *o.DiscoveryTaskOid != "" {
 		toSerialize["discovery_task_oid"] = o.DiscoveryTaskOid
 	}
 	if !IsNil(o.MemberName) && *o.MemberName != "" {
@@ -819,7 +819,7 @@ func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) && *o.Mode != "" {
 		toSerialize["mode"] = o.Mode
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Networks) && len(o.Networks) > 0 {
@@ -842,7 +842,7 @@ func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StateTime) {
 		toSerialize["state_time"] = o.StateTime
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.StatusTime) {
@@ -854,13 +854,13 @@ func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TcpScanTechnique) && *o.TcpScanTechnique != "" {
 		toSerialize["tcp_scan_technique"] = o.TcpScanTechnique
 	}
-	if !IsNil(o.VNetworkView) {
+	if !IsNil(o.VNetworkView) && *o.VNetworkView != "" {
 		toSerialize["v_network_view"] = o.VNetworkView
 	}
 	if !IsNil(o.Vservers) && len(o.Vservers) > 0 {
 		toSerialize["vservers"] = o.Vservers
 	}
-	if !IsNil(o.Warning) {
+	if !IsNil(o.Warning) && *o.Warning != "" {
 		toSerialize["warning"] = o.Warning
 	}
 	return toSerialize, nil

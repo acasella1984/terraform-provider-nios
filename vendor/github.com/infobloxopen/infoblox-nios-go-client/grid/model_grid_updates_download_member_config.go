@@ -153,7 +153,7 @@ func (o GridUpdatesDownloadMemberConfig) MarshalJSON() ([]byte, error) {
 
 func (o GridUpdatesDownloadMemberConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Member) {
+	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
 	if !IsNil(o.Interface) && *o.Interface != "" {

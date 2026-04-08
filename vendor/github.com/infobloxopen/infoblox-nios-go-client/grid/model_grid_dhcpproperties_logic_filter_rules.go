@@ -119,10 +119,10 @@ func (o GridDhcppropertiesLogicFilterRules) MarshalJSON() ([]byte, error) {
 
 func (o GridDhcppropertiesLogicFilterRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Filter) {
+	if !IsNil(o.Filter) && *o.Filter != "" {
 		toSerialize["filter"] = o.Filter
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 

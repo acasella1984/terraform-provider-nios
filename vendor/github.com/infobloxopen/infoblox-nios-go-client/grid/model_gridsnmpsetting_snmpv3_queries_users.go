@@ -122,7 +122,7 @@ func (o GridsnmpsettingSnmpv3QueriesUsers) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.User) && *o.User != "" {
 		toSerialize["user"] = o.User
 	}
-	if !IsNil(o.Comment) {
+	if !IsNil(o.Comment) && *o.Comment != "" {
 		toSerialize["comment"] = o.Comment
 	}
 

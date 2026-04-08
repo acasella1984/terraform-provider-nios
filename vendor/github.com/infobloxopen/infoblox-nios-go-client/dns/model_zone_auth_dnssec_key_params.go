@@ -666,7 +666,7 @@ func (o ZoneAuthDnssecKeyParams) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableKskAutoRollover) {
 		toSerialize["enable_ksk_auto_rollover"] = o.EnableKskAutoRollover
 	}
-	if !IsNil(o.KskAlgorithm) {
+	if !IsNil(o.KskAlgorithm) && *o.KskAlgorithm != "" {
 		toSerialize["ksk_algorithm"] = o.KskAlgorithm
 	}
 	if !IsNil(o.KskAlgorithms) && len(o.KskAlgorithms) > 0 {
@@ -678,10 +678,10 @@ func (o ZoneAuthDnssecKeyParams) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.KskSize) {
 		toSerialize["ksk_size"] = o.KskSize
 	}
-	if !IsNil(o.NextSecureType) {
+	if !IsNil(o.NextSecureType) && *o.NextSecureType != "" {
 		toSerialize["next_secure_type"] = o.NextSecureType
 	}
-	if !IsNil(o.KskRolloverNotificationConfig) {
+	if !IsNil(o.KskRolloverNotificationConfig) && *o.KskRolloverNotificationConfig != "" {
 		toSerialize["ksk_rollover_notification_config"] = o.KskRolloverNotificationConfig
 	}
 	if !IsNil(o.KskSnmpNotificationEnabled) {
@@ -702,7 +702,7 @@ func (o ZoneAuthDnssecKeyParams) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SignatureExpiration) {
 		toSerialize["signature_expiration"] = o.SignatureExpiration
 	}
-	if !IsNil(o.ZskAlgorithm) {
+	if !IsNil(o.ZskAlgorithm) && *o.ZskAlgorithm != "" {
 		toSerialize["zsk_algorithm"] = o.ZskAlgorithm
 	}
 	if !IsNil(o.ZskAlgorithms) && len(o.ZskAlgorithms) > 0 {
@@ -711,7 +711,7 @@ func (o ZoneAuthDnssecKeyParams) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ZskRollover) {
 		toSerialize["zsk_rollover"] = o.ZskRollover
 	}
-	if !IsNil(o.ZskRolloverMechanism) {
+	if !IsNil(o.ZskRolloverMechanism) && *o.ZskRolloverMechanism != "" {
 		toSerialize["zsk_rollover_mechanism"] = o.ZskRolloverMechanism
 	}
 	if !IsNil(o.ZskSize) {

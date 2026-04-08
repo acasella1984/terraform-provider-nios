@@ -119,7 +119,7 @@ func (o CapacityreportObjectCounts) MarshalJSON() ([]byte, error) {
 
 func (o CapacityreportObjectCounts) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TypeName) {
+	if !IsNil(o.TypeName) && *o.TypeName != "" {
 		toSerialize["type_name"] = o.TypeName
 	}
 	if !IsNil(o.Count) {

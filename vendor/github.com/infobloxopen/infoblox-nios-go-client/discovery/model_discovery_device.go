@@ -1406,10 +1406,10 @@ func (o DiscoveryDevice) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ref) {
+	if !IsNil(o.Ref) && *o.Ref != "" {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Address) {
+	if !IsNil(o.Address) && *o.Address != "" {
 		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.AddressRef) && *o.AddressRef != "" {
@@ -1421,49 +1421,49 @@ func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CapAdminStatusInd) {
 		toSerialize["cap_admin_status_ind"] = o.CapAdminStatusInd
 	}
-	if !IsNil(o.CapAdminStatusNaReason) {
+	if !IsNil(o.CapAdminStatusNaReason) && *o.CapAdminStatusNaReason != "" {
 		toSerialize["cap_admin_status_na_reason"] = o.CapAdminStatusNaReason
 	}
 	if !IsNil(o.CapDescriptionInd) {
 		toSerialize["cap_description_ind"] = o.CapDescriptionInd
 	}
-	if !IsNil(o.CapDescriptionNaReason) {
+	if !IsNil(o.CapDescriptionNaReason) && *o.CapDescriptionNaReason != "" {
 		toSerialize["cap_description_na_reason"] = o.CapDescriptionNaReason
 	}
 	if !IsNil(o.CapNetDeprovisioningInd) {
 		toSerialize["cap_net_deprovisioning_ind"] = o.CapNetDeprovisioningInd
 	}
-	if !IsNil(o.CapNetDeprovisioningNaReason) {
+	if !IsNil(o.CapNetDeprovisioningNaReason) && *o.CapNetDeprovisioningNaReason != "" {
 		toSerialize["cap_net_deprovisioning_na_reason"] = o.CapNetDeprovisioningNaReason
 	}
 	if !IsNil(o.CapNetProvisioningInd) {
 		toSerialize["cap_net_provisioning_ind"] = o.CapNetProvisioningInd
 	}
-	if !IsNil(o.CapNetProvisioningNaReason) {
+	if !IsNil(o.CapNetProvisioningNaReason) && *o.CapNetProvisioningNaReason != "" {
 		toSerialize["cap_net_provisioning_na_reason"] = o.CapNetProvisioningNaReason
 	}
 	if !IsNil(o.CapNetVlanProvisioningInd) {
 		toSerialize["cap_net_vlan_provisioning_ind"] = o.CapNetVlanProvisioningInd
 	}
-	if !IsNil(o.CapNetVlanProvisioningNaReason) {
+	if !IsNil(o.CapNetVlanProvisioningNaReason) && *o.CapNetVlanProvisioningNaReason != "" {
 		toSerialize["cap_net_vlan_provisioning_na_reason"] = o.CapNetVlanProvisioningNaReason
 	}
 	if !IsNil(o.CapVlanAssignmentInd) {
 		toSerialize["cap_vlan_assignment_ind"] = o.CapVlanAssignmentInd
 	}
-	if !IsNil(o.CapVlanAssignmentNaReason) {
+	if !IsNil(o.CapVlanAssignmentNaReason) && *o.CapVlanAssignmentNaReason != "" {
 		toSerialize["cap_vlan_assignment_na_reason"] = o.CapVlanAssignmentNaReason
 	}
 	if !IsNil(o.CapVoiceVlanInd) {
 		toSerialize["cap_voice_vlan_ind"] = o.CapVoiceVlanInd
 	}
-	if !IsNil(o.CapVoiceVlanNaReason) {
+	if !IsNil(o.CapVoiceVlanNaReason) && *o.CapVoiceVlanNaReason != "" {
 		toSerialize["cap_voice_vlan_na_reason"] = o.CapVoiceVlanNaReason
 	}
-	if !IsNil(o.ChassisSerialNumber) {
+	if !IsNil(o.ChassisSerialNumber) && *o.ChassisSerialNumber != "" {
 		toSerialize["chassis_serial_number"] = o.ChassisSerialNumber
 	}
-	if !IsNil(o.Description) {
+	if !IsNil(o.Description) && *o.Description != "" {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
@@ -1478,10 +1478,10 @@ func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Interfaces) && len(o.Interfaces) > 0 {
 		toSerialize["interfaces"] = o.Interfaces
 	}
-	if !IsNil(o.Location) {
+	if !IsNil(o.Location) && *o.Location != "" {
 		toSerialize["location"] = o.Location
 	}
-	if !IsNil(o.Model) {
+	if !IsNil(o.Model) && *o.Model != "" {
 		toSerialize["model"] = o.Model
 	}
 	if !IsNil(o.MsAdUserData) {
@@ -1489,25 +1489,25 @@ func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 			toSerialize["ms_ad_user_data"] = o.MsAdUserData
 		}
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Neighbors) && len(o.Neighbors) > 0 {
 		toSerialize["neighbors"] = o.Neighbors
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
 	if !IsNil(o.NetworkInfos) && len(o.NetworkInfos) > 0 {
 		toSerialize["network_infos"] = o.NetworkInfos
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Networks) && len(o.Networks) > 0 {
 		toSerialize["networks"] = o.Networks
 	}
-	if !IsNil(o.OsVersion) {
+	if !IsNil(o.OsVersion) && *o.OsVersion != "" {
 		toSerialize["os_version"] = o.OsVersion
 	}
 	if !IsNil(o.PortStats) {
@@ -1518,13 +1518,13 @@ func (o DiscoveryDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PrivilegedPolling) {
 		toSerialize["privileged_polling"] = o.PrivilegedPolling
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.UserDefinedMgmtIp) {
+	if !IsNil(o.UserDefinedMgmtIp) && *o.UserDefinedMgmtIp != "" {
 		toSerialize["user_defined_mgmt_ip"] = o.UserDefinedMgmtIp
 	}
-	if !IsNil(o.Vendor) {
+	if !IsNil(o.Vendor) && *o.Vendor != "" {
 		toSerialize["vendor"] = o.Vendor
 	}
 	if !IsNil(o.VlanInfos) && len(o.VlanInfos) > 0 {

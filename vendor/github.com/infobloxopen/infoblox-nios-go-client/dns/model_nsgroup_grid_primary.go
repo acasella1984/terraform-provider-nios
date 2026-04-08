@@ -255,7 +255,7 @@ func (o NsgroupGridPrimary) MarshalJSON() ([]byte, error) {
 
 func (o NsgroupGridPrimary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Stealth) {

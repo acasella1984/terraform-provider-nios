@@ -12,6 +12,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -19,6 +21,7 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type CertificateAuthserviceModel struct {
@@ -66,6 +69,10 @@ var CertificateAuthserviceAttrTypes = map[string]attr.Type{
 var CertificateAuthserviceResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"auto_populate_login": schema.StringAttribute{
@@ -165,10 +172,16 @@ var CertificateAuthserviceResourceSchemaAttributes = map[string]schema.Attribute
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The password for the service account.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"remote_lookup_username": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The username for the service account.",
 	},
 	"response_timeout": schema.Int64Attribute{

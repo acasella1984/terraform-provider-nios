@@ -529,7 +529,7 @@ func (o GridSecuritySetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AuditLogRollingEnable) {
 		toSerialize["audit_log_rolling_enable"] = o.AuditLogRollingEnable
 	}
-	if !IsNil(o.AdminAccessItems) {
+	if !IsNil(o.AdminAccessItems) && len(o.AdminAccessItems) > 0 {
 		toSerialize["admin_access_items"] = o.AdminAccessItems
 	}
 	if !IsNil(o.HttpRedirectEnable) {
@@ -566,7 +566,9 @@ func (o GridSecuritySetting) ToMap() (map[string]interface{}, error) {
 		toSerialize["disable_concurrent_login"] = o.DisableConcurrentLogin
 	}
 	if !IsNil(o.InactivityLockoutSetting) {
-		toSerialize["inactivity_lockout_setting"] = o.InactivityLockoutSetting
+		if inactivity_lockout_settingMap, err := o.InactivityLockoutSetting.ToMap(); err == nil && len(inactivity_lockout_settingMap) > 0 {
+			toSerialize["inactivity_lockout_setting"] = o.InactivityLockoutSetting
+		}
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -19,9 +19,13 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dtc"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type DtcRecordAaaaModel struct {
@@ -49,10 +53,18 @@ var DtcRecordAaaaAttrTypes = map[string]attr.Type{
 var DtcRecordAaaaResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"auto_created": schema.BoolAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Flag that indicates whether this record was automatically created by NIOS.",
 	},
 	"comment": schema.StringAttribute{
@@ -90,6 +102,9 @@ var DtcRecordAaaaResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_ttl")),
 		},
 		MarkdownDescription: "The Time to Live (TTL) value.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_ttl": schema.BoolAttribute{
 		Optional:            true,

@@ -224,7 +224,7 @@ func (o GridDhcppropertiesOption60MatchRules) ToMap() (map[string]interface{}, e
 	if !IsNil(o.MatchValue) {
 		toSerialize["match_value"] = o.MatchValue
 	}
-	if !IsNil(o.OptionSpace) {
+	if !IsNil(o.OptionSpace) && *o.OptionSpace != "" {
 		toSerialize["option_space"] = o.OptionSpace
 	}
 	if !IsNil(o.IsSubstring) {

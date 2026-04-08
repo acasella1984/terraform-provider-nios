@@ -15,6 +15,10 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dtc"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type DtcPoolConsolidatedMonitorsModel struct {
@@ -40,11 +44,17 @@ var DtcPoolConsolidatedMonitorsResourceSchemaAttributes = map[string]schema.Attr
 			listvalidator.SizeAtLeast(1),
 		},
 		MarkdownDescription: "Members whose monitor statuses are shared across other members in a pool.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"monitor": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Monitor whose statuses are shared across other members in a pool.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"availability": schema.StringAttribute{
 		Optional: true,
@@ -53,11 +63,17 @@ var DtcPoolConsolidatedMonitorsResourceSchemaAttributes = map[string]schema.Attr
 			stringvalidator.OneOf("ANY", "ALL"),
 		},
 		MarkdownDescription: "Servers assigned to a pool with monitor defined are healthy if ANY or ALL members report healthy status.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"full_health_communication": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Flag for switching health performing and sharing behavior to perform health checks on each DTC grid member that serves related LBDN(s) and send them across all DTC grid members from both selected and non-selected lists.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

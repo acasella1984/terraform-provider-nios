@@ -159,7 +159,7 @@ func (o MemberNatSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExternalVirtualIp) {
 		toSerialize["external_virtual_ip"] = o.ExternalVirtualIp
 	}
-	if !IsNil(o.Group) {
+	if !IsNil(o.Group) && *o.Group != "" {
 		toSerialize["group"] = o.Group
 	}
 

@@ -16,10 +16,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -29,6 +34,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
 )
@@ -244,6 +250,10 @@ var NetworkcontainerAttrTypes = map[string]attr.Type{
 var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"authority": schema.BoolAttribute{
@@ -279,17 +289,26 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cloud_info": schema.SingleNestedAttribute{
 		Attributes:          NetworkcontainerCloudInfoResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Structure containing all cloud API related information for this object.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"comment": schema.StringAttribute{
 		Optional:            true,
 		MarkdownDescription: "Comment for the network container; maximum 256 characters.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ddns_domainname": schema.StringAttribute{
 		Optional:            true,
@@ -325,6 +344,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Validators: []validator.Int64{
 			int64validator.AlsoRequires(path.MatchRoot("use_ddns_ttl")),
+		},
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
 		},
 	},
 	"ddns_update_fixed_addresses": schema.BoolAttribute{
@@ -371,6 +393,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_discovery_basic_polling_settings")),
 		},
 		MarkdownDescription: "The discovery basic poll settings for this network container.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovery_blackout_setting": schema.SingleNestedAttribute{
 		Attributes: NetworkcontainerDiscoveryBlackoutSettingResourceSchemaAttributes,
@@ -380,6 +405,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_blackout_setting")),
 		},
 		MarkdownDescription: "The discovery blackout setting for this network container.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovery_engine_type": schema.StringAttribute{
 		Computed:            true,
@@ -393,6 +421,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_enable_discovery")),
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"email_list": schema.ListAttribute{
 		ElementType:         types.StringType,
@@ -459,6 +490,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			listvalidator.SizeAtLeast(1),
 		},
 		MarkdownDescription: "The endpoints that provides data for the DHCP Network Container object.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"extattrs": schema.MapAttribute{
 		Optional:            true,
@@ -476,6 +510,7 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"federated_realms": schema.ListNestedAttribute{
@@ -492,11 +527,17 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		MarkdownDescription: "The percentage of DHCP network container usage threshold above which network container usage is not expected and may warrant your attention. When the high watermark is reached, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"high_water_mark_reset": schema.Int64Attribute{
 		Optional:            true,
 		MarkdownDescription: "The percentage of DHCP network container usage below which the corresponding SNMP trap is reset. A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"ignore_dhcp_option_list_request": schema.BoolAttribute{
 		Optional:            true,
@@ -542,6 +583,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_ipam_threshold_settings")),
 		},
 		MarkdownDescription: "The IPAM threshold settings for this network container.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipam_trap_settings": schema.SingleNestedAttribute{
 		Attributes: NetworkcontainerIpamTrapSettingsResourceSchemaAttributes,
@@ -551,14 +595,23 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_ipam_trap_settings")),
 		},
 		MarkdownDescription: "The IPAM trap settings for this network container.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_rir_registration_update_sent": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when the last RIR registration update was sent.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_rir_registration_update_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Last RIR registration update status.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"lease_scavenge_time": schema.Int64Attribute{
 		Optional:            true,
@@ -570,6 +623,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 				int64validator.OneOf(-1),
 				int64validator.Between(86400, 2147472000),
 			),
+		},
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
 		},
 	},
 	"logic_filter_rules": schema.ListNestedAttribute{
@@ -591,6 +647,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.Any(
 				int64validator.Between(0, 100),
 			),
+		},
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
 		},
 	},
 	"low_water_mark_reset": schema.Int64Attribute{
@@ -619,8 +678,12 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		Default:             booldefault.StaticBool(true),
 	},
 	"ms_ad_user_data": schema.SingleNestedAttribute{
-		Attributes: NetworkcontainerMsAdUserDataResourceSchemaAttributes,
-		Optional:   true,
+		Attributes:          NetworkcontainerMsAdUserDataResourceSchemaAttributes,
+		Computed:            true,
+		MarkdownDescription: "The Microsoft Active Directory user related information.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network": schema.StringAttribute{
 		CustomType:          cidrtypes.IPv4PrefixType{},
@@ -629,6 +692,7 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		Validators: []validator.String{
 			stringvalidator.ExactlyOneOf(
@@ -642,12 +706,16 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          FuncCallResourceSchemaAttributes,
 		Optional:            true,
 		MarkdownDescription: "Specifies the function call to execute. The `next_available_network` function is supported for Network Container.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_container": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The network container to which this network belongs, if any.",
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"network_view": schema.StringAttribute{
@@ -667,6 +735,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"options": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -694,6 +765,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_blackout_setting")),
 		},
 		MarkdownDescription: "The port control blackout setting for this network container.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"pxe_lease_time": schema.Int64Attribute{
 		Optional:            true,
@@ -704,6 +778,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.Any(
 				int64validator.Between(0, 4294967295),
 			),
+		},
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
 		},
 	},
 	"recycle_leases": schema.BoolAttribute{
@@ -734,11 +811,17 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		MarkdownDescription: "The RIR organization assoicated with the network container.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"rir_registration_action": schema.StringAttribute{
 		Optional:            true,
 		MarkdownDescription: "The RIR registration action.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"rir_registration_status": schema.StringAttribute{
 		Optional:            true,
@@ -765,6 +848,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:   true,
 		Validators: []validator.Object{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_subscribe_settings")),
+		},
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"unmanaged": schema.BoolAttribute{
@@ -964,6 +1050,9 @@ var NetworkcontainerResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"utilization": schema.Int64Attribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The network container utilization in percentage.",
 	},
 	"zone_associations": schema.ListNestedAttribute{
@@ -988,7 +1077,8 @@ func (m *NetworkcontainerModel) Expand(ctx context.Context, diags *diag.Diagnost
 		Authority:                        flex.ExpandBoolPointer(m.Authority),
 		Bootfile:                         flex.ExpandStringPointer(m.Bootfile),
 		Bootserver:                       flex.ExpandStringPointer(m.Bootserver),
-		CloudInfo:                        ExpandNetworkcontainerCloudInfo(ctx, m.CloudInfo, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// CloudInfo:                        ExpandNetworkcontainerCloudInfo(ctx, m.CloudInfo, diags),
 		Comment:                          flex.ExpandStringPointer(m.Comment),
 		DdnsDomainname:                   flex.ExpandStringPointer(m.DdnsDomainname),
 		DdnsGenerateHostname:             flex.ExpandBoolPointer(m.DdnsGenerateHostname),
@@ -1024,7 +1114,6 @@ func (m *NetworkcontainerModel) Expand(ctx context.Context, diags *diag.Diagnost
 		LowWaterMark:                     flex.ExpandInt64Pointer(m.LowWaterMark),
 		LowWaterMarkReset:                flex.ExpandInt64Pointer(m.LowWaterMarkReset),
 		MgmPrivate:                       flex.ExpandBoolPointer(m.MgmPrivate),
-		MsAdUserData:                     ExpandNetworkcontainerMsAdUserData(ctx, m.MsAdUserData, diags),
 		Network:                          ExpandNetworkcontainerNetwork(m.Network),
 		FuncCall:                         ExpandFuncCall(ctx, m.FuncCall, diags),
 		Nextserver:                       flex.ExpandStringPointer(m.Nextserver),

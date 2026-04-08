@@ -561,7 +561,7 @@ func (o DiscoveryGridpropertiesAdvancedPollingSettings) MarshalJSON() ([]byte, e
 
 func (o DiscoveryGridpropertiesAdvancedPollingSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TcpScanTechnique) {
+	if !IsNil(o.TcpScanTechnique) && *o.TcpScanTechnique != "" {
 		toSerialize["tcp_scan_technique"] = o.TcpScanTechnique
 	}
 	if !IsNil(o.PingTimeout) {

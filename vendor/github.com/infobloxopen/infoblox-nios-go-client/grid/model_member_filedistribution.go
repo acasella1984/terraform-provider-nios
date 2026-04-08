@@ -823,22 +823,22 @@ func (o MemberFiledistribution) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableTftp) {
 		toSerialize["enable_tftp"] = o.EnableTftp
 	}
-	if !IsNil(o.FtpAcls) {
+	if !IsNil(o.FtpAcls) && len(o.FtpAcls) > 0 {
 		toSerialize["ftp_acls"] = o.FtpAcls
 	}
 	if !IsNil(o.FtpPort) {
 		toSerialize["ftp_port"] = o.FtpPort
 	}
-	if !IsNil(o.FtpStatus) {
+	if !IsNil(o.FtpStatus) && *o.FtpStatus != "" {
 		toSerialize["ftp_status"] = o.FtpStatus
 	}
 	if !IsNil(o.HostName) {
 		toSerialize["host_name"] = o.HostName
 	}
-	if !IsNil(o.HttpAcls) {
+	if !IsNil(o.HttpAcls) && len(o.HttpAcls) > 0 {
 		toSerialize["http_acls"] = o.HttpAcls
 	}
-	if !IsNil(o.HttpStatus) {
+	if !IsNil(o.HttpStatus) && *o.HttpStatus != "" {
 		toSerialize["http_status"] = o.HttpStatus
 	}
 	if !IsNil(o.Ipv4Address) {
@@ -850,13 +850,13 @@ func (o MemberFiledistribution) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.TftpAcls) {
+	if !IsNil(o.TftpAcls) && len(o.TftpAcls) > 0 {
 		toSerialize["tftp_acls"] = o.TftpAcls
 	}
 	if !IsNil(o.TftpPort) {
 		toSerialize["tftp_port"] = o.TftpPort
 	}
-	if !IsNil(o.TftpStatus) {
+	if !IsNil(o.TftpStatus) && *o.TftpStatus != "" {
 		toSerialize["tftp_status"] = o.TftpStatus
 	}
 	if !IsNil(o.UseAllowUploads) {

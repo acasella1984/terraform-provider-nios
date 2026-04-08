@@ -1241,19 +1241,19 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AssociationType) {
+	if !IsNil(o.AssociationType) && *o.AssociationType != "" {
 		toSerialize["association_type"] = o.AssociationType
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.FailoverPort) {
@@ -1274,7 +1274,7 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaxUnackedUpdates) {
 		toSerialize["max_unacked_updates"] = o.MaxUnackedUpdates
 	}
-	if !IsNil(o.MsAssociationMode) {
+	if !IsNil(o.MsAssociationMode) && *o.MsAssociationMode != "" {
 		toSerialize["ms_association_mode"] = o.MsAssociationMode
 	}
 	if !IsNil(o.MsEnableAuthentication) {
@@ -1283,28 +1283,28 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MsEnableSwitchoverInterval) {
 		toSerialize["ms_enable_switchover_interval"] = o.MsEnableSwitchoverInterval
 	}
-	if !IsNil(o.MsFailoverMode) {
+	if !IsNil(o.MsFailoverMode) && *o.MsFailoverMode != "" {
 		toSerialize["ms_failover_mode"] = o.MsFailoverMode
 	}
-	if !IsNil(o.MsFailoverPartner) {
+	if !IsNil(o.MsFailoverPartner) && *o.MsFailoverPartner != "" {
 		toSerialize["ms_failover_partner"] = o.MsFailoverPartner
 	}
-	if !IsNil(o.MsHotstandbyPartnerRole) {
+	if !IsNil(o.MsHotstandbyPartnerRole) && *o.MsHotstandbyPartnerRole != "" {
 		toSerialize["ms_hotstandby_partner_role"] = o.MsHotstandbyPartnerRole
 	}
 	if !IsNil(o.MsIsConflict) {
 		toSerialize["ms_is_conflict"] = o.MsIsConflict
 	}
-	if !IsNil(o.MsPreviousState) {
+	if !IsNil(o.MsPreviousState) && *o.MsPreviousState != "" {
 		toSerialize["ms_previous_state"] = o.MsPreviousState
 	}
-	if !IsNil(o.MsServer) {
+	if !IsNil(o.MsServer) && *o.MsServer != "" {
 		toSerialize["ms_server"] = o.MsServer
 	}
 	if !IsNil(o.MsSharedSecret) {
 		toSerialize["ms_shared_secret"] = o.MsSharedSecret
 	}
-	if !IsNil(o.MsState) {
+	if !IsNil(o.MsState) && *o.MsState != "" {
 		toSerialize["ms_state"] = o.MsState
 	}
 	if !IsNil(o.MsSwitchoverInterval) {
@@ -1316,10 +1316,10 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Primary) {
 		toSerialize["primary"] = o.Primary
 	}
-	if !IsNil(o.PrimaryServerType) {
+	if !IsNil(o.PrimaryServerType) && *o.PrimaryServerType != "" {
 		toSerialize["primary_server_type"] = o.PrimaryServerType
 	}
-	if !IsNil(o.PrimaryState) {
+	if !IsNil(o.PrimaryState) && *o.PrimaryState != "" {
 		toSerialize["primary_state"] = o.PrimaryState
 	}
 	if !IsNil(o.RecycleLeases) {
@@ -1328,10 +1328,10 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Secondary) {
 		toSerialize["secondary"] = o.Secondary
 	}
-	if !IsNil(o.SecondaryServerType) {
+	if !IsNil(o.SecondaryServerType) && *o.SecondaryServerType != "" {
 		toSerialize["secondary_server_type"] = o.SecondaryServerType
 	}
-	if !IsNil(o.SecondaryState) {
+	if !IsNil(o.SecondaryState) && *o.SecondaryState != "" {
 		toSerialize["secondary_state"] = o.SecondaryState
 	}
 	if !IsNil(o.UseFailoverPort) {

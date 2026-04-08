@@ -363,13 +363,13 @@ func (o Filternac) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.LeaseTime) {
@@ -378,7 +378,7 @@ func (o Filternac) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Options) {
+	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
 	return toSerialize, nil

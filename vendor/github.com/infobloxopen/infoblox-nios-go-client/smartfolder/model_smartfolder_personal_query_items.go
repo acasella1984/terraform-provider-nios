@@ -266,11 +266,13 @@ func (o SmartfolderPersonalQueryItems) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OpMatch) {
 		toSerialize["op_match"] = o.OpMatch
 	}
-	if !IsNil(o.ValueType) {
+	if !IsNil(o.ValueType) && *o.ValueType != "" {
 		toSerialize["value_type"] = o.ValueType
 	}
 	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+		if valueMap, err := o.Value.ToMap(); err == nil && len(valueMap) > 0 {
+			toSerialize["value"] = o.Value
+		}
 	}
 
 	for key, value := range o.AdditionalProperties {

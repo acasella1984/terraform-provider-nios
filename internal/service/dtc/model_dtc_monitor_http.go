@@ -13,8 +13,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -22,6 +24,7 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
 )
 
@@ -84,16 +87,27 @@ var DtcMonitorHttpAttrTypes = map[string]attr.Type{
 var DtcMonitorHttpResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"ciphers": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "An optional cipher list for a secure HTTP/S connection.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"client_cert": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "An optional client certificate, supplied in a secure HTTP/S mode if present.",
 	},
 	"comment": schema.StringAttribute{
@@ -130,6 +144,9 @@ var DtcMonitorHttpResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("EQ", "GEQ", "LEQ", "NEQ"),
 		},
 		MarkdownDescription: "A content check success criteria operator.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"content_check_regex": schema.StringAttribute{
 		Optional: true,
@@ -138,6 +155,9 @@ var DtcMonitorHttpResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "A content check regular expression.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"content_extract_group": schema.Int64Attribute{
 		Optional: true,
@@ -164,6 +184,9 @@ var DtcMonitorHttpResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "A content extraction value to compare with extracted result.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"enable_sni": schema.BoolAttribute{
 		Optional:            true,
@@ -187,6 +210,7 @@ var DtcMonitorHttpResourceSchemaAttributes = map[string]schema.Attribute{
 		MarkdownDescription: "Extensible attributes associated with the object , including default attributes.",
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"interval": schema.Int64Attribute{
@@ -214,6 +238,9 @@ var DtcMonitorHttpResourceSchemaAttributes = map[string]schema.Attribute{
 	"request": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "An HTTP request to send.",
 	},
 	"result": schema.StringAttribute{

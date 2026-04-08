@@ -11,6 +11,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -20,6 +23,7 @@ import (
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type VlanrangeModel struct {
@@ -53,6 +57,10 @@ var VlanrangeAttrTypes = map[string]attr.Type{
 var VlanrangeResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"comment": schema.StringAttribute{
@@ -69,6 +77,9 @@ var VlanrangeResourceSchemaAttributes = map[string]schema.Attribute{
 	"delete_vlans": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Vlans delete option. Determines whether all child objects should be removed alongside with the VLAN Range or child objects should be assigned to another parental VLAN Range/View. By default child objects are re-parented.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"end_vlan_id": schema.Int64Attribute{
 		Required:            true,
@@ -88,6 +99,7 @@ var VlanrangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed: true,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "Extensible attributes associated with the object , including default and internal attributes.",
 		ElementType:         types.StringType,
@@ -104,6 +116,7 @@ var VlanrangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed: true,
 		PlanModifiers: []planmodifier.Bool{
 			planmodifiers.ImmutableBool(),
+			boolplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "If set on creation VLAN objects will be created once VLAN Range created.",
 	},
@@ -119,6 +132,7 @@ var VlanrangeResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "If set on creation prefix string will be used for VLAN name.",
 	},

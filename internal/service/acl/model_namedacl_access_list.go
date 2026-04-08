@@ -16,6 +16,9 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NamedaclAccessListModel struct {
@@ -58,6 +61,9 @@ var NamedaclAccessListResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 			customvalidator.ValidateTrimmedString(),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"permission": schema.StringAttribute{
 		Optional:            true,
@@ -69,6 +75,9 @@ var NamedaclAccessListResourceSchemaAttributes = map[string]schema.Attribute{
 				path.MatchRelative().AtParent().AtName("tsig_key_alg"),
 				path.MatchRelative().AtParent().AtName("use_tsig_key_name"),
 			),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"tsig_key": schema.StringAttribute{
@@ -82,6 +91,9 @@ var NamedaclAccessListResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 			customvalidator.ValidateTrimmedString(),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_alg": schema.StringAttribute{
 		Optional:            true,
@@ -92,6 +104,9 @@ var NamedaclAccessListResourceSchemaAttributes = map[string]schema.Attribute{
 				path.MatchRelative().AtParent().AtName("address"),
 				path.MatchRelative().AtParent().AtName("permission"),
 			),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"tsig_key_name": schema.StringAttribute{
@@ -105,10 +120,16 @@ var NamedaclAccessListResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 			customvalidator.ValidateTrimmedString(),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_tsig_key_name": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Use flag for: tsig_key_name",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -193,7 +193,7 @@ func (o NsgroupForwardingmemberForwardingServers) ToMap() (map[string]interface{
 	if !IsNil(o.ForwardersOnly) {
 		toSerialize["forwarders_only"] = o.ForwardersOnly
 	}
-	if !IsNil(o.ForwardTo) {
+	if !IsNil(o.ForwardTo) && len(o.ForwardTo) > 0 {
 		toSerialize["forward_to"] = o.ForwardTo
 	}
 	if !IsNil(o.UseOverrideForwarders) {

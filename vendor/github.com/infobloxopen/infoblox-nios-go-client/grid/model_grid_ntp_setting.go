@@ -325,14 +325,16 @@ func (o GridNtpSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableNtp) {
 		toSerialize["enable_ntp"] = o.EnableNtp
 	}
-	if !IsNil(o.NtpServers) {
+	if !IsNil(o.NtpServers) && len(o.NtpServers) > 0 {
 		toSerialize["ntp_servers"] = o.NtpServers
 	}
-	if !IsNil(o.NtpKeys) {
+	if !IsNil(o.NtpKeys) && len(o.NtpKeys) > 0 {
 		toSerialize["ntp_keys"] = o.NtpKeys
 	}
 	if !IsNil(o.NtpAcl) {
-		toSerialize["ntp_acl"] = o.NtpAcl
+		if ntp_aclMap, err := o.NtpAcl.ToMap(); err == nil && len(ntp_aclMap) > 0 {
+			toSerialize["ntp_acl"] = o.NtpAcl
+		}
 	}
 	if !IsNil(o.NtpKod) {
 		toSerialize["ntp_kod"] = o.NtpKod

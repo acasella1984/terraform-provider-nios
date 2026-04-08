@@ -11,6 +11,10 @@ import (
 
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZoneAuthAwsRte53ZoneInfoModel struct {
@@ -38,31 +42,52 @@ var ZoneAuthAwsRte53ZoneInfoResourceSchemaAttributes = map[string]schema.Attribu
 		ElementType:         types.StringType,
 		Computed:            true,
 		MarkdownDescription: "List of AWS VPC strings that are associated with this zone.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"callerreference": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "User specified caller reference when zone was created.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"delegation_set_id": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "ID of delegation set associated with this zone.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"hosted_zone_id": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "AWS route 53 assigned ID for this zone.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"name_servers": schema.ListAttribute{
 		ElementType:         types.StringType,
 		Computed:            true,
 		MarkdownDescription: "List of AWS name servers that are authoritative for this domain name.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"record_set_count": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "Number of resource record sets in the hosted zone.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Indicates whether private or public zone.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

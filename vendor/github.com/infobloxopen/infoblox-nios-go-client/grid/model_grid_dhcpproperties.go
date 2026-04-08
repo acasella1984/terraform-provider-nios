@@ -2979,10 +2979,10 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisableAllNacFilters) {
 		toSerialize["disable_all_nac_filters"] = o.DisableAllNacFilters
 	}
-	if !IsNil(o.DnsUpdateStyle) {
+	if !IsNil(o.DnsUpdateStyle) && *o.DnsUpdateStyle != "" {
 		toSerialize["dns_update_style"] = o.DnsUpdateStyle
 	}
-	if !IsNil(o.EmailList) {
+	if !IsNil(o.EmailList) && len(o.EmailList) > 0 {
 		toSerialize["email_list"] = o.EmailList
 	}
 	if !IsNil(o.EnableDdns) {
@@ -3012,13 +3012,13 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableSnmpWarnings) {
 		toSerialize["enable_snmp_warnings"] = o.EnableSnmpWarnings
 	}
-	if !IsNil(o.FormatLogOption82) {
+	if !IsNil(o.FormatLogOption82) && *o.FormatLogOption82 != "" {
 		toSerialize["format_log_option_82"] = o.FormatLogOption82
 	}
-	if !IsNil(o.Grid) {
+	if !IsNil(o.Grid) && *o.Grid != "" {
 		toSerialize["grid"] = o.Grid
 	}
-	if !IsNil(o.GssTsigKeys) {
+	if !IsNil(o.GssTsigKeys) && len(o.GssTsigKeys) > 0 {
 		toSerialize["gss_tsig_keys"] = o.GssTsigKeys
 	}
 	if !IsNil(o.HighWaterMark) {
@@ -3027,16 +3027,16 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HighWaterMarkReset) {
 		toSerialize["high_water_mark_reset"] = o.HighWaterMarkReset
 	}
-	if !IsNil(o.HostnameRewritePolicy) {
+	if !IsNil(o.HostnameRewritePolicy) && *o.HostnameRewritePolicy != "" {
 		toSerialize["hostname_rewrite_policy"] = o.HostnameRewritePolicy
 	}
 	if !IsNil(o.IgnoreDhcpOptionListRequest) {
 		toSerialize["ignore_dhcp_option_list_request"] = o.IgnoreDhcpOptionListRequest
 	}
-	if !IsNil(o.IgnoreId) {
+	if !IsNil(o.IgnoreId) && *o.IgnoreId != "" {
 		toSerialize["ignore_id"] = o.IgnoreId
 	}
-	if !IsNil(o.IgnoreMacAddresses) {
+	if !IsNil(o.IgnoreMacAddresses) && len(o.IgnoreMacAddresses) > 0 {
 		toSerialize["ignore_mac_addresses"] = o.IgnoreMacAddresses
 	}
 	if !IsNil(o.ImmediateFaConfiguration) {
@@ -3060,13 +3060,13 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6DefaultPrefix) {
 		toSerialize["ipv6_default_prefix"] = o.Ipv6DefaultPrefix
 	}
-	if !IsNil(o.Ipv6DnsUpdateStyle) {
+	if !IsNil(o.Ipv6DnsUpdateStyle) && *o.Ipv6DnsUpdateStyle != "" {
 		toSerialize["ipv6_dns_update_style"] = o.Ipv6DnsUpdateStyle
 	}
 	if !IsNil(o.Ipv6DomainName) {
 		toSerialize["ipv6_domain_name"] = o.Ipv6DomainName
 	}
-	if !IsNil(o.Ipv6DomainNameServers) {
+	if !IsNil(o.Ipv6DomainNameServers) && len(o.Ipv6DomainNameServers) > 0 {
 		toSerialize["ipv6_domain_name_servers"] = o.Ipv6DomainNameServers
 	}
 	if !IsNil(o.Ipv6EnableDdns) {
@@ -3084,7 +3084,7 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6GenerateHostname) {
 		toSerialize["ipv6_generate_hostname"] = o.Ipv6GenerateHostname
 	}
-	if !IsNil(o.Ipv6GssTsigKeys) {
+	if !IsNil(o.Ipv6GssTsigKeys) && len(o.Ipv6GssTsigKeys) > 0 {
 		toSerialize["ipv6_gss_tsig_keys"] = o.Ipv6GssTsigKeys
 	}
 	if !IsNil(o.Ipv6KdcServer) {
@@ -3093,13 +3093,13 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6LeaseScavengingTime) {
 		toSerialize["ipv6_lease_scavenging_time"] = o.Ipv6LeaseScavengingTime
 	}
-	if !IsNil(o.Ipv6MicrosoftCodePage) {
+	if !IsNil(o.Ipv6MicrosoftCodePage) && *o.Ipv6MicrosoftCodePage != "" {
 		toSerialize["ipv6_microsoft_code_page"] = o.Ipv6MicrosoftCodePage
 	}
-	if !IsNil(o.Ipv6Options) {
+	if !IsNil(o.Ipv6Options) && len(o.Ipv6Options) > 0 {
 		toSerialize["ipv6_options"] = o.Ipv6Options
 	}
-	if !IsNil(o.Ipv6Prefixes) {
+	if !IsNil(o.Ipv6Prefixes) && len(o.Ipv6Prefixes) > 0 {
 		toSerialize["ipv6_prefixes"] = o.Ipv6Prefixes
 	}
 	if !IsNil(o.Ipv6RecycleLeases) {
@@ -3111,7 +3111,7 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6RetryUpdatesInterval) {
 		toSerialize["ipv6_retry_updates_interval"] = o.Ipv6RetryUpdatesInterval
 	}
-	if !IsNil(o.Ipv6TxtRecordHandling) {
+	if !IsNil(o.Ipv6TxtRecordHandling) && *o.Ipv6TxtRecordHandling != "" {
 		toSerialize["ipv6_txt_record_handling"] = o.Ipv6TxtRecordHandling
 	}
 	if !IsNil(o.Ipv6UpdateDnsOnLeaseRenewal) {
@@ -3120,10 +3120,10 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.KdcServer) {
 		toSerialize["kdc_server"] = o.KdcServer
 	}
-	if !IsNil(o.LeaseLoggingMember) {
+	if !IsNil(o.LeaseLoggingMember) && *o.LeaseLoggingMember != "" {
 		toSerialize["lease_logging_member"] = o.LeaseLoggingMember
 	}
-	if !IsNil(o.LeasePerClientSettings) {
+	if !IsNil(o.LeasePerClientSettings) && *o.LeasePerClientSettings != "" {
 		toSerialize["lease_per_client_settings"] = o.LeasePerClientSettings
 	}
 	if !IsNil(o.LeaseScavengeTime) {
@@ -3132,7 +3132,7 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogLeaseEvents) {
 		toSerialize["log_lease_events"] = o.LogLeaseEvents
 	}
-	if !IsNil(o.LogicFilterRules) {
+	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
 	if !IsNil(o.LowWaterMark) {
@@ -3141,16 +3141,16 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LowWaterMarkReset) {
 		toSerialize["low_water_mark_reset"] = o.LowWaterMarkReset
 	}
-	if !IsNil(o.MicrosoftCodePage) {
+	if !IsNil(o.MicrosoftCodePage) && *o.MicrosoftCodePage != "" {
 		toSerialize["microsoft_code_page"] = o.MicrosoftCodePage
 	}
 	if !IsNil(o.Nextserver) {
 		toSerialize["nextserver"] = o.Nextserver
 	}
-	if !IsNil(o.Option60MatchRules) {
+	if !IsNil(o.Option60MatchRules) && len(o.Option60MatchRules) > 0 {
 		toSerialize["option60_match_rules"] = o.Option60MatchRules
 	}
-	if !IsNil(o.Options) {
+	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
 	if !IsNil(o.PingCount) {
@@ -3162,10 +3162,10 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PreferredLifetime) {
 		toSerialize["preferred_lifetime"] = o.PreferredLifetime
 	}
-	if !IsNil(o.PrefixLengthMode) {
+	if !IsNil(o.PrefixLengthMode) && *o.PrefixLengthMode != "" {
 		toSerialize["prefix_length_mode"] = o.PrefixLengthMode
 	}
-	if !IsNil(o.ProtocolHostnameRewritePolicies) {
+	if !IsNil(o.ProtocolHostnameRewritePolicies) && len(o.ProtocolHostnameRewritePolicies) > 0 {
 		toSerialize["protocol_hostname_rewrite_policies"] = o.ProtocolHostnameRewritePolicies
 	}
 	if !IsNil(o.PxeLeaseTime) {
@@ -3175,15 +3175,17 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 		toSerialize["recycle_leases"] = o.RecycleLeases
 	}
 	if !IsNil(o.RestartSetting) {
-		toSerialize["restart_setting"] = o.RestartSetting
+		if restart_settingMap, err := o.RestartSetting.ToMap(); err == nil && len(restart_settingMap) > 0 {
+			toSerialize["restart_setting"] = o.RestartSetting
+		}
 	}
 	if !IsNil(o.RetryDdnsUpdates) {
 		toSerialize["retry_ddns_updates"] = o.RetryDdnsUpdates
 	}
-	if !IsNil(o.SyslogFacility) {
+	if !IsNil(o.SyslogFacility) && *o.SyslogFacility != "" {
 		toSerialize["syslog_facility"] = o.SyslogFacility
 	}
-	if !IsNil(o.TxtRecordHandling) {
+	if !IsNil(o.TxtRecordHandling) && *o.TxtRecordHandling != "" {
 		toSerialize["txt_record_handling"] = o.TxtRecordHandling
 	}
 	if !IsNil(o.UpdateDnsOnLeaseRenewal) {

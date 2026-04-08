@@ -1409,7 +1409,9 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 		toSerialize["address_type"] = o.AddressType
 	}
 	if !IsNil(o.CloudInfo) {
-		toSerialize["cloud_info"] = o.CloudInfo
+		if cloud_infoMap, err := o.CloudInfo.ToMap(); err == nil && len(cloud_infoMap) > 0 {
+			toSerialize["cloud_info"] = o.CloudInfo
+		}
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -1417,16 +1419,20 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DiscoverNowStatus) {
+	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
 		toSerialize["discover_now_status"] = o.DiscoverNowStatus
 	}
 	if !IsNil(o.DiscoveryBasicPollSettings) {
-		toSerialize["discovery_basic_poll_settings"] = o.DiscoveryBasicPollSettings
+		if discovery_basic_poll_settingsMap, err := o.DiscoveryBasicPollSettings.ToMap(); err == nil && len(discovery_basic_poll_settingsMap) > 0 {
+			toSerialize["discovery_basic_poll_settings"] = o.DiscoveryBasicPollSettings
+		}
 	}
 	if !IsNil(o.DiscoveryBlackoutSetting) {
-		toSerialize["discovery_blackout_setting"] = o.DiscoveryBlackoutSetting
+		if discovery_blackout_settingMap, err := o.DiscoveryBlackoutSetting.ToMap(); err == nil && len(discovery_blackout_settingMap) > 0 {
+			toSerialize["discovery_blackout_setting"] = o.DiscoveryBlackoutSetting
+		}
 	}
-	if !IsNil(o.DiscoveryMember) {
+	if !IsNil(o.DiscoveryMember) && *o.DiscoveryMember != "" {
 		toSerialize["discovery_member"] = o.DiscoveryMember
 	}
 	if !IsNil(o.EnableDiscovery) {
@@ -1438,19 +1444,19 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndAddr) {
 		toSerialize["end_addr"] = o.EndAddr
 	}
-	if !IsNil(o.EndpointSources) {
+	if !IsNil(o.EndpointSources) && len(o.EndpointSources) > 0 {
 		toSerialize["endpoint_sources"] = o.EndpointSources
 	}
-	if !IsNil(o.Exclude) {
+	if !IsNil(o.Exclude) && len(o.Exclude) > 0 {
 		toSerialize["exclude"] = o.Exclude
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Ipv6EndPrefix) {
@@ -1462,11 +1468,13 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6StartPrefix) {
 		toSerialize["ipv6_start_prefix"] = o.Ipv6StartPrefix
 	}
-	if !IsNil(o.LogicFilterRules) {
+	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
 	if !IsNil(o.Member) {
-		toSerialize["member"] = o.Member
+		if memberMap, err := o.Member.ToMap(); err == nil && len(memberMap) > 0 {
+			toSerialize["member"] = o.Member
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -1477,11 +1485,13 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.OptionFilterRules) {
+	if !IsNil(o.OptionFilterRules) && len(o.OptionFilterRules) > 0 {
 		toSerialize["option_filter_rules"] = o.OptionFilterRules
 	}
 	if !IsNil(o.PortControlBlackoutSetting) {
-		toSerialize["port_control_blackout_setting"] = o.PortControlBlackoutSetting
+		if port_control_blackout_settingMap, err := o.PortControlBlackoutSetting.ToMap(); err == nil && len(port_control_blackout_settingMap) > 0 {
+			toSerialize["port_control_blackout_setting"] = o.PortControlBlackoutSetting
+		}
 	}
 	if !IsNil(o.RecycleLeases) {
 		toSerialize["recycle_leases"] = o.RecycleLeases
@@ -1492,14 +1502,16 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SamePortControlDiscoveryBlackout) {
 		toSerialize["same_port_control_discovery_blackout"] = o.SamePortControlDiscoveryBlackout
 	}
-	if !IsNil(o.ServerAssociationType) {
+	if !IsNil(o.ServerAssociationType) && *o.ServerAssociationType != "" {
 		toSerialize["server_association_type"] = o.ServerAssociationType
 	}
 	if !IsNil(o.StartAddr) {
 		toSerialize["start_addr"] = o.StartAddr
 	}
 	if !IsNil(o.SubscribeSettings) {
-		toSerialize["subscribe_settings"] = o.SubscribeSettings
+		if subscribe_settingsMap, err := o.SubscribeSettings.ToMap(); err == nil && len(subscribe_settingsMap) > 0 {
+			toSerialize["subscribe_settings"] = o.SubscribeSettings
+		}
 	}
 	if !IsNil(o.Template) {
 		toSerialize["template"] = o.Template

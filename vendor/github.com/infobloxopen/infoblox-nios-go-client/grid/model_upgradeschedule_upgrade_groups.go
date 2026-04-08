@@ -261,10 +261,10 @@ func (o UpgradescheduleUpgradeGroups) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TimeZone) {
 		toSerialize["time_zone"] = o.TimeZone
 	}
-	if !IsNil(o.DistributionDependentGroup) {
+	if !IsNil(o.DistributionDependentGroup) && *o.DistributionDependentGroup != "" {
 		toSerialize["distribution_dependent_group"] = o.DistributionDependentGroup
 	}
-	if !IsNil(o.UpgradeDependentGroup) {
+	if !IsNil(o.UpgradeDependentGroup) && *o.UpgradeDependentGroup != "" {
 		toSerialize["upgrade_dependent_group"] = o.UpgradeDependentGroup
 	}
 	if !IsNil(o.DistributionTime) {

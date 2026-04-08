@@ -18,6 +18,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -30,6 +35,7 @@ import (
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 // TODO: networks fields to accept list of IPs (current implementation accepts list of networks' references)
@@ -150,6 +156,10 @@ var SharednetworkAttrTypes = map[string]attr.Type{
 var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"authority": schema.BoolAttribute{
@@ -168,6 +178,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_bootfile")),
 		},
 		MarkdownDescription: "The bootfile name for the shared network. You can configure the DHCP server to support clients that use the boot file name option in their DHCPREQUEST messages.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"bootserver": schema.StringAttribute{
 		Optional: true,
@@ -177,6 +190,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		MarkdownDescription: "The bootserver address for the shared network. You can specify the name and/or IP address of the boot server that the host needs to boot. The boot server IPv4 Address or name in FQDN format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"comment": schema.StringAttribute{
 		Optional: true,
@@ -244,9 +260,15 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	"dhcp_utilization": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The percentage of the total DHCP utilization of the networks belonging to the shared network multiplied by 1000. This is the percentage of the total number of available IP addresses from all the networks belonging to the shared network versus the total number of all IP addresses in all of the networks in the shared network.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"dhcp_utilization_status": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "A string describing the utilization level of the shared network.",
 	},
 	"disable": schema.BoolAttribute{
@@ -257,6 +279,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"dynamic_hosts": schema.Int64Attribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The total number of DHCP leases issued for the shared network.",
 	},
 	"enable_ddns": schema.BoolAttribute{
@@ -290,6 +315,7 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"ignore_client_identifier": schema.BoolAttribute{
@@ -299,6 +325,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			boolvalidator.AlsoRequires(path.MatchRoot("use_ignore_client_identifier")),
 		},
 		MarkdownDescription: "If set to true, the client identifier will be ignored.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ignore_dhcp_option_list_request": schema.BoolAttribute{
 		Optional: true,
@@ -317,6 +346,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_ignore_id")),
 		},
 		MarkdownDescription: "Indicates whether the appliance will ignore DHCP client IDs or MAC addresses. Valid values are \"NONE\", \"CLIENT\", or \"MACADDR\". The default is \"NONE\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ignore_mac_addresses": schema.ListAttribute{
 		CustomType:  internaltypes.UnorderedListOfStringType,
@@ -351,6 +383,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          SharednetworkMsAdUserDataResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The Microsoft Active Directory user related information.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		Required: true,
@@ -389,6 +424,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		MarkdownDescription: "The name in FQDN and/or IPv4 Address of the next server that the host needs to boot.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"options": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -415,13 +453,22 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_pxe_lease_time")),
 		},
 		MarkdownDescription: "The PXE lease time value of a shared network object. Some hosts use PXE (Preboot Execution Environment) to boot remotely from a server. To better manage your IP resources, set a different lease time for PXE boot requests. You can configure the DHCP server to allocate an IP address with a shorter lease time to hosts that send PXE boot requests, so IP addresses are not leased longer than necessary. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"static_hosts": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of static DHCP addresses configured in the shared network.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"total_hosts": schema.Int64Attribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The total number of DHCP addresses configured in the shared network.",
 	},
 	"update_dns_on_lease_renewal": schema.BoolAttribute{
@@ -490,6 +537,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	"use_ignore_client_identifier": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Use flag for: ignore_client_identifier",
 	},
 	"use_ignore_dhcp_option_list_request": schema.BoolAttribute{
@@ -501,6 +551,9 @@ var SharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	"use_ignore_id": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Use flag for: ignore_id",
 	},
 	"use_lease_scavenge_time": schema.BoolAttribute{
@@ -566,7 +619,8 @@ func (m *SharednetworkModel) Expand(ctx context.Context, diags *diag.Diagnostics
 		IgnoreMacAddresses:             flex.ExpandFrameworkListString(ctx, m.IgnoreMacAddresses, diags),
 		LeaseScavengeTime:              flex.ExpandInt64Pointer(m.LeaseScavengeTime),
 		LogicFilterRules:               flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandSharednetworkLogicFilterRules),
-		MsAdUserData:                   ExpandSharednetworkMsAdUserData(ctx, m.MsAdUserData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// MsAdUserData:                   ExpandSharednetworkMsAdUserData(ctx, m.MsAdUserData, diags),
 		Name:                           flex.ExpandStringPointer(m.Name),
 		Networks:                       flex.ExpandFrameworkListNestedBlock(ctx, m.Networks, diags, ExpandSharednetworkNetworks),
 		Nextserver:                     flex.ExpandStringPointer(m.Nextserver),

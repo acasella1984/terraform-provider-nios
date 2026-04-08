@@ -632,19 +632,19 @@ func (o DiscoveryMemberproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.CliCredentials) {
+	if !IsNil(o.CliCredentials) && len(o.CliCredentials) > 0 {
 		toSerialize["cli_credentials"] = o.CliCredentials
 	}
-	if !IsNil(o.DefaultSeedRouters) {
+	if !IsNil(o.DefaultSeedRouters) && len(o.DefaultSeedRouters) > 0 {
 		toSerialize["default_seed_routers"] = o.DefaultSeedRouters
 	}
-	if !IsNil(o.DiscoveryMember) {
+	if !IsNil(o.DiscoveryMember) && *o.DiscoveryMember != "" {
 		toSerialize["discovery_member"] = o.DiscoveryMember
 	}
 	if !IsNil(o.EnableService) {
 		toSerialize["enable_service"] = o.EnableService
 	}
-	if !IsNil(o.GatewaySeedRouters) {
+	if !IsNil(o.GatewaySeedRouters) && len(o.GatewaySeedRouters) > 0 {
 		toSerialize["gateway_seed_routers"] = o.GatewaySeedRouters
 	}
 	if !IsNil(o.IsSa) {
@@ -653,19 +653,19 @@ func (o DiscoveryMemberproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !IsNil(o.ScanInterfaces) {
+	if !IsNil(o.ScanInterfaces) && len(o.ScanInterfaces) > 0 {
 		toSerialize["scan_interfaces"] = o.ScanInterfaces
 	}
-	if !IsNil(o.SdnConfigs) {
+	if !IsNil(o.SdnConfigs) && len(o.SdnConfigs) > 0 {
 		toSerialize["sdn_configs"] = o.SdnConfigs
 	}
-	if !IsNil(o.SeedRouters) {
+	if !IsNil(o.SeedRouters) && len(o.SeedRouters) > 0 {
 		toSerialize["seed_routers"] = o.SeedRouters
 	}
-	if !IsNil(o.Snmpv1v2Credentials) {
+	if !IsNil(o.Snmpv1v2Credentials) && len(o.Snmpv1v2Credentials) > 0 {
 		toSerialize["snmpv1v2_credentials"] = o.Snmpv1v2Credentials
 	}
-	if !IsNil(o.Snmpv3Credentials) {
+	if !IsNil(o.Snmpv3Credentials) && len(o.Snmpv3Credentials) > 0 {
 		toSerialize["snmpv3_credentials"] = o.Snmpv3Credentials
 	}
 	if !IsNil(o.UseCliCredentials) {

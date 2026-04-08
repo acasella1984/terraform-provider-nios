@@ -7,6 +7,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 
@@ -38,12 +41,18 @@ var RangePortControlBlackoutSettingResourceSchemaAttributes = map[string]schema.
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The blackout duration in seconds; minimum value is 1 minute.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"blackout_schedule": schema.SingleNestedAttribute{
 		Attributes:          RangeportcontrolblackoutsettingBlackoutScheduleResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The schedule for the blackout period.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

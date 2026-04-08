@@ -159,7 +159,7 @@ func (o MembernodeinfoLan2PhysicalSetting) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Speed) {
 		toSerialize["speed"] = o.Speed
 	}
-	if !IsNil(o.Duplex) {
+	if !IsNil(o.Duplex) && *o.Duplex != "" {
 		toSerialize["duplex"] = o.Duplex
 	}
 

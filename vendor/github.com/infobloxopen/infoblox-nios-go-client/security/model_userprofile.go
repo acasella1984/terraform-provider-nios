@@ -697,10 +697,10 @@ func (o Userprofile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.ActiveDashboardType) {
+	if !IsNil(o.ActiveDashboardType) && *o.ActiveDashboardType != "" {
 		toSerialize["active_dashboard_type"] = o.ActiveDashboardType
 	}
-	if !IsNil(o.AdminGroup) {
+	if !IsNil(o.AdminGroup) && *o.AdminGroup != "" {
 		toSerialize["admin_group"] = o.AdminGroup
 	}
 	if !IsNil(o.DaysToExpire) {
@@ -715,7 +715,7 @@ func (o Userprofile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GlobalSearchOnNiData) {
 		toSerialize["global_search_on_ni_data"] = o.GlobalSearchOnNiData
 	}
-	if !IsNil(o.GridAdminGroups) {
+	if !IsNil(o.GridAdminGroups) && len(o.GridAdminGroups) > 0 {
 		toSerialize["grid_admin_groups"] = o.GridAdminGroups
 	}
 	if !IsNil(o.LastLogin) {
@@ -748,7 +748,7 @@ func (o Userprofile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseTimeZone) {
 		toSerialize["use_time_zone"] = o.UseTimeZone
 	}
-	if !IsNil(o.UserType) {
+	if !IsNil(o.UserType) && *o.UserType != "" {
 		toSerialize["user_type"] = o.UserType
 	}
 	return toSerialize, nil

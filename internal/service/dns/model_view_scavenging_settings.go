@@ -8,6 +8,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -81,6 +84,9 @@ var ViewScavengingSettingsResourceSchemaAttributes = map[string]schema.Attribute
 		Attributes:          ViewscavengingsettingsScavengingScheduleResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The scavenging schedule. The scavenging schedule is used to determine when the scavenging should be performed. If not specified, the default scavenging schedule is used.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"expression_list": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -88,6 +94,9 @@ var ViewScavengingSettingsResourceSchemaAttributes = map[string]schema.Attribute
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -99,6 +108,9 @@ var ViewScavengingSettingsResourceSchemaAttributes = map[string]schema.Attribute
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},

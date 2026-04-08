@@ -14,6 +14,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/notification"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NotificationRuleExpressionListModel struct {
@@ -63,6 +65,9 @@ var NotificationRuleExpressionListResourceSchemaAttributes = map[string]schema.A
 			),
 		},
 		MarkdownDescription: "Rule expression first operand value.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op1_type": schema.StringAttribute{
 		Optional: true,
@@ -71,11 +76,17 @@ var NotificationRuleExpressionListResourceSchemaAttributes = map[string]schema.A
 			stringvalidator.OneOf("FIELD", "LIST", "STRING"),
 		},
 		MarkdownDescription: "Rule expression first operand type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op2": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Rule expression second operand.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op2_type": schema.StringAttribute{
 		Optional: true,
@@ -84,6 +95,9 @@ var NotificationRuleExpressionListResourceSchemaAttributes = map[string]schema.A
 			stringvalidator.OneOf("FIELD", "LIST", "STRING"),
 		},
 		MarkdownDescription: "Rule expression second operand type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -12,6 +12,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkviewAssociatedMembersModel struct {
@@ -28,11 +31,17 @@ var NetworkviewAssociatedMembersResourceSchemaAttributes = map[string]schema.Att
 	"member": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The member object associated with a network view.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"failovers": schema.ListAttribute{
 		ElementType:         types.StringType,
 		Computed:            true,
 		MarkdownDescription: "The list of failover objects associated with each member.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -517,7 +517,7 @@ func (o RadiusAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableCache) {
 		toSerialize["enable_cache"] = o.EnableCache
 	}
-	if !IsNil(o.Mode) {
+	if !IsNil(o.Mode) && *o.Mode != "" {
 		toSerialize["mode"] = o.Mode
 	}
 	if !IsNil(o.Name) {
@@ -526,7 +526,7 @@ func (o RadiusAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecoveryInterval) {
 		toSerialize["recovery_interval"] = o.RecoveryInterval
 	}
-	if !IsNil(o.Servers) {
+	if !IsNil(o.Servers) && len(o.Servers) > 0 {
 		toSerialize["servers"] = o.Servers
 	}
 	return toSerialize, nil

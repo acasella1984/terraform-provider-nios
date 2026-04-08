@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
 
 type NetworkviewMsAdUserDataModel struct {
@@ -26,6 +28,9 @@ var NetworkviewMsAdUserDataResourceSchemaAttributes = map[string]schema.Attribut
 	"active_users_count": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of active users.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

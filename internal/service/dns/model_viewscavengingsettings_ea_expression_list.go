@@ -14,6 +14,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ViewscavengingsettingsEaExpressionListModel struct {
@@ -59,6 +61,9 @@ var ViewscavengingsettingsEaExpressionListResourceSchemaAttributes = map[string]
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The name of the Extensible Attribute Definition object which is used as the first operand value.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op1_type": schema.StringAttribute{
 		Optional: true,
@@ -71,11 +76,17 @@ var ViewscavengingsettingsEaExpressionListResourceSchemaAttributes = map[string]
 			),
 		},
 		MarkdownDescription: "The first operand type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op2": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The second operand value.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"op2_type": schema.StringAttribute{
 		Optional: true,
@@ -88,6 +99,9 @@ var ViewscavengingsettingsEaExpressionListResourceSchemaAttributes = map[string]
 			),
 		},
 		MarkdownDescription: "The second operand type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

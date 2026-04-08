@@ -16,10 +16,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -29,6 +35,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
 )
@@ -168,6 +175,11 @@ var FixedaddressAttrTypes = map[string]attr.Type{
 var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"agent_circuit_id": schema.StringAttribute{
@@ -177,6 +189,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The agent circuit ID for the fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"agent_remote_id": schema.StringAttribute{
 		Optional: true,
@@ -185,6 +200,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The agent remote ID for the fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"allow_telnet": schema.BoolAttribute{
 		Optional:            true,
@@ -205,6 +223,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_bootfile")),
 		},
 		MarkdownDescription: "The bootfile name for the fixed address. You can configure the DHCP server to support clients that use the boot file name option in their DHCPREQUEST messages.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"bootserver": schema.StringAttribute{
 		Optional: true,
@@ -214,6 +235,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		MarkdownDescription: "The bootserver address for the fixed address. You can specify the name and/or IP address of the boot server that the host needs to boot. The boot server IPv4 Address or name in FQDN format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cli_credentials": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -221,6 +245,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 			listvalidator.AlsoRequires(path.MatchRoot("use_cli_credentials")),
@@ -236,6 +263,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"cloud_info": schema.SingleNestedAttribute{
 		Attributes:          FixedaddressCloudInfoResourceSchemaAttributes,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Structure containing all cloud API related information for this object.",
 	},
 	"comment": schema.StringAttribute{
@@ -255,6 +285,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The dynamic DNS domain name the appliance uses specifically for DDNS updates for this fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ddns_hostname": schema.StringAttribute{
 		Optional: true,
@@ -263,6 +296,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The DDNS host name for this fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"deny_bootp": schema.BoolAttribute{
 		Optional: true,
@@ -280,6 +316,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The description of the device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_location": schema.StringAttribute{
 		Optional: true,
@@ -288,6 +327,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The location of the device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_type": schema.StringAttribute{
 		Optional: true,
@@ -296,6 +338,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The type of the device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_vendor": schema.StringAttribute{
 		Optional: true,
@@ -304,6 +349,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The vendor of the device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dhcp_client_identifier": schema.StringAttribute{
 		Optional: true,
@@ -312,6 +360,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The DHCP client ID for the fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"disable": schema.BoolAttribute{
 		Optional:            true,
@@ -328,10 +379,16 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 	"discover_now_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The discovery status of this fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_data": schema.SingleNestedAttribute{
 		Attributes:          FixedaddressDiscoveredDataResourceSchemaAttributes,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The discovered data for this fixed address.",
 	},
 	"enable_ddns": schema.BoolAttribute{
@@ -369,6 +426,7 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		MarkdownDescription: "Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.",
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"ignore_dhcp_option_list_request": schema.BoolAttribute{
@@ -391,16 +449,25 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 		},
 		MarkdownDescription: "The IPv4 address for the Fixed Address. This field is `required` unless a `func_call` is specified to invoke `next_available_ip`.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"func_call": schema.SingleNestedAttribute{
 		Attributes:          FuncCallResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Specifies the function call to execute. The `next_available_ip` function is supported for Fixed Address.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"is_invalid_mac": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "This flag reflects whether the MAC address for this fixed address is invalid.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"logic_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -408,6 +475,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.AlsoRequires(path.MatchRoot("use_logic_filter_rules")),
 			listvalidator.SizeAtLeast(1),
@@ -426,6 +496,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 				path.MatchRoot("dhcp_client_identifier")),
 		},
 		MarkdownDescription: "The MAC address value for this fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"match_client": schema.StringAttribute{
 		Optional: true,
@@ -440,6 +513,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          FixedaddressMsAdUserDataResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The Microsoft Active Directory user related information.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_options": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -447,6 +523,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.AlsoRequires(path.MatchRoot("use_ms_options")),
 			listvalidator.SizeAtLeast(1),
@@ -465,6 +544,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "This field contains the name of this fixed address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network": schema.StringAttribute{
 		Optional: true,
@@ -473,6 +555,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPCIDR(),
 		},
 		MarkdownDescription: "The network to which this fixed address belongs, in IPv4 Address/CIDR format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_view": schema.StringAttribute{
 		Optional:            true,
@@ -488,6 +573,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		MarkdownDescription: "The name in FQDN and/or IPv4 Address format of the next server that the host needs to boot.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"options": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -515,11 +603,17 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.Between(0, 399999999),
 		},
 		MarkdownDescription: "The PXE lease time value for a DHCP Fixed Address object. Some hosts use PXE (Preboot Execution Environment) to boot remotely from a server. To better manage your IP resources, set a different lease time for PXE boot requests. You can configure the DHCP server to allocate an IP address with a shorter lease time to hosts that send PXE boot requests, so IP addresses are not leased longer than necessary. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"reserved_interface": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The ref to the reserved interface to which the device belongs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"restart_if_needed": schema.BoolAttribute{
 		Optional:            true,
@@ -534,6 +628,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_cli_credentials")),
 		},
 		MarkdownDescription: "The SNMPv3 credential for this fixed address.For SNMP3 Credentials to be applied to this fixed address,use_snmp3_credential and use_cli_credentials must be true.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"snmp_credential": schema.SingleNestedAttribute{
 		Attributes: FixedaddressSnmpCredentialResourceSchemaAttributes,
@@ -543,6 +640,9 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_snmp_credential")),
 		},
 		MarkdownDescription: "The SNMP credential for this fixed address. If set to true, the SNMP credential will override member-level settings..For SNMP Credentials to be applied to this fixed address,use_snmp_credential must be true.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"template": schema.StringAttribute{
 		Optional:            true,
@@ -550,6 +650,7 @@ var FixedaddressResourceSchemaAttributes = map[string]schema.Attribute{
 		MarkdownDescription: "If set on creation, the fixed address will be created according to the values specified in the named template.",
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"use_bootfile": schema.BoolAttribute{
@@ -672,7 +773,6 @@ func (m *FixedaddressModel) Expand(ctx context.Context, diags *diag.Diagnostics,
 		LogicFilterRules:               flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandFixedaddressLogicFilterRules),
 		Mac:                            flex.ExpandMACAddress(m.Mac),
 		MatchClient:                    flex.ExpandStringPointer(m.MatchClient),
-		MsAdUserData:                   ExpandFixedaddressMsAdUserData(ctx, m.MsAdUserData, diags),
 		MsOptions:                      flex.ExpandFrameworkListNestedBlock(ctx, m.MsOptions, diags, ExpandFixedaddressMsOptions),
 		MsServer:                       ExpandFixedaddressMsServer(ctx, m.MsServer, diags),
 		Name:                           flex.ExpandStringPointer(m.Name),

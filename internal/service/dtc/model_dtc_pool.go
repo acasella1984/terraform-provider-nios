@@ -12,9 +12,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -22,6 +27,7 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
 )
@@ -77,6 +83,10 @@ var DtcPoolAttrTypes = map[string]attr.Type{
 var DtcPoolResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"auto_consolidated_monitors": schema.BoolAttribute{
@@ -98,6 +108,9 @@ var DtcPoolResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The comment for the DTC Pool; maximum 256 characters.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"consolidated_monitors": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -105,6 +118,9 @@ var DtcPoolResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -132,11 +148,15 @@ var DtcPoolResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"health": schema.SingleNestedAttribute{
 		Attributes:          DtcPoolHealthResourceSchemaAttributes,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The health status of DTC Pool",
 	},
 	"lb_alternate_method": schema.StringAttribute{
@@ -152,18 +172,27 @@ var DtcPoolResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The alternate topology for load balancing.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"lb_dynamic_ratio_alternate": schema.SingleNestedAttribute{
 		Attributes:          DtcPoolLbDynamicRatioAlternateResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The DTC Pool settings for dynamic ratio when its selected as alternate method.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"lb_dynamic_ratio_preferred": schema.SingleNestedAttribute{
 		Attributes:          DtcPoolLbDynamicRatioPreferredResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The DTC Pool settings for dynamic ratio when its selected as preferred method.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"lb_preferred_method": schema.StringAttribute{
 		Required: true,
@@ -176,6 +205,9 @@ var DtcPoolResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The preferred topology for load balancing.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"monitors": schema.ListAttribute{
 		CustomType:  internaltypes.UnorderedListOfStringType,
@@ -214,6 +246,9 @@ var DtcPoolResourceSchemaAttributes = map[string]schema.Attribute{
 		Validators: []validator.Int64{
 			int64validator.AlsoRequires(path.MatchRoot("use_ttl")),
 		},
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_ttl": schema.BoolAttribute{
 		Optional:            true,
@@ -243,10 +278,12 @@ func (m *DtcPoolModel) Expand(ctx context.Context, diags *diag.Diagnostics) *dtc
 		Monitors:                 flex.ExpandFrameworkListString(ctx, m.Monitors, diags),
 		Name:                     flex.ExpandStringPointer(m.Name),
 		Quorum:                   flex.ExpandInt64Pointer(m.Quorum),
-		Servers:                  flex.ExpandFrameworkListNestedBlock(ctx, m.Servers, diags, ExpandDtcPoolServers),
 		Ttl:                      flex.ExpandInt64Pointer(m.Ttl),
 		UseTtl:                   flex.ExpandBoolPointer(m.UseTtl),
 	}
+	// Servers is user-specified — must always be included in Expand
+	// so the plan result matches what the user declared in .tf config.
+	to.Servers = flex.ExpandFrameworkListNestedBlock(ctx, m.Servers, diags, ExpandDtcPoolServers)
 	return to
 }
 

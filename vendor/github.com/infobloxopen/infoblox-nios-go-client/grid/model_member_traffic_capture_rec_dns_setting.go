@@ -270,7 +270,7 @@ func (o MemberTrafficCaptureRecDnsSetting) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.RecDnsLatencyListenOnIp) {
 		toSerialize["rec_dns_latency_listen_on_ip"] = o.RecDnsLatencyListenOnIp
 	}
-	if !IsNil(o.KpiMonitoredDomains) {
+	if !IsNil(o.KpiMonitoredDomains) && len(o.KpiMonitoredDomains) > 0 {
 		toSerialize["kpi_monitored_domains"] = o.KpiMonitoredDomains
 	}
 

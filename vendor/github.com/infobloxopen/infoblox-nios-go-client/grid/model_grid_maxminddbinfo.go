@@ -341,7 +341,7 @@ func (o GridMaxminddbinfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Member) {
 		toSerialize["member"] = o.Member
 	}
-	if !IsNil(o.TopologyType) {
+	if !IsNil(o.TopologyType) && *o.TopologyType != "" {
 		toSerialize["topology_type"] = o.TopologyType
 	}
 	return toSerialize, nil

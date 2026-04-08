@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -94,6 +95,34 @@ func (r *RecordAResource) Create(ctx context.Context, req resource.CreateRequest
 		ReturnAsObject(1).
 		Execute()
 	if err != nil {
+		// On conflict (duplicate), try to find the existing object and suggest import
+		if strings.Contains(err.Error(), "Duplicate object") || strings.Contains(err.Error(), "Data.Conflict") {
+			filters := map[string]interface{}{
+				"name": data.Name.ValueString(),
+			}
+			if !data.View.IsNull() && !data.View.IsUnknown() {
+				filters["view"] = data.View.ValueString()
+			}
+			listRes, _, listErr := r.client.DNSAPI.
+				RecordAAPI.
+				List(ctx).
+				Filters(filters).
+				ReturnAsObject(1).
+				MaxResults(1).
+				Execute()
+			if listErr == nil && listRes != nil && listRes.ListRecordAResponseObject != nil {
+				results := listRes.ListRecordAResponseObject.GetResult()
+				if len(results) > 0 && results[0].Ref != nil {
+					resp.Diagnostics.AddError("Object Already Exists",
+						fmt.Sprintf("A RecordA with name=%q already exists on the server.\n\n"+
+							"To manage it with Terraform, import it into state:\n\n"+
+							"  terraform import <your_resource_address> %s",
+						data.Name.ValueString(),
+							*results[0].Ref))
+					return
+				}
+			}
+		}
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to create RecordA, got error: %s", err))
 		return
 	}

@@ -459,7 +459,7 @@ func (o Superhostchild) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AssociatedObject) {
+	if !IsNil(o.AssociatedObject) && *o.AssociatedObject != "" {
 		toSerialize["associated_object"] = o.AssociatedObject
 	}
 	if !IsNil(o.Comment) {
@@ -486,7 +486,7 @@ func (o Superhostchild) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecordParent) {
 		toSerialize["record_parent"] = o.RecordParent
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.View) {

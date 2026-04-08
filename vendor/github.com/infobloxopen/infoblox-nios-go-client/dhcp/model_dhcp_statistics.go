@@ -258,7 +258,7 @@ func (o DhcpStatistics) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DhcpUtilization) {
 		toSerialize["dhcp_utilization"] = o.DhcpUtilization
 	}
-	if !IsNil(o.DhcpUtilizationStatus) {
+	if !IsNil(o.DhcpUtilizationStatus) && *o.DhcpUtilizationStatus != "" {
 		toSerialize["dhcp_utilization_status"] = o.DhcpUtilizationStatus
 	}
 	if !IsNil(o.DynamicHosts) {

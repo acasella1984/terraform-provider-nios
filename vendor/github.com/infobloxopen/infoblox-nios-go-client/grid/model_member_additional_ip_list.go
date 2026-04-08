@@ -291,10 +291,14 @@ func (o MemberAdditionalIpList) ToMap() (map[string]interface{}, error) {
 		toSerialize["anycast"] = o.Anycast
 	}
 	if !IsNil(o.Ipv4NetworkSetting) {
-		toSerialize["ipv4_network_setting"] = o.Ipv4NetworkSetting
+		if ipv4_network_settingMap, err := o.Ipv4NetworkSetting.ToMap(); err == nil && len(ipv4_network_settingMap) > 0 {
+			toSerialize["ipv4_network_setting"] = o.Ipv4NetworkSetting
+		}
 	}
 	if !IsNil(o.Ipv6NetworkSetting) {
-		toSerialize["ipv6_network_setting"] = o.Ipv6NetworkSetting
+		if ipv6_network_settingMap, err := o.Ipv6NetworkSetting.ToMap(); err == nil && len(ipv6_network_settingMap) > 0 {
+			toSerialize["ipv6_network_setting"] = o.Ipv6NetworkSetting
+		}
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -305,7 +309,7 @@ func (o MemberAdditionalIpList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableOspf) {
 		toSerialize["enable_ospf"] = o.EnableOspf
 	}
-	if !IsNil(o.Interface) {
+	if !IsNil(o.Interface) && *o.Interface != "" {
 		toSerialize["interface"] = o.Interface
 	}
 

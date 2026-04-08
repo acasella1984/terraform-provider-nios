@@ -119,7 +119,7 @@ func (o RulesetNxdomainRules) MarshalJSON() ([]byte, error) {
 
 func (o RulesetNxdomainRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Action) {
+	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
 	if !IsNil(o.Pattern) {

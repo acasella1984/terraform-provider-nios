@@ -566,16 +566,20 @@ func (o Ipv6rangetemplate) ToMap() (map[string]interface{}, error) {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.DelegatedMember) {
-		toSerialize["delegated_member"] = o.DelegatedMember
+		if delegated_memberMap, err := o.DelegatedMember.ToMap(); err == nil && len(delegated_memberMap) > 0 {
+			toSerialize["delegated_member"] = o.DelegatedMember
+		}
 	}
-	if !IsNil(o.Exclude) {
+	if !IsNil(o.Exclude) && len(o.Exclude) > 0 {
 		toSerialize["exclude"] = o.Exclude
 	}
-	if !IsNil(o.LogicFilterRules) {
+	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
 	if !IsNil(o.Member) {
-		toSerialize["member"] = o.Member
+		if memberMap, err := o.Member.ToMap(); err == nil && len(memberMap) > 0 {
+			toSerialize["member"] = o.Member
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -586,13 +590,13 @@ func (o Ipv6rangetemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Offset) {
 		toSerialize["offset"] = o.Offset
 	}
-	if !IsNil(o.OptionFilterRules) {
+	if !IsNil(o.OptionFilterRules) && len(o.OptionFilterRules) > 0 {
 		toSerialize["option_filter_rules"] = o.OptionFilterRules
 	}
 	if !IsNil(o.RecycleLeases) {
 		toSerialize["recycle_leases"] = o.RecycleLeases
 	}
-	if !IsNil(o.ServerAssociationType) {
+	if !IsNil(o.ServerAssociationType) && *o.ServerAssociationType != "" {
 		toSerialize["server_association_type"] = o.ServerAssociationType
 	}
 	if !IsNil(o.UseLogicFilterRules) {

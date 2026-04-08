@@ -323,7 +323,7 @@ func (o ThreatprotectionRuleset) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AddType) {
+	if !IsNil(o.AddType) && *o.AddType != "" {
 		toSerialize["add_type"] = o.AddType
 	}
 	if !IsNil(o.AddedTime) {
@@ -338,7 +338,7 @@ func (o ThreatprotectionRuleset) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsFactoryResetEnabled) {
 		toSerialize["is_factory_reset_enabled"] = o.IsFactoryResetEnabled
 	}
-	if !IsNil(o.UsedBy) {
+	if !IsNil(o.UsedBy) && len(o.UsedBy) > 0 {
 		toSerialize["used_by"] = o.UsedBy
 	}
 	if !IsNil(o.Version) {

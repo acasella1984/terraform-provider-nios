@@ -13,6 +13,9 @@ import (
 
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZoneauthdnsseckeyparamsZskAlgorithmsModel struct {
@@ -33,11 +36,17 @@ var ZoneauthdnsseckeyparamsZskAlgorithmsResourceSchemaAttributes = map[string]sc
 			stringvalidator.OneOf("ECDSAP256SHA256", "ECDSAP384SHA384", "RSASHA1", "RSASHA256", "RSASHA512"),
 		},
 		MarkdownDescription: "The signing key algorithm.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"size": schema.Int64Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The signing key size, in bits.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -1105,7 +1105,7 @@ func (o Captiveportal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AuthnServerGroup) {
+	if !IsNil(o.AuthnServerGroup) && *o.AuthnServerGroup != "" {
 		toSerialize["authn_server_group"] = o.AuthnServerGroup
 	}
 	if !IsNil(o.CompanyName) {
@@ -1117,13 +1117,13 @@ func (o Captiveportal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableSyslogAuthSuccess) {
 		toSerialize["enable_syslog_auth_success"] = o.EnableSyslogAuthSuccess
 	}
-	if !IsNil(o.EnableUserType) {
+	if !IsNil(o.EnableUserType) && *o.EnableUserType != "" {
 		toSerialize["enable_user_type"] = o.EnableUserType
 	}
-	if !IsNil(o.Encryption) {
+	if !IsNil(o.Encryption) && *o.Encryption != "" {
 		toSerialize["encryption"] = o.Encryption
 	}
-	if !IsNil(o.Files) {
+	if !IsNil(o.Files) && len(o.Files) > 0 {
 		toSerialize["files"] = o.Files
 	}
 	if !IsNil(o.GuestCustomField1Name) {
@@ -1171,13 +1171,13 @@ func (o Captiveportal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ListenAddressIp) {
 		toSerialize["listen_address_ip"] = o.ListenAddressIp
 	}
-	if !IsNil(o.ListenAddressType) {
+	if !IsNil(o.ListenAddressType) && *o.ListenAddressType != "" {
 		toSerialize["listen_address_type"] = o.ListenAddressType
 	}
-	if !IsNil(o.Name) {
+	if !IsNil(o.Name) && *o.Name != "" {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Port) {
@@ -1186,10 +1186,10 @@ func (o Captiveportal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceEnabled) {
 		toSerialize["service_enabled"] = o.ServiceEnabled
 	}
-	if !IsNil(o.SyslogAuthFailureLevel) {
+	if !IsNil(o.SyslogAuthFailureLevel) && *o.SyslogAuthFailureLevel != "" {
 		toSerialize["syslog_auth_failure_level"] = o.SyslogAuthFailureLevel
 	}
-	if !IsNil(o.SyslogAuthSuccessLevel) {
+	if !IsNil(o.SyslogAuthSuccessLevel) && *o.SyslogAuthSuccessLevel != "" {
 		toSerialize["syslog_auth_success_level"] = o.SyslogAuthSuccessLevel
 	}
 	if !IsNil(o.WelcomeMessage) {

@@ -122,7 +122,7 @@ func (o Ipv6rangetemplateOptionFilterRules) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
-	if !IsNil(o.Permission) {
+	if !IsNil(o.Permission) && *o.Permission != "" {
 		toSerialize["permission"] = o.Permission
 	}
 

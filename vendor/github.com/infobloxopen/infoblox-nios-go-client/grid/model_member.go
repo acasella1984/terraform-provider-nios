@@ -2960,35 +2960,43 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActivePosition) {
 		toSerialize["active_position"] = o.ActivePosition
 	}
-	if !IsNil(o.AdditionalIpList) {
+	if !IsNil(o.AdditionalIpList) && len(o.AdditionalIpList) > 0 {
 		toSerialize["additional_ip_list"] = o.AdditionalIpList
 	}
 	if !IsNil(o.AutomatedTrafficCaptureSetting) {
-		toSerialize["automated_traffic_capture_setting"] = o.AutomatedTrafficCaptureSetting
+		if automated_traffic_capture_settingMap, err := o.AutomatedTrafficCaptureSetting.ToMap(); err == nil && len(automated_traffic_capture_settingMap) > 0 {
+			toSerialize["automated_traffic_capture_setting"] = o.AutomatedTrafficCaptureSetting
+		}
 	}
-	if !IsNil(o.BgpAs) {
+	if !IsNil(o.BgpAs) && len(o.BgpAs) > 0 {
 		toSerialize["bgp_as"] = o.BgpAs
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ConfigAddrType) {
+	if !IsNil(o.ConfigAddrType) && *o.ConfigAddrType != "" {
 		toSerialize["config_addr_type"] = o.ConfigAddrType
 	}
-	if !IsNil(o.CspAccessKey) {
+	if !IsNil(o.CspAccessKey) && len(o.CspAccessKey) > 0 {
 		toSerialize["csp_access_key"] = o.CspAccessKey
 	}
 	if !IsNil(o.CspMemberSetting) {
-		toSerialize["csp_member_setting"] = o.CspMemberSetting
+		if csp_member_settingMap, err := o.CspMemberSetting.ToMap(); err == nil && len(csp_member_settingMap) > 0 {
+			toSerialize["csp_member_setting"] = o.CspMemberSetting
+		}
 	}
 	if !IsNil(o.DnsResolverSetting) {
-		toSerialize["dns_resolver_setting"] = o.DnsResolverSetting
+		if dns_resolver_settingMap, err := o.DnsResolverSetting.ToMap(); err == nil && len(dns_resolver_settingMap) > 0 {
+			toSerialize["dns_resolver_setting"] = o.DnsResolverSetting
+		}
 	}
 	if !IsNil(o.Dscp) {
 		toSerialize["dscp"] = o.Dscp
 	}
 	if !IsNil(o.EmailSetting) {
-		toSerialize["email_setting"] = o.EmailSetting
+		if email_settingMap, err := o.EmailSetting.ToMap(); err == nil && len(email_settingMap) > 0 {
+			toSerialize["email_setting"] = o.EmailSetting
+		}
 	}
 	if !IsNil(o.EnableHa) {
 		toSerialize["enable_ha"] = o.EnableHa
@@ -3002,22 +3010,22 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableRoApiAccess) {
 		toSerialize["enable_ro_api_access"] = o.EnableRoApiAccess
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.ExternalSyslogBackupServers) {
+	if !IsNil(o.ExternalSyslogBackupServers) && len(o.ExternalSyslogBackupServers) > 0 {
 		toSerialize["external_syslog_backup_servers"] = o.ExternalSyslogBackupServers
 	}
 	if !IsNil(o.ExternalSyslogServerEnable) {
 		toSerialize["external_syslog_server_enable"] = o.ExternalSyslogServerEnable
 	}
-	if !IsNil(o.HaCloudPlatform) {
+	if !IsNil(o.HaCloudPlatform) && *o.HaCloudPlatform != "" {
 		toSerialize["ha_cloud_platform"] = o.HaCloudPlatform
 	}
 	if !IsNil(o.HaOnCloud) {
@@ -3027,9 +3035,11 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 		toSerialize["host_name"] = o.HostName
 	}
 	if !IsNil(o.Ipv6Setting) {
-		toSerialize["ipv6_setting"] = o.Ipv6Setting
+		if ipv6_settingMap, err := o.Ipv6Setting.ToMap(); err == nil && len(ipv6_settingMap) > 0 {
+			toSerialize["ipv6_setting"] = o.Ipv6Setting
+		}
 	}
-	if !IsNil(o.Ipv6StaticRoutes) {
+	if !IsNil(o.Ipv6StaticRoutes) && len(o.Ipv6StaticRoutes) > 0 {
 		toSerialize["ipv6_static_routes"] = o.Ipv6StaticRoutes
 	}
 	if !IsNil(o.IsDscpCapable) {
@@ -3039,22 +3049,26 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 		toSerialize["lan2_enabled"] = o.Lan2Enabled
 	}
 	if !IsNil(o.Lan2PortSetting) {
-		toSerialize["lan2_port_setting"] = o.Lan2PortSetting
+		if lan2_port_settingMap, err := o.Lan2PortSetting.ToMap(); err == nil && len(lan2_port_settingMap) > 0 {
+			toSerialize["lan2_port_setting"] = o.Lan2PortSetting
+		}
 	}
-	if !IsNil(o.LomNetworkConfig) {
+	if !IsNil(o.LomNetworkConfig) && len(o.LomNetworkConfig) > 0 {
 		toSerialize["lom_network_config"] = o.LomNetworkConfig
 	}
-	if !IsNil(o.LomUsers) {
+	if !IsNil(o.LomUsers) && len(o.LomUsers) > 0 {
 		toSerialize["lom_users"] = o.LomUsers
 	}
 	if !IsNil(o.MasterCandidate) {
 		toSerialize["master_candidate"] = o.MasterCandidate
 	}
-	if !IsNil(o.MemberServiceCommunication) {
+	if !IsNil(o.MemberServiceCommunication) && len(o.MemberServiceCommunication) > 0 {
 		toSerialize["member_service_communication"] = o.MemberServiceCommunication
 	}
 	if !IsNil(o.MgmtPortSetting) {
-		toSerialize["mgmt_port_setting"] = o.MgmtPortSetting
+		if mgmt_port_settingMap, err := o.MgmtPortSetting.ToMap(); err == nil && len(mgmt_port_settingMap) > 0 {
+			toSerialize["mgmt_port_setting"] = o.MgmtPortSetting
+		}
 	}
 	if !IsNil(o.MmdbEaBuildTime) {
 		toSerialize["mmdb_ea_build_time"] = o.MmdbEaBuildTime
@@ -3063,25 +3077,31 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 		toSerialize["mmdb_geoip_build_time"] = o.MmdbGeoipBuildTime
 	}
 	if !IsNil(o.NatSetting) {
-		toSerialize["nat_setting"] = o.NatSetting
+		if nat_settingMap, err := o.NatSetting.ToMap(); err == nil && len(nat_settingMap) > 0 {
+			toSerialize["nat_setting"] = o.NatSetting
+		}
 	}
-	if !IsNil(o.NodeInfo) {
+	if !IsNil(o.NodeInfo) && len(o.NodeInfo) > 0 {
 		toSerialize["node_info"] = o.NodeInfo
 	}
 	if !IsNil(o.NtpSetting) {
-		toSerialize["ntp_setting"] = o.NtpSetting
+		if ntp_settingMap, err := o.NtpSetting.ToMap(); err == nil && len(ntp_settingMap) > 0 {
+			toSerialize["ntp_setting"] = o.NtpSetting
+		}
 	}
-	if !IsNil(o.OspfList) {
+	if !IsNil(o.OspfList) && len(o.OspfList) > 0 {
 		toSerialize["ospf_list"] = o.OspfList
 	}
 	if !IsNil(o.PassiveHaArpEnabled) {
 		toSerialize["passive_ha_arp_enabled"] = o.PassiveHaArpEnabled
 	}
-	if !IsNil(o.Platform) {
+	if !IsNil(o.Platform) && *o.Platform != "" {
 		toSerialize["platform"] = o.Platform
 	}
 	if !IsNil(o.PreProvisioning) {
-		toSerialize["pre_provisioning"] = o.PreProvisioning
+		if pre_provisioningMap, err := o.PreProvisioning.ToMap(); err == nil && len(pre_provisioningMap) > 0 {
+			toSerialize["pre_provisioning"] = o.PreProvisioning
+		}
 	}
 	if !IsNil(o.PreserveIfOwnsDelegation) {
 		toSerialize["preserve_if_owns_delegation"] = o.PreserveIfOwnsDelegation
@@ -3092,16 +3112,18 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RouterId) {
 		toSerialize["router_id"] = o.RouterId
 	}
-	if !IsNil(o.ServiceStatus) {
+	if !IsNil(o.ServiceStatus) && len(o.ServiceStatus) > 0 {
 		toSerialize["service_status"] = o.ServiceStatus
 	}
-	if !IsNil(o.ServiceTypeConfiguration) {
+	if !IsNil(o.ServiceTypeConfiguration) && *o.ServiceTypeConfiguration != "" {
 		toSerialize["service_type_configuration"] = o.ServiceTypeConfiguration
 	}
 	if !IsNil(o.SnmpSetting) {
-		toSerialize["snmp_setting"] = o.SnmpSetting
+		if snmp_settingMap, err := o.SnmpSetting.ToMap(); err == nil && len(snmp_settingMap) > 0 {
+			toSerialize["snmp_setting"] = o.SnmpSetting
+		}
 	}
-	if !IsNil(o.StaticRoutes) {
+	if !IsNil(o.StaticRoutes) && len(o.StaticRoutes) > 0 {
 		toSerialize["static_routes"] = o.StaticRoutes
 	}
 	if !IsNil(o.SupportAccessEnable) {
@@ -3111,39 +3133,51 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 		toSerialize["support_access_info"] = o.SupportAccessInfo
 	}
 	if !IsNil(o.SyslogProxySetting) {
-		toSerialize["syslog_proxy_setting"] = o.SyslogProxySetting
+		if syslog_proxy_settingMap, err := o.SyslogProxySetting.ToMap(); err == nil && len(syslog_proxy_settingMap) > 0 {
+			toSerialize["syslog_proxy_setting"] = o.SyslogProxySetting
+		}
 	}
-	if !IsNil(o.SyslogServers) {
+	if !IsNil(o.SyslogServers) && len(o.SyslogServers) > 0 {
 		toSerialize["syslog_servers"] = o.SyslogServers
 	}
 	if !IsNil(o.SyslogSize) {
 		toSerialize["syslog_size"] = o.SyslogSize
 	}
-	if !IsNil(o.ThresholdTraps) {
+	if !IsNil(o.ThresholdTraps) && len(o.ThresholdTraps) > 0 {
 		toSerialize["threshold_traps"] = o.ThresholdTraps
 	}
 	if !IsNil(o.TimeZone) {
 		toSerialize["time_zone"] = o.TimeZone
 	}
 	if !IsNil(o.TrafficCaptureAuthDnsSetting) {
-		toSerialize["traffic_capture_auth_dns_setting"] = o.TrafficCaptureAuthDnsSetting
+		if traffic_capture_auth_dns_settingMap, err := o.TrafficCaptureAuthDnsSetting.ToMap(); err == nil && len(traffic_capture_auth_dns_settingMap) > 0 {
+			toSerialize["traffic_capture_auth_dns_setting"] = o.TrafficCaptureAuthDnsSetting
+		}
 	}
 	if !IsNil(o.TrafficCaptureChrSetting) {
-		toSerialize["traffic_capture_chr_setting"] = o.TrafficCaptureChrSetting
+		if traffic_capture_chr_settingMap, err := o.TrafficCaptureChrSetting.ToMap(); err == nil && len(traffic_capture_chr_settingMap) > 0 {
+			toSerialize["traffic_capture_chr_setting"] = o.TrafficCaptureChrSetting
+		}
 	}
 	if !IsNil(o.TrafficCaptureQpsSetting) {
-		toSerialize["traffic_capture_qps_setting"] = o.TrafficCaptureQpsSetting
+		if traffic_capture_qps_settingMap, err := o.TrafficCaptureQpsSetting.ToMap(); err == nil && len(traffic_capture_qps_settingMap) > 0 {
+			toSerialize["traffic_capture_qps_setting"] = o.TrafficCaptureQpsSetting
+		}
 	}
 	if !IsNil(o.TrafficCaptureRecDnsSetting) {
-		toSerialize["traffic_capture_rec_dns_setting"] = o.TrafficCaptureRecDnsSetting
+		if traffic_capture_rec_dns_settingMap, err := o.TrafficCaptureRecDnsSetting.ToMap(); err == nil && len(traffic_capture_rec_dns_settingMap) > 0 {
+			toSerialize["traffic_capture_rec_dns_setting"] = o.TrafficCaptureRecDnsSetting
+		}
 	}
 	if !IsNil(o.TrafficCaptureRecQueriesSetting) {
-		toSerialize["traffic_capture_rec_queries_setting"] = o.TrafficCaptureRecQueriesSetting
+		if traffic_capture_rec_queries_settingMap, err := o.TrafficCaptureRecQueriesSetting.ToMap(); err == nil && len(traffic_capture_rec_queries_settingMap) > 0 {
+			toSerialize["traffic_capture_rec_queries_setting"] = o.TrafficCaptureRecQueriesSetting
+		}
 	}
-	if !IsNil(o.TrapNotifications) {
+	if !IsNil(o.TrapNotifications) && len(o.TrapNotifications) > 0 {
 		toSerialize["trap_notifications"] = o.TrapNotifications
 	}
-	if !IsNil(o.UpgradeGroup) {
+	if !IsNil(o.UpgradeGroup) && *o.UpgradeGroup != "" {
 		toSerialize["upgrade_group"] = o.UpgradeGroup
 	}
 	if !IsNil(o.UseAutomatedTrafficCapture) {
@@ -3207,7 +3241,9 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 		toSerialize["use_v4_vrrp"] = o.UseV4Vrrp
 	}
 	if !IsNil(o.VipSetting) {
-		toSerialize["vip_setting"] = o.VipSetting
+		if vip_settingMap, err := o.VipSetting.ToMap(); err == nil && len(vip_settingMap) > 0 {
+			toSerialize["vip_setting"] = o.VipSetting
+		}
 	}
 	if !IsNil(o.VpnMtu) {
 		toSerialize["vpn_mtu"] = o.VpnMtu

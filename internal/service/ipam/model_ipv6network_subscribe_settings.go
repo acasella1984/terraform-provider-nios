@@ -15,6 +15,8 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
 
 type Ipv6networkSubscribeSettingsModel struct {
@@ -45,6 +47,9 @@ var Ipv6networkSubscribeSettingsResourceSchemaAttributes = map[string]schema.Att
 			}),
 			listvalidator.SizeAtLeast(1),
 		},
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"mapped_ea_attributes": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -53,6 +58,9 @@ var Ipv6networkSubscribeSettingsResourceSchemaAttributes = map[string]schema.Att
 		Optional:            true,
 		MarkdownDescription: "The list of NIOS extensible attributes to Cisco ISE attributes mappings.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},

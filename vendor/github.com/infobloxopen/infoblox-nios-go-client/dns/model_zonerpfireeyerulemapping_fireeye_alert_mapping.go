@@ -153,10 +153,10 @@ func (o ZonerpfireeyerulemappingFireeyeAlertMapping) MarshalJSON() ([]byte, erro
 
 func (o ZonerpfireeyerulemappingFireeyeAlertMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AlertType) {
+	if !IsNil(o.AlertType) && *o.AlertType != "" {
 		toSerialize["alert_type"] = o.AlertType
 	}
-	if !IsNil(o.RpzRule) {
+	if !IsNil(o.RpzRule) && *o.RpzRule != "" {
 		toSerialize["rpz_rule"] = o.RpzRule
 	}
 	if !IsNil(o.Lifetime) {

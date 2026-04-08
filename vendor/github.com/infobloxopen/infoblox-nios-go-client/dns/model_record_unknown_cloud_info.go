@@ -323,7 +323,9 @@ func (o RecordUnknownCloudInfo) MarshalJSON() ([]byte, error) {
 func (o RecordUnknownCloudInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DelegatedMember) {
-		toSerialize["delegated_member"] = o.DelegatedMember
+		if delegated_memberMap, err := o.DelegatedMember.ToMap(); err == nil && len(delegated_memberMap) > 0 {
+			toSerialize["delegated_member"] = o.DelegatedMember
+		}
 	}
 	if !IsNil(o.DelegatedScope) {
 		toSerialize["delegated_scope"] = o.DelegatedScope
@@ -337,7 +339,7 @@ func (o RecordUnknownCloudInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Usage) {
 		toSerialize["usage"] = o.Usage
 	}
-	if !IsNil(o.Tenant) {
+	if !IsNil(o.Tenant) && *o.Tenant != "" {
 		toSerialize["tenant"] = o.Tenant
 	}
 	if !IsNil(o.MgmtPlatform) {

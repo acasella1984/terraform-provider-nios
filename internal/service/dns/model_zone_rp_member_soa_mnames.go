@@ -15,6 +15,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZoneRpMemberSoaMnamesModel struct {
@@ -39,20 +41,32 @@ var ZoneRpMemberSoaMnamesResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.ConflictsWith(path.MatchRelative().AtParent().AtName("ms_server_primary")),
 		},
 		MarkdownDescription: "The grid primary server for the zone. Only one of \"grid_primary\" or \"ms_server_primary\" should be set when modifying or creating the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_server_primary": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The primary MS server for the zone. Only one of \"grid_primary\" or \"ms_server_primary\" should be set when modifying or creating the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"mname": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Master's SOA MNAME. This value can be in unicode format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dns_mname": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Master's SOA MNAME in punycode format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

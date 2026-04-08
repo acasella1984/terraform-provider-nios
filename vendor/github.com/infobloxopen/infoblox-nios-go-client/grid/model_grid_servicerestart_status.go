@@ -499,7 +499,7 @@ func (o GridServicerestartStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Finished) {
 		toSerialize["finished"] = o.Finished
 	}
-	if !IsNil(o.Grouped) {
+	if !IsNil(o.Grouped) && *o.Grouped != "" {
 		toSerialize["grouped"] = o.Grouped
 	}
 	if !IsNil(o.NeededRestart) {

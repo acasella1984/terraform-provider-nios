@@ -294,10 +294,14 @@ func (o MemberLan2PortSetting) ToMap() (map[string]interface{}, error) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if !IsNil(o.NetworkSetting) {
-		toSerialize["network_setting"] = o.NetworkSetting
+		if network_settingMap, err := o.NetworkSetting.ToMap(); err == nil && len(network_settingMap) > 0 {
+			toSerialize["network_setting"] = o.NetworkSetting
+		}
 	}
 	if !IsNil(o.V6NetworkSetting) {
-		toSerialize["v6_network_setting"] = o.V6NetworkSetting
+		if v6_network_settingMap, err := o.V6NetworkSetting.ToMap(); err == nil && len(v6_network_settingMap) > 0 {
+			toSerialize["v6_network_setting"] = o.V6NetworkSetting
+		}
 	}
 	if !IsNil(o.NicFailoverEnabled) {
 		toSerialize["nic_failover_enabled"] = o.NicFailoverEnabled

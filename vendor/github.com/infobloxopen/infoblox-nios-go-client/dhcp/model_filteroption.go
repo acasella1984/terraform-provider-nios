@@ -576,13 +576,13 @@ func (o Filteroption) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.LeaseTime) {
@@ -594,10 +594,10 @@ func (o Filteroption) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NextServer) {
 		toSerialize["next_server"] = o.NextServer
 	}
-	if !IsNil(o.OptionList) {
+	if !IsNil(o.OptionList) && len(o.OptionList) > 0 {
 		toSerialize["option_list"] = o.OptionList
 	}
-	if !IsNil(o.OptionSpace) {
+	if !IsNil(o.OptionSpace) && *o.OptionSpace != "" {
 		toSerialize["option_space"] = o.OptionSpace
 	}
 	if !IsNil(o.PxeLeaseTime) {

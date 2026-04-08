@@ -224,13 +224,13 @@ func (o SmartfolderGlobal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.GroupBys) {
+	if !IsNil(o.GroupBys) && len(o.GroupBys) > 0 {
 		toSerialize["group_bys"] = o.GroupBys
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.QueryItems) {
+	if !IsNil(o.QueryItems) && len(o.QueryItems) > 0 {
 		toSerialize["query_items"] = o.QueryItems
 	}
 	return toSerialize, nil

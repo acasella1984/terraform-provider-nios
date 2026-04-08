@@ -14,6 +14,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/infobloxopen/infoblox-nios-go-client/security"
@@ -21,6 +23,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type AdminuserModel struct {
@@ -70,6 +73,11 @@ var AdminuserAttrTypes = map[string]attr.Type{
 var AdminuserResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"admin_groups": schema.ListAttribute{
@@ -101,6 +109,9 @@ var AdminuserResourceSchemaAttributes = map[string]schema.Attribute{
 	"ca_certificate_issuer": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The CA certificate that is used for user lookup during authentication.",
 	},
 	"client_certificate_serial_number": schema.StringAttribute{
@@ -153,6 +164,7 @@ var AdminuserResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"name": schema.StringAttribute{
@@ -181,6 +193,9 @@ var AdminuserResourceSchemaAttributes = map[string]schema.Attribute{
 	"status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Status of the user account.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"time_zone": schema.StringAttribute{
 		Optional: true,
@@ -189,6 +204,9 @@ var AdminuserResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_time_zone")),
 		},
 		MarkdownDescription: "The time zone for this admin user.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_ssh_keys": schema.BoolAttribute{
 		Optional:            true,

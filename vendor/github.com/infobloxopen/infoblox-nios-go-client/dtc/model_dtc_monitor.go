@@ -496,19 +496,19 @@ func (o DtcMonitor) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Interval) {
 		toSerialize["interval"] = o.Interval
 	}
-	if !IsNil(o.Monitor) {
+	if !IsNil(o.Monitor) && *o.Monitor != "" {
 		toSerialize["monitor"] = o.Monitor
 	}
 	if !IsNil(o.Name) {
@@ -526,7 +526,7 @@ func (o DtcMonitor) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil

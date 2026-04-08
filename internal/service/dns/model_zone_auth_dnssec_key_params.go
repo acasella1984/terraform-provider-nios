@@ -14,6 +14,11 @@ import (
 
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 )
 
 type ZoneAuthDnssecKeyParamsModel struct {
@@ -63,6 +68,9 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "If set to True, automatic rollovers for the signing key is enabled.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ksk_algorithm": schema.StringAttribute{
 		Computed: true,
@@ -70,6 +78,9 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 			stringvalidator.OneOf("10", "13", "14", "5", "7", "8"),
 		},
 		MarkdownDescription: "Key Signing Key algorithm. Use KSK Algorithms instead.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ksk_algorithms": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -77,6 +88,9 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -86,10 +100,16 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Key Signing Key rollover interval, in seconds.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"ksk_size": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "Key Signing Key size, in bits. Use KSK Algorithms instead.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"next_secure_type": schema.StringAttribute{
 		Optional: true,
@@ -98,6 +118,9 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 			stringvalidator.OneOf("NSEC", "NSEC3"),
 		},
 		MarkdownDescription: "NSEC (next secure) types.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ksk_rollover_notification_config": schema.StringAttribute{
 		Optional: true,
@@ -106,36 +129,57 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 			stringvalidator.OneOf("ALL", "NONE", "REQUIRE_MANUAL_INTERVENTION", "AUTOMATIC"),
 		},
 		MarkdownDescription: "This field controls events for which users will be notified.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ksk_snmp_notification_enabled": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Enable SNMP notifications for KSK related events.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ksk_email_notification_enabled": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Enable email notifications for KSK related events.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"nsec3_salt_min_length": schema.Int64Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The minimum length for NSEC3 salts.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"nsec3_salt_max_length": schema.Int64Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The maximum length for NSEC3 salts.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"nsec3_iterations": schema.Int64Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The number of iterations used for hashing NSEC3.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"signature_expiration": schema.Int64Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Signature expiration time, in seconds.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"zsk_algorithm": schema.StringAttribute{
 		Computed: true,
@@ -143,6 +187,9 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 			stringvalidator.OneOf("10", "13", "14", "5", "7", "8"),
 		},
 		MarkdownDescription: "Zone Signing Key algorithm. Use ZSK Algorithms instead.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"zsk_algorithms": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -150,6 +197,9 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -159,6 +209,9 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Zone Signing Key rollover interval, in seconds.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"zsk_rollover_mechanism": schema.StringAttribute{
 		Optional: true,
@@ -167,10 +220,16 @@ var ZoneAuthDnssecKeyParamsResourceSchemaAttributes = map[string]schema.Attribut
 			stringvalidator.OneOf("PRE_PUBLISH", "DOUBLE_SIGN"),
 		},
 		MarkdownDescription: "Zone Signing Key rollover mechanism.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"zsk_size": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "Zone Signing Key size, in bits. Use ZSK Algorithms instead.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -641,13 +641,13 @@ func (o DtcMonitorSnmp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EngineId) {
 		toSerialize["engine_id"] = o.EngineId
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Interval) {
@@ -656,7 +656,7 @@ func (o DtcMonitorSnmp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Oids) {
+	if !IsNil(o.Oids) && len(o.Oids) > 0 {
 		toSerialize["oids"] = o.Oids
 	}
 	if !IsNil(o.Port) {
@@ -671,10 +671,10 @@ func (o DtcMonitorSnmp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}
-	if !IsNil(o.User) {
+	if !IsNil(o.User) && *o.User != "" {
 		toSerialize["user"] = o.User
 	}
-	if !IsNil(o.Version) {
+	if !IsNil(o.Version) && *o.Version != "" {
 		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil

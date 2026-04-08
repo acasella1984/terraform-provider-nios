@@ -193,7 +193,7 @@ func (o ThreatprotectionRulecategory) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Ruleset) {
+	if !IsNil(o.Ruleset) && *o.Ruleset != "" {
 		toSerialize["ruleset"] = o.Ruleset
 	}
 	return toSerialize, nil

@@ -11,6 +11,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -19,6 +23,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type FilterrelayagentModel struct {
@@ -60,6 +65,10 @@ var FilterrelayagentAttrTypes = map[string]attr.Type{
 var FilterrelayagentResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"circuit_id_name": schema.StringAttribute{
@@ -75,9 +84,15 @@ var FilterrelayagentResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The circuit ID substring length.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"circuit_id_substring_offset": schema.Int64Attribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 		Optional:            true,
 		MarkdownDescription: "The circuit ID substring offset.",
 	},
@@ -113,6 +128,9 @@ var FilterrelayagentResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "Determines if the substring of circuit ID, instead of the full circuit ID, is matched.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"is_remote_id": schema.StringAttribute{
 		Computed: true,
@@ -127,6 +145,9 @@ var FilterrelayagentResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "Determines if the substring of remote ID, instead of the full remote ID, is matched.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		Required: true,
@@ -148,11 +169,17 @@ var FilterrelayagentResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "The remote ID substring length.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"remote_id_substring_offset": schema.Int64Attribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "The remote ID substring offset.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"extattrs_all": schema.MapAttribute{
 		Computed:            true,
@@ -160,6 +187,7 @@ var FilterrelayagentResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 }

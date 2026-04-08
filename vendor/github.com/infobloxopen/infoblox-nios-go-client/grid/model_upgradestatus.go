@@ -1694,7 +1694,7 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DistributionScheduleTime) {
 		toSerialize["distribution_schedule_time"] = o.DistributionScheduleTime
 	}
-	if !IsNil(o.DistributionState) {
+	if !IsNil(o.DistributionState) && *o.DistributionState != "" {
 		toSerialize["distribution_state"] = o.DistributionState
 	}
 	if !IsNil(o.DistributionVersion) {
@@ -1703,19 +1703,19 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DistributionVersionSummary) {
 		toSerialize["distribution_version_summary"] = o.DistributionVersionSummary
 	}
-	if !IsNil(o.ElementStatus) {
+	if !IsNil(o.ElementStatus) && *o.ElementStatus != "" {
 		toSerialize["element_status"] = o.ElementStatus
 	}
-	if !IsNil(o.GridState) {
+	if !IsNil(o.GridState) && *o.GridState != "" {
 		toSerialize["grid_state"] = o.GridState
 	}
-	if !IsNil(o.GroupState) {
+	if !IsNil(o.GroupState) && *o.GroupState != "" {
 		toSerialize["group_state"] = o.GroupState
 	}
-	if !IsNil(o.HaStatus) {
+	if !IsNil(o.HaStatus) && *o.HaStatus != "" {
 		toSerialize["ha_status"] = o.HaStatus
 	}
-	if !IsNil(o.Hotfixes) {
+	if !IsNil(o.Hotfixes) && len(o.Hotfixes) > 0 {
 		toSerialize["hotfixes"] = o.Hotfixes
 	}
 	if !IsNil(o.Ipv4Address) {
@@ -1724,7 +1724,7 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6Address) {
 		toSerialize["ipv6_address"] = o.Ipv6Address
 	}
-	if !IsNil(o.Member) {
+	if !IsNil(o.Member) && *o.Member != "" {
 		toSerialize["member"] = o.Member
 	}
 	if !IsNil(o.Message) {
@@ -1739,13 +1739,13 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StatusTime) {
 		toSerialize["status_time"] = o.StatusTime
 	}
-	if !IsNil(o.StatusValue) {
+	if !IsNil(o.StatusValue) && *o.StatusValue != "" {
 		toSerialize["status_value"] = o.StatusValue
 	}
 	if !IsNil(o.StatusValueUpdateTime) {
 		toSerialize["status_value_update_time"] = o.StatusValueUpdateTime
 	}
-	if !IsNil(o.Steps) {
+	if !IsNil(o.Steps) && len(o.Steps) > 0 {
 		toSerialize["steps"] = o.Steps
 	}
 	if !IsNil(o.StepsCompleted) {
@@ -1754,31 +1754,31 @@ func (o Upgradestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StepsTotal) {
 		toSerialize["steps_total"] = o.StepsTotal
 	}
-	if !IsNil(o.SubelementType) {
+	if !IsNil(o.SubelementType) && *o.SubelementType != "" {
 		toSerialize["subelement_type"] = o.SubelementType
 	}
 	if !IsNil(o.SubelementsCompleted) {
 		toSerialize["subelements_completed"] = o.SubelementsCompleted
 	}
-	if !IsNil(o.SubelementsStatus) {
+	if !IsNil(o.SubelementsStatus) && len(o.SubelementsStatus) > 0 {
 		toSerialize["subelements_status"] = o.SubelementsStatus
 	}
 	if !IsNil(o.SubelementsTotal) {
 		toSerialize["subelements_total"] = o.SubelementsTotal
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.UpgradeGroup) {
+	if !IsNil(o.UpgradeGroup) && *o.UpgradeGroup != "" {
 		toSerialize["upgrade_group"] = o.UpgradeGroup
 	}
 	if !IsNil(o.UpgradeScheduleActive) {
 		toSerialize["upgrade_schedule_active"] = o.UpgradeScheduleActive
 	}
-	if !IsNil(o.UpgradeState) {
+	if !IsNil(o.UpgradeState) && *o.UpgradeState != "" {
 		toSerialize["upgrade_state"] = o.UpgradeState
 	}
-	if !IsNil(o.UpgradeTestStatus) {
+	if !IsNil(o.UpgradeTestStatus) && *o.UpgradeTestStatus != "" {
 		toSerialize["upgrade_test_status"] = o.UpgradeTestStatus
 	}
 	if !IsNil(o.UploadVersion) {

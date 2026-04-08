@@ -295,16 +295,16 @@ func (o DtcAllrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DtcServer) {
+	if !IsNil(o.DtcServer) && *o.DtcServer != "" {
 		toSerialize["dtc_server"] = o.DtcServer
 	}
-	if !IsNil(o.Record) {
+	if !IsNil(o.Record) && *o.Record != "" {
 		toSerialize["record"] = o.Record
 	}
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil

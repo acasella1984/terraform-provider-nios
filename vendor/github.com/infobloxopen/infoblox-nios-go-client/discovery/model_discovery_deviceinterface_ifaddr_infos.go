@@ -156,7 +156,7 @@ func (o DiscoveryDeviceinterfaceIfaddrInfos) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.AddressObject) {
+	if !IsNil(o.AddressObject) && *o.AddressObject != "" {
 		toSerialize["address_object"] = o.AddressObject
 	}
 	if !IsNil(o.Network) {

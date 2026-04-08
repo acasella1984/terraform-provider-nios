@@ -493,7 +493,7 @@ func (o MemberSnmpSetting) MarshalJSON() ([]byte, error) {
 
 func (o MemberSnmpSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EngineId) {
+	if !IsNil(o.EngineId) && len(o.EngineId) > 0 {
 		toSerialize["engine_id"] = o.EngineId
 	}
 	if !IsNil(o.QueriesCommunityString) {
@@ -505,25 +505,25 @@ func (o MemberSnmpSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Snmpv3QueriesEnable) {
 		toSerialize["snmpv3_queries_enable"] = o.Snmpv3QueriesEnable
 	}
-	if !IsNil(o.Snmpv3QueriesUsers) {
+	if !IsNil(o.Snmpv3QueriesUsers) && len(o.Snmpv3QueriesUsers) > 0 {
 		toSerialize["snmpv3_queries_users"] = o.Snmpv3QueriesUsers
 	}
 	if !IsNil(o.Snmpv3TrapsEnable) {
 		toSerialize["snmpv3_traps_enable"] = o.Snmpv3TrapsEnable
 	}
-	if !IsNil(o.Syscontact) {
+	if !IsNil(o.Syscontact) && len(o.Syscontact) > 0 {
 		toSerialize["syscontact"] = o.Syscontact
 	}
-	if !IsNil(o.Sysdescr) {
+	if !IsNil(o.Sysdescr) && len(o.Sysdescr) > 0 {
 		toSerialize["sysdescr"] = o.Sysdescr
 	}
-	if !IsNil(o.Syslocation) {
+	if !IsNil(o.Syslocation) && len(o.Syslocation) > 0 {
 		toSerialize["syslocation"] = o.Syslocation
 	}
-	if !IsNil(o.Sysname) {
+	if !IsNil(o.Sysname) && len(o.Sysname) > 0 {
 		toSerialize["sysname"] = o.Sysname
 	}
-	if !IsNil(o.TrapReceivers) {
+	if !IsNil(o.TrapReceivers) && len(o.TrapReceivers) > 0 {
 		toSerialize["trap_receivers"] = o.TrapReceivers
 	}
 	if !IsNil(o.TrapsCommunityString) {

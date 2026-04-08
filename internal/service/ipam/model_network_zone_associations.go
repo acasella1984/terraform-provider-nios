@@ -14,6 +14,9 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkZoneAssociationsModel struct {
@@ -40,6 +43,9 @@ var NetworkZoneAssociationsResourceSchemaAttributes = map[string]schema.Attribut
 		Optional:            true,
 		MarkdownDescription: "True if this is the default zone.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"view": schema.StringAttribute{
 		Optional:            true,
@@ -47,6 +53,9 @@ var NetworkZoneAssociationsResourceSchemaAttributes = map[string]schema.Attribut
 		Computed:            true,
 		Validators: []validator.String{
 			customvalidator.ValidateTrimmedString(),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 }

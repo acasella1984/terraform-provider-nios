@@ -1710,17 +1710,19 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AddressType) {
+	if !IsNil(o.AddressType) && *o.AddressType != "" {
 		toSerialize["address_type"] = o.AddressType
 	}
 	if !IsNil(o.AllowTelnet) {
 		toSerialize["allow_telnet"] = o.AllowTelnet
 	}
-	if !IsNil(o.CliCredentials) {
+	if !IsNil(o.CliCredentials) && len(o.CliCredentials) > 0 {
 		toSerialize["cli_credentials"] = o.CliCredentials
 	}
 	if !IsNil(o.CloudInfo) {
-		toSerialize["cloud_info"] = o.CloudInfo
+		if cloud_infoMap, err := o.CloudInfo.ToMap(); err == nil && len(cloud_infoMap) > 0 {
+			toSerialize["cloud_info"] = o.CloudInfo
+		}
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -1743,16 +1745,18 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisableDiscovery) {
 		toSerialize["disable_discovery"] = o.DisableDiscovery
 	}
-	if !IsNil(o.DiscoverNowStatus) {
+	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
 		toSerialize["discover_now_status"] = o.DiscoverNowStatus
 	}
 	if !IsNil(o.DiscoveredData) {
-		toSerialize["discovered_data"] = o.DiscoveredData
+		if discovered_dataMap, err := o.DiscoveredData.ToMap(); err == nil && len(discovered_dataMap) > 0 {
+			toSerialize["discovered_data"] = o.DiscoveredData
+		}
 	}
 	if !IsNil(o.DomainName) {
 		toSerialize["domain_name"] = o.DomainName
 	}
-	if !IsNil(o.DomainNameServers) {
+	if !IsNil(o.DomainNameServers) && len(o.DomainNameServers) > 0 {
 		toSerialize["domain_name_servers"] = o.DomainNameServers
 	}
 	if !IsNil(o.Duid) {
@@ -1761,20 +1765,22 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableImmediateDiscovery) {
 		toSerialize["enable_immediate_discovery"] = o.EnableImmediateDiscovery
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Ipv6addr) {
 		toSerialize["ipv6addr"] = o.Ipv6addr
 	}
 	if !IsNil(o.FuncCall) {
-		toSerialize["func_call"] = o.FuncCall
+		if func_callMap, err := o.FuncCall.ToMap(); err == nil && len(func_callMap) > 0 {
+			toSerialize["func_call"] = o.FuncCall
+		}
 	}
 	if !IsNil(o.Ipv6prefix) {
 		toSerialize["ipv6prefix"] = o.Ipv6prefix
@@ -1782,17 +1788,19 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6prefixBits) {
 		toSerialize["ipv6prefix_bits"] = o.Ipv6prefixBits
 	}
-	if !IsNil(o.LogicFilterRules) {
+	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
 	if !IsNil(o.MacAddress) {
 		toSerialize["mac_address"] = o.MacAddress
 	}
-	if !IsNil(o.MatchClient) {
+	if !IsNil(o.MatchClient) && *o.MatchClient != "" {
 		toSerialize["match_client"] = o.MatchClient
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -1803,23 +1811,27 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Options) {
+	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
 	if !IsNil(o.PreferredLifetime) {
 		toSerialize["preferred_lifetime"] = o.PreferredLifetime
 	}
-	if !IsNil(o.ReservedInterface) {
+	if !IsNil(o.ReservedInterface) && *o.ReservedInterface != "" {
 		toSerialize["reserved_interface"] = o.ReservedInterface
 	}
 	if !IsNil(o.RestartIfNeeded) {
 		toSerialize["restart_if_needed"] = o.RestartIfNeeded
 	}
 	if !IsNil(o.Snmp3Credential) {
-		toSerialize["snmp3_credential"] = o.Snmp3Credential
+		if snmp3_credentialMap, err := o.Snmp3Credential.ToMap(); err == nil && len(snmp3_credentialMap) > 0 {
+			toSerialize["snmp3_credential"] = o.Snmp3Credential
+		}
 	}
 	if !IsNil(o.SnmpCredential) {
-		toSerialize["snmp_credential"] = o.SnmpCredential
+		if snmp_credentialMap, err := o.SnmpCredential.ToMap(); err == nil && len(snmp_credentialMap) > 0 {
+			toSerialize["snmp_credential"] = o.SnmpCredential
+		}
 	}
 	if !IsNil(o.Template) {
 		toSerialize["template"] = o.Template

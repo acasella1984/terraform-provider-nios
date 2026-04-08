@@ -17,6 +17,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/infobloxopen/infoblox-nios-go-client/security"
@@ -25,6 +30,7 @@ import (
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type AdmingroupModel struct {
@@ -126,6 +132,11 @@ var AdmingroupAttrTypes = map[string]attr.Type{
 var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"access_method": schema.ListAttribute{
@@ -152,29 +163,44 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Admin set commands for the admin command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"admin_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupAdminShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Admin show commands for the admin command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"admin_toplevel_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupAdminToplevelCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Admin toplevel commands for the admin command group",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cloud_set_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupCloudSetCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Cloud set commands for the cloud command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cloud_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupCloudShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Cloud show commands for admin group.",
 	},
 	"comment": schema.StringAttribute{
@@ -192,23 +218,35 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Database show commands for admin group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"database_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupDatabaseShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Database show commands for the database command.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dhcp_set_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupDhcpSetCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Dhcp set commands for the dhcp command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dhcp_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupDhcpShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Dhcp show commands for the dhcp command group.",
 	},
 	"disable": schema.BoolAttribute{
@@ -231,30 +269,45 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Dns set commands for the dns command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dns_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupDnsShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Dns show commands for the dns command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dns_toplevel_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupDnsToplevelCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Dns toplevel commands for the dns command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"docker_set_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupDockerSetCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Docker set commands for the docker command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"docker_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupDockerShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Docker show commands for the docker command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"email_addresses": schema.ListAttribute{
 		CustomType:  internaltypes.UnorderedListOfStringType,
@@ -268,6 +321,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"enable_restricted_user_access": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Determines whether the restrictions will be applied to the admin connector level for users of this Admin Group.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"extattrs": schema.MapAttribute{
 		Optional:            true,
@@ -285,6 +341,7 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"grid_set_commands": schema.SingleNestedAttribute{
@@ -292,12 +349,18 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Grid set commands for the grid command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"grid_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupGridShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Grid show commands for the grid command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"inactivity_lockout_setting": schema.SingleNestedAttribute{
 		Attributes: AdmingroupInactivityLockoutSettingResourceSchemaAttributes,
@@ -307,18 +370,27 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_account_inactivity_lockout_enable")),
 		},
 		MarkdownDescription: "The Admin group inactivity lockout settings.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"licensing_set_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupLicensingSetCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Set commands for the licensing command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"licensing_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupLicensingShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Show commands for the licensing command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"lockout_setting": schema.SingleNestedAttribute{
 		Attributes: AdmingroupLockoutSettingResourceSchemaAttributes,
@@ -328,12 +400,18 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_lockout_setting")),
 		},
 		MarkdownDescription: "This struct specifies security policy settings in admin group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"machine_control_toplevel_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupMachineControlToplevelCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Machine control toplevel commands for the machine control command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		Required: true,
@@ -347,12 +425,18 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Set commands for the networking command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"networking_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupNetworkingShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Show commands for the networking command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"password_setting": schema.SingleNestedAttribute{
 		Attributes: AdmingroupPasswordSettingResourceSchemaAttributes,
@@ -362,6 +446,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_password_setting")),
 		},
 		MarkdownDescription: "The Admin Group password settings.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"roles": schema.ListAttribute{
 		ElementType:         types.StringType,
@@ -373,17 +460,26 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The Admin Group SAML settings.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"security_set_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupSecuritySetCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Set commands for the security command group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"security_show_commands": schema.SingleNestedAttribute{
 		Attributes:          AdmingroupSecurityShowCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Show commands for the security command group.",
 	},
 	"superuser": schema.BoolAttribute{
@@ -396,6 +492,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          AdmingroupTroubleShootingToplevelCommandsResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Toplevel commands for the troubleshooting command group.",
 	},
 	"use_account_inactivity_lockout_enable": schema.BoolAttribute{
@@ -431,6 +530,9 @@ var AdmingroupResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The access control items for this Admin Group.",
 	},
 }

@@ -533,19 +533,19 @@ func (o LdapAuthService) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.EaMapping) {
+	if !IsNil(o.EaMapping) && len(o.EaMapping) > 0 {
 		toSerialize["ea_mapping"] = o.EaMapping
 	}
 	if !IsNil(o.LdapGroupAttribute) {
 		toSerialize["ldap_group_attribute"] = o.LdapGroupAttribute
 	}
-	if !IsNil(o.LdapGroupAuthenticationType) {
+	if !IsNil(o.LdapGroupAuthenticationType) && *o.LdapGroupAuthenticationType != "" {
 		toSerialize["ldap_group_authentication_type"] = o.LdapGroupAuthenticationType
 	}
 	if !IsNil(o.LdapUserAttribute) {
 		toSerialize["ldap_user_attribute"] = o.LdapUserAttribute
 	}
-	if !IsNil(o.Mode) {
+	if !IsNil(o.Mode) && *o.Mode != "" {
 		toSerialize["mode"] = o.Mode
 	}
 	if !IsNil(o.Name) {
@@ -557,10 +557,10 @@ func (o LdapAuthService) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Retries) {
 		toSerialize["retries"] = o.Retries
 	}
-	if !IsNil(o.SearchScope) {
+	if !IsNil(o.SearchScope) && *o.SearchScope != "" {
 		toSerialize["search_scope"] = o.SearchScope
 	}
-	if !IsNil(o.Servers) {
+	if !IsNil(o.Servers) && len(o.Servers) > 0 {
 		toSerialize["servers"] = o.Servers
 	}
 	if !IsNil(o.Timeout) {

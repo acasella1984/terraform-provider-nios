@@ -799,7 +799,9 @@ func (o Bulkhost) ToMap() (map[string]interface{}, error) {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.CloudInfo) {
-		toSerialize["cloud_info"] = o.CloudInfo
+		if cloud_infoMap, err := o.CloudInfo.ToMap(); err == nil && len(cloud_infoMap) > 0 {
+			toSerialize["cloud_info"] = o.CloudInfo
+		}
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -813,22 +815,22 @@ func (o Bulkhost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndAddr) {
 		toSerialize["end_addr"] = o.EndAddr
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried
 	}
-	if !IsNil(o.NameTemplate) {
+	if !IsNil(o.NameTemplate) && *o.NameTemplate != "" {
 		toSerialize["name_template"] = o.NameTemplate
 	}
-	if !IsNil(o.NetworkView) {
+	if !IsNil(o.NetworkView) && *o.NetworkView != "" {
 		toSerialize["network_view"] = o.NetworkView
 	}
 	if !IsNil(o.Policy) {

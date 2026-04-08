@@ -122,7 +122,9 @@ func (o DiscoveryDeviceinterfaceDescriptionTaskInfo) ToMap() (map[string]interfa
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Details) {
-		toSerialize["details"] = o.Details
+		if detailsMap, err := o.Details.ToMap(); err == nil && len(detailsMap) > 0 {
+			toSerialize["details"] = o.Details
+		}
 	}
 
 	for key, value := range o.AdditionalProperties {

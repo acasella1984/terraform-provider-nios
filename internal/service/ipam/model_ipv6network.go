@@ -15,11 +15,17 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -31,6 +37,7 @@ import (
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type Ipv6networkModel struct {
@@ -210,6 +217,10 @@ var Ipv6networkAttrTypes = map[string]attr.Type{
 var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"auto_create_reversezone": schema.BoolAttribute{
@@ -226,6 +237,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Attributes:          Ipv6networkCloudInfoResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "Structure containing all cloud API related information for this object.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"comment": schema.StringAttribute{
 		Optional:            true,
@@ -233,6 +247,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Validators: []validator.String{
 			customvalidator.ValidateTrimmedString(),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"ddns_domainname": schema.StringAttribute{
@@ -243,6 +260,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ddns_enable_option_fqdn": schema.BoolAttribute{
 		Optional:            true,
@@ -297,6 +317,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"discovered_bgp_as": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "Number of the discovered BGP AS. When multiple BGP autonomous systems are discovered in the network, this field displays \"Multiple\".",
 	},
 	"discovered_bridge_domain": schema.StringAttribute{
@@ -320,22 +343,37 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 	"discovered_vlan_id": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The identifier of the discovered VLAN. When multiple VLANs are discovered in the network, this field displays \"Multiple\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_vlan_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the discovered VLAN. When multiple VLANs are discovered in the network, this field displays \"Multiple\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_vrf_description": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Description of the discovered VRF. When multiple VRFs are discovered in the network, this field displays \"Multiple\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_vrf_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the discovered VRF. When multiple VRFs are discovered in the network, this field displays \"Multiple\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_vrf_rd": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Route distinguisher of the discovered VRF. When multiple VRFs are discovered in the network, this field displays \"Multiple\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovery_basic_poll_settings": schema.SingleNestedAttribute{
 		Attributes: Ipv6networkDiscoveryBasicPollSettingsResourceSchemaAttributes,
@@ -345,6 +383,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_discovery_basic_polling_settings")),
 		},
 		MarkdownDescription: "The discovery basic poll settings for this network",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovery_blackout_setting": schema.SingleNestedAttribute{
 		Attributes: Ipv6networkDiscoveryBlackoutSettingResourceSchemaAttributes,
@@ -354,6 +395,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_blackout_setting")),
 		},
 		MarkdownDescription: "The discovery blackout setting for this network.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovery_engine_type": schema.StringAttribute{
 		Computed:            true,
@@ -367,6 +411,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_enable_discovery")),
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"domain_name": schema.StringAttribute{
 		Optional:            true,
@@ -374,6 +421,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Validators: []validator.String{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_domain_name")),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"domain_name_servers": schema.ListAttribute{
@@ -421,6 +471,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		Computed:            true,
 		MarkdownDescription: "The endpoints that provides data for the DHCP IPv6 Network object.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"extattrs": schema.MapAttribute{
 		Optional:            true,
@@ -438,6 +491,7 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"federated_realms": schema.ListNestedAttribute{
@@ -453,10 +507,16 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 	"last_rir_registration_update_sent": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when the last RIR registration update was sent.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_rir_registration_update_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Last RIR registration update status.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"logic_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -476,6 +536,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		MarkdownDescription: "A list of members servers that serve DHCP for the network. All members in the array must be of the same type. The struct type must be indicated in each element, by setting the \"_struct\" member to the struct type.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -492,11 +555,17 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 	"mgm_private_overridable": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "This field is assumed to be True unless filled by any conforming objects, such as Network, IPv6 Network, Network Container, IPv6 Network Container, and Network View. This value is set to False if mgm_private is set to True in the parent object.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_ad_user_data": schema.SingleNestedAttribute{
 		Attributes:          Ipv6networkMsAdUserDataResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The Microsoft Active Directory user related information.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 
 	"network": schema.StringAttribute{
@@ -512,6 +581,7 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"func_call": schema.SingleNestedAttribute{
@@ -519,12 +589,16 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Specifies the function call to execute. The `next_available_network` function is supported for IPv6 Network.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_container": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The network container to which this network belongs, if any.",
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"network_view": schema.StringAttribute{
@@ -562,6 +636,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_blackout_setting")),
 		},
 		MarkdownDescription: "The port control blackout setting for this network.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"preferred_lifetime": schema.Int64Attribute{
 		Optional:            true,
@@ -569,6 +646,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Validators: []validator.Int64{
 			int64validator.AlsoRequires(path.MatchRoot("use_preferred_lifetime")),
+		},
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
 		},
 	},
 	"recycle_leases": schema.BoolAttribute{
@@ -588,12 +668,18 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"rir": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The registry (RIR) that allocated the IPv6 network address space.",
 	},
 	"rir_organization": schema.StringAttribute{
 		Optional:            true,
 		MarkdownDescription: "The RIR organization associated with the IPv6 network.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"rir_registration_action": schema.StringAttribute{
 		Optional:            true,
@@ -601,6 +687,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed:            true,
 		Validators: []validator.String{
 			stringvalidator.OneOf("CREATE", "MODIFY", "DELETE", "NONE"),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"rir_registration_status": schema.StringAttribute{
@@ -633,9 +722,15 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_subscribe_settings")),
 		},
 		MarkdownDescription: "The DHCP IPv6 Network Cisco ISE subscribe settings.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"template": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "If set on creation, the network is created according to the values specified in the selected template.",
 	},
 	"unmanaged": schema.BoolAttribute{
@@ -646,6 +741,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"unmanaged_count": schema.Int64Attribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The number of unmanaged IP addresses as discovered by network discovery.",
 	},
 	"update_dns_on_lease_renewal": schema.BoolAttribute{
@@ -784,6 +882,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Validators: []validator.Int64{
 			int64validator.AlsoRequires(path.MatchRoot("use_valid_lifetime")),
 		},
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"vlans": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -792,6 +893,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		MarkdownDescription: "List of VLANs assigned to Network.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -807,6 +911,9 @@ var Ipv6networkResourceSchemaAttributes = map[string]schema.Attribute{
 			listvalidator.SizeAtLeast(1),
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 
@@ -815,7 +922,8 @@ func (m *Ipv6networkModel) Expand(ctx context.Context, diags *diag.Diagnostics, 
 		return nil
 	}
 	to := &ipam.Ipv6network{
-		CloudInfo:                        ExpandIpv6networkCloudInfo(ctx, m.CloudInfo, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// CloudInfo:                        ExpandIpv6networkCloudInfo(ctx, m.CloudInfo, diags),
 		Comment:                          flex.ExpandStringPointer(m.Comment),
 		DdnsDomainname:                   flex.ExpandStringPointer(m.DdnsDomainname),
 		DdnsEnableOptionFqdn:             flex.ExpandBoolPointer(m.DdnsEnableOptionFqdn),
@@ -840,7 +948,6 @@ func (m *Ipv6networkModel) Expand(ctx context.Context, diags *diag.Diagnostics, 
 		LogicFilterRules:                 flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandIpv6networkLogicFilterRules),
 		Members:                          flex.ExpandFrameworkListNestedBlock(ctx, m.Members, diags, ExpandIpv6networkMembers),
 		MgmPrivate:                       flex.ExpandBoolPointer(m.MgmPrivate),
-		MsAdUserData:                     ExpandIpv6networkMsAdUserData(ctx, m.MsAdUserData, diags),
 		Network:                          ExpandIpv6NetworkNetwork(m.Network),
 		FuncCall:                         ExpandFuncCall(ctx, m.FuncCall, diags),
 		NetworkView:                      flex.ExpandStringPointer(m.NetworkView),

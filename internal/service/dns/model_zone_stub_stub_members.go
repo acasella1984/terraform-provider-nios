@@ -12,6 +12,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 )
 
 // ZoneStubStubMembersModel defines the model for members in a stub zone.
@@ -42,6 +45,9 @@ var ZoneStubStubMembersResourceSchemaAttributes = map[string]schema.Attribute{
 	"stealth": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "This flag governs whether the specified Grid member is in stealth mode or not. If set to True, the member is in stealth mode. This flag is ignored if the struct is specified as part of a stub zone.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"grid_replicate": schema.BoolAttribute{
 		Optional:            true,
@@ -50,17 +56,26 @@ var ZoneStubStubMembersResourceSchemaAttributes = map[string]schema.Attribute{
 	"lead": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "This flag controls whether the Grid lead secondary server performs zone transfers to non lead secondaries. This flag is ignored if the struct is specified as grid_member in an authoritative zone.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"preferred_primaries": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
 			Attributes: ZonestubstubmembersPreferredPrimariesResourceSchemaAttributes,
 		},
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The primary preference list with Grid member names and\\or External Server extserver structs for this member.",
 	},
 	"enable_preferred_primaries": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "This flag represents whether the preferred_primaries field values of this member are used.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -156,7 +156,7 @@ func (o GridUpdatesDownloadMemberConfig) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Member) {
 		toSerialize["member"] = o.Member
 	}
-	if !IsNil(o.Interface) {
+	if !IsNil(o.Interface) && *o.Interface != "" {
 		toSerialize["interface"] = o.Interface
 	}
 	if !IsNil(o.IsOnline) {

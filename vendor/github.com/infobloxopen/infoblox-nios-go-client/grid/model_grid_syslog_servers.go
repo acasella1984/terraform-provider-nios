@@ -428,7 +428,7 @@ func (o GridSyslogServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddressOrFqdn) {
 		toSerialize["address_or_fqdn"] = o.AddressOrFqdn
 	}
-	if !IsNil(o.Certificate) {
+	if !IsNil(o.Certificate) && *o.Certificate != "" {
 		toSerialize["certificate"] = o.Certificate
 	}
 	if !IsNil(o.CertificateToken) {
@@ -449,10 +449,10 @@ func (o GridSyslogServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MessageNodeId) {
 		toSerialize["message_node_id"] = o.MessageNodeId
 	}
-	if !IsNil(o.Severity) {
+	if !IsNil(o.Severity) && *o.Severity != "" {
 		toSerialize["severity"] = o.Severity
 	}
-	if !IsNil(o.CategoryList) {
+	if !IsNil(o.CategoryList) && len(o.CategoryList) > 0 {
 		toSerialize["category_list"] = o.CategoryList
 	}
 	if !IsNil(o.OnlyCategoryList) {

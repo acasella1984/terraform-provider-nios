@@ -14,6 +14,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/notification"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NotificationrestendpointtemplateinstanceParametersModel struct {
@@ -39,10 +41,16 @@ var NotificationrestendpointtemplateinstanceParametersResourceSchemaAttributes =
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The value of the REST API template parameter.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"default_value": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The default value of the REST API template parameter.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"syntax": schema.StringAttribute{
 		Required: true,

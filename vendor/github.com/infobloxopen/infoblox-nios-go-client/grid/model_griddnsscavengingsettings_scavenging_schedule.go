@@ -459,7 +459,7 @@ func (o GriddnsscavengingsettingsScavengingSchedule) MarshalJSON() ([]byte, erro
 
 func (o GriddnsscavengingsettingsScavengingSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Weekdays) {
+	if !IsNil(o.Weekdays) && len(o.Weekdays) > 0 {
 		toSerialize["weekdays"] = o.Weekdays
 	}
 	if !IsNil(o.TimeZone) {

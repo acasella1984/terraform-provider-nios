@@ -397,22 +397,22 @@ func (o Superhost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteAssociatedObjects) {
 		toSerialize["delete_associated_objects"] = o.DeleteAssociatedObjects
 	}
-	if !IsNil(o.DhcpAssociatedObjects) {
+	if !IsNil(o.DhcpAssociatedObjects) && len(o.DhcpAssociatedObjects) > 0 {
 		toSerialize["dhcp_associated_objects"] = o.DhcpAssociatedObjects
 	}
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !IsNil(o.DnsAssociatedObjects) {
+	if !IsNil(o.DnsAssociatedObjects) && len(o.DnsAssociatedObjects) > 0 {
 		toSerialize["dns_associated_objects"] = o.DnsAssociatedObjects
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Name) {

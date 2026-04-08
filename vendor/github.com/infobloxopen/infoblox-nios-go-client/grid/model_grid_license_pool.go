@@ -462,7 +462,7 @@ func (o GridLicensePool) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Assigned) {
 		toSerialize["assigned"] = o.Assigned
 	}
-	if !IsNil(o.ExpirationStatus) {
+	if !IsNil(o.ExpirationStatus) && *o.ExpirationStatus != "" {
 		toSerialize["expiration_status"] = o.ExpirationStatus
 	}
 	if !IsNil(o.ExpiryDate) {
@@ -477,13 +477,13 @@ func (o GridLicensePool) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Limit) {
 		toSerialize["limit"] = o.Limit
 	}
-	if !IsNil(o.LimitContext) {
+	if !IsNil(o.LimitContext) && *o.LimitContext != "" {
 		toSerialize["limit_context"] = o.LimitContext
 	}
 	if !IsNil(o.Model) {
 		toSerialize["model"] = o.Model
 	}
-	if !IsNil(o.Subpools) {
+	if !IsNil(o.Subpools) && len(o.Subpools) > 0 {
 		toSerialize["subpools"] = o.Subpools
 	}
 	if !IsNil(o.TempAssigned) {

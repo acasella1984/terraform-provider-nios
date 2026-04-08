@@ -263,10 +263,14 @@ func (o MembernodeinfoLanHaPortSetting) ToMap() (map[string]interface{}, error) 
 		toSerialize["ha_ip_address"] = o.HaIpAddress
 	}
 	if !IsNil(o.LanPortSetting) {
-		toSerialize["lan_port_setting"] = o.LanPortSetting
+		if lan_port_settingMap, err := o.LanPortSetting.ToMap(); err == nil && len(lan_port_settingMap) > 0 {
+			toSerialize["lan_port_setting"] = o.LanPortSetting
+		}
 	}
 	if !IsNil(o.HaPortSetting) {
-		toSerialize["ha_port_setting"] = o.HaPortSetting
+		if ha_port_settingMap, err := o.HaPortSetting.ToMap(); err == nil && len(ha_port_settingMap) > 0 {
+			toSerialize["ha_port_setting"] = o.HaPortSetting
+		}
 	}
 	if !IsNil(o.HaCloudAttribute) {
 		toSerialize["ha_cloud_attribute"] = o.HaCloudAttribute

@@ -459,7 +459,7 @@ func (o GridMsSetting) MarshalJSON() ([]byte, error) {
 
 func (o GridMsSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.LogDestination) {
+	if !IsNil(o.LogDestination) && *o.LogDestination != "" {
 		toSerialize["log_destination"] = o.LogDestination
 	}
 	if !IsNil(o.EnableInvalidMac) {

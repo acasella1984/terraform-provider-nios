@@ -84,7 +84,7 @@ func (o ListRoaminghostResponseObject) MarshalJSON() ([]byte, error) {
 
 func (o ListRoaminghostResponseObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Result) {
+	if !IsNil(o.Result) && len(o.Result) > 0 {
 		toSerialize["result"] = o.Result
 	}
 

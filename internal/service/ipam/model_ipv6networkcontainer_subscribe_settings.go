@@ -6,8 +6,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
@@ -28,12 +33,30 @@ var Ipv6networkcontainerSubscribeSettingsResourceSchemaAttributes = map[string]s
 	"enabled_attributes": schema.ListAttribute{
 		ElementType: types.StringType,
 		Computed:    true,
+		Validators: []validator.List{
+			listvalidator.ValueStringsAre(stringvalidator.OneOf(
+				"DOMAINNAME",
+				"ENDPOINT_PROFILE",
+				"SECURITY_GROUP",
+				"SESSION_STATE",
+				"SSID",
+				"USERNAME",
+				"VLAN",
+			)),
+			listvalidator.SizeAtLeast(1),
+		},
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"mapped_ea_attributes": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
 			Attributes: Ipv6networkcontainersubscribesettingsMappedEaAttributesResourceSchemaAttributes,
 		},
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The list of NIOS extensible attributes to Cisco ISE attributes mappings.",
 	},
 }

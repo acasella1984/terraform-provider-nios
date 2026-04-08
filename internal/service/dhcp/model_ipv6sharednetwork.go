@@ -17,6 +17,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -29,6 +33,7 @@ import (
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type Ipv6sharednetworkModel struct {
@@ -106,6 +111,10 @@ var Ipv6sharednetworkAttrTypes = map[string]attr.Type{
 var Ipv6sharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"comment": schema.StringAttribute{
@@ -127,6 +136,9 @@ var Ipv6sharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidDomainName(),
 		},
 		MarkdownDescription: "The dynamic DNS domain name the appliance uses specifically for DDNS updates for this network.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ddns_generate_hostname": schema.BoolAttribute{
 		Optional: true,
@@ -179,6 +191,9 @@ var Ipv6sharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidDomainName(),
 		},
 		MarkdownDescription: "Use this method to set or retrieve the domain_name value of a DHCP IPv6 Shared Network object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"domain_name_servers": schema.ListAttribute{
 		ElementType: types.StringType,
@@ -213,6 +228,7 @@ var Ipv6sharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed: true,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "Extensible attributes associated with the object , including default and internal attributes.",
 		ElementType:         types.StringType,
@@ -222,6 +238,9 @@ var Ipv6sharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			Attributes: Ipv6sharednetworkLogicFilterRulesResourceSchemaAttributes,
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Optional: true,
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
@@ -262,6 +281,9 @@ var Ipv6sharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			Attributes: Ipv6sharednetworkOptionsResourceSchemaAttributes,
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Optional: true,
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
@@ -365,6 +387,9 @@ var Ipv6sharednetworkResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_valid_lifetime")),
 		},
 		MarkdownDescription: "Use this method to set or retrieve the valid lifetime value of a DHCP IPv6 Shared Network object.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

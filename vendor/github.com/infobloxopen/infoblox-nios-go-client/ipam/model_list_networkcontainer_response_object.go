@@ -84,7 +84,7 @@ func (o ListNetworkcontainerResponseObject) MarshalJSON() ([]byte, error) {
 
 func (o ListNetworkcontainerResponseObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Result) {
+	if !IsNil(o.Result) && len(o.Result) > 0 {
 		toSerialize["result"] = o.Result
 	}
 

@@ -12,6 +12,10 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type RecordAaaaDiscoveredDataModel struct {
@@ -216,386 +220,674 @@ var RecordAaaaDiscoveredDataResourceSchemaAttributes = map[string]schema.Attribu
 	"device_model": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The model name of the end device in the vendor terminology.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_port_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The system name of the interface associated with the discovered IP address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_port_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The hardware type of the interface associated with the discovered IP address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The type of end host in vendor terminology.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_vendor": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The vendor name of the end host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the network device associated with the discovered IP address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discoverer": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Specifies whether the IP address was discovered by a NetMRI or NIOS discovery process.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"duid": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "For IPv6 address only. The DHCP unique identifier of the discovered host. This is an optional field, and data might not be included.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"first_discovered": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The date and time the IP address was first discovered in Epoch seconds format.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"iprg_no": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The port redundant group number.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"iprg_state": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The status for the IP address within port redundant group.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"iprg_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The port redundant group type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_discovered": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The date and time the IP address was last discovered in Epoch seconds format.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"mac_address": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The discovered MAC address for the host. This is the unique identifier of a network device. The discovery acquires the MAC address for hosts that are located on the same network as the Grid member that is running the discovery. This can also be the MAC address of a virtual entity on a specified vSphere server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"mgmt_ip_address": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The management IP address of the end host that has more than one IP.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"netbios_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name returned in the NetBIOS reply or the name you manually register for the discovered host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_description": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "A textual description of the switch that is connected to the end device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_ip": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The IPv4 Address or IPv6 Address of the switch that is connected to the end device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_model": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Model name of the switch port connected to the end host in vendor terminology.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "If a reverse lookup was successful for the IP address associated with this switch, the host name is displayed in this field.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_port_description": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "A textual description of the switch port that is connected to the end device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_port_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the switch port connected to the end device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_port_number": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The number of the switch port connected to the end device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Identifies the switch that is connected to the end device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_vendor": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The vendor name of the switch port connected to the end host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"open_ports": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The list of opened ports on the IP address, represented as: \"TCP: 21,22,23 UDP: 137,139\". Limited to max total 1000 ports.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"os": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The operating system of the detected host or virtual entity. The OS can be one of the following: * Microsoft for all discovered hosts that have a non-null value in the MAC addresses using the NetBIOS discovery method. * A value that a TCP discovery returns. * The OS of a virtual entity on a vSphere server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"port_duplex": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The negotiated or operational duplex setting of the switch port connected to the end device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"port_link_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The link status of the switch port connected to the end device. Indicates whether it is connected.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"port_speed": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The interface speed, in Mbps, of the switch port.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"port_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The operational status of the switch port. Indicates whether the port is up or down.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"port_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The type of switch port.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"port_vlan_description": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The description of the VLAN of the switch port that is connected to the end device.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"port_vlan_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the VLAN of the switch port.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"port_vlan_number": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The ID of the VLAN of the switch port.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"v_adapter": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the physical network adapter through which the virtual entity is connected to the appliance.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"v_cluster": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the VMware cluster to which the virtual entity belongs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"v_datacenter": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the vSphere datacenter or container to which the virtual entity belongs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"v_entity_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the virtual entity.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"v_entity_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The virtual entity type. This can be blank or one of the following: Virtual Machine, Virtual Host, or Virtual Center. Virtual Center represents a VMware vCenter server.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"v_host": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the VMware server on which the virtual entity was discovered.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"v_switch": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the switch to which the virtual entity is connected.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmi_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Name of the virtual machine.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmi_id": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "ID of the virtual machine.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vlan_port_group": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Port group which the virtual machine belongs to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Name of the virtual switch.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_id": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "ID of the virtual switch.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Type of the virtual switch: standard or distributed.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_ipv6_enabled": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Indicates the virtual switch has IPV6 enabled.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vport_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Name of the network adapter on the virtual switch connected with the virtual machine.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vport_mac_address": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "MAC address of the network adapter on the virtual switch where the virtual machine connected to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vport_link_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Link status of the network adapter on the virtual switch where the virtual machine connected to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vport_conf_speed": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Configured speed of the network adapter on the virtual switch where the virtual machine connected to. Unit is kb.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vport_conf_mode": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Configured mode of the network adapter on the virtual switch where the virtual machine connected to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vport_speed": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Actual speed of the network adapter on the virtual switch where the virtual machine connected to. Unit is kb.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vport_mode": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Actual mode of the network adapter on the virtual switch where the virtual machine connected to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_segment_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Type of the network segment on which the current virtual machine/vport connected to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_segment_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Name of the network segment on which the current virtual machine/vport connected to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_segment_id": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "ID of the network segment on which the current virtual machine/vport connected to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_segment_port_group": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Port group of the network segment on which the current virtual machine/vport connected to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_available_ports_count": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "Numer of available ports reported by the virtual switch on which the virtual machine/vport connected to.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_tep_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Type of virtual tunnel endpoint (VTEP) in the virtual switch.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_tep_ip": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "IP address of the virtual tunnel endpoint (VTEP) in the virtual switch.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_tep_port_group": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Port group of the virtual tunnel endpoint (VTEP) in the virtual switch.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_tep_vlan": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "VLAN of the virtual tunnel endpoint (VTEP) in the virtual switch.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_tep_dhcp_server": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "DHCP server of the virtual tunnel endpoint (VTEP) in the virtual switch.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vswitch_tep_multicast": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Muticast address of the virtual tunnel endpoint (VTEP) in the virtual swtich.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmhost_ip_address": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "IP address of the physical node on which the virtual machine is hosted.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmhost_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Name of the physical node on which the virtual machine is hosted.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmhost_mac_address": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "MAC address of the physical node on which the virtual machine is hosted.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmhost_subnet_cidr": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "CIDR subnet of the physical node on which the virtual machine is hosted.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmhost_nic_names": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "List of all physical port names used by the virtual switch on the physical node on which the virtual machine is hosted. Represented as: \"eth1,eth2,eth3\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmi_tenant_id": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "ID of the tenant which virtual machine belongs to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cmp_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "If the IP is coming from a Cloud environment, the Cloud Management Platform type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmi_ip_type": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Discovered IP address type.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmi_private_address": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Private IP address of the virtual machine.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vmi_is_public_address": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Indicates whether the IP address is a public address.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cisco_ise_ssid": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The Cisco ISE SSID.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cisco_ise_endpoint_profile": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The Endpoint Profile created in Cisco ISE.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cisco_ise_session_state": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The Cisco ISE connection session state.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cisco_ise_security_group": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The Cisco ISE security group name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"task_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the discovery task.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_location": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Location of the network component on which the IP address was discovered.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_component_contact": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Contact information from the network component on which the IP address was discovered.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_location": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Location of device on which the IP address was discovered.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"device_contact": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Contact information from device on which the IP address was discovered.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ap_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Discovered name of Wireless Access Point.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ap_ip_address": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Discovered IP address of Wireless Access Point.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ap_ssid": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Service set identifier (SSID) associated with Wireless Access Point.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"bridge_domain": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Discovered bridge domain.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"endpoint_groups": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "A comma-separated list of the discovered endpoint groups.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tenant": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Discovered tenant.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vrf_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the VRF.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vrf_description": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Description of the VRF.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"vrf_rd": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Route distinguisher of the VRF.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"bgp_as": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The BGP autonomous system number.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

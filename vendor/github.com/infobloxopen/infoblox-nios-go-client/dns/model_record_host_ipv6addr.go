@@ -1101,22 +1101,24 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AddressType) {
+	if !IsNil(o.AddressType) && *o.AddressType != "" {
 		toSerialize["address_type"] = o.AddressType
 	}
 	if !IsNil(o.ConfigureForDhcp) {
 		toSerialize["configure_for_dhcp"] = o.ConfigureForDhcp
 	}
-	if !IsNil(o.DiscoverNowStatus) {
+	if !IsNil(o.DiscoverNowStatus) && *o.DiscoverNowStatus != "" {
 		toSerialize["discover_now_status"] = o.DiscoverNowStatus
 	}
 	if !IsNil(o.DiscoveredData) {
-		toSerialize["discovered_data"] = o.DiscoveredData
+		if discovered_dataMap, err := o.DiscoveredData.ToMap(); err == nil && len(discovered_dataMap) > 0 {
+			toSerialize["discovered_data"] = o.DiscoveredData
+		}
 	}
 	if !IsNil(o.DomainName) {
 		toSerialize["domain_name"] = o.DomainName
 	}
-	if !IsNil(o.DomainNameServers) {
+	if !IsNil(o.DomainNameServers) && len(o.DomainNameServers) > 0 {
 		toSerialize["domain_name_servers"] = o.DomainNameServers
 	}
 	if !IsNil(o.Duid) {
@@ -1129,7 +1131,9 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 		toSerialize["ipv6addr"] = o.Ipv6addr
 	}
 	if !IsNil(o.FuncCall) {
-		toSerialize["func_call"] = o.FuncCall
+		if func_callMap, err := o.FuncCall.ToMap(); err == nil && len(func_callMap) > 0 {
+			toSerialize["func_call"] = o.FuncCall
+		}
 	}
 	if !IsNil(o.Ipv6prefix) {
 		toSerialize["ipv6prefix"] = o.Ipv6prefix
@@ -1140,17 +1144,19 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried
 	}
-	if !IsNil(o.LogicFilterRules) {
+	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
 	if !IsNil(o.Mac) {
 		toSerialize["mac"] = o.Mac
 	}
-	if !IsNil(o.MatchClient) {
+	if !IsNil(o.MatchClient) && *o.MatchClient != "" {
 		toSerialize["match_client"] = o.MatchClient
 	}
 	if !IsNil(o.MsAdUserData) {
-		toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		if ms_ad_user_dataMap, err := o.MsAdUserData.ToMap(); err == nil && len(ms_ad_user_dataMap) > 0 {
+			toSerialize["ms_ad_user_data"] = o.MsAdUserData
+		}
 	}
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
@@ -1158,13 +1164,13 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.Options) {
+	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
 	if !IsNil(o.PreferredLifetime) {
 		toSerialize["preferred_lifetime"] = o.PreferredLifetime
 	}
-	if !IsNil(o.ReservedInterface) {
+	if !IsNil(o.ReservedInterface) && *o.ReservedInterface != "" {
 		toSerialize["reserved_interface"] = o.ReservedInterface
 	}
 	if !IsNil(o.UseDomainName) {

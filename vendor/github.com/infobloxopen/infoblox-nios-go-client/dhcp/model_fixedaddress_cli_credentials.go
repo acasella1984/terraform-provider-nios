@@ -255,7 +255,7 @@ func (o FixedaddressCliCredentials) MarshalJSON() ([]byte, error) {
 
 func (o FixedaddressCliCredentials) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
+	if !IsNil(o.User) && *o.User != "" {
 		toSerialize["user"] = o.User
 	}
 	if !IsNil(o.Password) {

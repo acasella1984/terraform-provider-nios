@@ -15,6 +15,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ViewFilterAaaaListModel struct {
@@ -38,6 +40,9 @@ var ViewFilterAaaaListResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.ConflictsWith(path.MatchRelative().AtParent().AtName("permission")),
 		},
 		MarkdownDescription: "The reference to the Named ACL object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"address": schema.StringAttribute{
 		Optional: true,
@@ -46,6 +51,9 @@ var ViewFilterAaaaListResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The address this rule applies to or \"Any\".",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"permission": schema.StringAttribute{
 		Optional: true,
@@ -54,6 +62,9 @@ var ViewFilterAaaaListResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("ALLOW", "DENY"),
 		},
 		MarkdownDescription: "The permission to use for this address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

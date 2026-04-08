@@ -14,6 +14,10 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type Ipv6filteroptionOptionListModel struct {
@@ -40,11 +44,17 @@ var Ipv6filteroptionOptionListResourceSchemaAttributes = map[string]schema.Attri
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "Name of the DHCP option.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"num": schema.Int64Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The code of the DHCP option.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"vendor_class": schema.StringAttribute{
 		Computed: true,
@@ -53,6 +63,9 @@ var Ipv6filteroptionOptionListResourceSchemaAttributes = map[string]schema.Attri
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The name of the space this DHCP option is associated to.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"value": schema.StringAttribute{
 		Required: true,
@@ -65,6 +78,9 @@ var Ipv6filteroptionOptionListResourceSchemaAttributes = map[string]schema.Attri
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Only applies to special options that are displayed separately from other options and have a use flag. These options are: * routers * router-templates * domain-name-servers * domain-name * broadcast-address * broadcast-address-offset * dhcp-lease-time * dhcp6.name-servers",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

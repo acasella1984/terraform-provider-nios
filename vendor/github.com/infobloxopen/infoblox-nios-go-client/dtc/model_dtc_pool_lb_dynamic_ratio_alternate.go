@@ -224,7 +224,7 @@ func (o DtcPoolLbDynamicRatioAlternate) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Method) {
 		toSerialize["method"] = o.Method
 	}
-	if !IsNil(o.Monitor) {
+	if !IsNil(o.Monitor) && *o.Monitor != "" {
 		toSerialize["monitor"] = o.Monitor
 	}
 	if !IsNil(o.MonitorMetric) {

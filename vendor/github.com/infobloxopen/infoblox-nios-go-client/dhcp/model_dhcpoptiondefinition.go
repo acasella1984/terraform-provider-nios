@@ -227,10 +227,10 @@ func (o Dhcpoptiondefinition) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Space) {
+	if !IsNil(o.Space) && *o.Space != "" {
 		toSerialize["space"] = o.Space
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil

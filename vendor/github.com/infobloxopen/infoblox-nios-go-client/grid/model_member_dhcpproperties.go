@@ -5219,19 +5219,19 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AuthServerGroup) {
+	if !IsNil(o.AuthServerGroup) && *o.AuthServerGroup != "" {
 		toSerialize["auth_server_group"] = o.AuthServerGroup
 	}
-	if !IsNil(o.AuthnCaptivePortal) {
+	if !IsNil(o.AuthnCaptivePortal) && *o.AuthnCaptivePortal != "" {
 		toSerialize["authn_captive_portal"] = o.AuthnCaptivePortal
 	}
-	if !IsNil(o.AuthnCaptivePortalAuthenticatedFilter) {
+	if !IsNil(o.AuthnCaptivePortalAuthenticatedFilter) && *o.AuthnCaptivePortalAuthenticatedFilter != "" {
 		toSerialize["authn_captive_portal_authenticated_filter"] = o.AuthnCaptivePortalAuthenticatedFilter
 	}
 	if !IsNil(o.AuthnCaptivePortalEnabled) {
 		toSerialize["authn_captive_portal_enabled"] = o.AuthnCaptivePortalEnabled
 	}
-	if !IsNil(o.AuthnCaptivePortalGuestFilter) {
+	if !IsNil(o.AuthnCaptivePortalGuestFilter) && *o.AuthnCaptivePortalGuestFilter != "" {
 		toSerialize["authn_captive_portal_guest_filter"] = o.AuthnCaptivePortalGuestFilter
 	}
 	if !IsNil(o.AuthnServerGroupEnabled) {
@@ -5267,7 +5267,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsUseOption81) {
 		toSerialize["ddns_use_option81"] = o.DdnsUseOption81
 	}
-	if !IsNil(o.DdnsZonePrimaries) {
+	if !IsNil(o.DdnsZonePrimaries) && len(o.DdnsZonePrimaries) > 0 {
 		toSerialize["ddns_zone_primaries"] = o.DdnsZonePrimaries
 	}
 	if !IsNil(o.DenyBootp) {
@@ -5276,16 +5276,16 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DhcpUtilization) {
 		toSerialize["dhcp_utilization"] = o.DhcpUtilization
 	}
-	if !IsNil(o.DhcpUtilizationStatus) {
+	if !IsNil(o.DhcpUtilizationStatus) && *o.DhcpUtilizationStatus != "" {
 		toSerialize["dhcp_utilization_status"] = o.DhcpUtilizationStatus
 	}
-	if !IsNil(o.DnsUpdateStyle) {
+	if !IsNil(o.DnsUpdateStyle) && *o.DnsUpdateStyle != "" {
 		toSerialize["dns_update_style"] = o.DnsUpdateStyle
 	}
 	if !IsNil(o.DynamicHosts) {
 		toSerialize["dynamic_hosts"] = o.DynamicHosts
 	}
-	if !IsNil(o.EmailList) {
+	if !IsNil(o.EmailList) && len(o.EmailList) > 0 {
 		toSerialize["email_list"] = o.EmailList
 	}
 	if !IsNil(o.EnableDdns) {
@@ -5324,16 +5324,16 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableSnmpWarnings) {
 		toSerialize["enable_snmp_warnings"] = o.EnableSnmpWarnings
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.GssTsigKeys) {
+	if !IsNil(o.GssTsigKeys) && len(o.GssTsigKeys) > 0 {
 		toSerialize["gss_tsig_keys"] = o.GssTsigKeys
 	}
 	if !IsNil(o.HighWaterMark) {
@@ -5345,16 +5345,16 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HostName) {
 		toSerialize["host_name"] = o.HostName
 	}
-	if !IsNil(o.HostnameRewritePolicy) {
+	if !IsNil(o.HostnameRewritePolicy) && *o.HostnameRewritePolicy != "" {
 		toSerialize["hostname_rewrite_policy"] = o.HostnameRewritePolicy
 	}
 	if !IsNil(o.IgnoreDhcpOptionListRequest) {
 		toSerialize["ignore_dhcp_option_list_request"] = o.IgnoreDhcpOptionListRequest
 	}
-	if !IsNil(o.IgnoreId) {
+	if !IsNil(o.IgnoreId) && *o.IgnoreId != "" {
 		toSerialize["ignore_id"] = o.IgnoreId
 	}
-	if !IsNil(o.IgnoreMacAddresses) {
+	if !IsNil(o.IgnoreMacAddresses) && len(o.IgnoreMacAddresses) > 0 {
 		toSerialize["ignore_mac_addresses"] = o.IgnoreMacAddresses
 	}
 	if !IsNil(o.ImmediateFaConfiguration) {
@@ -5378,13 +5378,13 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6DdnsTtl) {
 		toSerialize["ipv6_ddns_ttl"] = o.Ipv6DdnsTtl
 	}
-	if !IsNil(o.Ipv6DnsUpdateStyle) {
+	if !IsNil(o.Ipv6DnsUpdateStyle) && *o.Ipv6DnsUpdateStyle != "" {
 		toSerialize["ipv6_dns_update_style"] = o.Ipv6DnsUpdateStyle
 	}
 	if !IsNil(o.Ipv6DomainName) {
 		toSerialize["ipv6_domain_name"] = o.Ipv6DomainName
 	}
-	if !IsNil(o.Ipv6DomainNameServers) {
+	if !IsNil(o.Ipv6DomainNameServers) && len(o.Ipv6DomainNameServers) > 0 {
 		toSerialize["ipv6_domain_name_servers"] = o.Ipv6DomainNameServers
 	}
 	if !IsNil(o.Ipv6EnableDdns) {
@@ -5402,7 +5402,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6GenerateHostname) {
 		toSerialize["ipv6_generate_hostname"] = o.Ipv6GenerateHostname
 	}
-	if !IsNil(o.Ipv6GssTsigKeys) {
+	if !IsNil(o.Ipv6GssTsigKeys) && len(o.Ipv6GssTsigKeys) > 0 {
 		toSerialize["ipv6_gss_tsig_keys"] = o.Ipv6GssTsigKeys
 	}
 	if !IsNil(o.Ipv6KdcServer) {
@@ -5411,10 +5411,10 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6LeaseScavengingTime) {
 		toSerialize["ipv6_lease_scavenging_time"] = o.Ipv6LeaseScavengingTime
 	}
-	if !IsNil(o.Ipv6MicrosoftCodePage) {
+	if !IsNil(o.Ipv6MicrosoftCodePage) && *o.Ipv6MicrosoftCodePage != "" {
 		toSerialize["ipv6_microsoft_code_page"] = o.Ipv6MicrosoftCodePage
 	}
-	if !IsNil(o.Ipv6Options) {
+	if !IsNil(o.Ipv6Options) && len(o.Ipv6Options) > 0 {
 		toSerialize["ipv6_options"] = o.Ipv6Options
 	}
 	if !IsNil(o.Ipv6RecycleLeases) {
@@ -5438,7 +5438,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.KdcServer) {
 		toSerialize["kdc_server"] = o.KdcServer
 	}
-	if !IsNil(o.LeasePerClientSettings) {
+	if !IsNil(o.LeasePerClientSettings) && *o.LeasePerClientSettings != "" {
 		toSerialize["lease_per_client_settings"] = o.LeasePerClientSettings
 	}
 	if !IsNil(o.LeaseScavengeTime) {
@@ -5447,7 +5447,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogLeaseEvents) {
 		toSerialize["log_lease_events"] = o.LogLeaseEvents
 	}
-	if !IsNil(o.LogicFilterRules) {
+	if !IsNil(o.LogicFilterRules) && len(o.LogicFilterRules) > 0 {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules
 	}
 	if !IsNil(o.LowWaterMark) {
@@ -5456,16 +5456,16 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LowWaterMarkReset) {
 		toSerialize["low_water_mark_reset"] = o.LowWaterMarkReset
 	}
-	if !IsNil(o.MicrosoftCodePage) {
+	if !IsNil(o.MicrosoftCodePage) && *o.MicrosoftCodePage != "" {
 		toSerialize["microsoft_code_page"] = o.MicrosoftCodePage
 	}
 	if !IsNil(o.Nextserver) {
 		toSerialize["nextserver"] = o.Nextserver
 	}
-	if !IsNil(o.Option60MatchRules) {
+	if !IsNil(o.Option60MatchRules) && len(o.Option60MatchRules) > 0 {
 		toSerialize["option60_match_rules"] = o.Option60MatchRules
 	}
-	if !IsNil(o.Options) {
+	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
 	if !IsNil(o.PingCount) {
@@ -5477,7 +5477,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PreferredLifetime) {
 		toSerialize["preferred_lifetime"] = o.PreferredLifetime
 	}
-	if !IsNil(o.PrefixLengthMode) {
+	if !IsNil(o.PrefixLengthMode) && *o.PrefixLengthMode != "" {
 		toSerialize["prefix_length_mode"] = o.PrefixLengthMode
 	}
 	if !IsNil(o.PxeLeaseTime) {
@@ -5492,7 +5492,7 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StaticHosts) {
 		toSerialize["static_hosts"] = o.StaticHosts
 	}
-	if !IsNil(o.SyslogFacility) {
+	if !IsNil(o.SyslogFacility) && *o.SyslogFacility != "" {
 		toSerialize["syslog_facility"] = o.SyslogFacility
 	}
 	if !IsNil(o.TotalHosts) {

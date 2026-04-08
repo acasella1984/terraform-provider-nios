@@ -258,7 +258,7 @@ func (o DiscoveryVrf) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Device) {
+	if !IsNil(o.Device) && *o.Device != "" {
 		toSerialize["device"] = o.Device
 	}
 	if !IsNil(o.Name) {

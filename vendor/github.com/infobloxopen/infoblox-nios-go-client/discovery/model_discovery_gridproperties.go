@@ -929,33 +929,45 @@ func (o DiscoveryGridproperties) ToMap() (map[string]interface{}, error) {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AdvancedPollingSettings) {
-		toSerialize["advanced_polling_settings"] = o.AdvancedPollingSettings
+		if advanced_polling_settingsMap, err := o.AdvancedPollingSettings.ToMap(); err == nil && len(advanced_polling_settingsMap) > 0 {
+			toSerialize["advanced_polling_settings"] = o.AdvancedPollingSettings
+		}
 	}
 	if !IsNil(o.AdvancedSdnPollingSettings) {
-		toSerialize["advanced_sdn_polling_settings"] = o.AdvancedSdnPollingSettings
+		if advanced_sdn_polling_settingsMap, err := o.AdvancedSdnPollingSettings.ToMap(); err == nil && len(advanced_sdn_polling_settingsMap) > 0 {
+			toSerialize["advanced_sdn_polling_settings"] = o.AdvancedSdnPollingSettings
+		}
 	}
 	if !IsNil(o.AdvisorSettings) {
-		toSerialize["advisor_settings"] = o.AdvisorSettings
+		if advisor_settingsMap, err := o.AdvisorSettings.ToMap(); err == nil && len(advisor_settingsMap) > 0 {
+			toSerialize["advisor_settings"] = o.AdvisorSettings
+		}
 	}
-	if !IsNil(o.AutoConversionSettings) {
+	if !IsNil(o.AutoConversionSettings) && len(o.AutoConversionSettings) > 0 {
 		toSerialize["auto_conversion_settings"] = o.AutoConversionSettings
 	}
 	if !IsNil(o.BasicPollingSettings) {
-		toSerialize["basic_polling_settings"] = o.BasicPollingSettings
+		if basic_polling_settingsMap, err := o.BasicPollingSettings.ToMap(); err == nil && len(basic_polling_settingsMap) > 0 {
+			toSerialize["basic_polling_settings"] = o.BasicPollingSettings
+		}
 	}
 	if !IsNil(o.BasicSdnPollingSettings) {
-		toSerialize["basic_sdn_polling_settings"] = o.BasicSdnPollingSettings
+		if basic_sdn_polling_settingsMap, err := o.BasicSdnPollingSettings.ToMap(); err == nil && len(basic_sdn_polling_settingsMap) > 0 {
+			toSerialize["basic_sdn_polling_settings"] = o.BasicSdnPollingSettings
+		}
 	}
-	if !IsNil(o.CliCredentials) {
+	if !IsNil(o.CliCredentials) && len(o.CliCredentials) > 0 {
 		toSerialize["cli_credentials"] = o.CliCredentials
 	}
-	if !IsNil(o.DeviceHints) {
+	if !IsNil(o.DeviceHints) && len(o.DeviceHints) > 0 {
 		toSerialize["device_hints"] = o.DeviceHints
 	}
 	if !IsNil(o.DiscoveryBlackoutSetting) {
-		toSerialize["discovery_blackout_setting"] = o.DiscoveryBlackoutSetting
+		if discovery_blackout_settingMap, err := o.DiscoveryBlackoutSetting.ToMap(); err == nil && len(discovery_blackout_settingMap) > 0 {
+			toSerialize["discovery_blackout_setting"] = o.DiscoveryBlackoutSetting
+		}
 	}
-	if !IsNil(o.DnsLookupOption) {
+	if !IsNil(o.DnsLookupOption) && *o.DnsLookupOption != "" {
 		toSerialize["dns_lookup_option"] = o.DnsLookupOption
 	}
 	if !IsNil(o.DnsLookupThrottle) {
@@ -977,18 +989,20 @@ func (o DiscoveryGridproperties) ToMap() (map[string]interface{}, error) {
 		toSerialize["ignore_conflict_duration"] = o.IgnoreConflictDuration
 	}
 	if !IsNil(o.PortControlBlackoutSetting) {
-		toSerialize["port_control_blackout_setting"] = o.PortControlBlackoutSetting
+		if port_control_blackout_settingMap, err := o.PortControlBlackoutSetting.ToMap(); err == nil && len(port_control_blackout_settingMap) > 0 {
+			toSerialize["port_control_blackout_setting"] = o.PortControlBlackoutSetting
+		}
 	}
-	if !IsNil(o.Ports) {
+	if !IsNil(o.Ports) && len(o.Ports) > 0 {
 		toSerialize["ports"] = o.Ports
 	}
 	if !IsNil(o.SamePortControlDiscoveryBlackout) {
 		toSerialize["same_port_control_discovery_blackout"] = o.SamePortControlDiscoveryBlackout
 	}
-	if !IsNil(o.Snmpv1v2Credentials) {
+	if !IsNil(o.Snmpv1v2Credentials) && len(o.Snmpv1v2Credentials) > 0 {
 		toSerialize["snmpv1v2_credentials"] = o.Snmpv1v2Credentials
 	}
-	if !IsNil(o.Snmpv3Credentials) {
+	if !IsNil(o.Snmpv3Credentials) && len(o.Snmpv3Credentials) > 0 {
 		toSerialize["snmpv3_credentials"] = o.Snmpv3Credentials
 	}
 	if !IsNil(o.UnmanagedIpsLimit) {
@@ -997,10 +1011,10 @@ func (o DiscoveryGridproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UnmanagedIpsTimeout) {
 		toSerialize["unmanaged_ips_timeout"] = o.UnmanagedIpsTimeout
 	}
-	if !IsNil(o.VrfMappingPolicy) {
+	if !IsNil(o.VrfMappingPolicy) && *o.VrfMappingPolicy != "" {
 		toSerialize["vrf_mapping_policy"] = o.VrfMappingPolicy
 	}
-	if !IsNil(o.VrfMappingRules) {
+	if !IsNil(o.VrfMappingRules) && len(o.VrfMappingRules) > 0 {
 		toSerialize["vrf_mapping_rules"] = o.VrfMappingRules
 	}
 	return toSerialize, nil

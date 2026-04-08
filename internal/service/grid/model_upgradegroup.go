@@ -9,6 +9,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -16,6 +19,7 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type UpgradegroupModel struct {
@@ -49,6 +53,10 @@ var UpgradegroupAttrTypes = map[string]attr.Type{
 var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"comment": schema.StringAttribute{
@@ -60,6 +68,9 @@ var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"distribution_dependent_group": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The distribution dependent group name.",
 	},
 	"distribution_policy": schema.StringAttribute{
@@ -78,6 +89,9 @@ var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTimeFormat(),
 		},
 		MarkdownDescription: "The time of the next scheduled distribution.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"members": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -85,6 +99,9 @@ var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -100,10 +117,16 @@ var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"time_zone": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The time zone for scheduling operations.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"upgrade_dependent_group": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The upgrade dependent group name.",
 	},
 	"upgrade_policy": schema.StringAttribute{
@@ -122,6 +145,9 @@ var UpgradegroupResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTimeFormat(),
 		},
 		MarkdownDescription: "The time of the next scheduled upgrade.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

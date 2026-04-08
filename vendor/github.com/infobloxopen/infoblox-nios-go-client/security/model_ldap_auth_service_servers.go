@@ -446,7 +446,7 @@ func (o LdapAuthServiceServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.Encryption) {
+	if !IsNil(o.Encryption) && *o.Encryption != "" {
 		toSerialize["encryption"] = o.Encryption
 	}
 	if !IsNil(o.Port) {

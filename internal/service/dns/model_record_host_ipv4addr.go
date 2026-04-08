@@ -20,6 +20,12 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type RecordHostIpv4addrModel struct {
@@ -97,6 +103,11 @@ var RecordHostIpv4addrAttrTypes = map[string]attr.Type{
 var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"bootfile": schema.StringAttribute{
@@ -105,6 +116,9 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 		MarkdownDescription: "The name of the boot file the client must download.",
 		Validators: []validator.String{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_bootfile")),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"bootserver": schema.StringAttribute{
@@ -115,10 +129,16 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		MarkdownDescription: "The IP address or hostname of the boot file server where the boot file is stored.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"configure_for_dhcp": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Set this to True to enable the DHCP configuration for this host address.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"deny_bootp": schema.BoolAttribute{
 		Optional: true,
@@ -127,14 +147,23 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 			boolvalidator.AlsoRequires(path.MatchRoot("use_deny_bootp")),
 		},
 		MarkdownDescription: "Set this to True to disable the BOOTP settings and deny BOOTP boot requests.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discover_now_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The discovery status of this Host Address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovered_data": schema.SingleNestedAttribute{
 		Attributes: RecordHostIpv4addrDiscoveredDataResourceSchemaAttributes,
 		Computed:   true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"enable_pxe_lease_time": schema.BoolAttribute{
 		Optional:            true,
@@ -143,6 +172,9 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"host": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The host to which the host address belongs, in FQDN format. It is only present when the host address object is not returned as part of a host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ignore_client_requested_options": schema.BoolAttribute{
 		Optional:            true,
@@ -153,6 +185,9 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The IPv4 Address of the record.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"func_call": schema.SingleNestedAttribute{
 		Attributes: FuncCallResourceSchemaAttributes,
@@ -165,10 +200,16 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"is_invalid_mac": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "This flag reflects whether the MAC address for this host address is invalid.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_queried": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The time of the last DNS query in Epoch seconds format.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"logic_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -184,11 +225,17 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"mac": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The MAC address for this host address.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"match_client": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Set this to 'MAC_ADDRESS' to assign the IP address to the selected host, provided that the MAC address of the requesting host matches the MAC address that you specify in the field. Set this to 'RESERVED' to reserve this particular IP address for future use, or if the IP address is statically configured on a system (the Infoblox server does not assign the address from a DHCP request).",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_ad_user_data": schema.SingleNestedAttribute{
 		Attributes: RecordHostIpv4addrMsAdUserDataResourceSchemaAttributes,
@@ -197,10 +244,16 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 	"network": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The network of the host address, in FQDN/CIDR format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network_view": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the network view in which the host address resides.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"nextserver": schema.StringAttribute{
 		Optional: true,
@@ -209,6 +262,9 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The name in FQDN format and/or IPv4 Address of the next server that the host needs to boot.",
 	},
 	"options": schema.ListNestedAttribute{
@@ -226,6 +282,9 @@ var RecordHostIpv4addrResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The reference to the reserved interface to which the device belongs.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_bootfile": schema.BoolAttribute{
 		Optional:            true,
@@ -287,7 +346,8 @@ func (m *RecordHostIpv4addrModel) Expand(ctx context.Context, diags *diag.Diagno
 		Bootserver:                      flex.ExpandStringPointer(m.Bootserver),
 		ConfigureForDhcp:                flex.ExpandBoolPointer(m.ConfigureForDhcp),
 		DenyBootp:                       flex.ExpandBoolPointer(m.DenyBootp),
-		DiscoveredData:                  ExpandRecordHostIpv4addrDiscoveredData(ctx, m.DiscoveredData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// DiscoveredData:                  ExpandRecordHostIpv4addrDiscoveredData(ctx, m.DiscoveredData, diags),
 		EnablePxeLeaseTime:              flex.ExpandBoolPointer(m.EnablePxeLeaseTime),
 		IgnoreClientRequestedOptions:    flex.ExpandBoolPointer(m.IgnoreClientRequestedOptions),
 		Ipv4addr:                        ExpandRecordHostIpv4addrIpv4addr(m.Ipv4addr),
@@ -295,7 +355,8 @@ func (m *RecordHostIpv4addrModel) Expand(ctx context.Context, diags *diag.Diagno
 		LogicFilterRules:                flex.ExpandFrameworkListNestedBlock(ctx, m.LogicFilterRules, diags, ExpandRecordHostIpv4addrLogicFilterRules),
 		Mac:                             flex.ExpandStringPointer(m.Mac),
 		MatchClient:                     flex.ExpandStringPointer(m.MatchClient),
-		MsAdUserData:                    ExpandRecordHostIpv4addrMsAdUserData(ctx, m.MsAdUserData, diags),
+		// Exclude: read-only (WAPI supports='r'). Field is not writable via WAPI.
+		// MsAdUserData:                    ExpandRecordHostIpv4addrMsAdUserData(ctx, m.MsAdUserData, diags),
 		Nextserver:                      flex.ExpandStringPointer(m.Nextserver),
 		Options:                         flex.ExpandFrameworkListNestedBlock(ctx, m.Options, diags, ExpandRecordHostIpv4addrOptions),
 		PxeLeaseTime:                    flex.ExpandInt64Pointer(m.PxeLeaseTime),

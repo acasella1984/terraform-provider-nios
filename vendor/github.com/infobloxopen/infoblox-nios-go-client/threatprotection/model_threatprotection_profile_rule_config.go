@@ -153,13 +153,13 @@ func (o ThreatprotectionProfileRuleConfig) MarshalJSON() ([]byte, error) {
 
 func (o ThreatprotectionProfileRuleConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Action) {
+	if !IsNil(o.Action) && *o.Action != "" {
 		toSerialize["action"] = o.Action
 	}
 	if !IsNil(o.LogSeverity) {
 		toSerialize["log_severity"] = o.LogSeverity
 	}
-	if !IsNil(o.Params) {
+	if !IsNil(o.Params) && len(o.Params) > 0 {
 		toSerialize["params"] = o.Params
 	}
 

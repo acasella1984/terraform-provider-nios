@@ -14,6 +14,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dhcp"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type Ipv6rangeOptionFilterRulesModel struct {
@@ -31,6 +33,9 @@ var Ipv6rangeOptionFilterRulesResourceSchemaAttributes = map[string]schema.Attri
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "The name of the DHCP filter.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"permission": schema.StringAttribute{
 		Computed: true,
@@ -39,6 +44,9 @@ var Ipv6rangeOptionFilterRulesResourceSchemaAttributes = map[string]schema.Attri
 			stringvalidator.OneOf("Allow", "Deny"),
 		},
 		MarkdownDescription: "The permission to be applied.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

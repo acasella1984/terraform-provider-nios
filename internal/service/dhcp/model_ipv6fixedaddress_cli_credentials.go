@@ -14,6 +14,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dhcp"
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type Ipv6fixedaddressCliCredentialsModel struct {
@@ -42,6 +45,9 @@ var Ipv6fixedaddressCliCredentialsResourceSchemaAttributes = map[string]schema.A
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The CLI user name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"password": schema.StringAttribute{
 		Optional:  true,
@@ -51,6 +57,9 @@ var Ipv6fixedaddressCliCredentialsResourceSchemaAttributes = map[string]schema.A
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The CLI password.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"credential_type": schema.StringAttribute{
 		Optional: true,
@@ -59,6 +68,9 @@ var Ipv6fixedaddressCliCredentialsResourceSchemaAttributes = map[string]schema.A
 			stringvalidator.OneOf("ENABLE_SSH", "ENABLE_TELNET", "SSH", "TELNET"),
 		},
 		MarkdownDescription: "The type of the credential.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"comment": schema.StringAttribute{
 		Optional: true,
@@ -67,15 +79,24 @@ var Ipv6fixedaddressCliCredentialsResourceSchemaAttributes = map[string]schema.A
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The comment for the credential.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"id": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The Credentials ID.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"credential_group": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Group for the CLI credential.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

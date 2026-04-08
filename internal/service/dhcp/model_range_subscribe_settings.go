@@ -15,6 +15,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dhcp"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
 
 type RangeSubscribeSettingsModel struct {
@@ -47,6 +49,9 @@ var RangeSubscribeSettingsResourceSchemaAttributes = map[string]schema.Attribute
 			listvalidator.SizeAtLeast(1),
 		},
 		MarkdownDescription: "The list of Cisco ISE attributes allowed for subscription.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"mapped_ea_attributes": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -54,6 +59,9 @@ var RangeSubscribeSettingsResourceSchemaAttributes = map[string]schema.Attribute
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},

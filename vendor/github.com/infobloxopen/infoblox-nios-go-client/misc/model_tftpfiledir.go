@@ -301,10 +301,10 @@ func (o Tftpfiledir) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.VtftpDirMembers) {
+	if !IsNil(o.VtftpDirMembers) && len(o.VtftpDirMembers) > 0 {
 		toSerialize["vtftp_dir_members"] = o.VtftpDirMembers
 	}
 	return toSerialize, nil

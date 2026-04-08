@@ -14,6 +14,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZonerpfireeyerulemappingFireeyeAlertMappingModel struct {
@@ -36,6 +39,9 @@ var ZonerpfireeyerulemappingFireeyeAlertMappingResourceSchemaAttributes = map[st
 			stringvalidator.OneOf("DOMAIN_MATCH", "INFECTION_MATCH", "MALWARE_CALLBACK", "MALWARE_OBJECT", "WEB_INFECTION"),
 		},
 		MarkdownDescription: "The type of Fireeye Alert.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"rpz_rule": schema.StringAttribute{
 		Optional: true,
@@ -44,11 +50,17 @@ var ZonerpfireeyerulemappingFireeyeAlertMappingResourceSchemaAttributes = map[st
 			stringvalidator.OneOf("NODATA", "NONE", "NXDOMAIN", "PASSTHRU", "SUBSTITUTE"),
 		},
 		MarkdownDescription: "The RPZ rule for the alert.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"lifetime": schema.Int64Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The expiration Lifetime of alert type. The 32-bit unsigned integer represents the amount of seconds this alert type will live for. 0 means the alert will never expire.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

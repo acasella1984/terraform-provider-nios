@@ -84,7 +84,7 @@ func (o ListMemberDnsResponseObject) MarshalJSON() ([]byte, error) {
 
 func (o ListMemberDnsResponseObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Result) {
+	if !IsNil(o.Result) && len(o.Result) > 0 {
 		toSerialize["result"] = o.Result
 	}
 

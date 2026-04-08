@@ -16,11 +16,17 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -30,6 +36,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
@@ -240,6 +247,10 @@ var RangeAttrTypes = map[string]attr.Type{
 var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"always_update_dns": schema.BoolAttribute{
@@ -255,6 +266,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Validators: []validator.String{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_bootfile")),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"bootserver": schema.StringAttribute{
 		Optional:            true,
@@ -264,11 +278,17 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_bootserver")),
 			customvalidator.IsValidIPv4OrFQDN(),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"cloud_info": schema.SingleNestedAttribute{
 		Attributes:          RangeCloudInfoResourceSchemaAttributes,
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "A CloudInfo struct that contains information about the cloud provider and region for the range.",
 	},
 	"comment": schema.StringAttribute{
@@ -288,6 +308,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The dynamic DNS domain name the appliance uses specifically for DDNS updates for this range.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ddns_generate_hostname": schema.BoolAttribute{
 		Optional:            true,
@@ -316,9 +339,15 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 	"dhcp_utilization": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The percentage of the total DHCP utilization of the range multiplied by 1000. This is the percentage of the total number of available IP addresses belonging to the range versus the total number of all IP addresses in the range.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"dhcp_utilization_status": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "A string describing the utilization level of the range.",
 	},
 	// The default setting has been removed to support the `disable` option for MS Super Scope ranges.
@@ -330,6 +359,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 	"discover_now_status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Discover now status for this range.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovery_basic_poll_settings": schema.SingleNestedAttribute{
 		Attributes: RangeDiscoveryBasicPollSettingsResourceSchemaAttributes,
@@ -339,6 +371,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_discovery_basic_polling_settings")),
 		},
 		MarkdownDescription: "The basic polling settings for the discovery of this range.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovery_blackout_setting": schema.SingleNestedAttribute{
 		Attributes: RangeDiscoveryBlackoutSettingResourceSchemaAttributes,
@@ -348,6 +383,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_blackout_setting")),
 		},
 		MarkdownDescription: "The blackout settings for the discovery of this range. If this is set to False, the blackout settings are not used.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"discovery_member": schema.StringAttribute{
 		Optional:            true,
@@ -356,10 +394,16 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Validators: []validator.String{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_enable_discovery")),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"dynamic_hosts": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The total number of DHCP leases issued for the range.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"email_list": schema.ListAttribute{
 		CustomType:          internaltypes.UnorderedListOfStringType,
@@ -438,6 +482,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		Computed:            true,
 		MarkdownDescription: "The endpoints that provides data for the DHCP Range object.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"exclude": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -445,6 +492,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
 		},
@@ -466,12 +516,16 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"failover_association": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The name of the failover association: the server in this failover association will serve the IPv4 range in case the main server is out of service. {range:range} must be set to 'FAILOVER' or 'FAILOVER_MS' if you want the failover association specified here to serve the range.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"fingerprint_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -532,6 +586,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 	"is_split_scope": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "This field will be 'true' if this particular range is part of a split scope.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"known_clients": schema.StringAttribute{
 		Optional: true,
@@ -540,6 +597,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_known_clients")),
 		},
 		MarkdownDescription: "Permission for known clients. This can be 'Allow' or 'Deny'. If set to 'Deny' known clients will be denied IP addresses. Known clients include roaming hosts and clients with fixed addresses or DHCP host entries. Unknown clients include clients that are not roaming hosts and clients that do not have fixed addresses or DHCP host entries.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"lease_scavenge_time": schema.Int64Attribute{
 		Optional: true,
@@ -553,6 +613,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Default:             int64default.StaticInt64(-1),
 		MarkdownDescription: "An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day).",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"logic_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -602,11 +665,17 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "This field contains the member that will run the DHCP service for this range. If this is not set, the range will be served by the member that is currently serving the network.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_ad_user_data": schema.SingleNestedAttribute{
 		Attributes:          RangeMsAdUserDataResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "This field contains the Microsoft AD user data for this range. This data is used to create a user in the Microsoft AD when a lease is assigned to a host in this range.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ms_options": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -614,6 +683,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		Optional: true,
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Validators: []validator.List{
 			listvalidator.AlsoRequires(path.MatchRoot("use_ms_options")),
 			listvalidator.SizeAtLeast(1),
@@ -642,11 +714,17 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "This field contains the name of the Microsoft scope.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"network": schema.StringAttribute{
 		CustomType:          cidrtypes.IPv4PrefixType{},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The network to which this range belongs, in IPv4 Address/CIDR format.",
 	},
 	"network_view": schema.StringAttribute{
@@ -663,6 +741,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_nextserver")),
 		},
 		MarkdownDescription: "The name in FQDN and/or IPv4 Address of the next server that the host needs to boot.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"option_filter_rules": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
@@ -700,6 +781,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_blackout_setting")),
 		},
 		MarkdownDescription: "The port control blackout settings for the range. This field is used to configure the port control blackout settings for the DHCP range. It includes information about the blackout settings, such as the start and end times of the blackout period.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"pxe_lease_time": schema.Int64Attribute{
 		Optional:            true,
@@ -772,6 +856,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 	"static_hosts": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The number of static DHCP addresses configured in the range.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"subscribe_settings": schema.SingleNestedAttribute{
 		Attributes: RangeSubscribeSettingsResourceSchemaAttributes,
@@ -781,17 +868,24 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			objectvalidator.AlsoRequires(path.MatchRoot("use_subscribe_settings")),
 		},
 		MarkdownDescription: "The subscribe settings for the range. This field is used to configure the subscription settings for the DHCP range. It includes information about the subscription, such as the subscriber's email address and whether the subscription is enabled.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"template": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "If set on creation, the range will be created according to the values specified in the named template.",
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"total_hosts": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The total number of DHCP addresses configured in the range.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"unknown_clients": schema.StringAttribute{
 		Optional: true,
@@ -800,6 +894,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_unknown_clients")),
 		},
 		MarkdownDescription: "Permission for unknown clients. This can be 'Allow' or 'Deny'. If set to 'Deny', unknown clients will be denied IP addresses. Known clients include roaming hosts and clients with fixed addresses or DHCP host entries. Unknown clients include clients that are not roaming hosts and clients that do not have fixed addresses or DHCP host entries.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"update_dns_on_lease_renewal": schema.BoolAttribute{
 		Optional: true,
@@ -1005,10 +1102,7 @@ func (m *RangeModel) Expand(ctx context.Context, diags *diag.Diagnostics, isCrea
 		LowWaterMark:                     flex.ExpandInt64Pointer(m.LowWaterMark),
 		LowWaterMarkReset:                flex.ExpandInt64Pointer(m.LowWaterMarkReset),
 		MacFilterRules:                   flex.ExpandFrameworkListNestedBlock(ctx, m.MacFilterRules, diags, ExpandRangeMacFilterRules),
-		Member:                           ExpandRangeMember(ctx, m.Member, diags),
-		MsAdUserData:                     ExpandRangeMsAdUserData(ctx, m.MsAdUserData, diags),
 		MsOptions:                        flex.ExpandFrameworkListNestedBlock(ctx, m.MsOptions, diags, ExpandRangeMsOptions),
-		MsServer:                         ExpandRangeMsServer(ctx, m.MsServer, diags),
 		NacFilterRules:                   flex.ExpandFrameworkListNestedBlock(ctx, m.NacFilterRules, diags, ExpandRangeNacFilterRules),
 		Name:                             flex.ExpandStringPointer(m.Name),
 		Network:                          flex.ExpandIPv4CIDR(m.Network),

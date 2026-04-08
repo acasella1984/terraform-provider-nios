@@ -593,7 +593,7 @@ func (o GridThreatprotection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.CurrentRuleset) {
+	if !IsNil(o.CurrentRuleset) && *o.CurrentRuleset != "" {
 		toSerialize["current_ruleset"] = o.CurrentRuleset
 	}
 	if !IsNil(o.DisableMultipleDnsTcpRequest) {
@@ -626,17 +626,21 @@ func (o GridThreatprotection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastRuleUpdateVersion) {
 		toSerialize["last_rule_update_version"] = o.LastRuleUpdateVersion
 	}
-	if !IsNil(o.NatRules) {
+	if !IsNil(o.NatRules) && len(o.NatRules) > 0 {
 		toSerialize["nat_rules"] = o.NatRules
 	}
 	if !IsNil(o.OutboundSettings) {
-		toSerialize["outbound_settings"] = o.OutboundSettings
+		if outbound_settingsMap, err := o.OutboundSettings.ToMap(); err == nil && len(outbound_settingsMap) > 0 {
+			toSerialize["outbound_settings"] = o.OutboundSettings
+		}
 	}
-	if !IsNil(o.RuleUpdatePolicy) {
+	if !IsNil(o.RuleUpdatePolicy) && *o.RuleUpdatePolicy != "" {
 		toSerialize["rule_update_policy"] = o.RuleUpdatePolicy
 	}
 	if !IsNil(o.ScheduledDownload) {
-		toSerialize["scheduled_download"] = o.ScheduledDownload
+		if scheduled_downloadMap, err := o.ScheduledDownload.ToMap(); err == nil && len(scheduled_downloadMap) > 0 {
+			toSerialize["scheduled_download"] = o.ScheduledDownload
+		}
 	}
 	return toSerialize, nil
 }

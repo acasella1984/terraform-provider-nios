@@ -17,6 +17,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -29,6 +33,7 @@ import (
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
 	"github.com/infobloxopen/terraform-provider-nios/internal/utils"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type RoaminghostModel struct {
@@ -150,6 +155,10 @@ var RoaminghostAttrTypes = map[string]attr.Type{
 var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The reference to the object.",
 	},
 	"address_type": schema.StringAttribute{
@@ -168,6 +177,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_bootfile")),
 		},
 		MarkdownDescription: "The bootfile name for the roaming host. You can configure the DHCP server to support clients that use the boot file name option in their DHCPREQUEST messages.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"bootserver": schema.StringAttribute{
 		Computed: true,
@@ -176,6 +188,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_bootserver")),
 		},
 		MarkdownDescription: "The boot server address for the roaming host. You can specify the name and/or IP address of the boot server that the host needs to boot. The boot server IPv4 Address or name in FQDN format.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"client_identifier_prepend_zero": schema.BoolAttribute{
 		Optional:            true,
@@ -229,6 +244,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The DHCP client ID for the roaming host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"disable": schema.BoolAttribute{
 		Optional:            true,
@@ -268,6 +286,7 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 		Computed: true,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "Extensible attributes associated with the object, including default and internal attributes.",
 		ElementType:         types.StringType,
@@ -289,6 +308,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 	},
 	"ipv6_client_hostname": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The client hostname of a DHCP roaming host object. This field specifies the host name that the DHCP client sends to the Infoblox appliance using DHCP option 12.",
 	},
 	"ipv6_ddns_domainname": schema.StringAttribute{
@@ -318,6 +340,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The IPv6 domain name for this roaming host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6_domain_name_servers": schema.ListAttribute{
 		ElementType: types.StringType,
@@ -339,6 +364,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The DUID value for this roaming host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6_enable_ddns": schema.BoolAttribute{
 		Optional: true,
@@ -364,6 +392,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidMacAddress(),
 		},
 		MarkdownDescription: "The MAC address for this roaming host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6_match_option": schema.StringAttribute{
 		Computed: true,
@@ -372,12 +403,18 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("DUID", "V6_MAC_ADDRESS"),
 		},
 		MarkdownDescription: "The identification method for an IPv6 or mixed IPv4/IPv6 roaming host. The supported values for this field are \"DUID\" or \"V6_MAC_ADDRESS\", which specify what option should be used to identify the specific DHCPv6 client.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6_options": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
 			Attributes: RoaminghostIpv6OptionsResourceSchemaAttributes,
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Optional: true,
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
@@ -390,6 +427,7 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional: true,
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "If set on creation, the roaming host will be created according to the values specified in the named IPv6 roaming host template.",
 	},
@@ -402,6 +440,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			customvalidator.IsValidMacAddress(),
 		},
 		MarkdownDescription: "The MAC address for this roaming host.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"match_client": schema.StringAttribute{
 		Computed: true,
@@ -410,6 +451,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("CLIENT_ID", "MAC_ADDRESS"),
 		},
 		MarkdownDescription: "The match-client value for this roaming host. Valid values are: \"MAC_ADDRESS\": The fixed IP address is leased to the matching MAC address. \"CLIENT_ID\": The fixed IP address is leased to the matching DHCP client identifier.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		Required: true,
@@ -434,12 +478,18 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.AlsoRequires(path.MatchRoot("use_nextserver")),
 		},
 		MarkdownDescription: "The name in FQDN and/or IPv4 Address format of the next server that the host needs to boot.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"options": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{
 			Attributes: RoaminghostOptionsResourceSchemaAttributes,
 		},
 		Computed: true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		Optional: true,
 		Validators: []validator.List{
 			listvalidator.SizeAtLeast(1),
@@ -462,12 +512,16 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_pxe_lease_time")),
 		},
 		MarkdownDescription: "The PXE lease time value for this roaming host object. Some hosts use PXE (Preboot Execution Environment) to boot remotely from a server. To better manage your IP resources, set a different lease time for PXE boot requests. You can configure the DHCP server to allocate an IP address with a shorter lease time to hosts that send PXE boot requests, so IP addresses are not leased longer than necessary. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"template": schema.StringAttribute{
 		Computed: true,
 		Optional: true,
 		PlanModifiers: []planmodifier.String{
 			planmodifiers.ImmutableString(),
+			stringplanmodifier.UseStateForUnknown(),
 		},
 		MarkdownDescription: "If set on creation, the roaming host will be created according to the values specified in the named template.",
 	},
@@ -574,6 +628,9 @@ var RoaminghostResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_valid_lifetime")),
 		},
 		MarkdownDescription: "The valid lifetime value for this roaming host object.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

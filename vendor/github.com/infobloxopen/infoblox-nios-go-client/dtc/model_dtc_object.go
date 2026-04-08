@@ -502,28 +502,28 @@ func (o DtcObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayType) {
 		toSerialize["display_type"] = o.DisplayType
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.Ipv4AddressList) {
+	if !IsNil(o.Ipv4AddressList) && len(o.Ipv4AddressList) > 0 {
 		toSerialize["ipv4_address_list"] = o.Ipv4AddressList
 	}
-	if !IsNil(o.Ipv6AddressList) {
+	if !IsNil(o.Ipv6AddressList) && len(o.Ipv6AddressList) > 0 {
 		toSerialize["ipv6_address_list"] = o.Ipv6AddressList
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Object) {
+	if !IsNil(o.Object) && *o.Object != "" {
 		toSerialize["object"] = o.Object
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.StatusTime) {

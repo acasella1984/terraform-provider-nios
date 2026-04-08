@@ -10,6 +10,9 @@ import (
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
@@ -56,6 +59,9 @@ var ZoneauthgridsecondariesPreferredPrimariesResourceSchemaAttributes = map[stri
 	},
 	"shared_with_ms_parent_delegation": schema.BoolAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "This flag represents whether the name server is shared with the parent Microsoft primary zone's delegation server.",
 	},
 	"stealth": schema.BoolAttribute{
@@ -71,6 +77,9 @@ var ZoneauthgridsecondariesPreferredPrimariesResourceSchemaAttributes = map[stri
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "A generated TSIG key.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_alg": schema.StringAttribute{
 		Optional: true,
@@ -88,11 +97,17 @@ var ZoneauthgridsecondariesPreferredPrimariesResourceSchemaAttributes = map[stri
 			customvalidator.ValidateTrimmedString(),
 		},
 		MarkdownDescription: "The TSIG key name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_tsig_key_name": schema.BoolAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Use flag for: tsig_key_name",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

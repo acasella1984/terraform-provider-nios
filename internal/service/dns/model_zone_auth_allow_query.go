@@ -16,6 +16,9 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ZoneAuthAllowQueryModel struct {
@@ -48,6 +51,9 @@ var ZoneAuthAllowQueryResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("addressac", "tsigac"),
 		},
 		MarkdownDescription: "The struct type of the object. The value must be one of 'addressac' and 'tsigac'.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ref": schema.StringAttribute{
 		Optional: true,
@@ -63,6 +69,9 @@ var ZoneAuthAllowQueryResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 		},
 		MarkdownDescription: "The reference to the Named ACL object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"address": schema.StringAttribute{
 		Optional:            true,
@@ -76,6 +85,9 @@ var ZoneAuthAllowQueryResourceSchemaAttributes = map[string]schema.Attribute{
 			),
 			customvalidator.ValidateTrimmedString(),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"permission": schema.StringAttribute{
 		Optional:            true,
@@ -88,6 +100,9 @@ var ZoneAuthAllowQueryResourceSchemaAttributes = map[string]schema.Attribute{
 				path.MatchRelative().AtParent().AtName("tsig_key_name"),
 			),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key": schema.StringAttribute{
 		Optional:            true,
@@ -95,6 +110,9 @@ var ZoneAuthAllowQueryResourceSchemaAttributes = map[string]schema.Attribute{
 		MarkdownDescription: "A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT.",
 		Validators: []validator.String{
 			customvalidator.ValidateTrimmedString(),
+		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"tsig_key_alg": schema.StringAttribute{
@@ -104,6 +122,9 @@ var ZoneAuthAllowQueryResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.OneOf("HMAC-MD5", "HMAC-SHA256"),
 		},
 		MarkdownDescription: "The TSIG key algorithm.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_name": schema.StringAttribute{
 		Optional:            true,
@@ -112,11 +133,17 @@ var ZoneAuthAllowQueryResourceSchemaAttributes = map[string]schema.Attribute{
 		Validators: []validator.String{
 			customvalidator.ValidateTrimmedString(),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_tsig_key_name": schema.BoolAttribute{
 		Computed:            true,
 		Optional:            true,
 		MarkdownDescription: "Use flag for: tsig_key_name",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

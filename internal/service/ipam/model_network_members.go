@@ -15,6 +15,8 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type NetworkMembersModel struct {
@@ -46,16 +48,25 @@ var NetworkMembersResourceSchemaAttributes = map[string]schema.Attribute{
 		},
 		MarkdownDescription: "The IPv4 Address or FQDN of the Microsoft server.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"ipv6addr": schema.StringAttribute{
 		Optional:            true,
 		MarkdownDescription: "The IPv6 Address of the Grid Member.",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		Optional:            true,
 		MarkdownDescription: "The Grid member name",
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

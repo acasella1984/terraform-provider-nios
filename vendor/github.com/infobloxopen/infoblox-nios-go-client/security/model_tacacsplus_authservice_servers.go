@@ -332,7 +332,7 @@ func (o TacacsplusAuthserviceServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SharedSecret) {
 		toSerialize["shared_secret"] = o.SharedSecret
 	}
-	if !IsNil(o.AuthType) {
+	if !IsNil(o.AuthType) && *o.AuthType != "" {
 		toSerialize["auth_type"] = o.AuthType
 	}
 	if !IsNil(o.Comment) {

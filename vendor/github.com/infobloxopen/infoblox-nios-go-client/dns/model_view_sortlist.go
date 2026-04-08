@@ -122,7 +122,7 @@ func (o ViewSortlist) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.MatchList) {
+	if !IsNil(o.MatchList) && len(o.MatchList) > 0 {
 		toSerialize["match_list"] = o.MatchList
 	}
 

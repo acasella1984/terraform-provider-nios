@@ -193,7 +193,7 @@ func (o MsserverAdsitesSite) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Networks) {
+	if !IsNil(o.Networks) && len(o.Networks) > 0 {
 		toSerialize["networks"] = o.Networks
 	}
 	return toSerialize, nil

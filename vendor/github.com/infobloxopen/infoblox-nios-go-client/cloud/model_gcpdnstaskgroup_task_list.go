@@ -862,7 +862,7 @@ func (o GcpdnstaskgroupTaskList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsSyncZoneCount) {
 		toSerialize["dns_sync_zone_count"] = o.DnsSyncZoneCount
 	}
-	if !IsNil(o.CredentialsType) {
+	if !IsNil(o.CredentialsType) && *o.CredentialsType != "" {
 		toSerialize["credentials_type"] = o.CredentialsType
 	}
 

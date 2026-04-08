@@ -224,7 +224,7 @@ func (o GridDnsDnssecTrustedKeys) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Fqdn) {
 		toSerialize["fqdn"] = o.Fqdn
 	}
-	if !IsNil(o.Algorithm) {
+	if !IsNil(o.Algorithm) && *o.Algorithm != "" {
 		toSerialize["algorithm"] = o.Algorithm
 	}
 	if !IsNil(o.Key) {

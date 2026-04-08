@@ -562,13 +562,13 @@ func (o GridServicerestartGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.IsDefault) {
@@ -577,10 +577,10 @@ func (o GridServicerestartGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastUpdatedTime) {
 		toSerialize["last_updated_time"] = o.LastUpdatedTime
 	}
-	if !IsNil(o.Members) {
+	if !IsNil(o.Members) && len(o.Members) > 0 {
 		toSerialize["members"] = o.Members
 	}
-	if !IsNil(o.Mode) {
+	if !IsNil(o.Mode) && *o.Mode != "" {
 		toSerialize["mode"] = o.Mode
 	}
 	if !IsNil(o.Name) {
@@ -590,16 +590,20 @@ func (o GridServicerestartGroup) ToMap() (map[string]interface{}, error) {
 		toSerialize["position"] = o.Position
 	}
 	if !IsNil(o.RecurringSchedule) {
-		toSerialize["recurring_schedule"] = o.RecurringSchedule
+		if recurring_scheduleMap, err := o.RecurringSchedule.ToMap(); err == nil && len(recurring_scheduleMap) > 0 {
+			toSerialize["recurring_schedule"] = o.RecurringSchedule
+		}
 	}
-	if !IsNil(o.Requests) {
+	if !IsNil(o.Requests) && len(o.Requests) > 0 {
 		toSerialize["requests"] = o.Requests
 	}
-	if !IsNil(o.Service) {
+	if !IsNil(o.Service) && *o.Service != "" {
 		toSerialize["service"] = o.Service
 	}
 	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+		if statusMap, err := o.Status.ToMap(); err == nil && len(statusMap) > 0 {
+			toSerialize["status"] = o.Status
+		}
 	}
 	return toSerialize, nil
 }

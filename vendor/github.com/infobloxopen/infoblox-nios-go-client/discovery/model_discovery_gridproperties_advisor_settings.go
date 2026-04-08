@@ -869,7 +869,7 @@ func (o DiscoveryGridpropertiesAdvisorSettings) ToMap() (map[string]interface{},
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if !IsNil(o.AuthType) {
+	if !IsNil(o.AuthType) && *o.AuthType != "" {
 		toSerialize["auth_type"] = o.AuthType
 	}
 	if !IsNil(o.AuthToken) {

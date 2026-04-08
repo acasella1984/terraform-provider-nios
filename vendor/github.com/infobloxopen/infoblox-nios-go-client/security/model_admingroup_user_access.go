@@ -159,7 +159,7 @@ func (o AdmingroupUserAccess) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.Permission) {
+	if !IsNil(o.Permission) && *o.Permission != "" {
 		toSerialize["permission"] = o.Permission
 	}
 

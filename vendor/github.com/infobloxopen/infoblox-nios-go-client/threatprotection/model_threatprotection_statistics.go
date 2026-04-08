@@ -156,7 +156,7 @@ func (o ThreatprotectionStatistics) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Member) {
 		toSerialize["member"] = o.Member
 	}
-	if !IsNil(o.StatInfos) {
+	if !IsNil(o.StatInfos) && len(o.StatInfos) > 0 {
 		toSerialize["stat_infos"] = o.StatInfos
 	}
 	return toSerialize, nil

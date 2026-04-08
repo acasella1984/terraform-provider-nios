@@ -8,6 +8,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	schema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -15,6 +18,7 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type AwsuserModel struct {
@@ -44,6 +48,11 @@ var AwsuserAttrTypes = map[string]attr.Type{
 var AwsuserResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"access_key_id": schema.StringAttribute{
@@ -70,6 +79,9 @@ var AwsuserResourceSchemaAttributes = map[string]schema.Attribute{
 	"last_used": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when this AWS user credentials was last used.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		Required: true,
@@ -85,6 +97,9 @@ var AwsuserResourceSchemaAttributes = map[string]schema.Attribute{
 			stringvalidator.LengthAtMost(64),
 		},
 		MarkdownDescription: "The NIOS user name mapped to this AWS user. Maximum 64 characters.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"secret_access_key": schema.StringAttribute{
 		Required: true,
@@ -96,6 +111,9 @@ var AwsuserResourceSchemaAttributes = map[string]schema.Attribute{
 	"status": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Indicate the validity status of this AWS user.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

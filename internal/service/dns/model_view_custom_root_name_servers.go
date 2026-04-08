@@ -13,6 +13,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type ViewCustomRootNameServersModel struct {
@@ -50,26 +53,44 @@ var ViewCustomRootNameServersResourceSchemaAttributes = map[string]schema.Attrib
 	"shared_with_ms_parent_delegation": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "This flag represents whether the name server is shared with the parent Microsoft primary zone's delegation server.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"stealth": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Set this flag to hide the NS record for the primary name server from DNS queries.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "A generated TSIG key.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_alg": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The TSIG key algorithm.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"tsig_key_name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The TSIG key name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_tsig_key_name": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Use flag for: tsig_key_name",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

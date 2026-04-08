@@ -851,16 +851,16 @@ func (o PxgridEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.LogLevel) {
+	if !IsNil(o.LogLevel) && *o.LogLevel != "" {
 		toSerialize["log_level"] = o.LogLevel
 	}
 	if !IsNil(o.Name) {
@@ -869,20 +869,26 @@ func (o PxgridEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.OutboundMemberType) {
+	if !IsNil(o.OutboundMemberType) && *o.OutboundMemberType != "" {
 		toSerialize["outbound_member_type"] = o.OutboundMemberType
 	}
-	if !IsNil(o.OutboundMembers) {
+	if !IsNil(o.OutboundMembers) && len(o.OutboundMembers) > 0 {
 		toSerialize["outbound_members"] = o.OutboundMembers
 	}
 	if !IsNil(o.PublishSettings) {
-		toSerialize["publish_settings"] = o.PublishSettings
+		if publish_settingsMap, err := o.PublishSettings.ToMap(); err == nil && len(publish_settingsMap) > 0 {
+			toSerialize["publish_settings"] = o.PublishSettings
+		}
 	}
 	if !IsNil(o.SubscribeSettings) {
-		toSerialize["subscribe_settings"] = o.SubscribeSettings
+		if subscribe_settingsMap, err := o.SubscribeSettings.ToMap(); err == nil && len(subscribe_settingsMap) > 0 {
+			toSerialize["subscribe_settings"] = o.SubscribeSettings
+		}
 	}
 	if !IsNil(o.TemplateInstance) {
-		toSerialize["template_instance"] = o.TemplateInstance
+		if template_instanceMap, err := o.TemplateInstance.ToMap(); err == nil && len(template_instanceMap) > 0 {
+			toSerialize["template_instance"] = o.TemplateInstance
+		}
 	}
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout

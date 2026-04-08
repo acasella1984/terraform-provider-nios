@@ -190,13 +190,13 @@ func (o GridntpsettingNtpAcl) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AclType) {
 		toSerialize["acl_type"] = o.AclType
 	}
-	if !IsNil(o.AcList) {
+	if !IsNil(o.AcList) && len(o.AcList) > 0 {
 		toSerialize["ac_list"] = o.AcList
 	}
 	if !IsNil(o.NamedAcl) {
 		toSerialize["named_acl"] = o.NamedAcl
 	}
-	if !IsNil(o.Service) {
+	if !IsNil(o.Service) && *o.Service != "" {
 		toSerialize["service"] = o.Service
 	}
 

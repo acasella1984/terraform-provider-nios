@@ -558,7 +558,7 @@ func (o Vlan) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AssignedTo) {
+	if !IsNil(o.AssignedTo) && len(o.AssignedTo) > 0 {
 		toSerialize["assigned_to"] = o.AssignedTo
 	}
 	if !IsNil(o.Comment) {
@@ -573,20 +573,22 @@ func (o Vlan) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.FuncCall) {
-		toSerialize["func_call"] = o.FuncCall
+		if func_callMap, err := o.FuncCall.ToMap(); err == nil && len(func_callMap) > 0 {
+			toSerialize["func_call"] = o.FuncCall
+		}
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -597,7 +599,7 @@ func (o Vlan) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Reserved) {
 		toSerialize["reserved"] = o.Reserved
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil

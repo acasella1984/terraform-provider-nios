@@ -12,6 +12,9 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 // TODO: function call support for VLANs
@@ -36,10 +39,16 @@ var NetworkVlansResourceSchemaAttributes = map[string]schema.Attribute{
 	"id": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "VLAN ID value.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "Name of the VLAN.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -394,7 +394,7 @@ func (o RecordDhcid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreationTime) {
 		toSerialize["creation_time"] = o.CreationTime
 	}
-	if !IsNil(o.Creator) {
+	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
 	if !IsNil(o.Dhcid) {

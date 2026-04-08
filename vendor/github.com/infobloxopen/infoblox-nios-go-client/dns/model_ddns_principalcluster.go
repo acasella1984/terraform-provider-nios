@@ -224,13 +224,13 @@ func (o DdnsPrincipalcluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Group) {
+	if !IsNil(o.Group) && *o.Group != "" {
 		toSerialize["group"] = o.Group
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Principals) {
+	if !IsNil(o.Principals) && len(o.Principals) > 0 {
 		toSerialize["principals"] = o.Principals
 	}
 	return toSerialize, nil

@@ -12,6 +12,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -20,6 +26,7 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	importmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/import"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type GridServicerestartGroupModel struct {
@@ -59,6 +66,11 @@ var GridServicerestartGroupAttrTypes = map[string]attr.Type{
 var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"comment": schema.StringAttribute{
@@ -87,15 +99,22 @@ var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribut
 		MarkdownDescription: "Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.",
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 	"is_default": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Determines if this Restart Group is the default group.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"last_updated_time": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when the status of the latest request has changed.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"members": schema.ListAttribute{
 		ElementType: types.StringType,
@@ -104,6 +123,9 @@ var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribut
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The list of members belonging to the group.",
 	},
 	"mode": schema.StringAttribute{
@@ -125,16 +147,25 @@ var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribut
 	"position": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The order to restart.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"recurring_schedule": schema.SingleNestedAttribute{
 		Attributes: GridServicerestartGroupRecurringScheduleResourceSchemaAttributes,
 		Optional:   true,
 		Computed:   true,
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"requests": schema.ListAttribute{
 		ElementType:         types.StringType,
 		Computed:            true,
 		MarkdownDescription: "The list of requests associated with a restart group.",
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"service": schema.StringAttribute{
 		Required: true,
@@ -147,6 +178,9 @@ var GridServicerestartGroupResourceSchemaAttributes = map[string]schema.Attribut
 		Attributes:          GridServicerestartStatusResourceSchemaAttributes,
 		Computed:            true,
 		MarkdownDescription: "The restart status for a restart group.",
+		PlanModifiers: []planmodifier.Object{
+			objectplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

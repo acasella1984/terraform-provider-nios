@@ -119,7 +119,7 @@ func (o UpgradestatusSteps) MarshalJSON() ([]byte, error) {
 
 func (o UpgradestatusSteps) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StatusValue) {
+	if !IsNil(o.StatusValue) && *o.StatusValue != "" {
 		toSerialize["status_value"] = o.StatusValue
 	}
 	if !IsNil(o.StatusText) {

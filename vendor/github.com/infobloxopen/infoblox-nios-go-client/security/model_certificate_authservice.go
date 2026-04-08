@@ -662,10 +662,10 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AutoPopulateLogin) {
+	if !IsNil(o.AutoPopulateLogin) && *o.AutoPopulateLogin != "" {
 		toSerialize["auto_populate_login"] = o.AutoPopulateLogin
 	}
-	if !IsNil(o.CaCertificates) {
+	if !IsNil(o.CaCertificates) && len(o.CaCertificates) > 0 {
 		toSerialize["ca_certificates"] = o.CaCertificates
 	}
 	if !IsNil(o.Comment) {
@@ -686,10 +686,10 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.OcspCheck) {
+	if !IsNil(o.OcspCheck) && *o.OcspCheck != "" {
 		toSerialize["ocsp_check"] = o.OcspCheck
 	}
-	if !IsNil(o.OcspResponders) {
+	if !IsNil(o.OcspResponders) && len(o.OcspResponders) > 0 {
 		toSerialize["ocsp_responders"] = o.OcspResponders
 	}
 	if !IsNil(o.RecoveryInterval) {
@@ -707,10 +707,10 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResponseTimeout) {
 		toSerialize["response_timeout"] = o.ResponseTimeout
 	}
-	if !IsNil(o.TrustModel) {
+	if !IsNil(o.TrustModel) && *o.TrustModel != "" {
 		toSerialize["trust_model"] = o.TrustModel
 	}
-	if !IsNil(o.UserMatchType) {
+	if !IsNil(o.UserMatchType) && *o.UserMatchType != "" {
 		toSerialize["user_match_type"] = o.UserMatchType
 	}
 	return toSerialize, nil

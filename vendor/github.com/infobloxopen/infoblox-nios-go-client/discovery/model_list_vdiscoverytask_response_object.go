@@ -84,7 +84,7 @@ func (o ListVdiscoverytaskResponseObject) MarshalJSON() ([]byte, error) {
 
 func (o ListVdiscoverytaskResponseObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Result) {
+	if !IsNil(o.Result) && len(o.Result) > 0 {
 		toSerialize["result"] = o.Result
 	}
 

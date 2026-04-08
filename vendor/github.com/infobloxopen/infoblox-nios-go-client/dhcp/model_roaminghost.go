@@ -1955,7 +1955,7 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AddressType) {
+	if !IsNil(o.AddressType) && *o.AddressType != "" {
 		toSerialize["address_type"] = o.AddressType
 	}
 	if !IsNil(o.Bootfile) {
@@ -1991,13 +1991,13 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnablePxeLeaseTime) {
 		toSerialize["enable_pxe_lease_time"] = o.EnablePxeLeaseTime
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.ForceRoamingHostname) {
@@ -2018,7 +2018,7 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6DomainName) {
 		toSerialize["ipv6_domain_name"] = o.Ipv6DomainName
 	}
-	if !IsNil(o.Ipv6DomainNameServers) {
+	if !IsNil(o.Ipv6DomainNameServers) && len(o.Ipv6DomainNameServers) > 0 {
 		toSerialize["ipv6_domain_name_servers"] = o.Ipv6DomainNameServers
 	}
 	if !IsNil(o.Ipv6Duid) {
@@ -2033,10 +2033,10 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv6MacAddress) {
 		toSerialize["ipv6_mac_address"] = o.Ipv6MacAddress
 	}
-	if !IsNil(o.Ipv6MatchOption) {
+	if !IsNil(o.Ipv6MatchOption) && *o.Ipv6MatchOption != "" {
 		toSerialize["ipv6_match_option"] = o.Ipv6MatchOption
 	}
-	if !IsNil(o.Ipv6Options) {
+	if !IsNil(o.Ipv6Options) && len(o.Ipv6Options) > 0 {
 		toSerialize["ipv6_options"] = o.Ipv6Options
 	}
 	if !IsNil(o.Ipv6Template) {
@@ -2045,7 +2045,7 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mac) {
 		toSerialize["mac"] = o.Mac
 	}
-	if !IsNil(o.MatchClient) {
+	if !IsNil(o.MatchClient) && *o.MatchClient != "" {
 		toSerialize["match_client"] = o.MatchClient
 	}
 	if !IsNil(o.Name) {
@@ -2057,7 +2057,7 @@ func (o Roaminghost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Nextserver) {
 		toSerialize["nextserver"] = o.Nextserver
 	}
-	if !IsNil(o.Options) {
+	if !IsNil(o.Options) && len(o.Options) > 0 {
 		toSerialize["options"] = o.Options
 	}
 	if !IsNil(o.PreferredLifetime) {

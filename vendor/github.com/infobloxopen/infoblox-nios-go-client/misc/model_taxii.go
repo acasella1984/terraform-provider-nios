@@ -267,7 +267,7 @@ func (o Taxii) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.TaxiiRpzConfig) {
+	if !IsNil(o.TaxiiRpzConfig) && len(o.TaxiiRpzConfig) > 0 {
 		toSerialize["taxii_rpz_config"] = o.TaxiiRpzConfig
 	}
 	return toSerialize, nil

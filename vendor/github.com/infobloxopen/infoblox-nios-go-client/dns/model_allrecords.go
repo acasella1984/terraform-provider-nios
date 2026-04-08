@@ -567,7 +567,7 @@ func (o Allrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Creator) {
+	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
 	if !IsNil(o.DdnsPrincipal) {
@@ -579,7 +579,7 @@ func (o Allrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.DtcObscured) {
+	if !IsNil(o.DtcObscured) && *o.DtcObscured != "" {
 		toSerialize["dtc_obscured"] = o.DtcObscured
 	}
 	if !IsNil(o.Name) {
@@ -588,13 +588,13 @@ func (o Allrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Reclaimable) {
 		toSerialize["reclaimable"] = o.Reclaimable
 	}
-	if !IsNil(o.Record) {
+	if !IsNil(o.Record) && *o.Record != "" {
 		toSerialize["record"] = o.Record
 	}
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.View) {

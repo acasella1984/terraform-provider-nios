@@ -598,7 +598,7 @@ func (o Networkuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.AddressObject) {
+	if !IsNil(o.AddressObject) && *o.AddressObject != "" {
 		toSerialize["address_object"] = o.AddressObject
 	}
 	if !IsNil(o.DataSource) {
@@ -631,13 +631,13 @@ func (o Networkuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Network) {
+	if !IsNil(o.Network) && *o.Network != "" {
 		toSerialize["network"] = o.Network
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.UserStatus) {
+	if !IsNil(o.UserStatus) && *o.UserStatus != "" {
 		toSerialize["user_status"] = o.UserStatus
 	}
 	return toSerialize, nil

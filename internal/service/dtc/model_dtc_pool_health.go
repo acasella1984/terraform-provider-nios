@@ -12,6 +12,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dtc"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type DtcPoolHealthModel struct {
@@ -30,14 +32,23 @@ var DtcPoolHealthResourceSchemaAttributes = map[string]schema.Attribute{
 	"availability": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The availability color status.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"enabled_state": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The enabled state of the object.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"description": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The textual description of the object's status.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

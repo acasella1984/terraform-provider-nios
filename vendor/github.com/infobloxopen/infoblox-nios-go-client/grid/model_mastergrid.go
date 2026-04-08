@@ -511,7 +511,7 @@ func (o Mastergrid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Joined) {
 		toSerialize["joined"] = o.Joined
 	}
-	if !IsNil(o.LastEvent) {
+	if !IsNil(o.LastEvent) && *o.LastEvent != "" {
 		toSerialize["last_event"] = o.LastEvent
 	}
 	if !IsNil(o.LastEventDetails) {

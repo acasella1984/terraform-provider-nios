@@ -12,6 +12,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -20,6 +23,8 @@ import (
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	planmodifiers "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/immutable"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	derivedmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/derived"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type DtcRecordCnameModel struct {
@@ -49,11 +54,19 @@ var DtcRecordCnameAttrTypes = map[string]attr.Type{
 var DtcRecordCnameResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"auto_created": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Flag that indicates whether this record was automatically created by NIOS.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"canonical": schema.StringAttribute{
 		Required:            true,
@@ -78,6 +91,9 @@ var DtcRecordCnameResourceSchemaAttributes = map[string]schema.Attribute{
 	"dns_canonical": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The canonical name as server by DNS protocol.",
+		PlanModifiers: []planmodifier.String{
+			derivedmod.PunycodeDerivedFrom("canonical"),
+		},
 	},
 	"dtc_server": schema.StringAttribute{
 		Required: true,
@@ -93,6 +109,9 @@ var DtcRecordCnameResourceSchemaAttributes = map[string]schema.Attribute{
 			int64validator.AlsoRequires(path.MatchRoot("use_ttl")),
 		},
 		MarkdownDescription: "The Time to Live (TTL) value.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_ttl": schema.BoolAttribute{
 		Optional:            true,

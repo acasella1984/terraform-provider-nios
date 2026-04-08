@@ -650,10 +650,10 @@ func (o Awsrte53taskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !IsNil(o.GridMember) {
+	if !IsNil(o.GridMember) && *o.GridMember != "" {
 		toSerialize["grid_member"] = o.GridMember
 	}
-	if !IsNil(o.MultipleAccountsSyncPolicy) {
+	if !IsNil(o.MultipleAccountsSyncPolicy) && *o.MultipleAccountsSyncPolicy != "" {
 		toSerialize["multiple_accounts_sync_policy"] = o.MultipleAccountsSyncPolicy
 	}
 	if !IsNil(o.Name) {
@@ -662,7 +662,7 @@ func (o Awsrte53taskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.NetworkViewMappingPolicy) {
+	if !IsNil(o.NetworkViewMappingPolicy) && *o.NetworkViewMappingPolicy != "" {
 		toSerialize["network_view_mapping_policy"] = o.NetworkViewMappingPolicy
 	}
 	if !IsNil(o.RoleArn) {
@@ -671,10 +671,10 @@ func (o Awsrte53taskgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SyncChildAccounts) {
 		toSerialize["sync_child_accounts"] = o.SyncChildAccounts
 	}
-	if !IsNil(o.SyncStatus) {
+	if !IsNil(o.SyncStatus) && *o.SyncStatus != "" {
 		toSerialize["sync_status"] = o.SyncStatus
 	}
-	if !IsNil(o.TaskList) {
+	if !IsNil(o.TaskList) && len(o.TaskList) > 0 {
 		toSerialize["task_list"] = o.TaskList
 	}
 	return toSerialize, nil

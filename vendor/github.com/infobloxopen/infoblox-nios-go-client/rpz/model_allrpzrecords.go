@@ -493,7 +493,7 @@ func (o Allrpzrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.AlertType) {
+	if !IsNil(o.AlertType) && *o.AlertType != "" {
 		toSerialize["alert_type"] = o.AlertType
 	}
 	if !IsNil(o.Comment) {
@@ -511,16 +511,16 @@ func (o Allrpzrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Record) {
+	if !IsNil(o.Record) && *o.Record != "" {
 		toSerialize["record"] = o.Record
 	}
-	if !IsNil(o.RpzRule) {
+	if !IsNil(o.RpzRule) && *o.RpzRule != "" {
 		toSerialize["rpz_rule"] = o.RpzRule
 	}
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl
 	}
-	if !IsNil(o.Type) {
+	if !IsNil(o.Type) && *o.Type != "" {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.View) {

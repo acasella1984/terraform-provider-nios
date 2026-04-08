@@ -696,15 +696,19 @@ func (o RecordAlias) ToMap() (map[string]interface{}, error) {
 		toSerialize["_ref"] = o.Ref
 	}
 	if !IsNil(o.AwsRte53RecordInfo) {
-		toSerialize["aws_rte53_record_info"] = o.AwsRte53RecordInfo
+		if aws_rte53_record_infoMap, err := o.AwsRte53RecordInfo.ToMap(); err == nil && len(aws_rte53_record_infoMap) > 0 {
+			toSerialize["aws_rte53_record_info"] = o.AwsRte53RecordInfo
+		}
 	}
 	if !IsNil(o.CloudInfo) {
-		toSerialize["cloud_info"] = o.CloudInfo
+		if cloud_infoMap, err := o.CloudInfo.ToMap(); err == nil && len(cloud_infoMap) > 0 {
+			toSerialize["cloud_info"] = o.CloudInfo
+		}
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Creator) {
+	if !IsNil(o.Creator) && *o.Creator != "" {
 		toSerialize["creator"] = o.Creator
 	}
 	if !IsNil(o.Disable) {
@@ -716,13 +720,13 @@ func (o RecordAlias) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsTargetName) {
 		toSerialize["dns_target_name"] = o.DnsTargetName
 	}
-	if !IsNil(o.ExtAttrsPlus) {
+	if !IsNil(o.ExtAttrsPlus) && len(*o.ExtAttrsPlus) > 0 {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
-	if !IsNil(o.ExtAttrsMinus) {
+	if !IsNil(o.ExtAttrsMinus) && len(*o.ExtAttrsMinus) > 0 {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
-	if !IsNil(o.ExtAttrs) {
+	if !IsNil(o.ExtAttrs) && len(*o.ExtAttrs) > 0 {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.LastQueried) {
@@ -734,7 +738,7 @@ func (o RecordAlias) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TargetName) {
 		toSerialize["target_name"] = o.TargetName
 	}
-	if !IsNil(o.TargetType) {
+	if !IsNil(o.TargetType) && *o.TargetType != "" {
 		toSerialize["target_type"] = o.TargetType
 	}
 	if !IsNil(o.Ttl) {

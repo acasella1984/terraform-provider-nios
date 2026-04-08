@@ -14,6 +14,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -25,6 +29,7 @@ import (
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
 
 	internaltypes "github.com/infobloxopen/terraform-provider-nios/internal/types"
+	refmod "github.com/infobloxopen/terraform-provider-nios/internal/planmodifiers/ref"
 )
 
 type RecordRpzCnameIpaddressdnModel struct {
@@ -62,6 +67,11 @@ var RecordRpzCnameIpaddressdnAttrTypes = map[string]attr.Type{
 var RecordRpzCnameIpaddressdnResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
 		Computed:            true,
+		PlanModifiers: []planmodifier.String{
+			refmod.UseStateUnlessResourceChanges(),
+			stringplanmodifier.UseStateForUnknown(),
+		},
+		// No plan modifier — ref encodes object key fields and changes on every update.
 		MarkdownDescription: "The reference to the object.",
 	},
 	"canonical": schema.StringAttribute{
@@ -100,6 +110,9 @@ var RecordRpzCnameIpaddressdnResourceSchemaAttributes = map[string]schema.Attrib
 	"is_ipv4": schema.BoolAttribute{
 		Computed:            true,
 		MarkdownDescription: "Indicates whether the record is an IPv4 record. If the return value is \"true\", it is an IPv4 record. Otherwise, it is an IPv6 record.",
+		PlanModifiers: []planmodifier.Bool{
+			boolplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"name": schema.StringAttribute{
 		CustomType: internaltypes.IPNameType{},
@@ -124,6 +137,9 @@ var RecordRpzCnameIpaddressdnResourceSchemaAttributes = map[string]schema.Attrib
 			int64validator.AlsoRequires(path.MatchRoot("use_ttl")),
 		},
 		MarkdownDescription: "The Time To Live (TTL) value for record. A 32-bit unsigned integer that represents the duration, in seconds, for which the record is valid (cached). Zero indicates that the record should not be cached.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 	"use_ttl": schema.BoolAttribute{
 		Computed:            true,
@@ -146,6 +162,9 @@ var RecordRpzCnameIpaddressdnResourceSchemaAttributes = map[string]schema.Attrib
 	"zone": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"extattrs_all": schema.MapAttribute{
 		Computed:            true,
@@ -153,6 +172,7 @@ var RecordRpzCnameIpaddressdnResourceSchemaAttributes = map[string]schema.Attrib
 		ElementType:         types.StringType,
 		PlanModifiers: []planmodifier.Map{
 			importmod.AssociateInternalId(),
+			mapplanmodifier.UseStateForUnknown(),
 		},
 	},
 }

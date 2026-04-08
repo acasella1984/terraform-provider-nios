@@ -437,19 +437,19 @@ func (o NotificationRestTemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Content) {
 		toSerialize["content"] = o.Content
 	}
-	if !IsNil(o.EventType) {
+	if !IsNil(o.EventType) && len(o.EventType) > 0 {
 		toSerialize["event_type"] = o.EventType
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.OutboundType) {
+	if !IsNil(o.OutboundType) && *o.OutboundType != "" {
 		toSerialize["outbound_type"] = o.OutboundType
 	}
-	if !IsNil(o.Parameters) {
+	if !IsNil(o.Parameters) && len(o.Parameters) > 0 {
 		toSerialize["parameters"] = o.Parameters
 	}
-	if !IsNil(o.TemplateType) {
+	if !IsNil(o.TemplateType) && *o.TemplateType != "" {
 		toSerialize["template_type"] = o.TemplateType
 	}
 	if !IsNil(o.VendorIdentifier) {

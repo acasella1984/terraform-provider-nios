@@ -14,6 +14,9 @@ import (
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
 	customvalidator "github.com/infobloxopen/terraform-provider-nios/internal/validator"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type DistributionscheduleUpgradeGroupsModel struct {
@@ -42,19 +45,31 @@ var DistributionscheduleUpgradeGroupsResourceSchemaAttributes = map[string]schem
 		Validators: []validator.String{
 			customvalidator.ValidateTrimmedString(),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"time_zone": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The time zone for scheduling operations.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"distribution_dependent_group": schema.StringAttribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "The distribution dependent group name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"upgrade_dependent_group": schema.StringAttribute{
 		Computed:            true,
 		MarkdownDescription: "The upgrade dependent group name.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"distribution_time": schema.StringAttribute{
 		Optional:            true,
@@ -63,10 +78,16 @@ var DistributionscheduleUpgradeGroupsResourceSchemaAttributes = map[string]schem
 		Validators: []validator.String{
 			customvalidator.ValidateTimeFormat(),
 		},
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"upgrade_time": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The time of the next scheduled upgrade.",
+		PlanModifiers: []planmodifier.Int64{
+			int64planmodifier.UseStateForUnknown(),
+		},
 	},
 }
 

@@ -301,7 +301,7 @@ func (o Azureuser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Status) {
+	if !IsNil(o.Status) && *o.Status != "" {
 		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.TenantId) {

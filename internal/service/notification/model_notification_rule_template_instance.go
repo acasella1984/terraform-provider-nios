@@ -14,6 +14,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/notification"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
 
 type NotificationRuleTemplateInstanceModel struct {
@@ -40,6 +42,9 @@ var NotificationRuleTemplateInstanceResourceSchemaAttributes = map[string]schema
 		},
 		Optional:            true,
 		Computed:            true,
+		PlanModifiers: []planmodifier.List{
+			listplanmodifier.UseStateForUnknown(),
+		},
 		MarkdownDescription: "The notification REST template parameters.",
 	},
 }

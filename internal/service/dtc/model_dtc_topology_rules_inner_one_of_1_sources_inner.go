@@ -14,6 +14,8 @@ import (
 	"github.com/infobloxopen/infoblox-nios-go-client/dtc"
 
 	"github.com/infobloxopen/terraform-provider-nios/internal/flex"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 type DtcTopologyRulesInnerOneOf1SourcesInnerModel struct {
@@ -36,6 +38,9 @@ var DtcTopologyRulesInnerOneOf1SourcesInnerResourceSchemaAttributes = map[string
 			stringvalidator.OneOf("IS", "IS_NOT"),
 		},
 		MarkdownDescription: "Operation for matching the source.",
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
 	},
 	"source_type": schema.StringAttribute{
 		Required: true,

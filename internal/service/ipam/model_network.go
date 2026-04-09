@@ -1284,6 +1284,9 @@ var NetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	"utilization_update": schema.Int64Attribute{
 		Computed:            true,
 		MarkdownDescription: "The timestamp when the utilization statistics were last updated.",
+		PlanModifiers: []planmodifier.Int64{
+			refmod.UseStateUnlessResourceChangesInt64(),
+		},
 	},
 	"vlans": schema.ListNestedAttribute{
 		NestedObject: schema.NestedAttributeObject{

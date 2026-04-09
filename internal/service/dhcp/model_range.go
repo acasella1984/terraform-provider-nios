@@ -354,6 +354,9 @@ var RangeResourceSchemaAttributes = map[string]schema.Attribute{
 		Optional:            true,
 		Computed:            true,
 		MarkdownDescription: "Determines whether a range is disabled or not. When this is set to False, the range is enabled.",
+		PlanModifiers: []planmodifier.Bool{
+			refmod.UseStateUnlessResourceChangesBool(),
+		},
 	},
 	"discover_now_status": schema.StringAttribute{
 		Computed:            true,
